@@ -1,0 +1,93 @@
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 🚫 Arquivos de ambiente
+.env
+*.env
+
+# 📦 Ambiente Virtual
+venv/
+env/
+ENV/
+.venv/
+
+# 🗄️ Banco de Dados local
+db.sqlite3
+*.sqlite3
+
+# 🔧 Configurações do VSCode
+.vscode/
+
+# 🚀 Logs e arquivos temporários
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.bak
+*.tmp
+*.orig
+*.~*
+
+# 🔥 Diretórios de cache
+.cache/
+coverage/
+htmlcov/
+
+# 📂 Distribuição
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 📑 Arquivos de migração compilados
+*.mo
+
+# 🧪 Testes
+.tox/
+.nox/
+.pytest_cache/
+
+# 🔑 Chaves do Django (caso use)
+secret.json
+
+# 🗺️ Static e media gerados
+staticfiles/
+static_root/
+media/
+
+# 🧑‍💻 Sistema operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# 🌐 Node (se usou Tailwind ou npm/yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# 🔍 Outros arquivos comuns
+.idea/           # PyCharm
+*.sublime-workspace
+*.sublime-project
+
+# 🚩 Docker (se estiver usando)
+*.pid
+
+# ⛔ Arquivos temporários de merge
+*.orig

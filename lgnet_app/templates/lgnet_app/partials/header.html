@@ -1,0 +1,55 @@
+{% load static %}
+<div class="flex">
+    <div class="container-top-header container-fluid">
+      <div class="left-side">
+        <ul class="d-flex align-items-center justify-content-between gap-4">
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            PATOS/PB
+            <i class="fa-solid fa-chevron-down"></i>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            0800 591 7274
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            seu@email.com
+          </li>
+        </ul>
+      </div>
+      <div class="right-side">
+        <ul class="d-flex align-items-center justify-content-between gap-4">
+          <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'lgnet_app/images/logo.png' %}" alt="Logo da LGNET">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Início</a></li>
+          <li><a href="#pricing">Planos</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#contact">Contato</a></li>
+          <li><a href="#about">Sobre</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#about">
+        <i class="fa-solid fa-user"></i>
+        Área do cliente
+      </a>
+
+    </div>
+  </header>
