@@ -1,55 +1,76 @@
 {% load static %}
-<div class="flex">
-    <div class="flex">
-      <div class="left-side">
-        <ul class="">
-          <li>
-            <i class="fa-solid fa-location-dot"></i>
-            PATOS/PB
-            <i class="fa-solid fa-chevron-down"></i>
-          </li>
-          <li>
-            <i class="fa-solid fa-phone"></i>
-            0800 591 7274
-          </li>
-          <li>
-            <i class="fa-solid fa-envelope"></i>
-            seu@email.com
-          </li>
-        </ul>
-      </div>
-      <div class="right-side">
-        <ul class="">
-          <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
+<div class="flex flex-col">
+  <div class="flex justify-between p-4 bg-slate-200">
+    <div class="left-side">
+      <ul class="flex justify-between gap-4">
+        <li>
+          <i class="fa-solid fa-location-dot"></i>
+          PATOS/PB
+          <i class="fa-solid fa-chevron-down"></i>
+        </li>
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          0800 591 7274
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          seu@email.com
+        </li>
+      </ul>
+    </div>
+    <div class="right-side">
+      <ul class="flex justify-between gap-4">
+        <li>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </li>
+      </ul>
     </div>
   </div>
-  <header id="header" class="header d-flex align-items-center">
-    <div class="container-fluid position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="{% static 'lgnet_app/images/logo.png' %}" alt="Logo da LGNET">
+  <header id="header" class="bg-[#000e63] text-slate-50 p-4">
+    <div class="flex justify-between items-center">
+      <a href="index.html" class="">
+        <img
+          src="{% static 'lgnet_app/images/logo.png' %}"
+          alt="Logo da LGNET"
+        />
       </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Início</a></li>
-          <li><a href="#pricing">Planos</a></li>
-          <li><a href="#services">Serviços</a></li>
-          <li><a href="#contact">Contato</a></li>
+      <nav id="navmenu" class="flex gap-6 items-center">
+        <ul
+          class="flex gap-4 [&>li:hover>a]:text-[#f7c503] font-semibold [&>li:hover>a]:transition-colors [&>li:hover>a]:duration-150"
+        >
+          <li>
+            <a href="#hero" class="active">Início</a>
+          </li>
+          <li>
+            <a href="#pricing">Planos</a>
+          </li>
+          <li>
+            <a href="#services">Serviços</a>
+          </li>
+          <li>
+            <a href="#contact">Contato</a>
+          </li>
           <li><a href="#about">Sobre</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <a
+          class="bg-[#f7c503] text-amber-950 font-semibold px-4 py-[6px] rounded-full [:hover]:bg-[#d9af0f] [:hover]:transition-bg [:hover]:duration-300"
+          href="#about"
+        >
+          <i class="mr-1 fa-solid fa-user"></i>
+          Área do cliente
+        </a>
       </nav>
-
-      <a class="btn-getstarted" href="#about">
-        <i class="fa-solid fa-user"></i>
-        Área do cliente
-      </a>
-
     </div>
   </header>
+</div>
