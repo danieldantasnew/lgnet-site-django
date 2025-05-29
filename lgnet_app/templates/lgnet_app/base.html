@@ -6,11 +6,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href={% static "lgnet_app/images/logo.png" %} type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <title>{% block title %}LGNET | Início{% endblock %}</title>
   <style type="text/tailwindcss">
-    @theme {
-      --color-clifford: #da373d;
+    :root {
+      --primary-color: #000e63;
+      --primary-variant: #2C76AC;
+      --secondary-color: #ffcd00;
+      --secondary-variant: #2A2500;
     }
   </style>
   <!-- Fonts -->
@@ -25,12 +31,12 @@
   {% include 'lgnet_app/partials/header.html' %}
   <main class="main">
     {% block content %}
-    asdasdasdasdasd
+      {% include 'lgnet_app/carousel.html' %}
     {% endblock %}
   </main>
 
-  <a href="#" id="scroll-top" class="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700">
-    <i class="fa-solid fa-arrow-up"></i>
+  <a href="#" class="fixed bottom-4 right-4 bg-[#f7c503] text-white p-3 rounded-full shadow-lg hover:bg-[#000e63] [&:hover>i]:text-slate-100 h-10 w-10 flex items-center justify-center transition-colors duration-150">
+    <i class="fa-solid fa-arrow-up text-amber-950"></i>
   </a>
 
 
