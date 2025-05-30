@@ -1,19 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+}
+
 .btn {
-    border-radius: 4px !important;
+  border-radius: 4px !important;
 }
 
 .main-sidebar {
-    background-color: #f0f0f0 !important;
+  background-color: #f0f0f0 !important;
 }
 
 .content-wrapper {
-    background-color: #e9e9e9 !important;
+  background-color: #e9e9e9 !important;
 }
 
 .user-panel .image i {
-    color: #001f3f;
+  color: #001f3f;
 }
 
 .btn-success-edited {
-    background-color: #2DA72F;
+  background-color: #2da72f;
+}
+
+.dark-background {
+  background-color: #f3f3f3f3;
 }
