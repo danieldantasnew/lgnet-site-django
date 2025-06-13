@@ -1,54 +1,95 @@
 {% load static %}
 <header class="flex flex-col">
-  <div class="p-3 bg-[var(--primary-variant)] flex justify-center">
-    <div class="flex justify-between max-w-[84rem] flex-auto">
-      <div class="left-side flex items-center">
-            <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5.5C4.80937 5.5 5.07422 5.39229 5.29453 5.17688C5.51484 4.96146 5.625 4.7025 5.625 4.4C5.625 4.0975 5.51484 3.83854 5.29453 3.62313C5.07422 3.40771 4.80937 3.3 4.5 3.3C4.19062 3.3 3.92578 3.40771 3.70547 3.62313C3.48516 3.83854 3.375 4.0975 3.375 4.4C3.375 4.7025 3.48516 4.96146 3.70547 5.17688C3.92578 5.39229 4.19062 5.5 4.5 5.5ZM4.5 9.5425C5.64375 8.51583 6.49219 7.58313 7.04531 6.74437C7.59844 5.90562 7.875 5.16083 7.875 4.51C7.875 3.51083 7.54922 2.69271 6.89766 2.05562C6.24609 1.41854 5.44688 1.1 4.5 1.1C3.55312 1.1 2.75391 1.41854 2.10234 2.05562C1.45078 2.69271 1.125 3.51083 1.125 4.51C1.125 5.16083 1.40156 5.90562 1.95469 6.74437C2.50781 7.58313 3.35625 8.51583 4.5 9.5425ZM4.5 11C2.99062 9.74417 1.86328 8.57771 1.11797 7.50063C0.372656 6.42354 0 5.42667 0 4.51C0 3.135 0.452344 2.03958 1.35703 1.22375C2.26172 0.407917 3.30938 0 4.5 0C5.69062 0 6.73828 0.407917 7.64297 1.22375C8.54766 2.03958 9 3.135 9 4.51C9 5.42667 8.62734 6.42354 7.88203 7.50063C7.13672 8.57771 6.00938 9.74417 4.5 11Z" fill="white"/>
-            </svg>
-            Patos - PB
+  <div class="p-3 bg-[var(--primary-variant)] flex justify-center items-center">
+    <div class="flex justify-between max-w-[84rem] flex-auto hover:text">
+      <div
+        class="left-side flex items-center gap-1 text-white text-lg font-medium hover:text-slate-300 cursor-pointer transition-all hover:**:transition-all hover:**:fill-slate-300"
+      >
+        <svg
+          class="h-4 w-4"
+          width="9"
+          height="11"
+          viewBox="0 0 9 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.5 5.5C4.80937 5.5 5.07422 5.39229 5.29453 5.17688C5.51484 4.96146 5.625 4.7025 5.625 4.4C5.625 4.0975 5.51484 3.83854 5.29453 3.62313C5.07422 3.40771 4.80937 3.3 4.5 3.3C4.19062 3.3 3.92578 3.40771 3.70547 3.62313C3.48516 3.83854 3.375 4.0975 3.375 4.4C3.375 4.7025 3.48516 4.96146 3.70547 5.17688C3.92578 5.39229 4.19062 5.5 4.5 5.5ZM4.5 9.5425C5.64375 8.51583 6.49219 7.58313 7.04531 6.74437C7.59844 5.90562 7.875 5.16083 7.875 4.51C7.875 3.51083 7.54922 2.69271 6.89766 2.05562C6.24609 1.41854 5.44688 1.1 4.5 1.1C3.55312 1.1 2.75391 1.41854 2.10234 2.05562C1.45078 2.69271 1.125 3.51083 1.125 4.51C1.125 5.16083 1.40156 5.90562 1.95469 6.74437C2.50781 7.58313 3.35625 8.51583 4.5 9.5425ZM4.5 11C2.99062 9.74417 1.86328 8.57771 1.11797 7.50063C0.372656 6.42354 0 5.42667 0 4.51C0 3.135 0.452344 2.03958 1.35703 1.22375C2.26172 0.407917 3.30938 0 4.5 0C5.69062 0 6.73828 0.407917 7.64297 1.22375C8.54766 2.03958 9 3.135 9 4.51C9 5.42667 8.62734 6.42354 7.88203 7.50063C7.13672 8.57771 6.00938 9.74417 4.5 11Z"
+            fill="white"
+          />
+        </svg>
+        Patos-PB
+        <i class="fa-solid fa-chevron-down text-lg"></i>
       </div>
-      <div class="right-side">
-        
+      <div class="flex items-center justify-center">
+        <ol
+          class="flex gap-4 *:text-sm *:font-semibold text-white **:tracking-tighter **:cursor-pointer **:hover:text-slate-300"
+        >
+          <li><a href="#"></a>1 - Início</li>
+          <li><a href="#"></a>2 - Menu</li>
+          <li><a href="#"></a>3 - Rodapé</li>
+        </ol>
       </div>
     </div>
   </div>
 
-  <div id="header" class="bg-[var(--primary-color)] p-4 flex justify-center">
-    <div class="text-slate-50 max-w-[84rem] flex-auto">
+  <div id="header" class="bg-white p-4 flex justify-center">
+    <div class="text-white max-w-[84rem] flex-auto">
       <div class="flex justify-between items-center">
-        <a href="/" class="[&>img]:h-12">
-          <img
-            src="{% static 'lgnet_app/images/logo.svg' %}"
-            alt="Logo da LGNET"
-          />
+        <a href="/" class="*:w-20 *:h-12 **:fill-[var(--primary-variant)]">
+          {% include 'lgnet_app/partials/logo.html' %}
         </a>
-        <nav id="navmenu" class="flex gap-6 items-center">
+        <nav class="flex gap-6 items-center">
           <ul
-            class="flex gap-4 [&>li:hover>a]:text-[var(--secondary-color)] font-semibold [&>li:hover>a]:transition-colors [&>li:hover>a]:duration-150"
+            class="flex gap-4 text-neutral-400 font-semibold *:hover:*:text-[var(--primary-variant)] **:transition-all"
           >
             <li>
-              <a href="#" class="active">Para você</a>
+              <a href="#" class="active">Sobre</a>
             </li>
             <li>
               <a href="#">Planos</a>
             </li>
             <li>
-              <a href="#">Serviços</a>
+              <a href="#">Autoatendimento</a>
             </li>
             <li>
-              <a href="#">Contato</a>
+              <a href="#">Explorar</a>
             </li>
-            <li><a href="#">Autoatendimento</a></li>
+            <li><a href="#">Contato</a></li>
           </ul>
         </nav>
-        <a
-          class="text-slate-100 font-semibold :hover:transition-colors hover:duration-300 hover:text-[var(--secondary-color)]"
-          href="#"
-        >
-          <i class="fa-regular fa-user"></i>
-          Minha LGNET
-        </a>
+        <div class="flex gap-4 items-center">
+          <label class="inline-flex items-center cursor-pointer">
+            <div
+              class="relative w-13 h-7 bg-gray-200 rounded-full dark:border-gray-600"
+            >
+              <input type="checkbox" value="" class="sr-only peer" />
+              <span
+                class="flex items-center justify-center 
+                absolute top-[50%] start-[3px] 
+                translate-y-[-50%] 
+                p-2
+                bg-[var(--primary-variant)] 
+                rounded-full 
+                h-[22px] w-[22px] 
+                transition-all 
+                *:transition-all
+                peer-checked:translate-x-6
+                peer-checked:*:rotate-180
+                "
+                ><i class="fa-solid fa-circle-half-stroke mb-[1px] mx-auto text-white"></i
+              ></span>
+            </div>
+          </label>
+
+          <a
+            class="text-white font-semibold text-sm bg-[var(--primary-variant)] :hover:transition-colors hover:duration-300 hover:bg-[var(--primary-hover)] py-3 px-5 rounded-full"
+            href="#"
+          >
+            <i class="fa-regular fa-user mr-1"></i>
+            Minha LGNET
+          </a>
+        </div>
       </div>
     </div>
   </div>
