@@ -8,6 +8,9 @@
   --secondary-color: #ffcd00;
   --secondary-variant: #2A2500;
   --bg-color: #F3F3F6;
+
+  --dark-primary-color: #111111;
+  --dark-variant-color: #3D4042;
 }
 
 body {
