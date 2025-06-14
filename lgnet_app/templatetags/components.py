@@ -4,6 +4,7 @@ register = template.Library()
 
 @register.inclusion_tag('lgnet_app/partials/card.html', takes_context=True)
 def render_card(context, *args, **kwargs):
+    icone = kwargs.get('icone', None)
     categoria = kwargs.get('categoria', None)
     velocidade = kwargs.get('velocidade', None)
     destaque = kwargs.get('destaque', False)
@@ -14,6 +15,7 @@ def render_card(context, *args, **kwargs):
         destaque = destaque.lower() in ('true', '1', 'yes')
 
     return {
+        'icone': icone,
         'categoria': categoria,
         'velocidade': velocidade,
         'destaque': destaque,

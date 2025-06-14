@@ -6,11 +6,17 @@
   --font-myfont: "Montserrat", sans-serif;
   --color-primary: #000e63;
   --color-primary-variant: #2c72ac;
+  --color-primary-variant-2: #2F4453;
   --color-primary-hover: #184c76;
+
   --color-secondary: #ffcd00;
   --color-secondary-variant: #2a2500;
+
+  --color-secondary-hover: #BC9C00;
   --color-backgroundColor: #f3f3f6;
 
   --color-dark-primary: #232324;
   --color-dark-variant: #111111;
+  --color-dark-variant-2: #2F2F2F;
+  
 }
