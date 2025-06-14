@@ -1,10 +1,18 @@
 {% load static %}
 {% load components %}
-<section id="planos" class="light-background flex flex-col items-center py-8 px-4">
+<section id="planos" class="bg-[#ffffff] dark:bg-dark-variant flex flex-col items-center py-8 px-4 transition-colors duration-300">
   <div class="w-full max-w-[84rem] flex flex-col">
-    <div class="text-center" data-aos="fade-up">
-      <h2 class="font-semibold text-3xl uppercase text-[var(--primary-color)]">Nossos Planos</h2>
-      <p class="font-medium text-lg text-slate-500">Os melhores planos de internet para a sua residência</p>
+    <div class="flex items-center justify-between" data-aos="fade-up">
+
+      <h2 class="font-bold text-primary dark:text-[#ffffff] text-[28px]">Os melhores planos de internet para a sua residência<strong class="text-secondary">.</strong></h2>
+
+      <div class="flex flex-col items-end">
+        <p class="text-sm text-neutral-400 font-medium">Ofertas disponíveis em:</p>
+        <h4 class="underline underline-offset-4 text-primary dark:text-secondary text-lg font-semibold">
+          Patos-PB
+          <i class="fa-solid fa-chevron-down text-xs"></i>
+        </h4>
+      </div>
     </div>
 
     <div class="grid grid-cols-[repeat(4,minmax(150px,1fr))] gap-8 justify-between mt-16">
