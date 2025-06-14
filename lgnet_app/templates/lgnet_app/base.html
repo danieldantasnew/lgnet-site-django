@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="pt-br" class="dark">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+  <link href="{% static 'lgnet_app/css/output.css' %}" rel="stylesheet">
   <link rel="shortcut icon" href={% static "lgnet_app/images/logo.png" %} type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 
@@ -18,7 +18,7 @@
   {% block head %}{% endblock %}
 </head>
 
-<body>
+<body class="font-myfont bg-backgroundColor dark:bg-dark-variant transition-colors duration-300">
   {% include 'lgnet_app/partials/header.html' %}
   <main class="main">
     {% block content %}
@@ -31,7 +31,7 @@
   <!-- Preloader -->
   <div id="preloader"></div>
   
-  
+  <script src="{% static 'lgnet_app/js/darkMode.js' %}"></script>
   {% block scripts %}{% endblock %}
 </body>
 

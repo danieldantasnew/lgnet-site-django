@@ -1,7 +1,7 @@
 {% load static %}
 <header class="flex flex-col">
   <div
-    class="p-3 bg-[var(--primary-variant)] dark:bg-[var(--dark-variant-color)] flex justify-center items-center"
+    class="p-3 bg-primary-variant dark:bg-dark-variant flex justify-center items-center transition-colors duration-300"
   >
     <div class="flex justify-between max-w-[84rem] flex-auto hover:text">
       <div
@@ -37,19 +37,19 @@
 
   <div
     id="header"
-    class="bg-[#ffffff] dark:bg-[var(--dark-primary-color)] p-4 flex justify-center"
+    class="bg-[#ffffff] dark:bg-dark-primary p-4 flex justify-center transition-colors duration-300"
   >
     <div class="text-white max-w-[84rem] flex-auto">
       <div class="flex justify-between items-center">
         <a
           href="/"
-          class="*:w-20 *:h-12 **:fill-[var(--primary-variant)] dark:**:fill-white"
+          class="*:w-20 *:h-12 **:fill-pribg-primary dark:**:fill-white"
         >
           {% include 'lgnet_app/partials/logo.html' %}
         </a>
         <nav class="flex gap-6 items-center">
           <ul
-            class="flex gap-4 text-neutral-400 font-semibold *:hover:*:text-[var(--primary-variant)] **:transition-all dark:*:hover:*:text-white"
+            class="flex gap-4 text-neutral-400 font-semibold *:hover:*:text-primary-variant **:transition-all dark:*:hover:*:text-white"
           >
             <li>
               <a href="#" class="active">Sobre</a>
@@ -67,13 +67,13 @@
           </ul>
         </nav>
         <div class="flex gap-4 items-center">
-          <label class="inline-flex items-center cursor-pointer">
+          <label class="inline-flex items-center cursor-pointer" data-dark>
             <div
               class="relative w-13 h-7 bg-gray-200 rounded-full dark:border-gray-600"
             >
-              <input type="checkbox" value="" class="sr-only peer" />
+              <input type="checkbox" value="" class="sr-only peer"/>
               <span
-                class="flex items-center justify-center absolute top-[50%] start-[3px] translate-y-[-50%] p-2 bg-[var(--primary-variant)] rounded-full h-[22px] w-[22px] transition-all *:transition-all peer-checked:translate-x-6 peer-checked:*:rotate-180 dark:bg-[var(--dark-variant-color)]"
+                class="flex items-center justify-center absolute top-[50%] start-[3px] translate-y-[-50%] p-2 bg-primary-variant rounded-full h-[22px] w-[22px] transition-all *:transition-all peer-checked:translate-x-6 peer-checked:*:rotate-180 dark:bg-dark-variant"
                 ><i
                   class="fa-solid fa-circle-half-stroke mb-[1px] mr-[1px] text-white text-[14px]"
                 ></i
@@ -82,7 +82,7 @@
           </label>
 
           <a
-            class="text-[#ffffff] font-semibold text-sm bg-[var(--primary-variant)] :hover:transition-colors hover:duration-300 hover:bg-[var(--primary-hover)] py-3 px-5 rounded-full **:fill-[#ffffff] dark:bg-white dark:text-[var(--dark-variant-color)] dark:hover:bg-[var(--secondary-color)] dark:hover:text-[var(--secondary-variant)] dark:**:fill-[var(--secondary-variant)]
+            class="text-[#ffffff] font-semibold text-sm bg-primary-variant :hover:transition-colors duration-300 hover:bg-primary-hover py-3 px-5 rounded-full **:fill-[#ffffff] dark:bg-[#ffffff] dark:text-dark-variant dark:hover:bg-secondary dark:hover:text-secondary-variant dark:**:fill-secondary-variant
             flex items-center gap-[6px]
             "
             href="#"

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "watch": "npx @tailwindcss/cli -i lgnet_app/static/lgnet_app/css/input.css -o lgnet_app/static/lgnet_app/css/output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10"
+  }
+}

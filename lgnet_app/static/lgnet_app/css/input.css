@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --font-myfont: "Montserrat", sans-serif;
+  --color-primary: #000e63;
+  --color-primary-variant: #2c72ac;
+  --color-primary-hover: #184c76;
+  --color-secondary: #ffcd00;
+  --color-secondary-variant: #2a2500;
+  --color-backgroundColor: #f3f3f6;
+
+  --color-dark-primary: #111111;
+  --color-dark-variant: #2B2D2F;
+}
