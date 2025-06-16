@@ -47,7 +47,7 @@
   .essencial > div > h2 {
     @apply before:absolute;
     @apply before:left-0;
-    @apply before:-bottom-[6px];
+    @apply before:-bottom-2;
     @apply before:inline-block;
     @apply before:h-1;
     @apply before:w-12;
