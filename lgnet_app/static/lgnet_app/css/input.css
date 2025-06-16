@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --font-myfont: "Montserrat", sans-serif;
-  --color-primary: #000e63;
+  --color-primary: #003465;
   --color-primary-variant: #2c72ac;
   --color-primary-variant-2: #2F4453;
   --color-primary-hover: #184c76;
@@ -12,11 +13,50 @@
   --color-secondary: #ffcd00;
   --color-secondary-variant: #2a2500;
 
-  --color-secondary-hover: #BC9C00;
+  --color-secondary-hover: #C49000;
   --color-backgroundColor: #f3f3f6;
 
   --color-dark-primary: #232324;
   --color-dark-variant: #111111;
   --color-dark-variant-2: #2F2F2F;
   
+}
+
+
+@utility container {
+  max-width: 1200px !important;
+}
+
+@layer components {
+  .container h1 {
+    @apply font-bold;
+    @apply  text-primary;
+    @apply  dark:text-[#ffffff];
+    @apply  text-[30px];
+  }
+  .container h1 > strong {
+    @apply text-secondary;
+    @apply ml-[1.5px];
+  }
+
+  .essencial > :nth-child(even) {
+    @apply relative;
+    @apply -top-8;
+  }
+
+  .essencial > div > h2 {
+    @apply before:absolute;
+    @apply before:left-0;
+    @apply before:-bottom-[6px];
+    @apply before:inline-block;
+    @apply before:h-1;
+    @apply before:w-12;
+    @apply before:rounded-full;
+    @apply before:bg-secondary;
+    @apply before:mr-2;
+    @apply text-2xl;
+    @apply flex;
+    @apply items-center;
+    @apply font-medium;
+  }
 }

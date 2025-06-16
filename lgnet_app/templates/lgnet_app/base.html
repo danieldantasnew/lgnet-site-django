@@ -18,12 +18,13 @@
   {% block head %}{% endblock %}
 </head>
 
-<body class="font-myfont bg-backgroundColor dark:bg-dark-variant transition-colors duration-300">
+<body class="font-myfont bg-backgroundColor dark:bg-dark-primary transition-colors duration-300">
   {% include 'lgnet_app/partials/header.html' %}
   <main class="main">
     {% block content %}
       {% include 'lgnet_app/carousel.html' %}
       {% include 'lgnet_app/planos.html' %}
+      {% include 'lgnet_app/essencial.html' %}
     {% endblock %}
   </main>
 
