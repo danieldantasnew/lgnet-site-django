@@ -5,7 +5,7 @@ class VantagensAdmin(admin.ModelAdmin):
     list_display = ("icone", "nome_vantagem",)
 
 class PlanosAdmin(admin.ModelAdmin):
-    list_display = ("icone","categoria", "velocidade", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
+    list_display = ("icone","categoria", "plano", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
 
 class ServicosAdmin(admin.ModelAdmin):
     pass

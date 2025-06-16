@@ -16,10 +16,9 @@
     </div>
 
     <div class="grid grid-cols-[repeat(4,minmax(150px,280px))] gap-4 justify-between mt-16">
-      {% render_card icone='<i class="fa-solid fa-laptop"></i>' categoria="Básico" velocidade="300MEGA" destaque="False" download="300Mbps" upload="150Mbps" %}
-      {% render_card icone='<i class="fa-solid fa-house-laptop"></i>' categoria="Família" velocidade="400MEGA" destaque="True" download="400Mbps" upload="200Mbps" %}
-      {% render_card icone='<i class="fa-solid fa-fire"></i>' categoria="Ultra" velocidade="500MEGA" destaque="False" download="500Mbps" upload="250Mbps" %}
-      {% render_card icone='<i class="fa-solid fa-gamepad"></i>' categoria="Gamer" velocidade="600MEGA" destaque="False" download="600Mbps" upload="300Mbps" %}
+      {% for plano in planos.all%}
+       {% render_card icone=plano.icone|safe categoria=plano.categoria velocidade=plano.plano destaque=plano.destaque download=plano.download upload=plano.upload %}
+      {% endfor %}
     </div>
   </div>
 </section>

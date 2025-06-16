@@ -14,8 +14,8 @@ ENV/
 .venv/
 
 # 🗄️ Banco de Dados local
-db.sqlite3
-*.sqlite3
+# db.sqlite3
+# *.sqlite3
 
 # 🔧 Configurações do VSCode
 .vscode/
