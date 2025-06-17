@@ -8,7 +8,7 @@ def homeView(request):
 
     context = {
         'planos': planos,
-        'Essenciais': essenciais,
-        'Vantagens': vantagens,
+        'essenciais': essenciais,
+        'vantagens': vantagens,
     }
     return render(request, 'lgnet_app/base.html', context)

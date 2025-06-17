@@ -17,7 +17,7 @@
 
     <div class="grid grid-cols-[repeat(4,minmax(150px,280px))] gap-4 justify-between mt-16">
       {% for plano in planos.all%}
-       {% render_card icone=plano.icone|safe categoria=plano.categoria velocidade=plano.plano destaque=plano.destaque download=plano.download upload=plano.upload %}
+       {% render_card icone=plano.icone|safe categoria=plano.categoria velocidade=plano.plano destaque=plano.destaque vantagens=plano.vantagens download=plano.download upload=plano.upload %}
       {% endfor %}
     </div>
   </div>

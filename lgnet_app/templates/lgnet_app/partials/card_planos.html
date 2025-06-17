@@ -22,22 +22,12 @@
     <ul role="list" class="mt-5 space-y-2 font-normal text-neutral-500 text-sm dark:text-[#ffffff]
     *:flex *:items-center *:gap-x-2
     ">
-      <li>
-        <i class="fa-solid fa-check"></i>
-        Instalação grátis
-      </li>
-      <li>
-        <i class="fa-solid fa-check"></i>
-        Roteador incluso
-      </li>
-      <li>
-        <i class="fa-solid fa-check"></i>
-        Download {{download}}
-      </li>
-      <li>
-        <i class="fa-solid fa-check"></i>
-        Upload {{upload}}
-      </li>
+      {% for vantagem in vantagens%}
+        <li>
+          <span class="*:text-[17px] *:fill-neutral-500 **:fill-neutral-500 h-5 w-5 flex items-center justify-center *:h-full *:w-full dark:*:fill-[#ffffff] dark:**:fill-[#ffffff]">{{vantagem.icone|safe}}</span>
+          <p>{{vantagem.nome_vantagem}}</p>
+        </li>
+      {% endfor%}
     </ul>
   </div>
   <a

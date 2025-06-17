@@ -1,15 +1,35 @@
 from django.contrib import admin
-from .models import Planos, ServicosEssenciais, Vantagens
+from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa
+
+class DownloadAdmin(admin.ModelAdmin):
+    list_display = ("velocidade", "icone",)
+
+class UploadAdmin(admin.ModelAdmin):
+    list_display = ("velocidade", "icone",)
 
 class VantagensAdmin(admin.ModelAdmin):
-    list_display = ("icone", "nome_vantagem",)
+    list_display = ("nome_vantagem", "icone",)
 
 class PlanosAdmin(admin.ModelAdmin):
-    list_display = ("icone","categoria", "plano", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
+    list_display = ("categoria", "icone", "plano", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
 
 class ServicosAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "icone", "descricao", "criado_em", "ultima_atualizacao")
+
+class RedeSocialAdmin(admin.ModelAdmin):
+    pass
+
+class CidadesAdmin(admin.ModelAdmin):
+    pass
+
+class InformacoesEmpresaAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
 admin.site.register(Vantagens, VantagensAdmin)
+admin.site.register(Upload, UploadAdmin)
+admin.site.register(Download, DownloadAdmin)
+admin.site.register(RedeSocial, RedeSocialAdmin)
+admin.site.register(Cidades, CidadesAdmin)
+admin.site.register(InformacoesEmpresa, InformacoesEmpresaAdmin)

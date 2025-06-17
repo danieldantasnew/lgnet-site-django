@@ -1,5 +1,6 @@
 {% load static %}
-<section class="">
+{% load components %}
+<section>
     <div class="container m-auto grid grid-cols-[minmax(0,_480px)_auto] g-4 py-36 relative">
         <img class="absolute top-10 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
         <div>
@@ -8,35 +9,10 @@
         </div>
 
 
-        <div class="grid grid-cols-2 gap-6 essencial text-primary-variant-2 dark:text-[#ffffff] *:bg-[#ffffff] ">
-            <div class="ring-1 ring-[rgba(0,0,0,0.15)] p-6 rounded-lg dark:bg-dark-variant dark:shadow-[0_0_1px_1px_rgb(255,255,255)] ">
-                <span class="*:h-10 *:w-10 *:fill-primary-variant-2 **:fill-primary-variant-2 *:-ml-1 *:mb-4 text-[32px] dark:*:fill-[#ffffff] dark:**:fill-[#ffffff]">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M418-340q24 24 62 23.5t56-27.5l169-253q9-14-2.5-25.5T677-625L424-456q-27 18-28.5 55t22.5 61Zm62-460q36 0 71 6t68 19q16 6 34 22.5t10 31.5q-8 15-36 20t-45-1q-25-9-50.5-13.5T480-720q-133 0-226.5 93.5T160-400q0 42 11.5 83t32.5 77h552q23-38 33.5-79t10.5-85q0-26-4.5-51T782-504q-6-17-2-33t18-27q13-10 28.5-6t21.5 18q15 35 23 71.5t9 74.5q1 57-13 109t-41 99q-11 18-30 28t-40 10H204q-21 0-40-10t-30-28q-26-45-40-95.5T80-400q0-83 31.5-155.5t86-127Q252-737 325-768.5T480-800Zm7 313Z"/></svg>
-                </span>
-                <h2 class="relative">Alta Performance</h2>
-                <p class="mt-4 text-[.9rem] text-balance">Desfrute de uma internet de alta performance com 100% fibra óptica por um preço que cabe no seu bolso.</p>
-            </div>
-            <div class="ring-1 ring-[rgba(0,0,0,0.15)] p-6 rounded-lg dark:bg-dark-variant dark:shadow-[0_0_1px_1px_rgb(255,255,255)] ">
-                <span class="*:h-10 *:w-10 *:fill-primary-variant-2 **:fill-primary-variant-2 *:-ml-1 *:mb-4 text-[32px]">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </span>
-                <h2 class="relative">Segurança</h2>
-                <p class="mt-4 text-[.9rem] text-balance">Com uma segurança em constante aprimoramento, você navega com tranquilidade e proteção.</p>
-            </div>
-            <div class="ring-1 ring-[rgba(0,0,0,0.15)] p-6 rounded-lg dark:bg-dark-variant dark:shadow-[0_0_1px_1px_rgb(255,255,255)] ">
-                <span class="*:h-10 *:w-10 *:fill-primary-variant-2 **:fill-primary-variant-2 *:-ml-1 *:mb-4 text-[32px]">
-                    <i class="fa-solid fa-headset"></i>
-                </span>
-                <h2 class="relative">Suporte</h2>
-                <p class="mt-4 text-[.9rem] text-balance">Equipe de suporte altamente capacitada, sempre pronta para te auxiliar.</p>
-            </div>
-            <div class="ring-1 ring-[rgba(0,0,0,0.15)] p-6 rounded-lg dark:bg-dark-variant dark:shadow-[0_0_1px_1px_rgb(255,255,255)] ">
-                <span class="*:h-10 *:w-10 *:fill-primary-variant-2 **:fill-primary-variant-2 *:-ml-1 *:mb-4 text-[32px]">
-                    <i class="fa-solid fa-arrow-trend-down"></i>
-                </span>
-                <h2 class="relative">Baixa latência</h2>
-                <p class="mt-4 text-[.9rem] text-balance">Nossa internet de baixa latência garante conexão ágil e sem travas, ideal para jogos e transmissões.</p>
-            </div>
+        <div class="grid grid-cols-2 gap-6 essencial text-primary-variant-2 dark:text-[#ffffff] *:bg-[#ffffff]">
+            {% for essencial in essenciais.all%}
+                {% render_servico_essencial icone=essencial.icone|safe titulo=essencial.titulo descricao=essencial.descricao %}
+            {% endfor %}
         </div>
         <img class="absolute bottom-10 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
     </div>
