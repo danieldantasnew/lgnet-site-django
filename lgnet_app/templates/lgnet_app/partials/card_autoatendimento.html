@@ -1,6 +1,8 @@
-<div class="border-2 border-neutral-400 px-4 py-5 rounded-sm">
-    <span class=" h-6 w-6 overflow-hidden *:fill-primary-variant-2 text-primary-variant-2">{{icone|safe}}</span>
-    <h2 class="text-[16px] text-primary-variant-2 font-semibold text-ellipsis text-nowrap overflow-hidden">{{titulo}}</h2>
-    <p class="text-neutral-700">{{descricao}}</p>
-    <a href="{{link}}">Botao</a>
-</div>
+<a href="{{link}}" class="relative px-3 py-5 rounded-lg text-primary-variant-2 shadow-[0_0_0_2px_rgba(0,0,0,0.2)] hover:bg-primary-variant hover:text-[#ffffff] group transition-colors dark:text-[#ffffff] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.5)] dark:hover:bg-dark-variant dark:hover:shadow-[0_0_0_2px_rgba(255,205,0,1)]">
+    <span class=" h-7 w-7 overflow-hidden *:fill-primary-variant-2 group-hover:*:fill-[#ffffff] group-hover:**:fill-[#ffffff] text-2xl dark:*:fill-[#ffffff] dark:**:fill-[#ffffff]">{{icone|safe}}</span>
+    <div class="my-6">
+        <h2 class="relative text-[16px] font-semibold text-ellipsis text-nowrap before:absolute before:h-[3px] before:content-[''] before:-bottom-[6px] before:w-9 before:bg-secondary before:inline-block before:rounded-full group-hover:before:bg-[#ffffff]">{{titulo}}</h2>
+        <p class="text-neutral-500 my-3 text-[13px] font-medium group-hover:text-[#ffffff] dark:text-[#ffffff]">{{descricao}}</p>
+    </div>
+    <span class="absolute right-3 bottom-2 text-2xl" ><i class="fa-solid fa-arrow-right"></i></span>
+</a>
