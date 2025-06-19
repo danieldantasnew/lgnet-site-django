@@ -1,6 +1,6 @@
 {%load static%}
 <section class="px-4 py-18 flex items-center">
-    <div class="container m-auto grid grid-cols-[1fr_1.2fr] py-16 gap-6 relative">
+    <div class="container m-auto grid grid-cols-[1fr_1.1fr] py-16 gap-6 relative">
         <img class="absolute -top-8 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
         <div class="self-center justify-self-center">
             <h1 class="text-4xl">Acesso fácil e rápido a tudo o que você precisa<strong>.</strong></h1>
@@ -16,6 +16,22 @@
                         {{mobile.span|safe}}
                     </div>
                 {% endfor %}
+            </div>
+            <div class="mt-13 *:flex *:gap-2 *:bg-[#202427]/90 *:hover:bg-primary-variant *:px-4 *:py-2 *:w-44 *:rounded-[6px] *:cursor-pointer *:transition-all flex gap-4 text-[#ffffff]">
+                <a href="#">
+                    <span class="text-2xl self-center"><i class="fa-brands fa-google-play"></i></span>
+                    <div class="font-medium">
+                        <h5 class="text-[10px]">Download via</h5>
+                        <p class="text-lg -mt-1">Play Store</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <span class="text-3xl self-center"><i class="fa-brands fa-apple"></i></span>
+                    <div class="font-medium">
+                        <h5 class="text-[10px]">Download via</h5>
+                        <p class="text-lg -mt-1">App Store</p>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="relative mx-auto border-neutral-900 dark:border-gray-700 bg-neutral-900 dark:bg-gray-700 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-lg dark:shadow-gray-800">
