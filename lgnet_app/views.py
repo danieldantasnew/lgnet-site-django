@@ -44,11 +44,33 @@ def homeView(request):
         },
     ]
 
+    mobile = [
+        {
+            "icone": '<i class="fa-solid fa-file-invoice-dollar"></i>',
+            "titulo": "Veja suas faturas",
+            "descricao": "Acompanhe suas faturas em tempo real, com histórico completo e detalhado.",
+            "span": '<span class="w-full h-[2px] bg-primary-variant/10 content-[''] inline-block absolute -bottom-6 rounded-full"></span>',
+        },
+        {
+            "icone": '<i class="fa-solid fa-folder-open"></i>',
+            "titulo": "Acesse seus contratos",
+            "descricao": "Visualize seus contratos sempre que precisar, com segurança e praticidade.",
+            "span": '<span class="w-full h-[2px] bg-primary-variant/10 content-[''] inline-block absolute -bottom-6 rounded-full"></span>',
+        },
+        {
+            "icone": '<i class="fa-solid fa-house-signal"></i>',
+            "titulo": "Altere nome e senha do Wi-Fi",
+            "descricao": "Mude facilmente o nome e a senha da sua rede a qualquer momento pelo app.",
+            "span": '',
+        },
+    ]
+
     context = {
         'planos': planos,
         'essenciais': essenciais,
         'vantagens': vantagens,
         'autoatendimento': autoatendimento,
+        'mobiles': mobile,
     }
 
 
