@@ -4,37 +4,37 @@
         <img class="absolute -top-8 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
         <div class="self-center justify-self-center">
             <h1 class="text-4xl">Acesso fácil e rápido a tudo o que você precisa<strong>.</strong></h1>
-            <p class="text-neutral-600 font-medium mt-3 text-lg dark:text-secondary">Mais facilidade: consulte faturas, revise seus contratos, personalize o Wi-Fi e muito mais direto pelo app.</p>
+            <p class="text-neutral-600 font-medium mt-3 text-sm dark:text-secondary">Mais facilidade: consulte faturas, revise seus contratos, personalize o Wi-Fi e muito mais direto pelo app.</p>
             <div class="flex flex-col gap-12 mt-12">
                 {% for mobile in mobiles %}
                     <div class="flex gap-6 relative text-2xl">
                         <span class="self-center h-12 w-12 p-4 rounded-lg bg-primary-variant/10 text-primary-variant flex items-center justify-center dark:text-secondary dark:bg-secondary/10 ">{{mobile.icone|safe}}</span>
                         <div>
-                            <h2 class="font-semibold text-lg text-primary-variant-2 dark:text-[#ffffff]">{{mobile.titulo}}</h2>
-                            <p class="text-[16px] leading-6 text-primary-variant-2 dark:text-[#ffffff]">{{mobile.descricao}}</p>
+                            <h2 class="font-semibold text-[16px] text-primary-variant-2 dark:text-[#ffffff]">{{mobile.titulo}}</h2>
+                            <p class="text-sm leading-6 text-primary-variant-2 dark:text-[#ffffff]">{{mobile.descricao}}</p>
                         </div>
                         {{mobile.span|safe}}
                     </div>
                 {% endfor %}
             </div>
-            <div class="mt-13 *:flex *:gap-2 *:bg-[#202427]/90 *:hover:bg-primary-variant *:px-4 *:py-2 *:w-45 *:rounded-[6px] *:cursor-pointer *:transition-all flex gap-4 text-[#ffffff] dark:*:border-2 dark:*:border-[#ffffff] dark:*:hover:bg-secondary dark:*:hover:text-secondary-variant">
+            <div class="mt-13 *:flex *:gap-2 *:bg-[#202427]/90 *:hover:bg-primary-variant *:px-4 *:py-2 *:w-38 *:rounded-[6px] *:cursor-pointer *:transition-all flex gap-4 text-[#ffffff] dark:*:border-2 *:border-[#ffffff] dark:*:hover:bg-secondary dark:*:hover:text-secondary-variant">
                 <a href="#">
-                    <span class="text-2xl self-center"><i class="fa-brands fa-google-play"></i></span>
+                    <span class="text-xl self-center"><i class="fa-brands fa-google-play"></i></span>
                     <div class="font-medium">
-                        <h5 class="text-[10px]">Download via</h5>
-                        <p class="text-lg -mt-1">Google Play</p>
+                        <h5 class="text-[8px]">Download via</h5>
+                        <p class="text-sm -mt-[2px]">Google Play</p>
                     </div>
                 </a>
                 <a href="#">
-                    <span class="text-3xl self-center"><i class="fa-brands fa-apple"></i></span>
+                    <span class="text-2xl self-center"><i class="fa-brands fa-apple"></i></span>
                     <div class="font-medium">
-                        <h5 class="text-[10px]">Download via</h5>
-                        <p class="text-lg -mt-1">App Store</p>
+                        <h5 class="text-[8px]">Download via</h5>
+                        <p class="text-sm -mt-[2px]">App Store</p>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="relative mx-auto border-neutral-900 dark:border-gray-700 bg-neutral-900 dark:bg-gray-700 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-lg dark:shadow-gray-800">
+        <div class="relative mx-auto border-neutral-900 dark:border-gray-700 bg-neutral-900 dark:bg-gray-700 border-[14px] rounded-[2.5rem] h-[560px] w-[300px] shadow-lg dark:shadow-gray-800">
             <div class="w-[148px] h-[18px] bg-neutral-900 dark:bg-gray-700  top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
             <div class="h-[46px] w-[3px] bg-neutral-900 dark:bg-gray-700  absolute -start-[17px] top-[124px] rounded-s-lg"></div>
             <div class="h-[46px] w-[3px] bg-neutral-900 dark:bg-gray-700  absolute -start-[17px] top-[178px] rounded-s-lg"></div>
