@@ -356,17 +356,8 @@
   .me-2 {
     margin-inline-end: calc(var(--spacing) * 2);
   }
-  .-mt-1 {
-    margin-top: calc(var(--spacing) * -1);
-  }
-  .-mt-2 {
-    margin-top: calc(var(--spacing) * -2);
-  }
   .-mt-\[2px\] {
     margin-top: calc(2px * -1);
-  }
-  .mt-1 {
-    margin-top: calc(var(--spacing) * 1);
   }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
@@ -487,9 +478,6 @@
   }
   .h-\[572px\] {
     height: 572px;
-  }
-  .h-\[600px\] {
-    height: 600px;
   }
   .h-full {
     height: 100%;
@@ -651,6 +639,9 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
   .rounded-\[2\.5rem\] {
     border-radius: 2.5rem;
   }
@@ -800,10 +791,6 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
-  }
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
@@ -927,56 +914,8 @@
     --tw-shadow: 0 0 0 2px var(--tw-shadow-color, rgba(0,0,0,0.2));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .shadow-\[0_0_0px_1px_rgba\(44\,114\,172\,\.9\)\] {
-    --tw-shadow: 0 0 0px 1px var(--tw-shadow-color, rgba(44,114,172,.9));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_1px_0px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 1px 0px var(--tw-shadow-color, rgba(0,0,0,0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
   .shadow-\[0_0_1px_1\.5px_rgba\(0\,0\,0\,\.1\)\] {
     --tw-shadow: 0 0 1px 1.5px var(--tw-shadow-color, rgba(0,0,0,.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_1px_1\.5px_rgba\(0\,0\,0\,0\.2\)\] {
-    --tw-shadow: 0 0 1px 1.5px var(--tw-shadow-color, rgba(0,0,0,0.2));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_1px_1\.5px_rgba\(44\,114\,172\)\] {
-    --tw-shadow: 0 0 1px 1.5px var(--tw-shadow-color, rgba(44,114,172));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_1px_1px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 1px 1px var(--tw-shadow-color, rgba(0,0,0,0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_3px_\.1px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 3px .1px var(--tw-shadow-color, rgba(0,0,0,0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_3px_0px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 3px 0px var(--tw-shadow-color, rgba(0,0,0,0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_4px_\.1px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 4px .1px var(--tw-shadow-color, rgba(0,0,0,0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_4px_\.1px_rgba\(44\,114\,172\,\.9\)\] {
-    --tw-shadow: 0 0 4px .1px var(--tw-shadow-color, rgba(44,114,172,.9));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_4px_\.1px_rgba\(44_114_172_\.9\)\] {
-    --tw-shadow: 0 0 4px .1px var(--tw-shadow-color, rgba(44 114 172 .9));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_4px_0px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 4px 0px var(--tw-shadow-color, rgba(0,0,0,0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_0_6px_\.1px_rgba\(0\,0\,0\,0\.1\)\] {
-    --tw-shadow: 0 0 6px .1px var(--tw-shadow-color, rgba(0,0,0,0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
@@ -986,13 +925,6 @@
   .shadow-sm {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .ring-1 {
-    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .ring-\[rgba\(0\,0\,0\,0\.15\)\] {
-    --tw-ring-color: rgba(0,0,0,0.15);
   }
   .outline {
     outline-style: var(--tw-outline-style);
@@ -1067,16 +999,6 @@
   .\*\:w-38 {
     :is(& > *) {
       width: calc(var(--spacing) * 38);
-    }
-  }
-  .\*\:w-40 {
-    :is(& > *) {
-      width: calc(var(--spacing) * 40);
-    }
-  }
-  .\*\:w-45 {
-    :is(& > *) {
-      width: calc(var(--spacing) * 45);
     }
   }
   .\*\:w-full {
@@ -1537,13 +1459,6 @@
       :is(& > *) {
         border-style: var(--tw-border-style);
         border-width: 2px;
-      }
-    }
-  }
-  .dark\:\*\:border-\[\#ffffff\] {
-    &:where(.dark, .dark *) {
-      :is(& > *) {
-        border-color: #ffffff;
       }
     }
   }
