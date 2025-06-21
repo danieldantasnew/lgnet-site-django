@@ -109,7 +109,6 @@ class InformacoesEmpresa(models.Model):
     endereco_completo = models.TextField("Endereço completo")
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
-    redes_sociais = models.ManyToManyField("RedeSocial", verbose_name="Redes Sociais", related_name="info_empresa")
 
     class Meta:
         verbose_name = "Informações Empresa"
@@ -117,3 +116,4 @@ class InformacoesEmpresa(models.Model):
 
     def __str__(self):
         return f"{self.nome_empresa}"
+        

@@ -1,54 +1,73 @@
-  <footer id="footer" class="footer">
-    <div class="container-fluid footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">Arsha</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
+  <footer id="footer" class="footer bg-primary-variant text-[#ffffff] dark:bg-dark-variant py-12 px-4">
+    {% for item in infoEmpresa.all%}
+      <div class="container m-auto flex flex-col gap-13 *:flex">
+        <div class="justify-between items-center">
+            <a
+              href="#"
+              class="*:w-24 *:h-14 **:fill-white"
+            >
+              {% include 'lgnet_app/partials/logo.html' %}
+            </a>
+            <p class="text-lg font-semibold">Viva a Evolução!</p>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+        <div class="gap-14 [&>div>ul]:text-sm [&>div>ul]:text-gray-50 [&>div>ul]:font-medium [&>div>ul]:flex [&>div>ul]:flex-col [&>div>ul]:gap-2 [&>div>ul>li>a]:hover:text-secondary relative">
+          <span class="absolute -top-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Institucional</h3>
+            <ul>
+              <li><a href="#">Acessibilidade</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Nosso blog</a></li>
+              <li><a href="#">Nossos escritórios</a></li>
+              <li><a href="#">Trabalhe conosco</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Navegação</h3>
+            <ul class="text-sm text-gray-50  font-medium flex flex-col gap-2 **:hover:text-secondary">
+              <li><a href="#">Planos</a></li>
+              <li><a href="#">Autoatendimento</a></li>
+              <li><a href="#">Explorar</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Contato</h3>
+              <ul class="text-sm text-gray-50  font-medium flex flex-col gap-2 **:hover:text-secondary">
+                <li>
+                  <a class="flex items-center gap-1" href="#">
+                    <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant dark:bg-primary-variant-2 dark:text-secondary"><i class="fa-regular fa-envelope"></i></span>
+                  {{item.email}}
+                  </a>
+                </li>
+                <li>
+                  <a class="flex items-center gap-1" href="#">
+                    <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-lg text-primary-variant dark:bg-primary-variant-2 dark:text-secondary"><i class="fa-solid fa-phone"></i></span>
+                    {{item.contato}}
+                  </a>
+                </li>
+              </ul>
+          </div>
+          <div class="w-full flex flex-col items-end gap-5 text-right">
+            <p class="text-[12px] font-medium max-w-106">{{item.endereco_completo}}</p>
+            <div class="flex gap-2">
+              {% for item in redeSocial.all %}
+                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-[#ffffff] dark:bg-primary-variant-2 dark:text-secondary dark:hover:bg-secondary dark:hover:text-secondary-variant" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
+                  {{item.icone|safe}}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+          <span class="absolute -bottom-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
+        </div>
+        <div class="justify-between text-sm">
+          <p>® 2025 LGNET. Todos os direitos reservados.</p>
+          <ul class="flex gap-2 font-medium [&>li>a:hover]:underline">
+            <li><a href="#">Termos e condições</a></li>
+            <li class="before:h-1 before:w-1 before:bg-[#ffffff] before:rounded-full before:inline-block after:h-1 after:w-1 after:bg-[#ffffff] after:rounded-full after:inline-block flex items-center gap-2"><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Cookies</a></li>
           </ul>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
       </div>
-    </div>
-
-    <div class="container-fluid copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Arsha</strong> <span>All Rights Reserved</span></p>
-    </div>
-
+    {% endfor %}
   </footer>

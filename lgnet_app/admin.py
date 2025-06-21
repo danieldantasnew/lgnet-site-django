@@ -17,13 +17,18 @@ class ServicosAdmin(admin.ModelAdmin):
     list_display = ("titulo", "icone", "descricao", "criado_em", "ultima_atualizacao")
 
 class RedeSocialAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("nome", "link", "icone",)
 
 class CidadesAdmin(admin.ModelAdmin):
     pass
 
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("nome_empresa", "endereco_completo", "email", "contato")
+    def has_add_permission(self, request):
+        return not InformacoesEmpresa.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
