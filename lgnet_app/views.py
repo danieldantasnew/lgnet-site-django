@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa
+from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, ExploreMais
 
 def homeView(request):
     planos = Planos.objects.all()
@@ -66,6 +66,7 @@ def homeView(request):
     ]
     redes_sociais = RedeSocial.objects.all()
     info_empresa = InformacoesEmpresa.objects.all()
+    explorar = ExploreMais.objects.all()
 
     context = {
         'planos': planos,
@@ -75,6 +76,7 @@ def homeView(request):
         'mobiles': mobile,
         'redeSocial': redes_sociais,
         'infoEmpresa': info_empresa,
+        'explorar': explorar,
     }
 
 

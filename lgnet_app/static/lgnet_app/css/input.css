@@ -15,6 +15,7 @@
 
   --color-secondary-hover: #C49000;
   --color-backgroundColor: #F9F9FA;
+  --color-light-background: #ffffff;
 
   --color-dark-primary: #232324;
   --color-dark-variant: #111111;
@@ -34,9 +35,16 @@
     @apply  dark:text-[#ffffff];
     @apply  text-[30px];
   }
+  
   .container h1 > strong {
     @apply text-secondary;
     @apply ml-[1.5px];
+  }
+
+  .sub-text {
+    @apply text-neutral-600;
+    @apply font-medium;
+    @apply dark:text-secondary;
   }
 
   .essencial > :nth-child(even) {

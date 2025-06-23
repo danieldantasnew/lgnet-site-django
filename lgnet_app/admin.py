@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa
+from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, ExploreMais
 
 class DownloadAdmin(admin.ModelAdmin):
     list_display = ("velocidade", "icone",)
@@ -22,6 +22,9 @@ class RedeSocialAdmin(admin.ModelAdmin):
 class CidadesAdmin(admin.ModelAdmin):
     pass
 
+class ExploreMaisAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "descricao", "link",)
+
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
     list_display = ("nome_empresa", "endereco_completo", "email", "contato")
     def has_add_permission(self, request):
@@ -38,3 +41,4 @@ admin.site.register(Download, DownloadAdmin)
 admin.site.register(RedeSocial, RedeSocialAdmin)
 admin.site.register(Cidades, CidadesAdmin)
 admin.site.register(InformacoesEmpresa, InformacoesEmpresaAdmin)
+admin.site.register(ExploreMais, ExploreMaisAdmin)

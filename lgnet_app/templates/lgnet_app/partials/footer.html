@@ -52,7 +52,7 @@
             <p class="text-[12px] font-medium max-w-106">{{item.endereco_completo}}</p>
             <div class="flex gap-2">
               {% for item in redeSocial.all %}
-                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-[#ffffff] dark:bg-primary-variant-2 dark:text-secondary dark:hover:bg-secondary dark:hover:text-secondary-variant" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
+                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-[#ffffff] hover:text-[22px] dark:bg-primary-variant-2 dark:text-secondary dark:hover:bg-secondary dark:hover:text-secondary-variant" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
                   {{item.icone|safe}}
                 </a>
               {% endfor %}

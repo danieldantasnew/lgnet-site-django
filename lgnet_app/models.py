@@ -117,3 +117,14 @@ class InformacoesEmpresa(models.Model):
     def __str__(self):
         return f"{self.nome_empresa}"
         
+class ExploreMais(models.Model):
+    titulo = models.CharField("Título", max_length=50)
+    descricao = models.TextField("Descrição")
+    link = models.CharField("Rota", max_length=20)
+
+    class Meta:
+        verbose_name = "Explore Mais"
+        verbose_name_plural = "Explore Mais"
+
+    def __str__(self):
+        return f"{self.titulo}"
