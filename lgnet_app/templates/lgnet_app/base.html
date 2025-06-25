@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{% static 'lgnet_app/css/output.css' %}" rel="stylesheet">
+  <link href="{% static 'lgnet_app/css/custom.css' %}" rel="stylesheet">
   <link rel="shortcut icon" href={% static "lgnet_app/images/logo.png" %} type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 
@@ -13,8 +14,13 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
   referrerpolicy="no-referrer">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   {% block head %}{% endblock %}
 </head>
 
@@ -36,7 +42,7 @@
   <div id="preloader"></div>
   
   <script src="{% static 'lgnet_app/js/darkMode.js' %}"></script>
-  {% block scripts %}{% endblock %}
+  <script src="{% static 'lgnet_app/js/swiper.js' %}"></script>
 </body>
 
 </html>

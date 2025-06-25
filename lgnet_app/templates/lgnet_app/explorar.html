@@ -10,9 +10,9 @@
                         {{item.titulo}}
                     </h2>
                     <p class="hidden group-hover:block mt-4">{{item.descricao}}</p>
-                    <a class="hidden group-hover:block absolute bottom-4 left-4 font-medium rounded-sm transition-all py-1 px-3 bg-[#ffffff] text-primary-variant group/botao" href="{{item.link}}">
+                    <a class="hidden group-hover:block absolute bottom-4 left-4 font-semibold rounded-sm transition-all py-1 px-3 bg-[#ffffff] text-primary-variant group/botao hover:bg-primary-variant hover:text-[#ffffff]" href="{{item.link}}">
                         Explorar
-                        <i class="fa-solid fa-arrow-right-long group-hover/botao:translate-x-1 transition-all duration-700"></i>
+                        <i class="fa-solid fa-arrow-right-long group-hover/botao:translate-x-1 transition-all duration-700 text-sm"></i>
                     </a>
                 </div>
             {% endfor %}
