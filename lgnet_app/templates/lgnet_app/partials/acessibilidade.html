@@ -1,0 +1,102 @@
+<div
+  class="relative before:inline-block before:h-5 before:w-[1px] before:bg-white before:rounded-sm flex items-center"
+>
+  <button
+    id="dropdownDefaultButton"
+    data-dropdown-toggle="dropdown"
+    data-dropdown-placement="bottom-start"
+    class="text-[#ffffff] hover:text-primary font-semibold rounded-lg text-sm px-5 text-center inline-flex items-center cursor-pointer dark:hover:text-secondary group/acessibilidade"
+    type="button"
+  >
+    <svg
+      class="h-5 w-5 mr-1 group-hover/acessibilidade:fill-primary dark:group-hover/acessibilidade:fill-secondary"
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="24px"
+      fill="#ffffff"
+    >
+      <path
+        d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM360-120v-480q-49-4-99-11t-98-18q-17-4-27.5-19t-5.5-32q5-17 21-25t34-4q70 15 145.5 22t149.5 7q74 0 149.5-7T775-709q18-4 34 4t21 25q5 17-5.5 32T797-629q-48 11-98 18t-99 11v480q0 17-11.5 28.5T560-80q-17 0-28.5-11.5T520-120v-200h-80v200q0 17-11.5 28.5T400-80q-17 0-28.5-11.5T360-120Z"
+      />
+    </svg>
+    Acessibilidade
+    <svg
+      class="w-2.5 h-2.5 ms-1"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 10 6"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 4 4 4-4"
+      />
+    </svg>
+  </button>
+
+  <div
+    id="dropdown"
+    class="z-10 hidden bg-[#ffffff] dark:bg-dark-primary rounded-lg shadow-sm w-86 py-2"
+  >
+    <div class="flex gap-1 items-center justify-center px-4">
+      <span
+        class="p-4 w-2 h-2 bg-gray-200 rounded-full flex items-center justify-center justify-self-start"
+        ><i class="fa-solid fa-angle-left"></i
+      ></span>
+      <h3
+        class="text-primary-variant-2 dark:text-[#ffffff] font-medium text-lg"
+      >
+        Acessibilidade
+      </h3>
+    </div>
+    <hr class="mt-4 text-neutral-100" />
+    <div class="px-4">
+      <h4 class="text-neutral-400 text-sm mt-4 font-semibold">CONTRASTE</h4>
+      <hr class="mt-2 mb-6 text-neutral-100" />
+      <div class="flex gap-4">
+        <div>
+          <div
+            class="cursor-pointer bg-backgroundColor p-8 h-20 w-28 rounded-lg relative overflow-hidden shadow-[0_0_1px_3px_#000000] dark:shadow-[0_0_1px_1px_#737373] dark:hover:shadow-[0_0_1px_3px_#ffcd00] transition-all"
+            data-dark-off
+          >
+            <div
+              class="bg-light-background p-6 h-14 w-21 absolute rounded-[8px_0_0_0] right-0 bottom-0 border-t border-l border-neutral-200"
+            >
+              <p
+                class="text-xl font-semibold absolute top-1 left-2 text-neutral-950"
+              >
+                Aa
+              </p>
+            </div>
+          </div>
+          <p class="text-neutral-950 dark:text-neutral-50 font-semibold mt-2">
+            Normal
+          </p>
+        </div>
+        <div>
+          <div
+            class="bg-dark-primary p-8 h-20 w-28 rounded-lg relative overflow-hidden cursor-pointer shadow-[0_0_1px_1px_#e5e7eb] hover:shadow-[0_0_1px_3px_#737373] dark:shadow-[0_0_1px_3px_#ffcd00] dark:hover:shadow-[0_0_1px_3px_#ffcd00] transition-all"
+            data-dark-on
+          >
+            <div
+              class="bg-dark-variant p-6 h-14 w-21 absolute rounded-[8px_0_0_0] right-0 bottom-0 border-t border-l border-secondary"
+            >
+              <p
+                class="text-xl font-semibold absolute top-1 left-2 text-secondary"
+              >
+                Aa
+              </p>
+            </div>
+          </div>
+          <p class="text-neutral-950 font-semibold mt-2 dark:text-neutral-50">
+            Alto
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

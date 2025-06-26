@@ -1,22 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
-  const checkbox = document.querySelector("[data-dark] input[type='checkbox']");
+  const darkOn = document.querySelector("[data-dark-on]");
+  const darkOff = document.querySelector("[data-dark-off]");
+  const isDark = localStorage.getItem("theme") === "dark";
+      
+  if (isDark) {
+    html.classList.add("dark");
+  }
 
-  if (checkbox) {
-    const isDark = localStorage.getItem("theme") === "dark";
-    if (isDark) {
-      html.classList.add("dark");
-      checkbox.checked = true;
-    }
-
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
+  if(darkOn) {
+    darkOn.addEventListener("click", ()=> {
         html.classList.add("dark");
         localStorage.setItem("theme", "dark");
-      } else {
+    })
+  }
+
+  if(darkOff) {
+    darkOff.addEventListener("click", ()=> {
         html.classList.remove("dark");
         localStorage.setItem("theme", "light");
-      }
-    });
+    })
   }
 });

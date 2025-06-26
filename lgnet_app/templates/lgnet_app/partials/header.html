@@ -4,7 +4,7 @@
 >
   <div class="flex justify-between container flex-auto hover:text">
     <div
-      class="left-side flex items-center text-white text-[16px] font-medium hover:text-slate-300 cursor-pointer transition-all hover:**:transition-all hover:**:stroke-slate-300 *:h-4 *:w-4"
+      class="left-side flex items-center text-[#ffffff] text-[16px] font-semibold hover:text-primary cursor-pointer transition-all hover:**:transition-all hover:**:stroke-primary *:h-4 *:w-4 dark:hover:text-secondary dark:hover:**:stroke-secondary"
     >
       <svg
         class="mr-[3px] mb-[4px]"
@@ -25,29 +25,15 @@
       Patos-PB
       <i class="fa-solid fa-chevron-down text-[10px] ml-1 mt-[1px]"></i>
     </div>
-    <div class="flex items-center justify-center gap-10">
+    <div class="flex items-center justify-center gap-[25px]">
       <ol
-        class="flex gap-10 *:text-sm *:font-semibold text-white **:tracking-tighter **:cursor-pointer **:hover:text-slate-300"
+        class="flex gap-10 *:text-sm *:font-semibold text-white **:tracking-tighter **:cursor-pointer **:hover:text-primary dark:**:hover:text-secondary"
       >
         <li><a href="#">1 - Menu</a></li>
         <li><a href="#planos">2 - Conteúdo</a></li>
         <li><a href="#footer">3 - Rodapé</a></li>
       </ol>
-      <div class="relative">
-        <span
-          class="h-4 w-[2px] bg-white absolute -left-5 top-[50%] -translate-y-[50%] rounded-sm"
-        ></span>
-        <a
-          href="#"
-          class="text-sm font-semibold text-white tracking-tighter cursor-pointer hover:text-slate-300 flex items-center group/acessibilidade"
-        >
-          <span class="text-sm mr-[2px]">
-            <svg class="h-5 w-5 group-hover/acessibilidade:*:fill-slate-300" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM360-120v-480q-49-4-99-11t-98-18q-17-4-27.5-19t-5.5-32q5-17 21-25t34-4q70 15 145.5 22t149.5 7q74 0 149.5-7T775-709q18-4 34 4t21 25q5 17-5.5 32T797-629q-48 11-98 18t-99 11v480q0 17-11.5 28.5T560-80q-17 0-28.5-11.5T520-120v-200h-80v200q0 17-11.5 28.5T400-80q-17 0-28.5-11.5T360-120Z"/></svg>
-          </span>
-          Acessibilidade
-          <i class="fa-solid fa-chevron-down text-[10px] ml-1 mt-[1px]"></i>
-        </a>
-      </div>
+      {% include 'lgnet_app/partials/acessibilidade.html' %} 
     </div>
   </div>
 </div>
@@ -55,7 +41,7 @@
   <div
     class="bg-[#ffffff] dark:bg-dark-variant p-4 flex justify-center transition-colors duration-300"
   >
-    <div class="text-white container flex-auto">
+    <div class="text-[#ffffff] container flex-auto">
       <div class="flex justify-between items-center">
         <a
           href="/"
@@ -83,19 +69,6 @@
           </ul>
         </nav>
         <div class="flex gap-4 items-center">
-          <div class="flex items-center justify-center">
-            <label class="inline-flex items-center cursor-pointer" data-dark>
-              <div
-                class="relative w-8 h-3 bg-gray-300 rounded-full dark:border-gray-600"
-              >
-                <input type="checkbox" value="" class="sr-only peer" />
-                <span
-                  class="flex items-center justify-center absolute top-[50%] -start-1 translate-y-[-50%] p-2 bg-[#ffffff] text-primary-variant rounded-full h-5 w-5 transition-all *:transition-all peer-checked:translate-x-5 peer-checked:*:rotate-180 dark:bg-secondary dark:text-dark-variant"
-                  ><i class="fa-solid fa-circle-half-stroke text-[12px]"></i
-                ></span>
-              </div>
-            </label>
-          </div>
           <a
             class="text-[#ffffff] font-semibold text-sm bg-primary-variant :hover:transition-colors duration-300 hover:bg-primary-hover py-3 px-5 rounded-full **:fill-[#ffffff] dark:bg-[#ffffff] dark:text-dark-variant dark:hover:bg-secondary dark:hover:text-secondary-variant dark:**:fill-secondary-variant flex items-center gap-[6px]"
             href="#"
