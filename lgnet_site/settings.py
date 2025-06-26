@@ -99,6 +99,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -172,6 +175,7 @@ JAZZMIN_SETTINGS = {
         "lgnet_app.RedeSocial": "fa-solid fa-hashtag",
         "lgnet_app.InformacoesEmpresa": "fa-solid fa-shop",
         "lgnet_app.ExploreMais": "fa-solid fa-window-restore",
+        "lgnet_app.Banners": "fa-solid fa-bullhorn",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",

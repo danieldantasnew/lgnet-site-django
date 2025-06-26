@@ -45,27 +45,39 @@
       <div class="flex justify-between items-center">
         <a
           href="/"
-          class="*:w-20 *:h-12 **:fill-pribg-primary dark:**:fill-white"
+          class="*:w-20 *:h-12 **:fill-primary-variant dark:**:fill-white"
         >
           {% include 'lgnet_app/partials/logo.html' %}
         </a>
         <nav class="flex gap-6 items-center">
           <ul
-            class="flex gap-4 text-neutral-400 font-semibold *:hover:*:text-primary-variant **:transition-all dark:*:hover:*:text-white"
+            class="flex gap-4 text-neutral-400 font-semibold **:hover:*:text-primary-variant dark:**:hover:*:text-white"
           >
             <li>
-              <a href="#" class="active">Sobre</a>
+              <a href="#" class="relative group">Sobre
+                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
+              </a>
             </li>
             <li>
-              <a href="#">Planos</a>
+              <a href="#" class="relative group">Planos
+                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
+              </a>
             </li>
             <li>
-              <a href="#">Autoatendimento</a>
+              <a href="#" class="relative group">Autoatendimento
+                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
+              </a>
             </li>
             <li>
-              <a href="#">Explorar</a>
+              <a href="#" class="relative group">Explorar
+                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
+              </a>
             </li>
-            <li><a href="#">Contato</a></li>
+            <li>
+              <a href="#" class="relative group">Contato
+                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
+              </a>
+            </li>
           </ul>
         </nav>
         <div class="flex gap-4 items-center">

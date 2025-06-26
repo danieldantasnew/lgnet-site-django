@@ -3,6 +3,8 @@ from django.db import models
 class Download(models.Model):
     icone = models.TextField("Ícone", default='<i class="fa-solid fa-download"></i>', help_text="Cole um ícone do FontAwesome ou código SVG")
     velocidade = models.CharField("Velocidade", default="300Mbps", max_length=1000)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
     class Meta:
         verbose_name = "Velocidade - Download"
@@ -18,6 +20,8 @@ class Download(models.Model):
 class Upload(models.Model):
     icone = models.TextField("Ícone", default='<i class="fa-solid fa-upload"></i>', help_text="Cole um ícone do FontAwesome ou código SVG")
     velocidade = models.CharField("Velocidade", default="150Mbps", max_length=1000)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
     class Meta:
         verbose_name = "Velocidade - Upload"
@@ -84,6 +88,8 @@ class Cidades(models.Model):
     cep = models.CharField("CEP", help_text="58700-000", max_length=10)
     latitude = models.TextField("Latitude")
     longitude = models.TextField("Longitude")
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
     class Meta:
         verbose_name = "Cidades"
@@ -96,6 +102,8 @@ class RedeSocial(models.Model):
     nome = models.CharField("Nome", max_length=50)
     link = models.TextField("Link da rede social")
     icone = models.TextField("Ícone")
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
     class Meta:
         verbose_name = "Rede Social"
@@ -109,6 +117,8 @@ class InformacoesEmpresa(models.Model):
     endereco_completo = models.TextField("Endereço completo")
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
     class Meta:
         verbose_name = "Informações Empresa"
@@ -121,10 +131,28 @@ class ExploreMais(models.Model):
     titulo = models.CharField("Título", max_length=50)
     descricao = models.TextField("Descrição")
     link = models.CharField("Rota", max_length=20)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
     class Meta:
         verbose_name = "Explore Mais"
         verbose_name_plural = "Explore Mais"
+
+    def __str__(self):
+        return f"{self.titulo}"
+
+class Banners(models.Model):
+    titulo = models.CharField("Titulo do Banner", max_length=50)
+    imagem_principal = models.ImageField("Imagem Principal", upload_to="banners/", height_field=None, width_field=None, max_length=None)
+    
+    imagem_de_fundo= models.ImageField("Imagem de Fundo", upload_to="banners/", height_field=None, width_field=None, max_length=None)
+    
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
+
+    class Meta:
+        verbose_name = "Banners"
+        verbose_name_plural = "Banners"
 
     def __str__(self):
         return f"{self.titulo}"

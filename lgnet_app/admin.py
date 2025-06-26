@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, ExploreMais
+from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, ExploreMais, Banners
 
 class DownloadAdmin(admin.ModelAdmin):
     list_display = ("velocidade", "icone",)
@@ -32,6 +32,9 @@ class InformacoesEmpresaAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+    
+class BannersAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "imagem_principal", "imagem_de_fundo",)
 
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
@@ -42,3 +45,4 @@ admin.site.register(RedeSocial, RedeSocialAdmin)
 admin.site.register(Cidades, CidadesAdmin)
 admin.site.register(InformacoesEmpresa, InformacoesEmpresaAdmin)
 admin.site.register(ExploreMais, ExploreMaisAdmin)
+admin.site.register(Banners, BannersAdmin)
