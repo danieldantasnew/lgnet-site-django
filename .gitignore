@@ -67,7 +67,6 @@ secret.json
 # 🗺️ Static e media gerados
 staticfiles/
 static_root/
-media/
 
 # 🧑‍💻 Sistema operacional
 .DS_Store

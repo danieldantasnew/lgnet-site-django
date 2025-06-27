@@ -1,29 +1,42 @@
 {% load static %}
-<div class="flex h-150 justify-center px-4 relative bg-gray-400">
-  <div class="swiper mySwiper container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
+
+<div class="relative w-full h-[460px] bg-gray-400">
+  <div class="swiper mySwiper w-full h-full">
+    <div class="swiper-wrapper w-full h-full">
+      {% for slide in banners.all %}
+        <div
+          style="background-image: url('{{ slide.imagem_de_fundo.url }}');"
+          class="swiper-slide w-full h-full flex justify-center items-center bg-cover bg-center bg-no-repeat"
+        >
+          <div class="container m-auto w-full h-full">
+            <a href="www.google.com" target="_blank">
+              <img
+                src="{{ slide.imagem_principal.url }}"
+                alt="{{ slide.titulo }}"
+                class="w-full h-full object-cover"
+              />
+            </a>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-    <div class="swiper-button-next">
+
+    <div
+      class="absolute container inset-0 flex flex-col justify-between m-auto"
+    >
+      <div class="swiper-button-next">
         <i class="fa-solid fa-angle-right"></i>
-    </div>
-    <div class="swiper-button-prev">
+      </div>
+      <div class="swiper-button-prev">
         <i class="fa-solid fa-angle-left"></i>
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="autoplay-progress">
-      <svg viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="20"></circle>
-      </svg>
-      <span></span>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="autoplay-progress">
+        <svg viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="20"></circle>
+        </svg>
+        <span></span>
+      </div>
     </div>
   </div>
 </div>
