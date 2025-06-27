@@ -25,26 +25,32 @@
 </head>
 
 <body class="font-myfont bg-backgroundColor dark:bg-dark-variant transition-colors duration-300">
-  {% include 'lgnet_app/partials/header.html' %}
-  <main class="main">
-    {% block content %}
-      {% include 'lgnet_app/carousel.html' %}
-      {% include 'lgnet_app/planos.html' %}
-      {% include 'lgnet_app/essencial.html' %}
-      {% include 'lgnet_app/autoatendimento.html' %}
-      {% include 'lgnet_app/app_mobile.html' %}
-      {% include 'lgnet_app/explorar.html' %}
-    {% endblock %}
-  </main>
-  {% include 'lgnet_app/partials/footer.html' %}
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
-  
-  <div vw class="enabled vlibras">
-    <div vw-access-button class=" active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <div id="site-wrapper" style="display: none;">
+    <div data-modal class="hidden fixed bg-neutral-950/40 top-0 left-0 h-full w-full z-50 backdrop-blur-xs">
+      {% include 'lgnet_app/partials/selecionar_cidade.html' %} 
+    </div>
+    {% include 'lgnet_app/partials/header.html' %}
+    <main class="main">
+      {% block content %}
+        {% include 'lgnet_app/carousel.html' %}
+        {% include 'lgnet_app/planos.html' %}
+        {% include 'lgnet_app/essencial.html' %}
+        {% include 'lgnet_app/autoatendimento.html' %}
+        {% include 'lgnet_app/app_mobile.html' %}
+        {% include 'lgnet_app/explorar.html' %}
+      {% endblock %}
+    </main>
+    {% include 'lgnet_app/partials/footer.html' %}
+    <div vw class="enabled vlibras">
+      <div vw-access-button class=" active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
     </div>
   </div>
 
@@ -53,9 +59,10 @@
     new window.VLibras.Widget("https://vlibras.gov.br/app");
   </script>
   
-  <script src="{% static 'lgnet_app/js/darkMode.js' %}"></script>
-  <script src="{% static 'lgnet_app/js/dropdown.js' %}"></script>
-  <script src="{% static 'lgnet_app/js/swiper.js' %}"></script>
+  {% block scripts %}
+    <script src="{% static 'lgnet_app/js/preloader.js' %}"></script>
+    <script src="{% static 'lgnet_app/js/main.js' %}"></script>
+  {% endblock %}
 </body>
 
 </html>
