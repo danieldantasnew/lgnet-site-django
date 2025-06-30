@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     modal.addEventListener("click", (e) => {
-      close();
+      if(e.target === modal) close();
     });
 
     document.modalComponent = {
