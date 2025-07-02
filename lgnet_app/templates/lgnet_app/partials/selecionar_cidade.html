@@ -1,16 +1,30 @@
-<div data-cidade class="fixed top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-[#ffffff] dark:bg-dark-variant h-80 w-140 rounded-lg z-50 p-4 flex flex-col justify-center items-start gap-6">
+{% load static %}
+
+<div data-cidade class="fixed top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-[#ffffff] dark:bg-dark-variant h-80 w-140 rounded-lg z-50 py-4 px-8 flex flex-col justify-center items-start gap-6">
     <i data-close-modal class="fa-regular fa-circle-xmark cursor-pointer text-3xl text-gray-400 hover:text-primary-variant dark:hover:text-secondary absolute top-4 right-4 transition-all"></i>
     <div class="dark:text-[#ffffff] text-black font-medium">
         <svg class="h-10 w-9 dark:*:fill-secondary" width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2752 31.7669L12.3855 31.8301L12.4296 31.8554C12.6045 31.9503 12.8003 32 12.9992 32C13.1981 32 13.3939 31.9503 13.5688 31.8554L13.613 31.8317L13.7248 31.7669C14.3412 31.4004 14.9425 31.0092 15.5275 30.5943C17.0419 29.522 18.4569 28.315 19.7553 26.9879C22.8185 23.843 26 19.1177 26 13.038C26 9.58012 24.6304 6.26385 22.1924 3.81875C19.7544 1.37364 16.4478 0 13 0C9.55219 0 6.24558 1.37364 3.80761 3.81875C1.36964 6.26385 0 9.58012 0 13.038C0 19.1161 3.18303 23.843 6.24473 26.9879C7.54259 28.3149 8.95704 29.5219 10.4709 30.5943C11.0564 31.0093 11.6583 31.4005 12.2752 31.7669ZM13 17.7791C14.2538 17.7791 15.4562 17.2796 16.3427 16.3905C17.2292 15.5013 17.7273 14.2954 17.7273 13.038C17.7273 11.7806 17.2292 10.5747 16.3427 9.68555C15.4562 8.79642 14.2538 8.29692 13 8.29692C11.7462 8.29692 10.5438 8.79642 9.65731 9.68555C8.77078 10.5747 8.27273 11.7806 8.27273 13.038C8.27273 14.2954 8.77078 15.5013 9.65731 16.3905C10.5438 17.2796 11.7462 17.7791 13 17.7791Z" fill="#2C72AC"/>
         </svg>
-        <h2 class="text-3xl mt-7 mb-[2px]">Em que cidade você está?</h2>
+        <h2 class="text-3xl mt-7 mb-[2px]">Em qual cidade você está?</h2>
         <p class="text-[#535354] dark:text-secondary text-sm">Informe sua cidade e aproveite ofertas personalizadas para você.</p>
     </div>
     <div class="relative w-full">
-        <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#101828] bg-transparent rounded-lg border-1 border-gray-300 appearance-none font-medium dark:text-[#ffffff] dark:border-gray-200 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-primary-variant peer" placeholder=" " />
+        <input data-input-cidade type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#101828] bg-transparent rounded-lg border-1 border-gray-300 appearance-none font-medium dark:text-[#ffffff] dark:border-gray-200 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-primary-variant peer" placeholder=" " />
         
         <label for="floating_outlined" class="absolute text-sm text-[#6a7282] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#ffffff] dark:text-[#ffffff] dark:bg-dark-variant px-2 peer-focus:px-2 peer-focus:text-primary-variant peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">Digite sua cidade</label>
+        
+        <!-- Dropdown menu -->
+        <div data-dropdown-cidade class="w-full max-h-60 overflow-y-auto hidden z-10 absolute top-14 left-[50%] translate-x-[-50%] bg-[#ffffff] divide-y divide-gray-100 rounded-lg shadow-[0_0_1px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_1px_1px_rgba(255,255,255,.1)] dark:bg-dark-primary dark:text-[#ffffff]">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                {% for cidade in cidades %}
+                    <li>
+                        <a href="#" class="block px-6 py-2 text-dark-variant dark:text-[#ffffff] hover:bg-primary-variant dark:hover:bg-dark-variant dark:hover:text-white">{{cidade.nome}} - {{cidade.sigla_estado}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </div>
     <button class="bg-primary-variant text-[#ffffff] dark:bg-secondary dark:text-secondary-variant rounded-full self-end p-2 h-12 w-12 cursor-pointer
      hover:bg-primary-hover dark:hover:bg-secondary-hover">

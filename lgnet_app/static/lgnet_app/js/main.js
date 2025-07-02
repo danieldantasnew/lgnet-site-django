@@ -152,4 +152,53 @@ document.addEventListener("DOMContentLoaded", () => {
     buttonsModal.forEach((item)=> item.addEventListener("click", closeModal));
     localizacao.forEach((item) => item.addEventListener("click", handleClick));
   })();
+
+  //Dropdown Selecionar Cidade
+
+  (function (){
+    const dropdown = document.querySelector("[data-dropdown-cidade]");
+    const input = document.querySelector("[data-input-cidade]");
+
+    const handleClickOutModal = (e)=> {
+      if (!dropdown.contains(e.target) && !input.contains(e.target)) {
+        dropdown.classList.add("hidden");
+        document.removeEventListener("click", handleClickOutModal);
+      }
+    }
+
+    const handleClick = ()=> {
+      dropdown.classList.remove("hidden");
+      document.addEventListener("click", handleClickOutModal);
+    }
+
+    const handleChange = (e) => {
+      const value = e.target.value.trim();
+      const listDropDown = dropdown.querySelectorAll("li");
+
+      const normalize = (str) => 
+        str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+      if (value === "") {
+        listDropDown.forEach((li) => {
+          li.classList.remove("hidden");
+        });
+        return;
+      }
+
+      const valueNormalized = normalize(value);
+
+      listDropDown.forEach((li) => {
+        const liNormalized = normalize(li.innerText);
+
+        if (liNormalized.includes(valueNormalized)) {
+          li.classList.remove("hidden");
+        } else {
+          li.classList.add("hidden");
+        }
+      });
+    };
+
+    input.addEventListener("click", handleClick);
+    input.addEventListener("input", handleChange);
+  }())
 });
