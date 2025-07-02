@@ -137,11 +137,19 @@ document.addEventListener("DOMContentLoaded", () => {
   //Selecionar Cidade
   (function () {
     const localizacao = document.querySelectorAll("[data-local]");
+    const buttonsModal = document.querySelectorAll("[data-close-modal]");
     const modal = document.querySelector("[data-modal]");
+    
 
     const handleClick = ()=> {
-        modal.classList.remove("hidden")
+        modal.classList.remove("hidden");
     }
+
+    const closeModal = ()=> {
+      modal.classList.add("hidden");
+    }
+
+    buttonsModal.forEach((item)=> item.addEventListener("click", closeModal));
     localizacao.forEach((item) => item.addEventListener("click", handleClick));
   })();
 });
