@@ -14,13 +14,13 @@ class PlanosAdmin(admin.ModelAdmin):
     list_display = ("categoria", "icone", "plano", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
 
 class ServicosAdmin(admin.ModelAdmin):
-    list_display = ("titulo", "icone", "descricao", "criado_em", "ultima_atualizacao")
+    list_display = ("titulo", "icone", "descricao", "criado_em", "ultima_atualizacao",)
 
 class RedeSocialAdmin(admin.ModelAdmin):
     list_display = ("nome", "link", "icone",)
 
 class CidadesAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("nome", "estado", "sigla_estado", "cep", "latitude", "longitude",)
 
 class ExploreMaisAdmin(admin.ModelAdmin):
     list_display = ("titulo", "descricao", "link",)

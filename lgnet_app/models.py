@@ -85,6 +85,7 @@ class ServicosEssenciais(models.Model):
 class Cidades(models.Model):
     nome = models.CharField("Nome", help_text="Nome da cidade", max_length=100)
     estado = models.CharField("Estado", max_length=100)
+    sigla_estado = models.CharField("Sigla do Estado", max_length=4, default="PB")
     cep = models.CharField("CEP", help_text="58700-000", max_length=10)
     latitude = models.TextField("Latitude")
     longitude = models.TextField("Longitude")
