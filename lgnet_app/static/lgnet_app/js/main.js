@@ -157,12 +157,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   (function (){
     const dropdown = document.querySelector("[data-dropdown-cidade]");
+    const modal = document.querySelector("[data-modal]");
     const input = document.querySelector("[data-input-cidade]");
+    const listDropDown = dropdown.querySelectorAll("li");
+    const button = document.querySelector("[data-button-cidade]");
+    const localizacao = document.querySelectorAll("[data-local]");
+
+    
+
+    const hideDropdown = ()=> {
+      dropdown.classList.add("hidden");
+      document.removeEventListener("click", handleClickOutModal);
+    }
+
+
+    const handleSubmit = (e)=> {
+      const listDrop = Array.from(listDropDown).map(item=>item.innerText.trim());
+      
+      if(listDrop.includes(input.value)) {
+        localizacao.forEach((item)=> item.innerText = input.value);
+        localStorage.setItem("data_location", JSON.stringify({"id":"63","city":"Patos","state":"PB","modal":false}))
+        modal.classList.add("hidden");
+      }
+    }
+    
+
+    const handleInput = (e)=> {
+      if(e.target.innerText) {
+        input.value = e.target.innerText;
+        hideDropdown();
+      }
+      
+    }
 
     const handleClickOutModal = (e)=> {
       if (!dropdown.contains(e.target) && !input.contains(e.target)) {
-        dropdown.classList.add("hidden");
-        document.removeEventListener("click", handleClickOutModal);
+        hideDropdown();
       }
     }
 
@@ -173,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleChange = (e) => {
       const value = e.target.value.trim();
-      const listDropDown = dropdown.querySelectorAll("li");
+
 
       const normalize = (str) => 
         str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -198,7 +228,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
+    button.addEventListener("click", handleSubmit);
+    listDropDown.forEach((item)=> item.addEventListener("click", handleInput));
     input.addEventListener("click", handleClick);
-    input.addEventListener("input", handleChange);
+    input.addEventListener("input", (e)=> {
+      handleChange(e);
+      handleClick(e);
+    });
   }())
 });

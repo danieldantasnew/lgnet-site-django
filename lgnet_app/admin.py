@@ -20,7 +20,8 @@ class RedeSocialAdmin(admin.ModelAdmin):
     list_display = ("nome", "link", "icone",)
 
 class CidadesAdmin(admin.ModelAdmin):
-    list_display = ("nome", "estado", "sigla_estado", "cep", "latitude", "longitude",)
+    list_display = ("id", "nome", "estado", "sigla_estado", "cep", "latitude", "longitude",)
+    ordering = ("nome",)
 
 class ExploreMaisAdmin(admin.ModelAdmin):
     list_display = ("titulo", "descricao", "link",)
