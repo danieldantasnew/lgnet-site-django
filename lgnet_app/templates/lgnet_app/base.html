@@ -31,9 +31,15 @@
   </div>
 
   <div id="site-wrapper" style="display: none;">
-    <div data-modal class="hidden fixed bg-neutral-950/40 top-0 left-0 h-full w-full z-50 backdrop-blur-xs">
-      {% include 'lgnet_app/partials/selecionar_cidade.html' %} 
-    </div>
+    <div data-modal class="hidden fixed bg-neutral-950/40 top-0 left-0 h-full w-full z-50 backdrop-blur-xs"></div>
+    <template id="tpl-selecionar-cidade">
+      {% include 'lgnet_app/partials/selecionar_cidade.html' %}
+    </template>
+
+    <template id="tpl-bem-vindo">
+      {% include 'lgnet_app/partials/bem_vindo.html' %}
+    </template>
+
     {% include 'lgnet_app/partials/header.html' %}
     <main class="main">
       {% block content %}

@@ -65,4 +65,10 @@
     @apply items-center;
     @apply font-medium;
   }
+
+  .error {
+    @apply !text-red-700;
+    @apply !border-1;
+    @apply !border-red-700;
+  }
 }

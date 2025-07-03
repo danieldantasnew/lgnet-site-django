@@ -31,33 +31,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!modal) return;
 
-    const createDom = (html) => {
-      const wrapper = document.createElement("div");
-      wrapper.innerHTML = html;
+    function openModal(templateId) {
+      const tpl = document.querySelector(templateId);
+      if (!tpl) return;
 
-      const element = wrapper.firstElementChild;
-      return element;
-    };
+      const clone = tpl.content.cloneNode(true);
 
-    const open = (html) => {
       modal.innerHTML = "";
-      modal.appendChild(createDom(html));
+      modal.appendChild(clone);
       modal.classList.remove("hidden");
-    };
+    }
 
-    const close = () => {
+    function closeModal() {
       modal.classList.add("hidden");
-    };
+      modal.innerHTML = "";
+    }
 
     modal.addEventListener("click", (e) => {
-      if(e.target === modal) close();
+      if (e.target === modal) {
+        closeModal();
+      }
     });
 
     document.modalComponent = {
-      open,
-      close,
+      open: openModal,
+      close: closeModal
     };
   })();
+
 
   // Dropdown
   (function () {
@@ -138,75 +139,104 @@ document.addEventListener("DOMContentLoaded", () => {
   (function () {
     const localizacao = document.querySelectorAll("[data-local]");
     const buttonsModal = document.querySelectorAll("[data-close-modal]");
-    const modal = document.querySelector("[data-modal]");
+
+    console.log( buttonsModal) //no carregamento data-close-modal ainda não existe, verificar uma forma de puxar só quando existir
+
+    buttonsModal.forEach((item) => item.addEventListener("click", ()=> {
+      document.modalComponent.close();
+    }));
     
-
-    const handleClick = ()=> {
-        modal.classList.remove("hidden");
-    }
-
-    const closeModal = ()=> {
-      modal.classList.add("hidden");
-    }
-
-    buttonsModal.forEach((item)=> item.addEventListener("click", closeModal));
-    localizacao.forEach((item) => item.addEventListener("click", handleClick));
+    localizacao.forEach((item) => item.addEventListener("click", ()=> {
+      document.modalComponent.open("#tpl-selecionar-cidade")
+    }));
   })();
 
   //Dropdown Selecionar Cidade
-
-  (function (){
+  (function () {
     const dropdown = document.querySelector("[data-dropdown-cidade]");
     const modal = document.querySelector("[data-modal]");
     const input = document.querySelector("[data-input-cidade]");
     const listDropDown = dropdown.querySelectorAll("li");
     const button = document.querySelector("[data-button-cidade]");
     const localizacao = document.querySelectorAll("[data-local]");
-
+    const dataLocation = JSON.parse(localStorage.getItem("data_location"))
     
-
-    const hideDropdown = ()=> {
-      dropdown.classList.add("hidden");
-      document.removeEventListener("click", handleClickOutModal);
+    if(dataLocation) {
+      input.value = `${dataLocation.city} - ${dataLocation.state}`;
+      localizacao.forEach((item) => (item.innerText = input.value));
     }
 
+    const checkInputField = ()=> {
+      const listItems = Array.from(listDropDown).map((item) => item.innerText.trim())
 
-    const handleSubmit = (e)=> {
-      const listDrop = Array.from(listDropDown).map(item=>item.innerText.trim());
-      
-      if(listDrop.includes(input.value)) {
-        localizacao.forEach((item)=> item.innerText = input.value);
-        localStorage.setItem("data_location", JSON.stringify({"id":"63","city":"Patos","state":"PB","modal":false}))
-        modal.classList.add("hidden");
+      if(!input.value || !listItems.includes(input.value)) {
+        input.classList.add("error");
+        input.nextElementSibling.style.color = "oklch(50.5% 0.213 27.518)"
+      }
+      else {
+        input.classList.remove("error");
+        input.nextElementSibling.style.color = "#6a7282"
       }
     }
-    
 
-    const handleInput = (e)=> {
-      if(e.target.innerText) {
+    const hideDropdown = () => {
+      dropdown.classList.add("hidden");
+      document.removeEventListener("click", handleClickOutModal);
+    };
+
+    const handleSubmit = (e) => {
+      checkInputField();
+      const dropList = Array.from(listDropDown).map((item) => ({
+        id: item.dataset.selectedId,
+        city: item.dataset.selectedCity,
+        state: item.dataset.selectedSigla,
+        text: item.innerText.trim(),
+      }));
+
+      const selected = dropList.find((item) => item.text == input.value);
+      
+      if (selected) {
+        localizacao.forEach((item) => (item.innerText = input.value));
+        localStorage.setItem(
+          "data_location",
+          JSON.stringify({
+            id: `${selected.id}`,
+            city: `${selected.city}`,
+            state: `${selected.state}`,
+          })
+        );
+        modal.classList.add("hidden");
+      }
+    };
+
+    const handleInput = (e) => {
+      if (e.target.innerText) {
         input.value = e.target.innerText;
         hideDropdown();
       }
-      
-    }
+      checkInputField();
+    };
 
-    const handleClickOutModal = (e)=> {
+    const handleClickOutModal = (e) => {
       if (!dropdown.contains(e.target) && !input.contains(e.target)) {
         hideDropdown();
       }
-    }
+    };
 
-    const handleClick = ()=> {
+    const handleClick = () => {
       dropdown.classList.remove("hidden");
       document.addEventListener("click", handleClickOutModal);
-    }
+    };
 
     const handleChange = (e) => {
+      checkInputField();
       const value = e.target.value.trim();
 
-
-      const normalize = (str) => 
-        str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      const normalize = (str) =>
+        str
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
 
       if (value === "") {
         listDropDown.forEach((li) => {
@@ -229,11 +259,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     button.addEventListener("click", handleSubmit);
-    listDropDown.forEach((item)=> item.addEventListener("click", handleInput));
+    listDropDown.forEach((item) => item.addEventListener("click", handleInput));
     input.addEventListener("click", handleClick);
-    input.addEventListener("input", (e)=> {
+    input.addEventListener("change", checkInputField);
+    input.addEventListener("input", (e) => {
       handleChange(e);
       handleClick(e);
     });
-  }())
+  })();
 });
