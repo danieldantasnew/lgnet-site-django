@@ -55,10 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.modalComponent = {
       open: openModal,
-      close: closeModal
+      close: closeModal,
     };
   })();
-
 
   // Dropdown
   (function () {
@@ -135,136 +134,145 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  //Selecionar Cidade
+  //Modal Selecionar Cidade
   (function () {
     const localizacao = document.querySelectorAll("[data-local]");
-    const buttonsModal = document.querySelectorAll("[data-close-modal]");
-
-    console.log( buttonsModal) //no carregamento data-close-modal ainda não existe, verificar uma forma de puxar só quando existir
-
-    buttonsModal.forEach((item) => item.addEventListener("click", ()=> {
-      document.modalComponent.close();
-    }));
-    
-    localizacao.forEach((item) => item.addEventListener("click", ()=> {
-      document.modalComponent.open("#tpl-selecionar-cidade")
-    }));
-  })();
-
-  //Dropdown Selecionar Cidade
-  (function () {
-    const dropdown = document.querySelector("[data-dropdown-cidade]");
-    const modal = document.querySelector("[data-modal]");
-    const input = document.querySelector("[data-input-cidade]");
-    const listDropDown = dropdown.querySelectorAll("li");
-    const button = document.querySelector("[data-button-cidade]");
-    const localizacao = document.querySelectorAll("[data-local]");
-    const dataLocation = JSON.parse(localStorage.getItem("data_location"))
-    
-    if(dataLocation) {
-      input.value = `${dataLocation.city} - ${dataLocation.state}`;
-      localizacao.forEach((item) => (item.innerText = input.value));
+    const dataLocation = JSON.parse(localStorage.getItem("data_location"));
+    if (dataLocation)
+      localizacao.forEach(
+        (item) =>
+          (item.innerText = `${dataLocation.city} - ${dataLocation.state}`)
+      );
+    else {
+      document.modalComponent.open("#tpl-bem-vindo");
     }
 
-    const checkInputField = ()=> {
-      const listItems = Array.from(listDropDown).map((item) => item.innerText.trim())
+    localizacao.forEach((item) =>
+      item.addEventListener("click", () => {
+        document.modalComponent.open("#tpl-selecionar-cidade");
+        init();
+      })
+    );
 
-      if(!input.value || !listItems.includes(input.value)) {
-        input.classList.add("error");
-        input.nextElementSibling.style.color = "oklch(50.5% 0.213 27.518)"
-      }
-      else {
-        input.classList.remove("error");
-        input.nextElementSibling.style.color = "#6a7282"
-      }
-    }
+    const init = () => {
+      const dropdown = document.querySelector("[data-dropdown-cidade]");
+      const input = document.querySelector("[data-input-cidade]");
+      const buttonsModal = document.querySelectorAll("[data-close-modal]");
+      const listDropDown = dropdown.querySelectorAll("li");
+      const button = document.querySelector("[data-button-cidade]");
 
-    const hideDropdown = () => {
-      dropdown.classList.add("hidden");
-      document.removeEventListener("click", handleClickOutModal);
-    };
+      if (dataLocation)
+        input.value = `${dataLocation.city} - ${dataLocation.state}`;
 
-    const handleSubmit = (e) => {
-      checkInputField();
-      const dropList = Array.from(listDropDown).map((item) => ({
-        id: item.dataset.selectedId,
-        city: item.dataset.selectedCity,
-        state: item.dataset.selectedSigla,
-        text: item.innerText.trim(),
-      }));
+      buttonsModal.forEach((item) =>
+        item.addEventListener("click", () => {
+          document.modalComponent.close();
+        })
+      );
 
-      const selected = dropList.find((item) => item.text == input.value);
-      
-      if (selected) {
-        localizacao.forEach((item) => (item.innerText = input.value));
-        localStorage.setItem(
-          "data_location",
-          JSON.stringify({
-            id: `${selected.id}`,
-            city: `${selected.city}`,
-            state: `${selected.state}`,
-          })
-        );
-        modal.classList.add("hidden");
-      }
-    };
+      const hideDropdown = () => {
+        dropdown.classList.add("hidden");
+        document.removeEventListener("click", handleClickOutModal);
+      };
 
-    const handleInput = (e) => {
-      if (e.target.innerText) {
-        input.value = e.target.innerText;
-        hideDropdown();
-      }
-      checkInputField();
-    };
-
-    const handleClickOutModal = (e) => {
-      if (!dropdown.contains(e.target) && !input.contains(e.target)) {
-        hideDropdown();
-      }
-    };
-
-    const handleClick = () => {
-      dropdown.classList.remove("hidden");
-      document.addEventListener("click", handleClickOutModal);
-    };
-
-    const handleChange = (e) => {
-      checkInputField();
-      const value = e.target.value.trim();
-
-      const normalize = (str) =>
-        str
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase();
-
-      if (value === "") {
-        listDropDown.forEach((li) => {
-          li.classList.remove("hidden");
-        });
-        return;
-      }
-
-      const valueNormalized = normalize(value);
-
-      listDropDown.forEach((li) => {
-        const liNormalized = normalize(li.innerText);
-
-        if (liNormalized.includes(valueNormalized)) {
-          li.classList.remove("hidden");
-        } else {
-          li.classList.add("hidden");
+      const handleInput = (e) => {
+        if (e.target.innerText) {
+          input.value = e.target.innerText;
+          hideDropdown();
         }
+        checkInputField();
+      };
+
+      const handleClickOutModal = (e) => {
+        if (!dropdown.contains(e.target) && !input.contains(e.target)) {
+          hideDropdown();
+        }
+      };
+
+      const handleClick = () => {
+        dropdown.classList.remove("hidden");
+        document.addEventListener("click", handleClickOutModal);
+      };
+
+      const checkInputField = () => {
+        const listItems = Array.from(listDropDown).map((item) =>
+          item.innerText.trim()
+        );
+
+        if (!input.value || !listItems.includes(input.value)) {
+          input.classList.add("error");
+          input.nextElementSibling.style.color = "oklch(50.5% 0.213 27.518)";
+        } else {
+          input.classList.remove("error");
+          input.nextElementSibling.style.color = "#6a7282";
+        }
+      };
+
+      const handleSubmit = (e) => {
+        checkInputField();
+        const dropList = Array.from(listDropDown).map((item) => ({
+          id: item.dataset.selectedId,
+          city: item.dataset.selectedCity,
+          state: item.dataset.selectedSigla,
+          text: item.innerText.trim(),
+        }));
+
+        const selected = dropList.find((item) => item.text == input.value);
+
+        if (selected) {
+          localizacao.forEach((item) => (item.innerText = input.value));
+          localStorage.setItem(
+            "data_location",
+            JSON.stringify({
+              id: `${selected.id}`,
+              city: `${selected.city}`,
+              state: `${selected.state}`,
+            })
+          );
+          document.modalComponent.close();
+        }
+      };
+
+      const handleChange = (e) => {
+        checkInputField();
+        const value = e.target.value.trim();
+
+        const normalize = (str) =>
+          str
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+
+        if (value === "") {
+          listDropDown.forEach((li) => {
+            li.classList.remove("hidden");
+          });
+          return;
+        }
+
+        const valueNormalized = normalize(value);
+
+        listDropDown.forEach((li) => {
+          const liNormalized = normalize(li.innerText);
+
+          if (liNormalized.includes(valueNormalized)) {
+            li.classList.remove("hidden");
+          } else {
+            li.classList.add("hidden");
+          }
+        });
+      };
+
+      button.addEventListener("click", handleSubmit);
+      listDropDown.forEach((item) =>
+        item.addEventListener("click", handleInput)
+      );
+      input.addEventListener("change", checkInputField);
+      input.addEventListener("click", handleClick);
+      input.addEventListener("input", (e) => {
+        handleChange(e);
+        handleClick(e);
       });
     };
-
-    button.addEventListener("click", handleSubmit);
-    listDropDown.forEach((item) => item.addEventListener("click", handleInput));
-    input.addEventListener("click", handleClick);
-    input.addEventListener("change", checkInputField);
-    input.addEventListener("input", (e) => {
-      handleChange(e);
-      handleClick(e);
-    });
   })();
 });
