@@ -1203,6 +1203,9 @@
   .text-neutral-500 {
     color: var(--color-neutral-500);
   }
+  .text-neutral-900 {
+    color: var(--color-neutral-900);
+  }
   .text-neutral-950 {
     color: var(--color-neutral-950);
   }
@@ -1420,6 +1423,11 @@
       fill: var(--color-primary-variant-2);
     }
   }
+  .\*\:stroke-neutral-900 {
+    :is(& > *) {
+      stroke: var(--color-neutral-900);
+    }
+  }
   .\*\:stroke-primary {
     :is(& > *) {
       stroke: var(--color-primary);
@@ -1578,6 +1586,15 @@
       @media (hover: hover) {
         --tw-font-weight: var(--font-weight-semibold);
         font-weight: var(--font-weight-semibold);
+      }
+    }
+  }
+  .group-hover\/link\:\*\:stroke-neutral-900 {
+    &:is(:where(.group\/link):hover *) {
+      @media (hover: hover) {
+        :is(& > *) {
+          stroke: var(--color-neutral-900);
+        }
       }
     }
   }
