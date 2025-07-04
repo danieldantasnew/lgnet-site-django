@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     else {
       document.modalComponent.open("#tpl-bem-vindo");
+      init();
     }
 
     localizacao.forEach((item) =>
@@ -154,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     );
 
-    const init = () => {
+    function init() {
       const dropdown = document.querySelector("[data-dropdown-cidade]");
       const input = document.querySelector("[data-input-cidade]");
       const buttonsModal = document.querySelectorAll("[data-close-modal]");

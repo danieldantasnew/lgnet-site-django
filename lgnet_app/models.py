@@ -89,6 +89,8 @@ class Cidades(models.Model):
     cep = models.CharField("CEP", help_text="58700-000", max_length=10)
     latitude = models.TextField("Latitude")
     longitude = models.TextField("Longitude")
+    planos = models.ManyToManyField("Planos", related_name="cidades", help_text="Planos disponíveis nesta cidade")
+
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
