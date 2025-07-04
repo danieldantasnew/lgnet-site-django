@@ -146,9 +146,9 @@ class ExploreMais(models.Model):
 
 class Banners(models.Model):
     titulo = models.CharField("Titulo do Banner", max_length=50)
-    imagem_principal = models.ImageField("Imagem Principal", upload_to="banners/", height_field=None, width_field=None, max_length=None)
+    imagem_principal = models.ImageField("Imagem Principal", upload_to="banners/", height_field=None, width_field=None, max_length=None, help_text="Sugestão: Insira uma imagem com resolução 1244px de largura e 464px de altura para desktop")
     
-    imagem_de_fundo= models.ImageField("Imagem de Fundo", upload_to="banners/", height_field=None, width_field=None, max_length=None)
+    imagem_de_fundo= models.ImageField("Imagem de Fundo", upload_to="banners/", height_field=None, width_field=None, max_length=None, help_text="Pode ser qualquer resolução de imagem mas o ideal é uma altura de 464px para desktop")
     
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)

@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //Modal Selecionar Cidade
   (function () {
     const localizacao = document.querySelectorAll("[data-local]");
-    const dataLocation = JSON.parse(localStorage.getItem("data_location"));
+    let dataLocation = JSON.parse(localStorage.getItem("data_location"));
     if (dataLocation)
       localizacao.forEach(
         (item) =>
@@ -161,7 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const buttonsModal = document.querySelectorAll("[data-close-modal]");
       const listDropDown = dropdown.querySelectorAll("li");
       const button = document.querySelector("[data-button-cidade]");
-
+      dataLocation = JSON.parse(localStorage.getItem("data_location"));
+      
       if (dataLocation)
         input.value = `${dataLocation.city} - ${dataLocation.state}`;
 
@@ -222,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (selected) {
           localizacao.forEach((item) => (item.innerText = input.value));
+          input.value = `${selected.city} - ${selected.state}`;
           localStorage.setItem(
             "data_location",
             JSON.stringify({
