@@ -16,10 +16,24 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-[repeat(4,minmax(150px,280px))] gap-4 justify-between mt-16">
-      {% for plano in planos.all%}
-       {% render_card icone=plano.icone|safe categoria=plano.categoria velocidade=plano.plano destaque=plano.destaque vantagens=plano.vantagens download=plano.download upload=plano.upload %}
-      {% endfor %}
+    <div
+      class="swiper mySwiperPlans"
+    >
+      <div data-swiper-plans class="mt-16 mb-4 z-40 flex gap-2 justify-end *:flex *:items-center *:justify-center *:h-9 *:w-9 *:p-2 *:rounded-full *:bg-primary-variant *:hover:bg-primary-hover dark:*:bg-secondary dark:*:hover:bg-secondary-hover dark:*:text-secondary-variant *:cursor-pointer *:text-neutral-50 *:transition-all">
+        <div class="swiper-plans-button-prev">
+          <i class="fa-solid fa-angle-left"></i>
+        </div>
+        <div class="swiper-plans-button-next">
+          <i class="fa-solid fa-angle-right"></i>
+        </div>
+      </div>
+      <div class="swiper-wrapper p-1">
+        {% for plano in planos.all%}
+          <div class="swiper-slide max-w-[280px] !mx-4 !bg-transparent">
+            {% render_card icone=plano.icone|safe categoria=plano.categoria velocidade=plano.plano destaque=plano.destaque vantagens=plano.vantagens download=plano.download upload=plano.upload %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>

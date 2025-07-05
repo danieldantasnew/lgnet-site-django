@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })();
 
-  // Swiper
+  // Swiper Banners
   (function () {
     const progressCircle = document.querySelector(".autoplay-progress svg");
     const progressContent = document.querySelector(".autoplay-progress span");
@@ -132,6 +132,42 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       },
     });
+  })();
+
+  // Swiper Planos
+  (function () {
+    var swiper = new Swiper(".mySwiperPlans", {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: ".swiper-plans-button-next",
+        prevEl: ".swiper-plans-button-prev",
+      },
+    });
+
+    function checkDisabledButtons(parentElement) {
+        const disabledButtons = parentElement.querySelectorAll(
+        ".swiper-button-disabled"
+      );
+
+      if (disabledButtons.length === 2) {
+        parentElement.style.display = "none";
+      } else {
+        parentElement.style.display = "";
+      }
+
+    }
+
+    const navWrapper = document.querySelector("[data-swiper-plans]");
+    const observer = new MutationObserver(() => checkDisabledButtons(navWrapper));
+
+    observer.observe(navWrapper, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ["class"],
+    });
+
+    (() => {checkDisabledButtons(navWrapper);})();
   })();
 
   //Modal Selecionar Cidade
@@ -162,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const listDropDown = dropdown.querySelectorAll("li");
       const button = document.querySelector("[data-button-cidade]");
       dataLocation = JSON.parse(localStorage.getItem("data_location"));
-      
+
       if (dataLocation)
         input.value = `${dataLocation.city} - ${dataLocation.state}`;
 
@@ -276,6 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
         handleChange(e);
         handleClick(e);
       });
-    };
+    }
   })();
 });
