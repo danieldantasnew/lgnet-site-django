@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
   (function () {
     const progressCircle = document.querySelector(".autoplay-progress svg");
     const progressContent = document.querySelector(".autoplay-progress span");
-    var swiper = new Swiper(".mySwiper", {
+    const swiper = new Swiper(".mySwiper", {
       spaceBetween: 30,
       centeredSlides: true,
       autoplay: {
@@ -134,16 +134,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
+  const swiperPlanos = new Swiper(".mySwiperPlans", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: ".swiper-plans-button-next",
+      prevEl: ".swiper-plans-button-prev",
+    },
+  });
   // Swiper Planos
   (function () {
-    var swiper = new Swiper(".mySwiperPlans", {
-      slidesPerView: 4,
-      spaceBetween: 30,
-      navigation: {
-        nextEl: ".swiper-plans-button-next",
-        prevEl: ".swiper-plans-button-prev",
-      },
-    });
 
     function checkDisabledButtons(parentElement) {
       const disabledButtons = parentElement.querySelectorAll(
@@ -158,14 +158,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const navWrapper = document.querySelector("[data-swiper-plans]");
-    const observer = new MutationObserver(() =>
-      checkDisabledButtons(navWrapper)
-    );
+    const swiperChildren = document.querySelector("[data-swiper-children]");
+
+    const observer = new MutationObserver(() => {
+      swiperPlanos.update();
+      
+      checkDisabledButtons(navWrapper);
+    });
 
     observer.observe(navWrapper, {
       attributes: true,
       subtree: true,
       attributeFilter: ["class"],
+    });
+
+    observer.observe(swiperChildren, {
+      childList: true,
     });
 
     (() => {
@@ -357,6 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
           );
           document.modalComponent.close();
           buscarPlanos(selected.city);
+          swiperPlanos.slideTo(0)
         }
       };
 
