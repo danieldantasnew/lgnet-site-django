@@ -57,6 +57,7 @@ class Planos(models.Model):
     blank=True, related_name="planos")
     upload = models.ForeignKey(Upload, on_delete=models.CASCADE, null=True,
     blank=True, related_name="planos")
+    ordem = models.IntegerField("Ordem do plano", default=0, help_text="Definir ordem em que os planos são mostrados. Exemplo: Plano de 100Mb vem primeiro então o número é 1, 200Mb 2 e assim por diante.")
 
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)

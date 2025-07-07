@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404
 from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, ExploreMais, Banners, Cidades
 
 def homeView(request):
@@ -85,3 +86,43 @@ def homeView(request):
 
 
     return render(request, 'lgnet_app/base.html', context)
+
+def planos_api(request):
+    cidade_nome = request.GET.get("cidade")
+
+    if not cidade_nome:
+        return JsonResponse({"error": "Cidade não informada"}, status=400)
+
+    cidade = get_object_or_404(Cidades, nome__iexact=cidade_nome)
+
+    planos = cidade.planos.all()
+
+    data = []
+    for plano in planos:
+        lista_vantagens = []
+        for vantagem in plano.vantagens.all():
+            lista_vantagens.append({
+                "icone": vantagem.icone,
+                "nome": vantagem.nome_vantagem,
+            })
+
+        lista_vantagens.append({
+            "icone": plano.download.icone,
+            "nome": f"Download {plano.download.velocidade}",
+        })
+
+        lista_vantagens.append({
+            "icone": plano.upload.icone,
+            "nome": f"Upload {plano.upload.velocidade}",
+        })
+
+        data.append({
+            "icone": plano.icone,
+            "categoria": plano.categoria,
+            "plano": plano.plano,
+            "destaque": plano.destaque,
+            "vantagens": lista_vantagens,
+            "ordem": plano.ordem,
+        })
+
+    return JsonResponse(data, safe=False)

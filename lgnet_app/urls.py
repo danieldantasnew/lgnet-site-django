@@ -6,6 +6,7 @@ from lgnet_app import views
 app_name = 'lgnet'
 
 urlpatterns = [
+    path("api/planos/", views.planos_api, name="planos_api"),
     path('', views.homeView, name='home'),
 ]
 

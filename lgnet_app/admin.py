@@ -11,7 +11,8 @@ class VantagensAdmin(admin.ModelAdmin):
     list_display = ("nome_vantagem", "icone",)
 
 class PlanosAdmin(admin.ModelAdmin):
-    list_display = ("categoria", "icone", "plano", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
+    list_display = ("categoria", "ordem", "icone", "plano", "destaque", "download", "upload", "criado_em", "ultima_atualizacao")
+    ordering = ("ordem",)
 
 class ServicosAdmin(admin.ModelAdmin):
     list_display = ("titulo", "icone", "descricao", "criado_em", "ultima_atualizacao",)
