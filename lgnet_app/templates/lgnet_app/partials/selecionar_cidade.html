@@ -18,8 +18,14 @@
         <div data-dropdown-cidade class="w-full max-h-60 overflow-y-auto hidden z-10 absolute top-14 left-[50%] translate-x-[-50%] bg-[#ffffff] divide-y divide-gray-100 rounded-lg shadow-[0_0_1px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_1px_1px_rgba(255,255,255,.1)] dark:bg-dark-primary dark:text-[#ffffff]">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                 {% for cidade in cidades %}
-                    <li id="{{cidade.id}}" data-selected-id="{{cidade.id}}" data-selected-city="{{cidade.nome}}" data-selected-sigla="{{cidade.sigla_estado}}" class="cursor-pointer">
-                        <a class="font-medium block px-6 py-2 text-dark-variant dark:text-[#ffffff] hover:bg-primary-variant dark:hover:bg-dark-variant dark:hover:text-white">{{cidade.nome}} - {{cidade.sigla_estado}}</a>
+                    <li id="{{cidade.id}}" 
+                        data-selected-id="{{cidade.id}}" 
+                        data-selected-city="{{cidade.nome}}" 
+                        data-selected-sigla="{{cidade.sigla_estado}}"
+                        data-selected-latitude="{{cidade.latitude}}" 
+                        data-selected-longitude="{{cidade.longitude}}" 
+                        class="cursor-pointer">
+                            <a class="font-medium block px-6 py-2 text-dark-variant dark:text-[#ffffff] hover:bg-primary-variant dark:hover:bg-dark-variant dark:hover:text-white">{{cidade.nome}} - {{cidade.sigla_estado}}</a>
                     </li>
                 {% endfor %}
             </ul>

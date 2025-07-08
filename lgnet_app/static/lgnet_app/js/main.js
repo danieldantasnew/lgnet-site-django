@@ -3,7 +3,7 @@ import { modal } from "./modal.js";
 import { dropdown } from "./dropdown.js";
 import { banners } from "./banners.js";
 import { planos } from "./planos.js";
-import { selecionar_cidade } from "./selecionar_cidade.js";
+import { selecionar_cidade } from "./selecionarCidade.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const swiperPlanos = new Swiper(".mySwiperPlans", {
