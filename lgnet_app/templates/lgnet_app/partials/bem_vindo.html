@@ -8,12 +8,19 @@
     data-close-modal
     class="fa-regular fa-circle-xmark cursor-pointer text-3xl text-gray-400 hover:text-light-background dark:hover:text-secondary absolute top-4 right-4 transition-all"
   ></i>
-  <div class="flex flex-col justify-center items-start gap-6 px-6 py-8">
+  <div class="flex flex-col justify-center items-start gap-6 px-6 py-7">
     <div class="dark:text-[#ffffff] text-black font-medium">
       <span class="*:w-36 *:h-auto justify-self-center *:m-auto dark:**:fill-secondary"
         >{% include 'lgnet_app/partials/logo.html' %}</span
       >
-      <h2 class="text-2xl mt-7 mb-[2px]">Bem-vindo ao site da LGNET!</h2>
+      <div data-map class="mt-3 inline-flex gap-1 items-center cursor-pointer">
+        {% include "lgnet_app/partials/map_pin.html" %}
+        <div data-map-info class="opacity-0 ml-2 bg-blue-200 rounded-sm py-1 px-4 relative">
+          <span class="bg-blue-200 h-3 w-3 absolute left-[-5px] top-[50%] translate-y-[-50%] rotate-45"></span>
+          <p class="font-medium text-sm text-blue-950">Clique aqui para ativar sua localização</p>
+        </div>
+      </div>
+      <h2 class="text-2xl mt-5 mb-[2px]">Bem-vindo ao site da LGNET!</h2>
       <p class="text-[#535354] dark:text-secondary text-sm">
         Informe sua cidade e aproveite ofertas personalizadas para você.
       </p>

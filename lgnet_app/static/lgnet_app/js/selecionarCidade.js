@@ -1,3 +1,4 @@
+import { ativarLocalizacao } from "./ativarLocalizacao.js";
 import { buscarPlanos } from "./buscarPlanos.js";
 
 function init(swiperPlanos, dataLocation, localizacao) {
@@ -15,6 +16,7 @@ function init(swiperPlanos, dataLocation, localizacao) {
       longitude: item.dataset.selectedLongitude,
       text: item.innerText.trim(),
     }));
+  ativarLocalizacao(dropList);
 
   if (dataLocation)
     input.value = `${dataLocation.city} - ${dataLocation.state}`;
