@@ -139,7 +139,6 @@ export function selecionar_cidade(swiperPlanos) {
     buscarPlanos("Patos");
     document.modalComponent.open("#tpl-bem-vindo");
     init(swiperPlanos, dataLocation, localizacao);
-    //Colocar variável que recebe true ou false, se for true então ele passa no init e o init ativará a função de buscar a cidade mais próxima.
   }
 
   localizacao.forEach((item) =>
