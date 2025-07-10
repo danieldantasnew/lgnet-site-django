@@ -9,6 +9,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-700: oklch(50.5% 0.213 27.518);
+    --color-green-500: oklch(72.3% 0.219 149.579);
     --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-blue-950: oklch(28.2% 0.091 267.935);
     --color-gray-50: oklch(98.5% 0.002 247.839);
@@ -429,9 +430,6 @@
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
   }
-  .mt-9 {
-    margin-top: calc(var(--spacing) * 9);
-  }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
   }
@@ -464,9 +462,6 @@
   }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
-  }
-  .mb-10 {
-    margin-bottom: calc(var(--spacing) * 10);
   }
   .mb-16 {
     margin-bottom: calc(var(--spacing) * 16);
@@ -543,6 +538,9 @@
   .h-14 {
     height: calc(var(--spacing) * 14);
   }
+  .h-16 {
+    height: calc(var(--spacing) * 16);
+  }
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
@@ -615,6 +613,9 @@
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
+  }
   .w-21 {
     width: calc(var(--spacing) * 21);
   }
@@ -647,21 +648,6 @@
   }
   .container {
     max-width: 1240px !important;
-  }
-  .max-w-32 {
-    max-width: calc(var(--spacing) * 32);
-  }
-  .max-w-56 {
-    max-width: calc(var(--spacing) * 56);
-  }
-  .max-w-64 {
-    max-width: calc(var(--spacing) * 64);
-  }
-  .max-w-72 {
-    max-width: calc(var(--spacing) * 72);
-  }
-  .max-w-76 {
-    max-width: calc(var(--spacing) * 76);
   }
   .max-w-80 {
     max-width: calc(var(--spacing) * 80);
@@ -1102,9 +1088,6 @@
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
   }
-  .pb-10 {
-    padding-bottom: calc(var(--spacing) * 10);
-  }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
   }
@@ -1488,6 +1471,11 @@
   .\*\:bg-primary-variant {
     :is(& > *) {
       background-color: var(--color-primary-variant);
+    }
+  }
+  .\*\:fill-green-500 {
+    :is(& > *) {
+      fill: var(--color-green-500);
     }
   }
   .\*\:fill-neutral-500 {
