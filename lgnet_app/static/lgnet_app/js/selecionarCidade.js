@@ -16,7 +16,7 @@ function init(swiperPlanos, dataLocation, localizacao) {
       longitude: item.dataset.selectedLongitude,
       text: item.innerText.trim(),
     }));
-  ativarLocalizacao(dropList);
+  ativarLocalizacao(dropList, localizacao);
 
   if (dataLocation)
     input.value = `${dataLocation.city} - ${dataLocation.state}`;

@@ -1,3 +1,5 @@
+import { buscarPlanos } from "./buscarPlanos.js";
+
 function haversine(lat1, lon1, lat2, lon2) {
   const toRadians = (angle) => (angle * Math.PI) / 180;
 
@@ -20,7 +22,8 @@ function haversine(lat1, lon1, lat2, lon2) {
 function cidadeMaisProxima(
   cidadesDisponiveis,
   latitudeCliente,
-  longitudeCliente
+  longitudeCliente,
+  localizacaoTexto,
 ) {
   let cidadeMaisProxima = null;
   let menorDistancia = Infinity;
@@ -33,32 +36,48 @@ function cidadeMaisProxima(
       parseFloat(cidade.longitude)
     );
 
-    console.log(dist)
-
     if (dist < menorDistancia) {
       menorDistancia = dist;
       cidadeMaisProxima = cidade;
     }
   }
 
-  console.log("Cidade mais próxima:", cidadeMaisProxima);
-  console.log("Distância em km:", menorDistancia.toFixed(2));
-  //Agora é só setar no localStorage, atualizar os planos da cidade e fechar o modal
+  localStorage.setItem(
+    "data_location",
+    JSON.stringify({
+      id: `${cidadeMaisProxima.id}`,
+      city: `${cidadeMaisProxima.city}`,
+      state: `${cidadeMaisProxima.state}`,
+    })
+  );
+  buscarPlanos(cidadeMaisProxima.city);
+  localizacaoTexto.forEach((item) => (item.innerText = cidadeMaisProxima.text));
+  document.modalComponent.close();
 }
 
-export function ativarLocalizacao(dropList) {
+export function ativarLocalizacao(dropList, localizacaoTexto) {
   const buttonMap = document.querySelector("[data-map]");
   const span = buttonMap.querySelector("[data-map-info]");
+  const dataContentInfo = document.querySelector("[data-content-info]");
+  const loadingCidade = document.querySelector("[data-loading-cidade]");
   const handleClick = () => {
     const geolocalizacao = navigator.geolocation;
     if (geolocalizacao) {
+      dataContentInfo.classList.add("animate-hiddenItem")
+      setTimeout(() => {
+        loadingCidade.classList.add("animate-fadeIn")
+        loadingCidade.style.display = "flex"
+      }, 400);
+
       geolocalizacao.getCurrentPosition((position) => {
         if (position.coords) {
           cidadeMaisProxima(
             dropList,
             position.coords.latitude,
-            position.coords.longitude
+            position.coords.longitude,
+            localizacaoTexto,
           );
+          window.scrollTo(0,0);
         }
       });
     }
@@ -67,5 +86,6 @@ export function ativarLocalizacao(dropList) {
   setTimeout(() => {
     span.classList.add("animate-fadeInOut");
   }, 500);
+
   buttonMap.addEventListener("click", handleClick);
 }

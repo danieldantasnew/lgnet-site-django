@@ -21,13 +21,14 @@
   --color-dark-variant: #111111;
   --color-dark-variant-2: #2f2f2f;
 
-  --animate-fadeIn: fadeIn .3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  --animate-fadeIn: fadeIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   --animate-fadeInOut: fadeInOut 3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  --animate-hiddenItem: hiddenItem 0.4s forwards;
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: scale(.8);
+      transform: scale(0.8);
     }
 
     to {
@@ -53,6 +54,19 @@
       opacity: 0;
       transform: scale(0);
       display: none;
+    }
+  }
+
+  @keyframes hiddenItem {
+    0% {
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      transform: scale(0);
+      opacity: 0;
     }
   }
 }
