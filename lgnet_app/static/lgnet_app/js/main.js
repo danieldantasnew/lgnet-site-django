@@ -4,6 +4,8 @@ import { dropdown } from "./dropdown.js";
 import { banners } from "./banners.js";
 import { planos } from "./planos.js";
 import { selecionar_cidade } from "./selecionarCidade.js";
+import acessibilidade from "./acessibilidade.js";
+import menuMobile from "./menuMobile.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const swiperPlanos = new Swiper(".mySwiperPlans", {
@@ -15,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  acessibilidade();
+  menuMobile()
   darkMode();
   modal();
   dropdown();

@@ -27,7 +27,7 @@
     </div>
 
     {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
-    <button class="cursor-pointer flex lg:hidden gap-1 items-center text-light-background hover:text-primary dark:hover:text-secondary transition-all">
+    <button data-btn-acessibilidade class="cursor-pointer flex lg:hidden gap-1 items-center text-light-background hover:text-primary dark:hover:text-secondary transition-all">
       <p class="font-semibold text-sm">Menu de Acessibilidade</p>
       <i class="fa-solid fa-angle-right"></i>
     </button>
@@ -46,7 +46,7 @@
           {% include 'lgnet_app/partials/logo.html' %}
         </a>
         {% include 'lgnet_app/partials/header_tools/menu.html' %}
-        <button class="cursor-pointer p-2 flex lg:hidden flex-col gap-[6px] *:h-[2px] *:w-6 *:bg-primary-variant hover:*:bg-primary-hover *:dark:bg-light-background hover:*:dark:bg-secondary *:rounded-full transition-colors">
+        <button data-btn-menu-mobile class="cursor-pointer p-2 flex lg:hidden flex-col gap-[6px] *:h-[2px] *:w-6 *:bg-primary-variant hover:*:bg-primary-hover *:dark:bg-light-background hover:*:dark:bg-secondary *:rounded-full transition-colors">
           <div></div>
           <div></div>
           <div></div>
@@ -56,19 +56,23 @@
   </div>
 </header>
 
-<div data-menu-acessibilidade-mobile class="fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background flex flex-col gap-4 items-start ">
-  <div class="flex justify-between w-full bg-primary-variant text-light-background px-4 py-5">
-    <h2 class="font-semibold">Menu de Acessibilidade</h2>
-    <span class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
+<template data-tpl="acessibilidade">
+  <div data-menu-acessibilidade-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background flex flex-col gap-4 items-start ">
+    <div class="flex justify-between w-full bg-primary-variant text-light-background px-4 py-5">
+      <h2 class="font-semibold">Menu de Acessibilidade</h2>
+      <span class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
+    </div>
+    <div class="w-full *:!flex *:flex-col *:!items-start 
+    *:[&>ol]:w-full *:[&>ol]:flex-col *:[&>ol]:text-primary-variant *:[&>ol]:gap-4 *:[&>ol>li]:p-4 *:[&>ol>li]:border-b-2 *:[&>ol>li]:border-b-neutral-100
+    *:[&_button]:text-red-600 *:[&_button]:pl-0
+    ">
+      {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
+    </div>
   </div>
-  <div class="w-full *:!flex *:flex-col *:!items-start 
-  *:[&>ol]:w-full *:[&>ol]:flex-col *:[&>ol]:text-primary-variant *:[&>ol]:gap-4 *:[&>ol>li]:p-4 *:[&>ol>li]:border-b-2 *:[&>ol>li]:border-b-neutral-100
-  *:[&_button]:text-red-600 *:[&_button]:pl-0
-  ">
-    {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
-  </div>
-</div>
+</template>
 
-<div data-menu-mobile>
-  
-</div>
+<template data-tpl="menuMobile">
+  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background flex flex-col gap-4 items-start ">
+    
+  </div>
+</template>

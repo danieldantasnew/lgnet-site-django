@@ -126,6 +126,12 @@ function init(swiperPlanos, dataLocation, localizacao) {
   });
 }
 
+function effectClose() {
+  const element = document.querySelector("[data-cidade]");
+  if(element) element.classList.add("animate-fadeOut");
+}
+
+
 export function selecionar_cidade(swiperPlanos) {
   const localizacao = document.querySelectorAll("[data-local]");
   let dataLocation = JSON.parse(localStorage.getItem("data_location"));
@@ -137,13 +143,13 @@ export function selecionar_cidade(swiperPlanos) {
     buscarPlanos(`${dataLocation.city}`);
   } else {
     buscarPlanos("Patos");
-    document.modalComponent.open("#tpl-bem-vindo");
+    document.modalComponent.open('template[data-tpl="bem-vindo"]', effectClose, 200);
     init(swiperPlanos, dataLocation, localizacao);
   }
 
   localizacao.forEach((item) =>
     item.addEventListener("click", () => {
-      document.modalComponent.open("#tpl-selecionar-cidade");
+      document.modalComponent.open('template[data-tpl="selecionar-cidade"]', effectClose, 200);
       init(swiperPlanos, dataLocation, localizacao);
     })
   );
