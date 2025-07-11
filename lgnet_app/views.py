@@ -69,7 +69,7 @@ def homeView(request):
     info_empresa = InformacoesEmpresa.objects.all()
     explorar = ExploreMais.objects.all()
     banners = Banners.objects.all()
-    cidades = Cidades.objects.all()
+    cidades = Cidades.objects.all().order_by("nome")
 
     context = {
         'planos': planos,

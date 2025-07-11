@@ -1,6 +1,6 @@
 {% load static %}
 <div
-  class="sticky top-0 left-0 z-40 p-3 bg-primary-variant dark:bg-dark-variant flex justify-center items-center transition-colors duration-300"
+  class="sticky top-0 left-0 z-40 p-3 bg-primary-variant dark:bg-dark-variant flex justify-center items-center transition-colors duration-300 dark:shadow-[0_0_1px_1px_rgba(255,255,255,.1)]"
 >
   <div class="flex justify-between container flex-auto hover:text">
     <div
@@ -25,16 +25,12 @@
       <p data-local class="inline-block">Patos-PB</p>
       <i class="fa-solid fa-chevron-down text-[10px] ml-1 mb-[2px]"></i>
     </div>
-    <div class="flex items-center justify-center gap-[25px]">
-      <ol
-        class="flex gap-10 *:text-sm *:font-semibold text-white **:tracking-tighter **:cursor-pointer **:hover:text-primary dark:**:hover:text-secondary"
-      >
-        <li><a href="#">1 - Menu</a></li>
-        <li><a href="#planos">2 - Conteúdo</a></li>
-        <li><a href="#footer">3 - Rodapé</a></li>
-      </ol>
-      {% include 'lgnet_app/partials/acessibilidade.html' %} 
-    </div>
+
+    {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
+    <button class="cursor-pointer flex lg:hidden gap-1 items-center text-light-background hover:text-primary dark:hover:text-secondary transition-all">
+      <p class="font-semibold text-sm">Menu de Acessibilidade</p>
+      <i class="fa-solid fa-angle-right"></i>
+    </button>
   </div>
 </div>
 <header id="header" class="flex flex-col shadow-lg">
@@ -42,53 +38,37 @@
     class="bg-[#ffffff] dark:bg-dark-variant p-4 flex justify-center transition-colors duration-300"
   >
     <div class="text-[#ffffff] container flex-auto">
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center [&>nav]:hidden [&>div]:hidden [&>nav]:lg:flex [&>div]:lg:flex">
         <a
           href="/"
           class="*:w-20 *:h-12 **:fill-primary-variant dark:**:fill-white"
         >
           {% include 'lgnet_app/partials/logo.html' %}
         </a>
-        <nav class="flex gap-6 items-center">
-          <ul
-            class="flex gap-4 text-neutral-400 font-semibold **:hover:*:text-primary-variant dark:**:hover:*:text-white"
-          >
-            <li>
-              <a href="#" class="relative group">Sobre
-                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="relative group">Planos
-                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="relative group">Autoatendimento
-                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="relative group">Explorar
-                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="relative group">Contato
-                <span class="absolute left-1/2 -bottom-1 w-0 h-[2px] bg-primary-variant dark:bg-[#ffffff] rounded-full transition-all duration-300 group-hover:w-[80%] group-hover:translate-x-[-50%]"></span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="flex gap-4 items-center">
-          <a
-            class="text-[#ffffff] font-semibold text-sm bg-primary-variant :hover:transition-colors duration-300 hover:bg-primary-hover py-3 px-5 rounded-full **:fill-[#ffffff] dark:bg-[#ffffff] dark:text-dark-variant dark:hover:bg-secondary dark:hover:text-secondary-variant dark:**:fill-secondary-variant flex items-center gap-[6px]"
-            href="#"
-          >
-            {% include 'lgnet_app/partials/user.html' %} Minha LGNET
-          </a>
-        </div>
+        {% include 'lgnet_app/partials/header_tools/menu.html' %}
+        <button class="cursor-pointer p-2 flex lg:hidden flex-col gap-[6px] *:h-[2px] *:w-6 *:bg-primary-variant hover:*:bg-primary-hover *:dark:bg-light-background hover:*:dark:bg-secondary *:rounded-full transition-colors">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
       </div>
     </div>
   </div>
 </header>
+
+<div data-menu-acessibilidade-mobile class="fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background flex flex-col gap-4 items-start ">
+  <div class="flex justify-between w-full bg-primary-variant text-light-background px-4 py-5">
+    <h2 class="font-semibold">Menu de Acessibilidade</h2>
+    <span class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
+  </div>
+  <div class="w-full *:!flex *:flex-col *:!items-start 
+  *:[&>ol]:w-full *:[&>ol]:flex-col *:[&>ol]:text-primary-variant *:[&>ol]:gap-4 *:[&>ol>li]:p-4 *:[&>ol>li]:border-b-2 *:[&>ol>li]:border-b-neutral-100
+  *:[&_button]:text-red-600 *:[&_button]:pl-0
+  ">
+    {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
+  </div>
+</div>
+
+<div data-menu-mobile>
+  
+</div>
