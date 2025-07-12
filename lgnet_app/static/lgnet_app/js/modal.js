@@ -18,9 +18,13 @@ export function modal() {
     timeout = time;
   }
 
-  function closeModal() {
+  function closeModal(func=null) {
     if(callback && typeof callback === "function") {
       callback();
+    }
+
+    if(func && typeof func === "function") {
+      func();
     }
 
     setTimeout(() => {

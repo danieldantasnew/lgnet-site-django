@@ -57,22 +57,67 @@
 </header>
 
 <template data-tpl="acessibilidade">
-  <div data-menu-acessibilidade-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background flex flex-col gap-4 items-start ">
-    <div class="flex justify-between w-full bg-primary-variant text-light-background px-4 py-5">
+  <div data-menu-acessibilidade-mobile class="
+    animate-slideIn 
+    fixed z-50 
+    top-0 
+    right-0 
+    h-full 
+    w-[70vw] 
+    bg-light-background 
+    dark:bg-dark-primary 
+    flex 
+    flex-col 
+    gap-4 
+    items-start 
+    dark:shadow-[1px_0_4px_4px_rgba(255,255,255,.05)]
+  ">
+    <div class="flex justify-between w-full  bg-primary-variant dark:bg-dark-variant text-light-background px-6 py-5">
       <h2 class="font-semibold">Menu de Acessibilidade</h2>
-      <span class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
+      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
     </div>
-    <div class="w-full *:!flex *:flex-col *:!items-start 
-    *:[&>ol]:w-full *:[&>ol]:flex-col *:[&>ol]:text-primary-variant *:[&>ol]:gap-4 *:[&>ol>li]:p-4 *:[&>ol>li]:border-b-2 *:[&>ol>li]:border-b-neutral-100
-    *:[&_button]:text-red-600 *:[&_button]:pl-0
+    <div class="
+      px-6
+      w-full 
+      *:gap-4 
     ">
-      {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
+    <ol
+    class="
+      w-full 
+      flex 
+      flex-col
+      *:text-sm       
+      *:text-primary-variant 
+      dark:*:text-light-background  
+      *:font-semibold text-white 
+      **:tracking-tighter 
+      *:*:cursor-pointer 
+      *:*:hover:text-primary 
+      dark:*:*:hover:text-secondary
+      *:py-5
+      *:border-b-2
+      *:border-neutral-100
+      dark:*:border-neutral-100/10
+      *:*:py-6
+      *:*:px-3
+      "
+    >
+      <li><a href="#">1 - Menu</a></li>
+      <li><a href="#planos">2 - Conteúdo</a></li>
+      <li><a href="#footer">3 - Rodapé</a></li>
+      <li>
+        <a data-contraste-acessibilidade class="transition-all">
+          <span class="mr-1"><i class="fa-solid fa-circle-half-stroke"></i></span>
+          <span>Alto Contraste</span>
+        </a>
+      </li>
+    </ol>
     </div>
   </div>
 </template>
 
 <template data-tpl="menuMobile">
-  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background flex flex-col gap-4 items-start ">
+  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start ">
     
   </div>
 </template>

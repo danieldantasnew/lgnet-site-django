@@ -1,5 +1,21 @@
+const html = document.documentElement;
+
+export function addDark() {
+  html.classList.add("dark");
+  localStorage.setItem("theme", "dark");
+}
+
+export function removeDark() {
+  html.classList.remove("dark");
+  localStorage.setItem("theme", "light");
+}
+
+export function toggleDark() {
+  if (html.classList.contains("dark")) removeDark();
+  else addDark();
+}
+
 export function darkMode() {
-  const html = document.documentElement;
   const darkOn = document.querySelector("[data-dark-on]");
   const darkOff = document.querySelector("[data-dark-off]");
   const isDark = localStorage.getItem("theme") === "dark";
@@ -9,16 +25,10 @@ export function darkMode() {
   }
 
   if (darkOn) {
-    darkOn.addEventListener("click", () => {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    });
+    darkOn.addEventListener("click", addDark);
   }
 
   if (darkOff) {
-    darkOff.addEventListener("click", () => {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    });
+    darkOff.addEventListener("click", removeDark);
   }
 }
