@@ -1,14 +1,14 @@
 {% load static %}
 {% load components %}
 
-<section class="bg-light-background dark:bg-dark-primary py-26 px-4 transition-colors duration-300">
+<section class="bg-light-background dark:bg-dark-primary py-16 lg:py-26 px-4 transition-colors duration-300">
     <div class="container m-auto flex flex-col gap-14">
         <div>
-            <h1>Facilidade com o nosso autoatendimento<strong>.</strong></h1>
+            <h1 class="mb-1">Facilidade com o nosso autoatendimento<strong>.</strong></h1>
             <p class="sub-text">Resolva tudo o que você precisa em poucos cliques.</p>
         </div>
 
-        <div class="grid grid-cols-6 gap-4">
+        <div class="grid grid-cols-2 sm:!flex sm:flex-wrap gap-4">
             {% for item in autoatendimento %}
                 {% render_autoatendimento icone=item.icone titulo=item.titulo descricao=item.descricao link=item.link %}
             {% endfor %}

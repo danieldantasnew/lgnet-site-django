@@ -1,16 +1,33 @@
   <footer id="footer" class="footer bg-primary-variant text-[#ffffff] dark:bg-dark-variant py-12 px-4">
     {% for item in infoEmpresa.all%}
       <div class="container m-auto flex flex-col gap-13 *:flex">
-        <div class="justify-between items-center">
+        <div class="flex-col items-center gap-3 lg:!gap-0 justify-center lg:!flex-row lg:!justify-between ">
             <a
               href="#"
               class="*:w-24 *:h-14 **:fill-white"
             >
               {% include 'lgnet_app/partials/logo.html' %}
             </a>
-            <p class="text-lg font-semibold">Viva a Evolução!</p>
+            <p class="text-lg font-semibold">{{item.slogan}}</p>
         </div>
-        <div class="gap-14 [&>div>ul]:text-sm [&>div>ul]:text-gray-50 [&>div>ul]:font-medium [&>div>ul]:flex [&>div>ul]:flex-col [&>div>ul]:gap-2 [&>div>ul>li>a]:hover:text-secondary relative">
+        <div class="
+          relative
+          flex-col
+          gap-7 
+          justify-center
+          lg:gap-14 
+          lg:flex-row
+          lg:justify-start
+          [&>div>ul]:text-sm 
+          [&>div>ul]:text-gray-50 
+          [&>div>ul]:font-medium 
+          [&>div>ul]:flex 
+          [&>div>ul]:flex-col 
+          [&>div>ul]:gap-2 
+          [&>div>ul>li>a]:hover:text-secondary
+          [&>div]:text-center
+          lg:[&>div]:text-left
+        ">
           <span class="absolute -top-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
           <div>
             <h3 class="text-xl font-bold mb-3">Institucional</h3>
@@ -33,22 +50,22 @@
           </div>
           <div>
             <h3 class="text-xl font-bold mb-3">Contato</h3>
-              <ul class="text-sm text-gray-50  font-medium flex flex-col gap-2">
+              <ul class="text-sm text-gray-50 font-medium flex flex-col gap-2">
                 <li>
-                  <a class="flex items-center gap-[6px]" href="#">
+                  <a class="flex items-center justify-center lg:!justify-start gap-[6px]" href="#">
                     <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant dark:bg-primary-variant-2 dark:text-secondary"><i class="fa-regular fa-envelope"></i></span>
                     {{item.email}}
                   </a>
                 </li>
                 <li>
-                  <a class="flex items-center gap-[6px]" href="#">
+                  <a class="flex items-center justify-center lg:!justify-start gap-[6px]" href="#">
                     <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-lg text-primary-variant dark:bg-primary-variant-2 dark:text-secondary"><i class="fa-solid fa-phone"></i></span>
                     {{item.contato}}
                   </a>
                 </li>
               </ul>
           </div>
-          <div class="w-full flex flex-col items-end gap-5 text-right">
+          <div class="w-full flex flex-col items-center lg:!items-end gap-5 text-center lg:!text-right">
             <p class="text-[12px] font-medium max-w-106">{{item.endereco_completo}}</p>
             <div class="flex gap-2">
               {% for item in redeSocial.all %}
@@ -60,9 +77,9 @@
           </div>
           <span class="absolute -bottom-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
         </div>
-        <div class="justify-between text-sm">
+        <div class="flex-col lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm">
           <p>® 2025 LGNET. Todos os direitos reservados.</p>
-          <ul class="flex gap-2 font-medium [&>li>a:hover]:underline">
+          <ul class="flex gap-2 font-medium [&>li>a:hover]:underline text-xs">
             <li><a href="#">Termos e condições</a></li>
             <li class="before:h-1 before:w-1 before:bg-[#ffffff] before:rounded-full before:inline-block after:h-1 after:w-1 after:bg-[#ffffff] after:rounded-full after:inline-block flex items-center gap-2"><a href="#">Política de privacidade</a></li>
             <li><a href="#">Cookies</a></li>

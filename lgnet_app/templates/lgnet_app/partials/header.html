@@ -2,9 +2,9 @@
 <div
   class="sticky top-0 left-0 z-40 p-3 bg-primary-variant dark:bg-dark-variant flex justify-center items-center transition-colors duration-300 dark:shadow-[0_0_1px_1px_rgba(255,255,255,.1)]"
 >
-  <div class="flex justify-between container flex-auto hover:text">
+  <div class="flex justify-between container flex-auto">
     <div
-      class="left-side flex items-center text-[#ffffff] text-[16px] font-semibold hover:text-primary cursor-pointer transition-all hover:**:transition-all hover:**:stroke-primary dark:hover:text-secondary dark:hover:**:stroke-secondary"
+      class="left-side flex items-center text-[#ffffff] text-sm md:text-[16px] font-semibold hover:text-primary cursor-pointer transition-all hover:**:transition-all hover:**:stroke-primary dark:hover:text-secondary dark:hover:**:stroke-secondary"
     >
       <svg
         class="mr-[3px] mb-[4px] h-4 w-4"
@@ -23,13 +23,13 @@
         <circle cx="12" cy="10" r="3"></circle>
       </svg>
       <p data-local class="inline-block">Patos-PB</p>
-      <i class="fa-solid fa-chevron-down text-[10px] ml-1 mb-[2px]"></i>
+      <i class="fa-solid fa-chevron-down text-[8px] md:text-[10px] ml-1 mb-[2px]"></i>
     </div>
 
     {% include "lgnet_app/partials/header_tools/nav_acessibilidade.html" %}
     <button data-btn-acessibilidade class="cursor-pointer flex lg:hidden gap-1 items-center text-light-background hover:text-primary dark:hover:text-secondary transition-all">
-      <p class="font-semibold text-sm">Menu de Acessibilidade</p>
-      <i class="fa-solid fa-angle-right"></i>
+      <p class="font-semibold text-[13px]">Menu de Acessibilidade</p>
+      <i class="fa-solid fa-angle-right text-xs"></i>
     </button>
   </div>
 </div>
@@ -63,7 +63,7 @@
     top-0 
     right-0 
     h-full 
-    w-[70vw] 
+    w-[75vw] 
     bg-light-background 
     dark:bg-dark-primary 
     flex 
@@ -72,12 +72,12 @@
     items-start 
     dark:shadow-[1px_0_4px_4px_rgba(255,255,255,.05)]
   ">
-    <div class="flex justify-between w-full  bg-primary-variant dark:bg-dark-variant text-light-background px-6 py-5">
-      <h2 class="font-semibold">Menu de Acessibilidade</h2>
-      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-[28px]"></i></span>
+    <div class="flex items-center justify-between w-full gap-2 bg-primary-variant dark:bg-dark-variant text-light-background pl-6 pr-3 py-5">
+      <h2 class="font-semibold text-sm">Menu de Acessibilidade</h2>
+      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
     </div>
     <div class="
-      px-6
+      px-2
       w-full 
       *:gap-4 
     ">
@@ -99,12 +99,13 @@
       *:border-neutral-100
       dark:*:border-neutral-100/10
       *:*:py-6
-      *:*:px-3
+      *:*:pl-6
+      *:*:pr-3
       "
     >
-      <li><a href="#">1 - Menu</a></li>
-      <li><a href="#planos">2 - Conteúdo</a></li>
-      <li><a href="#footer">3 - Rodapé</a></li>
+      <li><a onclick="document.modalComponent.close()" href="#">1 - Menu</a></li>
+      <li><a onclick="document.modalComponent.close()" href="#planos">2 - Conteúdo</a></li>
+      <li><a onclick="document.modalComponent.close()" href="#footer">3 - Rodapé</a></li>
       <li>
         <a data-contraste-acessibilidade class="transition-all">
           <span class="mr-1"><i class="fa-solid fa-circle-half-stroke"></i></span>
@@ -117,13 +118,13 @@
 </template>
 
 <template data-tpl="menuMobile">
-  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start
+  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[75vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start
   ">
-    <div class="bg-primary-variant dark:bg-dark-variant flex justify-end w-full px-6 py-5">
-
-      <span onclick="document.modalComponent.close()" class="cursor-pointer text-light-background hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-[28px]"></i></span>
+    <div class="flex items-center justify-between w-full gap-2 bg-primary-variant dark:bg-dark-variant text-light-background pl-6 pr-3 py-5">
+      <h2 class="font-semibold text-sm">Menu</h2>
+      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
     </div>
-    <div class="px-6 w-full flex flex-col gap-8 mt-6
+    <div class="pl-6 pr-3 w-full flex flex-col gap-8 mt-6
       [&>nav>ul>li]:pb-5
       [&>nav>ul]:flex-col 
       [&>nav>ul]:gap-8

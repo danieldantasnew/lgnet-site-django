@@ -118,6 +118,7 @@ class RedeSocial(models.Model):
     
 class InformacoesEmpresa(models.Model):
     nome_empresa = models.CharField("Nome da empresa", max_length=50)
+    slogan = models.CharField("Slogan", default="", max_length=80)
     endereco_completo = models.TextField("Endereço completo")
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
