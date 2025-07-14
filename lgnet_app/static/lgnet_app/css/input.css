@@ -125,7 +125,8 @@
     @apply font-bold;
     @apply text-primary;
     @apply dark:text-[#ffffff];
-    @apply text-[30px];
+    @apply text-2xl;
+    @apply lg:text-[30px];
   }
 
   .container h1 > strong {

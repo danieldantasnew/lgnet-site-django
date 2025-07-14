@@ -74,7 +74,7 @@
   ">
     <div class="flex justify-between w-full  bg-primary-variant dark:bg-dark-variant text-light-background px-6 py-5">
       <h2 class="font-semibold">Menu de Acessibilidade</h2>
-      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
+      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-[28px]"></i></span>
     </div>
     <div class="
       px-6
@@ -117,7 +117,21 @@
 </template>
 
 <template data-tpl="menuMobile">
-  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start ">
-    
+  <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[70vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start
+  ">
+    <div class="bg-primary-variant dark:bg-dark-variant flex justify-end w-full px-6 py-5">
+
+      <span onclick="document.modalComponent.close()" class="cursor-pointer text-light-background hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-[28px]"></i></span>
+    </div>
+    <div class="px-6 w-full flex flex-col gap-8 mt-6
+      [&>nav>ul>li]:pb-5
+      [&>nav>ul]:flex-col 
+      [&>nav>ul]:gap-8
+      [&>nav>ul]:w-full       
+      [&>nav>ul>li]:border-b-2
+      [&>nav>ul>li]:border-neutral-100
+      dark:[&>nav>ul>li]:border-neutral-100/10 ">
+        {% include 'lgnet_app/partials/header_tools/menu.html' %}
+    </div>
   </div>
 </template>

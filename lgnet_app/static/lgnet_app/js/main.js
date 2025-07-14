@@ -15,6 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
       nextEl: ".swiper-plans-button-next",
       prevEl: ".swiper-plans-button-prev",
     },
+    breakpoints: {
+    1023: {
+      slidesPerView: 3,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    0: {
+      slidesPerView: 1,
+    },
+  },
   });
 
   acessibilidade();
