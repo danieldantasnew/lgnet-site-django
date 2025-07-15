@@ -1,13 +1,14 @@
 {% load static %}
 
-<div data-cidade class="fixed top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-[#ffffff] dark:bg-dark-variant min-h-[370px] min-w-[320px] h-[50vh] w-[50vw] md:min-h-90 md:h-90 md:w-150 rounded-lg z-50 pt-16 pb-8 px-8 animate-fadeIn dark:shadow-[0_0_0_2px_rgba(255,255,255,1)]">
+<div data-cidade class="fixed top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-[#ffffff] dark:bg-dark-variant w-[90vw] max-w-[390px] md:max-w-full md:w-150 rounded-lg z-50 pt-24 pb-6 px-8 animate-fadeIn dark:shadow-[0_0_0_2px_rgba(255,255,255,1)]">
     <i data-close-modal class="fa-regular fa-circle-xmark cursor-pointer text-3xl text-gray-400 hover:text-primary-variant dark:hover:text-secondary absolute top-4 right-4 transition-all"></i>
     {% include 'lgnet_app/partials/loading_cidade.html' %}
-    <div data-content-info class="flex flex-col justify-center items-start gap-4">
+    <div data-content-info class="flex flex-col justify-center items-start gap-6 lg:gap-4">
+        <div class="w-full *:w-36 *:h-auto dark:**:fill-secondary flex justify-center mt-4 absolute top-4 translate-x-[-50%] left-[50%]">{% include 'lgnet_app/partials/logo.html' %}</div>
         <div class="dark:text-[#ffffff] text-black font-medium">
             {% include "lgnet_app/partials/button_ativar_localizacao.html" %}
             <h2 class="text-xl md:text-3xl mt-3 md:mt-6 mb-[2px]">Em qual cidade você está?</h2>
-            <p class="text-[#535354] dark:text-secondary text-xs md:text-sm">Informe sua cidade e aproveite ofertas personalizadas para você.</p>
+            <p class="text-[#535354] dark:text-secondary text-sm">Informe sua cidade e aproveite ofertas personalizadas para você.</p>
         </div>
         <div class="relative w-full">
             <input data-input-cidade type="text" id="floating_outlined" class="mt-1 block font-semibold px-2.5 pb-2.5 pt-4 w-full text-sm text-[#101828] bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-[#ffffff] dark:border-gray-200 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-primary-variant peer" placeholder=" " />
@@ -31,8 +32,8 @@
                 </ul>
             </div>
         </div>
-        <button data-button-cidade class="bg-primary-variant text-[#ffffff] dark:bg-secondary dark:text-secondary-variant rounded-full self-end p-2 h-10 w-10 md:h-12 md:w-12 cursor-pointer hover:bg-primary-hover dark:hover:bg-secondary-hover flex items-center justify-center">
-            <i class="fa-solid fa-arrow-right text-[22px] md:text-2xl mt-1"></i>
+        <button data-button-cidade class="bg-primary-variant text-[#ffffff] dark:bg-secondary dark:text-secondary-variant rounded-full self-end p-2 h-12 w-12 cursor-pointer hover:bg-primary-hover dark:hover:bg-secondary-hover flex items-center justify-center">
+            <i class="fa-solid fa-arrow-right text-2xl"></i>
         </button>
     </div>
 </div>
