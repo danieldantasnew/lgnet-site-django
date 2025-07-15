@@ -53,13 +53,13 @@
               <ul class="text-sm text-gray-50 font-medium flex flex-col gap-2">
                 <li>
                   <a class="flex items-center justify-center lg:!justify-start gap-[6px]" href="#">
-                    <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant dark:bg-primary-variant-2 dark:text-secondary"><i class="fa-regular fa-envelope"></i></span>
+                    <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant dark:bg-amber-100 dark:text-secondary-variant"><i class="fa-regular fa-envelope"></i></span>
                     {{item.email}}
                   </a>
                 </li>
                 <li>
                   <a class="flex items-center justify-center lg:!justify-start gap-[6px]" href="#">
-                    <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-lg text-primary-variant dark:bg-primary-variant-2 dark:text-secondary"><i class="fa-solid fa-phone"></i></span>
+                    <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-lg text-primary-variant dark:bg-amber-100 dark:text-secondary-variant"><i class="fa-solid fa-phone"></i></span>
                     {{item.contato}}
                   </a>
                 </li>
@@ -69,7 +69,7 @@
             <p class="text-[12px] font-medium max-w-106">{{item.endereco_completo}}</p>
             <div class="flex gap-2">
               {% for item in redeSocial.all %}
-                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-[#ffffff] hover:text-[22px] dark:bg-primary-variant-2 dark:text-secondary dark:hover:bg-secondary dark:hover:text-secondary-variant" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
+                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-[#ffffff] hover:text-[22px] dark:bg-amber-100 dark:text-secondary-variant dark:hover:bg-secondary dark:hover:text-secondary-variant" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
                   {{item.icone|safe}}
                 </a>
               {% endfor %}
@@ -77,9 +77,9 @@
           </div>
           <span class="absolute -bottom-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
         </div>
-        <div class="flex-col lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm">
+        <div class="flex-col-reverse lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm">
           <p>® 2025 LGNET. Todos os direitos reservados.</p>
-          <ul class="flex gap-2 font-medium [&>li>a:hover]:underline text-xs">
+          <ul class="flex gap-2 font-medium [&>li>a:hover]:underline text-[10px] sm:text-xs">
             <li><a href="#">Termos e condições</a></li>
             <li class="before:h-1 before:w-1 before:bg-[#ffffff] before:rounded-full before:inline-block after:h-1 after:w-1 after:bg-[#ffffff] after:rounded-full after:inline-block flex items-center gap-2"><a href="#">Política de privacidade</a></li>
             <li><a href="#">Cookies</a></li>

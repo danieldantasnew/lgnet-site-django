@@ -1,11 +1,12 @@
-{%load static%}
+{% load static %}
 <section class="px-4 py-18 flex items-center">
-    <div class="container m-auto grid grid-cols-[1fr_1.1fr] py-16 gap-6 relative">
+    <div class="container m-auto grid grid-cols-1 lg:!grid-cols-[1fr_1.1fr] py-16 gap-6 relative">
         <img class="absolute -top-8 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
         <div class="self-center justify-self-center">
             <h1 class="text-4xl">Acesso fácil e rápido a tudo o que você precisa<strong>.</strong></h1>
             <p class="sub-text mt-3 text-sm">Mais facilidade: consulte faturas, revise seus contratos, personalize o Wi-Fi e muito mais direto pelo app.</p>
             <div class="flex flex-col gap-12 mt-12">
+                <span class="lg:hidden">{% include "lgnet_app/partials/utilities/device.html" %}</span>
                 {% for mobile in mobiles %}
                     <div class="flex gap-6 relative text-2xl">
                         <span class="self-center h-12 w-12 p-4 rounded-lg bg-primary-variant/10 text-primary-variant flex items-center justify-center dark:text-secondary dark:bg-secondary/10 ">{{mobile.icone|safe}}</span>
@@ -34,15 +35,7 @@
                 </a>
             </div>
         </div>
-        <div class="relative mx-auto border-neutral-900 dark:border-gray-700 bg-neutral-900 dark:bg-gray-700 border-[14px] rounded-[2.5rem] h-[560px] w-[300px] shadow-lg dark:shadow-gray-800">
-            <div class="w-[148px] h-[18px] bg-neutral-900 dark:bg-gray-700  top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-            <div class="h-[46px] w-[3px] bg-neutral-900 dark:bg-gray-700  absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-            <div class="h-[46px] w-[3px] bg-neutral-900 dark:bg-gray-700  absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-            <div class="h-[64px] w-[3px] bg-neutral-900 dark:bg-gray-700  absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-            <div class="rounded-[2rem] overflow-hidden w-[272px] h-full bg-white dark:bg-gray-700">
-                <img src="{% static 'lgnet_app/images/app.jpg' %}" class="hidden dark:block w-[272px] h-full" alt="app_lgnet">
-            </div>
-        </div>
+        <span class="hidden lg:block">{% include "lgnet_app/partials/utilities/device.html" %}</span>
         <img class="absolute -bottom-8 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
     </div>
 </section>

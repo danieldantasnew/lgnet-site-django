@@ -1,16 +1,16 @@
-<section class="bg-light-background dark:bg-dark-primary px-4">
+<section id="explorar" class="bg-light-background dark:bg-dark-primary px-4">
     <div class="container m-auto py-16 ">
         <h1>Explore Mais<strong>.</strong></h1>
         <p class="sub-text">Localize a loja mais próxima, tire dúvidas no FAQ e conheça nossas oportunidades.</p>
-        <div class="flex gap-10 mt-8">
+        <div class="flex gap-10 mt-8 overflow-x-auto overflow-y-hidden">
             {% for item in explorar.all %}
-                <div class="bg-gray-500 h-102 rounded-xl p-4 relative transition-all duration-300 group flex-[1_1_0%] hover:flex-[3_1_0%]">
+                <div class="bg-gray-500 h-102 rounded-xl p-4 relative transition-all duration-300 group lg:flex-[1_1_0%] lg:hover:flex-[3_1_0%]">
                     <h2 class="relative font-semibold text-2xl text-[#ffffff]">
                         <span class="inline-block h-[3px] w-8 bg-[#ffffff] absolute -bottom-[2px] left-0 rounded-sm"></span>
                         {{item.titulo}}
                     </h2>
-                    <p class="hidden group-hover:block mt-4">{{item.descricao}}</p>
-                    <a class="hidden group-hover:block absolute bottom-4 left-4 font-semibold rounded-sm transition-all py-1 px-3 bg-[#ffffff] text-primary-variant group/botao hover:bg-primary-variant hover:text-[#ffffff]" href="{{item.link}}">
+                    <p class="block lg:hidden group-hover:block mt-4">{{item.descricao}}</p>
+                    <a class="block lg:hidden group-hover:block absolute bottom-4 left-4 font-semibold rounded-sm transition-all py-1 px-3 bg-[#ffffff] text-primary-variant group/botao hover:bg-primary-variant hover:text-[#ffffff]" href="{{item.link}}">
                         Explorar
                         <i class="fa-solid fa-arrow-right-long group-hover/botao:translate-x-1 transition-all duration-700 text-sm"></i>
                     </a>

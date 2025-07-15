@@ -79,6 +79,8 @@
     <div class="
       px-2
       w-full 
+      h-full 
+      overflow-auto
       *:gap-4 
     ">
     <ol
@@ -124,7 +126,7 @@
       <h2 class="font-semibold text-lg">Menu</h2>
       <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
     </div>
-    <div class="pl-6 pr-3 w-full flex flex-col gap-8 mt-6
+    <div class="pl-6 pr-3 w-full h-full overflow-auto flex flex-col gap-8 mt-6
       [&>nav>ul>li]:pb-5
       [&>nav>ul]:flex-col 
       [&>nav>ul]:gap-8
