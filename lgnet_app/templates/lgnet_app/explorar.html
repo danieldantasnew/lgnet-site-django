@@ -2,7 +2,7 @@
     <div class="container m-auto py-16 ">
         <h1>Explore Mais<strong>.</strong></h1>
         <p class="sub-text">Localize a loja mais próxima, tire dúvidas no FAQ e conheça nossas oportunidades.</p>
-        <div class="flex gap-10 mt-8 overflow-x-auto overflow-y-hidden">
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:gap-10 mt-8">
             {% for item in explorar.all %}
                 <div class="bg-gray-500 h-102 rounded-xl p-4 relative transition-all duration-300 group lg:flex-[1_1_0%] lg:hover:flex-[3_1_0%]">
                     <h2 class="relative font-semibold text-2xl text-[#ffffff]">
