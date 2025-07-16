@@ -1,4 +1,4 @@
-import { buscarPlanos } from "./buscarPlanos.js";
+import buscarPlanos from "./buscarPlanos.js";
 
 function haversine(lat1, lon1, lat2, lon2) {
   const toRadians = (angle) => (angle * Math.PI) / 180;

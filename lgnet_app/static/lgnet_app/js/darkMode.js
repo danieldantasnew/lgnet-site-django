@@ -15,7 +15,7 @@ export function toggleDark() {
   else addDark();
 }
 
-export function darkMode() {
+export default function darkMode() {
   const darkOn = document.querySelector("[data-dark-on]");
   const darkOff = document.querySelector("[data-dark-off]");
   const isDark = localStorage.getItem("theme") === "dark";

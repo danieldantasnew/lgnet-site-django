@@ -1,4 +1,4 @@
-export function dropdown() {
+export default function dropdown() {
   const button = document.querySelector("[data-dropdown='button']");
   const dropdown = document.querySelector("[data-dropdown='dropdown']");
   const close = document.querySelector("[data-dropdown='close']");

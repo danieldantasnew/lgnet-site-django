@@ -1,9 +1,9 @@
-import { darkMode } from "./darkMode.js";
-import { modal } from "./modal.js";
-import { dropdown } from "./dropdown.js";
-import { banners } from "./banners.js";
-import { planos } from "./planos.js";
-import { selecionar_cidade } from "./selecionarCidade.js";
+import darkMode from "./darkMode.js";
+import modal from "./modal.js";
+import dropdown from "./dropdown.js";
+import banners from "./banners.js";
+import planos from "./planos.js";
+import selecionar_cidade from "./selecionarCidade.js";
 import acessibilidade from "./acessibilidade.js";
 import menuMobile from "./menuMobile.js";
 

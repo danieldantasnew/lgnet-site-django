@@ -1,4 +1,4 @@
-export function planos(swiperPlanos) {
+export default function planos(swiperPlanos) {
     function checkDisabledButtons(parentElement) {
       const disabledButtons = parentElement.querySelectorAll(
         ".swiper-button-disabled"

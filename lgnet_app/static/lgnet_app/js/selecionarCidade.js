@@ -1,10 +1,9 @@
-import { ativarLocalizacao } from "./ativarLocalizacao.js";
-import { buscarPlanos } from "./buscarPlanos.js";
+import {ativarLocalizacao} from "./ativarLocalizacao.js";
+import buscarPlanos from "./buscarPlanos.js";
 
 function init(swiperPlanos, dataLocation, localizacao) {
   const dropdown = document.querySelector("[data-dropdown-cidade]");
   const input = document.querySelector("[data-input-cidade]");
-  const buttonsModal = document.querySelectorAll("[data-close-modal]");
   const listDropDown = dropdown.querySelectorAll("li");
   const button = document.querySelector("[data-button-cidade]");
   dataLocation = JSON.parse(localStorage.getItem("data_location"));
@@ -20,12 +19,6 @@ function init(swiperPlanos, dataLocation, localizacao) {
 
   if (dataLocation)
     input.value = `${dataLocation.city} - ${dataLocation.state}`;
-
-  buttonsModal.forEach((item) =>
-    item.addEventListener("click", () => {
-      document.modalComponent.close();
-    })
-  );
 
   const hideDropdown = () => {
     dropdown.classList.add("hidden");
@@ -132,7 +125,7 @@ function effectClose() {
 }
 
 
-export function selecionar_cidade(swiperPlanos) {
+export default function selecionar_cidade(swiperPlanos) {
   const localizacao = document.querySelectorAll("[data-local]");
   let dataLocation = JSON.parse(localStorage.getItem("data_location"));
   if (dataLocation) {

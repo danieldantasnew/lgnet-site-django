@@ -1,4 +1,4 @@
-export function modal() {
+export default function modal() {
   const modal = document.querySelector("[data-modal]");
 
   if (!modal) return;

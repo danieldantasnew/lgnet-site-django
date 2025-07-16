@@ -1,4 +1,4 @@
-export function banners() {
+export default function banners() {
   const progressCircle = document.querySelector(".autoplay-progress svg");
   const progressContent = document.querySelector(".autoplay-progress span");
   const swiper = new Swiper(".mySwiper", {
