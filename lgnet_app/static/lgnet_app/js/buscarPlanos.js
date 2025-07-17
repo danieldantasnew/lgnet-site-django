@@ -3,7 +3,8 @@ import contratarPlano from "./contratarPlano.js";
 export default function buscarPlanos(cidade) {
   const container = document.getElementById("planos-container");
 
-  fetch(`/api/planos/?cidade=${encodeURIComponent(cidade)}`)
+  if(container) {
+      fetch(`/api/planos/?cidade=${encodeURIComponent(cidade)}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro ao buscar dados.");
@@ -84,4 +85,5 @@ export default function buscarPlanos(cidade) {
       console.error(error);
       container.innerHTML = "<p>Erro ao carregar planos.</p>";
     });
+  }
 }

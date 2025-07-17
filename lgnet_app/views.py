@@ -2,6 +2,10 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, ExploreMais, Banners, Cidades
 
+info_empresa = InformacoesEmpresa.objects.all()
+redes_sociais = RedeSocial.objects.all()
+cidades = Cidades.objects.all().order_by("nome")
+
 def homeView(request):
     planos = Planos.objects.all()
     essenciais = ServicosEssenciais.objects.all()
@@ -65,11 +69,9 @@ def homeView(request):
             "span": '',
         },
     ]
-    redes_sociais = RedeSocial.objects.all()
-    info_empresa = InformacoesEmpresa.objects.all()
+
     explorar = ExploreMais.objects.all()
     banners = Banners.objects.all()
-    cidades = Cidades.objects.all().order_by("nome")
 
     context = {
         'planos': planos,
@@ -126,3 +128,20 @@ def planos_api(request):
         })
 
     return JsonResponse(data, safe=False)
+
+def sobreView(request):
+    context = {
+        'infoEmpresa': info_empresa,
+        'redeSocial': redes_sociais,
+        'cidades': cidades,
+    }
+
+    return render(request, 'lgnet_app/sobre.html', context)
+
+def contatoView(request):
+    context = {
+        'infoEmpresa': info_empresa,
+        'redeSocial': redes_sociais,
+        'cidades': cidades,
+    }
+    return render(request, 'lgnet_app/contato.html', context)

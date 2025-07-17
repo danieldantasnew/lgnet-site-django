@@ -118,6 +118,7 @@
 
 @utility container {
   max-width: 1240px !important;
+  margin: auto;
 }
 
 @layer components {
