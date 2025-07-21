@@ -30,7 +30,7 @@ export default function buscarPlanos(cidade) {
           html += `
               <div class="swiper-slide max-w-[280px] !mx-4 !bg-transparent">
                 <div
-                  class="rounded-lg bg-[#ffffff] shadow-[0_0_1px_1.5px_rgba(0,0,0,.1)] overflow-hidden flex flex-col gap-4 dark:bg-dark-variant dark:shadow-[0_0_1px_1.5px_rgb(255,255,255)]"
+                  class="rounded-lg bg-[#ffffff] shadow-[0_0_2px_1px_rgba(0,0,0,.05)] overflow-hidden flex flex-col gap-4 dark:bg-dark-variant dark:shadow-[0_0_1px_1.5px_rgb(255,255,255)]"
                 >
                   <div class="px-4 py-6">
                     <div

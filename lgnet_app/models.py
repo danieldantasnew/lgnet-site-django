@@ -133,6 +133,7 @@ class InformacoesEmpresa(models.Model):
         return f"{self.nome_empresa}"
         
 class ExploreMais(models.Model):
+    imagem = models.ImageField("Imagem do Cartão", default=None, upload_to="explorar/", height_field=None, width_field=None, max_length=None)
     titulo = models.CharField("Título", max_length=50)
     descricao = models.TextField("Descrição")
     link = models.CharField("Rota", max_length=20)

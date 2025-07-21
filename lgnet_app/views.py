@@ -54,13 +54,13 @@ def homeView(request):
             "icone": '<i class="fa-solid fa-file-invoice-dollar"></i>',
             "titulo": "Veja suas faturas",
             "descricao": "Acompanhe suas faturas em tempo real, com histórico completo e detalhado.",
-            "span": '<span class="w-full h-[2px] bg-primary-variant/10 content-[''] inline-block absolute -bottom-6 rounded-full"></span>',
+            "span": '<span class="w-full h-[2px] bg-primary-variant/10 dark:bg-secondary/10 content-[''] inline-block absolute -bottom-6 rounded-full"></span>',
         },
         {
             "icone": '<i class="fa-solid fa-folder-open"></i>',
             "titulo": "Acesse seus contratos",
             "descricao": "Visualize seus contratos sempre que precisar, com segurança e praticidade.",
-            "span": '<span class="w-full h-[2px] bg-primary-variant/10 content-[''] inline-block absolute -bottom-6 rounded-full"></span>',
+            "span": '<span class="w-full h-[2px] bg-primary-variant/10 dark:bg-secondary/10 content-[''] inline-block absolute -bottom-6 rounded-full"></span>',
         },
         {
             "icone": '<i class="fa-solid fa-house-signal"></i>',
