@@ -6,7 +6,7 @@
 @theme {
   --font-myfont: "Montserrat", sans-serif;
   --color-primary: #003465;
-  --color-primary-variant: #1F9FD5;
+  --color-primary-variant: #0B94CF;
   --color-primary-variant-2: #04080B;
   --color-primary-hover: #184c76;
 
@@ -14,7 +14,7 @@
   --color-secondary-variant: #2a2500;
 
   --color-secondary-hover: #c49000;
-  --color-backgroundColor: #F5F5F5;
+  --color-backgroundColor: #F7F7F7;
   --color-light-background: #ffffff;
 
   --color-dark-primary: #232324;
