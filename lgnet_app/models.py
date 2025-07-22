@@ -136,7 +136,7 @@ class ExploreMais(models.Model):
     imagem = models.ImageField("Imagem do Cartão", default=None, upload_to="explorar/", height_field=None, width_field=None, max_length=None)
     titulo = models.CharField("Título", max_length=50)
     descricao = models.TextField("Descrição")
-    link = models.TextField("Rota",)
+    link = models.TextField("Rota",help_text="Define qual o caminho que o card deve ir ao ser clicado, ainda será necessário criar a página que esse caminho leva.")
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 

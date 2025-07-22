@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, ExploreMais, Banners
 
 class DownloadAdmin(admin.ModelAdmin):
@@ -25,7 +26,20 @@ class CidadesAdmin(admin.ModelAdmin):
     ordering = ("nome",)
 
 class ExploreMaisAdmin(admin.ModelAdmin):
-    list_display = ("imagem","titulo", "descricao", "link",)
+    list_display = ("titulo", "imagem", "descricao", "link",)
+    readonly_fields = ["aviso_para_desenvolvedores"]
+
+    fields = ["aviso_para_desenvolvedores","titulo", "imagem", "descricao", "link",]
+
+    def aviso_para_desenvolvedores(self, obj=None):
+        return mark_safe(
+            "<div style='padding:10px; background:#fff3cd; color:#856404; "
+            "border:1px solid #ffeeba; border-radius:5px; margin-bottom:12px;'>"
+            "<strong>⚠️ Aviso:</strong> Este modelo é reservado para desenvolvedores. "
+            "Não altere sem conhecimento técnico.</div>"
+        )
+
+    aviso_para_desenvolvedores.short_description = ''
 
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
     list_display = ("nome_empresa", "endereco_completo", "email", "contato")
