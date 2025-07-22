@@ -5,6 +5,7 @@ from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, Informaco
 info_empresa = InformacoesEmpresa.objects.all()
 redes_sociais = RedeSocial.objects.all()
 cidades = Cidades.objects.all().order_by("nome")
+explorar = ExploreMais.objects.all()
 
 def homeView(request):
     planos = Planos.objects.all()
@@ -70,7 +71,6 @@ def homeView(request):
         },
     ]
 
-    explorar = ExploreMais.objects.all()
     banners = Banners.objects.all()
 
     context = {
@@ -134,6 +134,7 @@ def sobreView(request):
         'infoEmpresa': info_empresa,
         'redeSocial': redes_sociais,
         'cidades': cidades,
+        'explorar': explorar,
     }
 
     return render(request, 'lgnet_app/sobre.html', context)

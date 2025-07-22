@@ -25,7 +25,7 @@ class CidadesAdmin(admin.ModelAdmin):
     ordering = ("nome",)
 
 class ExploreMaisAdmin(admin.ModelAdmin):
-    list_display = ("titulo", "descricao", "link",)
+    list_display = ("imagem","titulo", "descricao", "link",)
 
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
     list_display = ("nome_empresa", "endereco_completo", "email", "contato")

@@ -1,39 +1,45 @@
 <section id="explorar" class="px-4">
-    <div class="container py-16 ">
-        <h1>Explore Mais<strong>.</strong></h1>
-        <p class="sub-text">Localize a loja mais próxima, tire dúvidas no FAQ e conheça nossas oportunidades.</p>
-        <div class="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:gap-10 mt-8">
-            {% for item in explorar.all %}
-                <div class="shadow-[0_0_4px_1px_rgba(0,0,0,.1)] bg-light-background dark:bg-dark-primary h-102 rounded-xl relative transition-all duration-300 group lg:flex-[1_1_0%] overflow-hidden pb-14">
-                    <div class="w-full"><img class="w-full" src="{{item.imagem.url}}" alt="{{item.titulo}}"></div>
-                    <div class="p-4">
-                        <h2 class="relative font-semibold text-xl text-primary-variant-2 dark:text-light-background">
-                            <span class="inline-block h-[3px] w-8 bg-secondary dark:bg-light-background absolute -bottom-[6px] left-0 rounded-sm"></span>
-                            {{item.titulo}}
-                        </h2>
-                        <p title="{{item.descricao}}" class="text-neutral-700 leading-6 lg:text-sm line-clamp-3 mt-4 dark:text-light-background">{{item.descricao}}</p>
-                    </div>
-                                            <a class="
-                            text-sm 
-                            absolute 
-                            bottom-4 
-                            left-4 
-                            font-medium 
-                            rounded-sm 
-                            transition-all 
-                            py-1 
-                            px-2 
-                            text-neutral-600 
-                            hover:text-primary-variant 
-                            dark:hover:text-secondary 
-                            dark:text-light-background 
-                            group/botao" 
-                        href="{{item.link}}">
-                            Explorar
-                            <i class="fa-solid fa-arrow-right-long group-hover/botao:translate-x-1 transition-all duration-700 text-xs"></i>
-                        </a>
-                </div>
-            {% endfor %}
+  <div class="container py-16">
+    <h1>Explore Mais<strong>.</strong></h1>
+    <p class="sub-text">
+      Localize a loja mais próxima, tire dúvidas no FAQ e conheça nossas
+      oportunidades.
+    </p>
+    <div class="h-auto flex gap-10 flex-nowrap mt-8 overflow-x-auto pb-4">
+      {% for item in explorar.all %}
+      <div
+        class="min-w-[280px] shadow-[0_0_4px_1px_rgba(0,0,0,.1)] bg-light-background dark:bg-dark-primary h-102 rounded-xl relative transition-all duration-300 group lg:flex-[1_1_0%] overflow-hidden pb-14"
+      >
+        <div class="w-full">
+          <img class="w-full" src="{{item.imagem.url}}" alt="{{item.titulo}}" />
         </div>
+        <div class="p-4">
+          <h2
+            class="relative font-semibold text-xl text-primary-variant-2 dark:text-light-background"
+          >
+            <span
+              class="inline-block h-[3px] w-8 bg-secondary dark:bg-light-background absolute -bottom-[6px] left-0 rounded-sm"
+            ></span>
+            {{item.titulo}}
+          </h2>
+          <p
+            title="{{item.descricao}}"
+            class="text-neutral-700 leading-6 text-sm line-clamp-3 mt-4 dark:text-light-background"
+          >
+            {{item.descricao}}
+          </p>
+        </div>
+        <a
+          class="text-sm absolute bottom-4 left-4 font-medium rounded-sm transition-all py-1 px-2 text-neutral-600 hover:text-primary-variant dark:hover:text-secondary dark:text-light-background group/botao"
+          href="{{item.link}}"
+        >
+          Explorar
+          <i
+            class="fa-solid fa-arrow-right-long group-hover/botao:translate-x-1 transition-all duration-500 text-xs"
+          ></i>
+        </a>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
