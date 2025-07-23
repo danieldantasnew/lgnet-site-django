@@ -1,6 +1,53 @@
 {% extends 'lgnet_app/base.html' %}
+{% load static %}
 {% block title %}LGNET | Sobre{% endblock %}
 
 {% block content %}
-    {% include 'lgnet_app/partials/explorar.html' %}
+    {% for item in infoEmpresa.all%}
+        <section class="bg-light-background dark:bg-dark-primary">
+            <div class="container">
+                <div>
+                    <img src="{{item.imagem_sobre.url}}" alt="Imagem da empresa">
+                </div>
+                <div>
+                    <h1>Sobre a {{item.nome_empresa}}<strong>.</strong></h1>
+                    <p>{{item.sobre}}</p>
+                </div>
+            </div>
+        </section>
+        <section class="bg-primary-variant dark:bg-dark-variant">
+            <div class="container">
+                <div>
+                    <div>
+                        <span><i class="fa-solid fa-eye"></i></span>
+                        <h3>VISÃO</h3>
+                        <p>{{item.visao}}</p>
+                    </div>
+                    <div>
+                        <span>{% include "lgnet_app/pages/sobre/utilities/alvo.html" %}</span>
+                        <h3>MISSÃO</h3>
+                        <p>{{item.missao}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-light-background dark:bg-dark-primary">
+            <div class="container">
+                <div>
+                    <div>
+                        <h1>Nossa Atuação<strong>.</strong></h1>
+                        <p>{{item.atuacao}}</p>
+                    </div>
+                    <div>
+                        <h1>Nossa força<strong>.</strong></h1>
+                        <p>{{item.forca}}</p>
+                    </div>
+                    <div>
+                        <h1>Nossos Valores<strong>.</strong></h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% include 'lgnet_app/partials/explorar.html' %}
+    {% endfor %}
 {% endblock %}

@@ -115,12 +115,30 @@ class RedeSocial(models.Model):
     def __str__(self):
         return f"{self.nome}"
     
+class Valores(models.Model):
+    icone = models.TextField("Ícone")
+    nome = models.CharField("Nome", max_length=80)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField(auto_now=True)
+    
 class InformacoesEmpresa(models.Model):
     nome_empresa = models.CharField("Nome da empresa", max_length=50)
     slogan = models.CharField("Slogan", default="", max_length=80)
     endereco_completo = models.TextField("Endereço completo")
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
+
+    sobre = models.TextField("Sobre", default="")
+    imagem_sobre = models.ImageField("Imagem da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
+
+    visao = models.CharField("Visão da empresa", max_length=132, default="")
+    missao = models.CharField("Missão da empresa", max_length=132, default="")
+    imagem_visao_missao = models.ImageField("Imagem da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
+
+    atuacao = models.TextField("Atuação", default="")
+    forca = models.TextField("Força", default="")
+    # valores = models.ForeignKey("Valores", verbose_name=("Valores"), on_delete=models.CASCADE, related_name="valores", null=True, blank=True)
+    
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
