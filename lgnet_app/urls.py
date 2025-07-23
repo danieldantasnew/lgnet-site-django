@@ -9,7 +9,7 @@ urlpatterns = [
     path("api/planos/", views.planos_api, name="planos_api"),
     path("sobre", views.sobreView, name="sobre"),
     path("contato", views.contatoView, name="contato"),
-    path('', views.homeView, name='home'),
+    path('', views.inicioView, name='inicio'),
 ]
 
 if settings.DEBUG:

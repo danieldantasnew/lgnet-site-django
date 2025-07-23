@@ -32,7 +32,46 @@ explorar = [
     },
 ]
 
-def homeView(request):
+def planos_api(request):
+    cidade_nome = request.GET.get("cidade")
+
+    if not cidade_nome:
+        return JsonResponse({"error": "Cidade não informada"}, status=400)
+
+    cidade = get_object_or_404(Cidades, nome__iexact=cidade_nome)
+
+    planos = cidade.planos.all()
+
+    data = []
+    for plano in planos:
+        lista_vantagens = []
+        for vantagem in plano.vantagens.all():
+            lista_vantagens.append({
+                "icone": vantagem.icone,
+                "nome": vantagem.nome_vantagem,
+            })
+
+        lista_vantagens.append({
+            "icone": plano.download.icone,
+            "nome": f"Download {plano.download.velocidade}",
+        })
+
+        lista_vantagens.append({
+            "icone": plano.upload.icone,
+            "nome": f"Upload {plano.upload.velocidade}",
+        })
+
+        data.append({
+            "icone": plano.icone,
+            "categoria": plano.categoria,
+            "plano": plano.plano,
+            "vantagens": lista_vantagens,
+            "ordem": plano.ordem,
+        })
+
+    return JsonResponse(data, safe=False)
+
+def inicioView(request):
     planos = Planos.objects.all()
     essenciais = ServicosEssenciais.objects.all()
     vantagens = Vantagens.objects.all()
@@ -112,47 +151,7 @@ def homeView(request):
     }
 
 
-    return render(request, 'lgnet_app/base.html', context)
-
-def planos_api(request):
-    cidade_nome = request.GET.get("cidade")
-
-    if not cidade_nome:
-        return JsonResponse({"error": "Cidade não informada"}, status=400)
-
-    cidade = get_object_or_404(Cidades, nome__iexact=cidade_nome)
-
-    planos = cidade.planos.all()
-
-    data = []
-    for plano in planos:
-        lista_vantagens = []
-        for vantagem in plano.vantagens.all():
-            lista_vantagens.append({
-                "icone": vantagem.icone,
-                "nome": vantagem.nome_vantagem,
-            })
-
-        lista_vantagens.append({
-            "icone": plano.download.icone,
-            "nome": f"Download {plano.download.velocidade}",
-        })
-
-        lista_vantagens.append({
-            "icone": plano.upload.icone,
-            "nome": f"Upload {plano.upload.velocidade}",
-        })
-
-        data.append({
-            "icone": plano.icone,
-            "categoria": plano.categoria,
-            "plano": plano.plano,
-            "destaque": plano.destaque,
-            "vantagens": lista_vantagens,
-            "ordem": plano.ordem,
-        })
-
-    return JsonResponse(data, safe=False)
+    return render(request, 'lgnet_app/pages/principal/index.html', context)
 
 def sobreView(request):
     context = {
@@ -162,7 +161,7 @@ def sobreView(request):
         'explorar': explorar,
     }
 
-    return render(request, 'lgnet_app/sobre.html', context)
+    return render(request, 'lgnet_app/pages/sobre/index.html', context)
 
 def contatoView(request):
     context = {
@@ -170,4 +169,4 @@ def contatoView(request):
         'redeSocial': redes_sociais,
         'cidades': cidades,
     }
-    return render(request, 'lgnet_app/contato.html', context)
+    return render(request, 'lgnet_app/pages/contato/index.html', context)
