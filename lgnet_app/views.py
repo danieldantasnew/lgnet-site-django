@@ -1,11 +1,36 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, ExploreMais, Banners, Cidades
+from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades
 
 info_empresa = InformacoesEmpresa.objects.all()
 redes_sociais = RedeSocial.objects.all()
 cidades = Cidades.objects.all().order_by("nome")
-explorar = ExploreMais.objects.all()
+explorar = [
+    {
+        "imagem": "lgnet_app/images/explorar/escritorios.png",
+        "titulo": "Nossos escritórios",
+        "descricao": "Conheça a localização das nossas unidades e encontre o escritório mais próximo de você.",
+        "link": "escritorios",
+    },
+    {
+        "imagem": "lgnet_app/images/explorar/contratacao.png",
+        "titulo": "Contratação Digital",
+        "descricao": "Solicite a instalação da sua internet sem precisar falar com um atendente.",
+        "link": "contratacao",
+    },
+    {
+        "imagem": "lgnet_app/images/explorar/trabalhe.png",
+        "titulo": "Trabalhe Conosco",
+        "descricao": "Se você busca um ambiente onde possa crescer, aprender e colaborar, esse é o seu lugar.",
+        "link": "https://selecao.lgnetpb.com.br/",
+    },
+    {
+        "imagem": "lgnet_app/images/explorar/faq.png",
+        "titulo": "FAQ",
+        "descricao": "Tire suas dúvidas com rapidez.",
+        "link": "perguntas-frequentes",
+    },
+]
 
 def homeView(request):
     planos = Planos.objects.all()

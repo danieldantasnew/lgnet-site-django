@@ -1,3 +1,4 @@
+{%load static %}
 <section id="explorar" class="px-4">
   <div class="container py-16">
     <h1>Explore Mais<strong>.</strong></h1>
@@ -6,12 +7,12 @@
       oportunidades.
     </p>
     <div class="h-auto flex gap-10 flex-nowrap mt-8 overflow-x-auto pb-4">
-      {% for item in explorar.all %}
+      {% for item in explorar %}
       <div
         class="min-w-[280px] shadow-[0_0_4px_1px_rgba(0,0,0,.1)] bg-light-background dark:bg-dark-primary h-102 rounded-xl relative transition-all duration-300 group lg:flex-[1_1_0%] overflow-hidden pb-14"
       >
         <div class="w-full">
-          <img class="w-full" src="{{item.imagem.url}}" alt="{{item.titulo}}" />
+          <img class="w-full" src="{% static item.imagem %}" alt="{{item.titulo}}" />
         </div>
         <div class="p-4">
           <h2

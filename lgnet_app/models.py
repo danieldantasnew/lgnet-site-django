@@ -51,7 +51,6 @@ class Planos(models.Model):
     icone = models.TextField("Ícone", default='<i class="fa-solid fa-laptop"></i>', help_text="Cole um ícone do FontAwesome ou código SVG")
     categoria = models.CharField("Categoria", max_length=100, help_text="Exemplo: Básico")
     plano = models.CharField("Plano", default="300MEGA", max_length=100)
-    destaque = models.BooleanField(default=False, help_text="marque esta opção se deseja destacar o plano")
     vantagens = models.ManyToManyField(Vantagens, related_name="planos", help_text="Escolha as vantagens incluídas neste plano")
     download = models.ForeignKey(Download, on_delete=models.CASCADE, null=True,
     blank=True, related_name="planos")
@@ -132,20 +131,6 @@ class InformacoesEmpresa(models.Model):
     def __str__(self):
         return f"{self.nome_empresa}"
         
-class ExploreMais(models.Model):
-    imagem = models.ImageField("Imagem do Cartão", default=None, upload_to="explorar/", height_field=None, width_field=None, max_length=None)
-    titulo = models.CharField("Título", max_length=50)
-    descricao = models.TextField("Descrição")
-    link = models.TextField("Rota",help_text="Define qual o caminho que o card deve ir ao ser clicado, ainda será necessário criar a página que esse caminho leva.")
-    criado_em = models.DateTimeField(auto_now_add=True)
-    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
-
-    class Meta:
-        verbose_name = "Explore Mais"
-        verbose_name_plural = "Explore Mais"
-
-    def __str__(self):
-        return f"{self.titulo}"
 
 class Banners(models.Model):
     titulo = models.CharField("Titulo do Banner", max_length=50)
