@@ -18,11 +18,6 @@ export function toggleDark() {
 export default function darkMode() {
   const darkOn = document.querySelector("[data-dark-on]");
   const darkOff = document.querySelector("[data-dark-off]");
-  const isDark = localStorage.getItem("theme") === "dark";
-
-  if (isDark) {
-    html.classList.add("dark");
-  }
 
   if (darkOn) {
     darkOn.addEventListener("click", addDark);

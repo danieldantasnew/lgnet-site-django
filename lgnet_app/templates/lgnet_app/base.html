@@ -57,8 +57,7 @@
     const isDark = localStorage.getItem("theme") === "dark" ||
         (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
     if (isDark) {
-        const preloader = document.getElementById("preloader");
-        if (preloader) preloader.classList.add("dark");
+        document.documentElement.classList.add("dark");
     }
   </script>
 

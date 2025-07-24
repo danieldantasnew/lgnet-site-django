@@ -43,7 +43,7 @@ body {
   z-index: 100;
 }
 
-#preloader.dark {
+.dark #preloader{
   background: #191919;
 }
 
@@ -56,7 +56,7 @@ body {
   animation: spin 1s linear infinite;
 }
 
-#preloader.dark .loader {
+.dark #preloader .loader {
   border: 8px solid #606060;
   border-top: 8px solid #ffcd00;
 }
