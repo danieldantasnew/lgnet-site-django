@@ -1,0 +1,35 @@
+<section class="bg-primary-variant dark:bg-dark-variant py-4">
+    <div class="container lg:!py-10 flex flex-col gap-8 text-light-background">
+        <div class="
+            flex 
+            justify-end 
+            gap-24 
+            *:flex 
+            *:flex-col
+            *:max-w-86
+            *:w-full
+            [&>div>span]:mb-6
+            [&>div>h3]:font-semibold
+            [&>div>h3]:text-xl
+            [&>div>h3]:after:mt-1
+            [&>div>h3]:after:h-1
+            [&>div>h3]:after:w-8
+            [&>div>h3]:after:bg-secondary
+            [&>div>h3]:after:rounded-xs
+            [&>div>h3]:after:block
+            [&>div>p]:mt-4
+        ">
+            <div>
+                <span class="text-4xl "><i class="fa-solid fa-eye"></i></span>
+                <h3>VISÃO</h3>
+                <p>{{item.visao}}</p>
+            </div>
+            <div>
+                <span class="*:h-9 *:w-9">{% include "lgnet_app/pages/sobre/utilities/alvo.html" %}</span>
+                <h3 class="mt-[3.8px]">MISSÃO</h3>
+                <p>{{item.missao}}</p>
+            </div>
+        </div>
+        <div class="rounded-lg overflow-hidden max-h-140 h-full"><img src="{{item.imagem_visao_missao.url}}" alt="Imagem da {{item.nome_empresa}}"></div>
+    </div>
+</section>

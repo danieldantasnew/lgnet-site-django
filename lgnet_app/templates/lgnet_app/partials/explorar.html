@@ -6,10 +6,24 @@
       Localize a loja mais próxima, tire dúvidas no FAQ e conheça nossas
       oportunidades.
     </p>
-    <div class="h-auto flex gap-10 flex-nowrap mt-8 overflow-x-auto pb-4">
+    <div class="h-auto flex gap-8 p-1 flex-nowrap mt-8 overflow-x-auto pb-4">
       {% for item in explorar %}
       <div
-        class="min-w-[280px] shadow-[0_0_4px_1px_rgba(0,0,0,.1)] bg-light-background dark:bg-dark-primary h-102 rounded-xl relative transition-all duration-300 group lg:flex-[1_1_0%] overflow-hidden pb-14"
+        class="
+          min-w-[256px] 
+          shadow-[0_0_4px_1px_rgba(0,0,0,.1)]
+          dark:shadow-[0_0px_4px_0px_rgba(255,255,255,.1)] 
+          bg-light-background 
+          dark:bg-dark-primary 
+          h-102 
+          rounded-xl 
+          relative 
+          transition-all 
+          duration-300 
+          group 
+          lg:flex-[1_1_0%] 
+          overflow-hidden 
+          pb-14"
       >
         <div class="w-full">
           <img class="w-full" src="{% static item.imagem %}" alt="{{item.titulo}}" />
