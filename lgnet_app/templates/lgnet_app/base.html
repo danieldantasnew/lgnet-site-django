@@ -53,6 +53,14 @@
       </div>
     </div>
   </div>
+  <script>
+    const isDark = localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    if (isDark) {
+        const preloader = document.getElementById("preloader");
+        if (preloader) preloader.classList.add("dark");
+    }
+  </script>
 
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
@@ -60,7 +68,7 @@
   </script>
   
   {% block scripts %}
-    <script src="{% static 'lgnet_app/js/preloader.js' %}"></script>
+    <script type="module" src="{% static 'lgnet_app/js/preloader.js' %}"></script>
     <script type="module" src="{% static 'lgnet_app/js/main.js' %}"></script>
   {% endblock %}
 </body>

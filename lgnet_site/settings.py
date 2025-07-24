@@ -174,6 +174,7 @@ JAZZMIN_SETTINGS = {
         "lgnet_app.Cidades": "fa-solid fa-city",
         "lgnet_app.RedeSocial": "fa-solid fa-hashtag",
         "lgnet_app.InformacoesEmpresa": "fa-solid fa-shop",
+        "lgnet_app.Valores": "fa-solid fa-star",
         "lgnet_app.ExploreMais": "fa-solid fa-window-restore",
         "lgnet_app.Banners": "fa-solid fa-bullhorn",
     },

@@ -1,6 +1,15 @@
 <section class="bg-light-background dark:bg-dark-primary">
-    <div class="container py-10">
-        <div>
+    <div class="
+        container 
+        py-10 
+        grid 
+        grid-cols-1 
+        gap-6 
+        [&>div>p]:text-sm
+        sm:[&>div>p]:text-[16px]
+        [&>div>p]:mt-2
+        [&>div>p]:leading-7
+    ">
             <div>
                 <h1>Nossa Atuação<strong>.</strong></h1>
                 <p>{{item.atuacao}}</p>
@@ -11,7 +20,14 @@
             </div>
             <div>
                 <h1>Nossos Valores<strong>.</strong></h1>
+                <div class="mt-6 inline-grid grid-cols-1 md:grid-flow-col grid-rows-5 gap-x-48 gap-y-6">
+                    {% for valor in item.valores.all %}
+                        <div class="flex gap-2 text-[16px]">
+                            <span class="text-neutral-600 dark:text-secondary">{{valor.icone|safe}}</span>
+                            <p>{{valor.nome}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
     </div>
 </section>

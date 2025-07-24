@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, Banners
+from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, Banners, Valores
 
 class DownloadAdmin(admin.ModelAdmin):
     list_display = ("velocidade", "icone",)
@@ -25,8 +25,12 @@ class CidadesAdmin(admin.ModelAdmin):
     list_display = ("id", "nome", "estado", "sigla_estado", "cep", "latitude", "longitude",)
     ordering = ("nome",)
 
+class ValoresAdmin(admin.ModelAdmin):
+    list_display = ("nome", "icone", "criado_em", "ultima_atualizacao")
+
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
     list_display = ("nome_empresa", "endereco_completo", "email", "contato")
+
     def has_add_permission(self, request):
         return not InformacoesEmpresa.objects.exists()
 
@@ -44,4 +48,5 @@ admin.site.register(Download, DownloadAdmin)
 admin.site.register(RedeSocial, RedeSocialAdmin)
 admin.site.register(Cidades, CidadesAdmin)
 admin.site.register(InformacoesEmpresa, InformacoesEmpresaAdmin)
+admin.site.register(Valores, ValoresAdmin)
 admin.site.register(Banners, BannersAdmin)

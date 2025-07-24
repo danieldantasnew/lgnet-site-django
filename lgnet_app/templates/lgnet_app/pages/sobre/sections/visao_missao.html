@@ -1,16 +1,20 @@
 <section class="bg-primary-variant dark:bg-dark-variant py-4">
-    <div class="container lg:!py-10 flex flex-col gap-8 text-light-background">
+    <div class="container py-4 lg:!py-10 flex flex-col gap-6 sm:gap-8 text-light-background">
         <div class="
+            my-4
             flex 
             justify-end 
-            gap-24 
+            gap-6
+            sm:gap-24 
             *:flex 
             *:flex-col
             *:max-w-86
             *:w-full
-            [&>div>span]:mb-6
+            [&>div>span]:mb-4
+            sm:[&>div>span]:mb-6
             [&>div>h3]:font-semibold
-            [&>div>h3]:text-xl
+            [&>div>h3]:text-lg
+            sm:[&>div>h3]:text-xl
             [&>div>h3]:after:mt-1
             [&>div>h3]:after:h-1
             [&>div>h3]:after:w-8
@@ -18,14 +22,16 @@
             [&>div>h3]:after:rounded-xs
             [&>div>h3]:after:block
             [&>div>p]:mt-4
+            [&>div>p]:text-xs
+            sm:[&>div>p]:text-[16px]
         ">
             <div>
-                <span class="text-4xl "><i class="fa-solid fa-eye"></i></span>
+                <span class="text-2xl sm:!text-4xl"><i class="fa-solid fa-eye"></i></span>
                 <h3>VISÃO</h3>
                 <p>{{item.visao}}</p>
             </div>
             <div>
-                <span class="*:h-9 *:w-9">{% include "lgnet_app/pages/sobre/utilities/alvo.html" %}</span>
+                <span class="*:h-7 *:w-7 sm:*:h-9 sm:*:w-9">{% include "lgnet_app/pages/sobre/utilities/alvo.html" %}</span>
                 <h3 class="mt-[3.8px]">MISSÃO</h3>
                 <p>{{item.missao}}</p>
             </div>

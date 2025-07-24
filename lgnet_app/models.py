@@ -116,10 +116,18 @@ class RedeSocial(models.Model):
         return f"{self.nome}"
     
 class Valores(models.Model):
-    icone = models.TextField("Ícone")
+    icone = models.TextField("Ícone", help_text="Pode ser colocado código fontawesome ou svg")
     nome = models.CharField("Nome", max_length=80)
+
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Valor"
+        verbose_name_plural = "Valores"
+
+    def __str__(self):
+        return f"{self.nome}"
     
 class InformacoesEmpresa(models.Model):
     nome_empresa = models.CharField("Nome da empresa", max_length=50)
@@ -137,7 +145,7 @@ class InformacoesEmpresa(models.Model):
 
     atuacao = models.TextField("Atuação", default="")
     forca = models.TextField("Força", default="")
-    # valores = models.ForeignKey("Valores", verbose_name=("Valores"), on_delete=models.CASCADE, related_name="valores", null=True, blank=True)
+    valores = models.ManyToManyField("Valores", verbose_name=("Valores"), related_name="valores", blank=True)
     
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)

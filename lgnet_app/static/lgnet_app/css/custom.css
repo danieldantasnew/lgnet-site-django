@@ -43,13 +43,22 @@ body {
   z-index: 100;
 }
 
+#preloader.dark {
+  background: #191919;
+}
+
 .loader {
   border: 8px solid #dedede;
-  border-top: 8px solid #2c72ac;
+  border-top: 8px solid #0093D2;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
+}
+
+#preloader.dark .loader {
+  border: 8px solid #606060;
+  border-top: 8px solid #ffcd00;
 }
 
 @keyframes spin {
