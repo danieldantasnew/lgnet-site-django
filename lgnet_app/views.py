@@ -168,5 +168,6 @@ def contatoView(request):
         'infoEmpresa': info_empresa,
         'redeSocial': redes_sociais,
         'cidades': cidades,
+        'explorar': explorar,
     }
     return render(request, 'lgnet_app/pages/contato/index.html', context)

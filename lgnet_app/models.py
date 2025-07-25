@@ -87,8 +87,8 @@ class Cidades(models.Model):
     estado = models.CharField("Estado", max_length=100)
     sigla_estado = models.CharField("Sigla do Estado", max_length=4, default="PB")
     cep = models.CharField("CEP", help_text="58700-000", max_length=10)
-    latitude = models.TextField("Latitude")
-    longitude = models.TextField("Longitude")
+    latitude = models.TextField("Latitude", help_text="Insira a latitude do escritório da LGNET referente a cidade que deseja cadastrar.")
+    longitude = models.TextField("Longitude",help_text="Insira a longitude do escritório da LGNET referente a cidade que deseja cadastrar.")
     planos = models.ManyToManyField("Planos", related_name="cidades", help_text="Planos disponíveis nesta cidade")
 
     criado_em = models.DateTimeField(auto_now_add=True)
