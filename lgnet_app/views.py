@@ -170,4 +170,13 @@ def contatoView(request):
         'cidades': cidades,
         'explorar': explorar,
     }
+
+    if(request.method == "POST"):
+        nome = request.POST.get('nome_completo')
+        email = request.POST.get('email')
+        telefone = request.POST.get('telefone')
+        assunto = request.POST.get('assunto')
+        mensagem = request.POST.get('mensagem')
+
+        print(nome, email, telefone, assunto, mensagem)
     return render(request, 'lgnet_app/pages/contato/index.html', context)

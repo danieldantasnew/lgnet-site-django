@@ -10,9 +10,9 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 dark:text-light-background">
                 <div>
-                    <form action="" class="
-                        flex 
-                        flex-col 
+                    <form method="post" class="
+                    flex 
+                    flex-col 
                         gap-6
                         *:flex 
                         *:flex-col 
@@ -20,20 +20,31 @@
                         [&>div>label]:text-xs
                         [&>div>label]:text-neutral-600
                         [&>div>label]:font-bold
-                        [&>div>input]:rounded-sm
+                        [&>div>input]:placeholder:text-sm
                         [&>div>input]:border-none
+                        [&>div>input]:outline-none
+                        [&>div>input]:focus:!outline-none
+                        [&>div>input]:focus:border-none
+                        [&>div>input]:focus:!ring-0
+                        [&>div>input]:focus:!ring-transparent
+                        [&>div>input]:focus:!ring-offset-0
+                        [&>div>input]:transition-all
+                        [&>div>input]:duration-300
+                        [&>div>input]:rounded-sm
                         [&>div>input]:shadow-[0_0_1px_1px_#D3D3D3]
                         [&>div>input]:px-3
                         [&>div>input]:py-[10px]
-
+                        [&>div>input]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                        [&>div>input]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
                     ">
+                        {% csrf_token %}
                         <div>
                             <label for="nome_completo">Nome Completo</label>
                             <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite seu nome completo">
                         </div>
                         <div>
                             <label for="email">E-mail</label>
-                            <input type="text" name="email" id="email" placeholder="Digite seu e-mail">
+                            <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
                         </div>
                         <div>
                             <label for="telefone">Telefone</label>
@@ -52,20 +63,24 @@
                                 transition-all                   
                                 rounded-sm
                                 border-none
+                                ring-0
                                 shadow-[0_0_1px_1px_#D3D3D3]
                                 px-3
                                 py-[10px]
                                 min-h-32
                                 max-h-56
+                                hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                                focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                                placeholder:text-sm
                             " 
                         placeholder="Diga como podemos ajudar"></textarea>
                         </div>
-                        <button type="button" class="w-full cursor-pointer tracking-[.1rem] mt-2 text-[16px] text-[#ffffff] bg-primary-variant font-semibold rounded-sm px-5 py-3 me-2 mb-2 hover:bg-primary-hover dark:bg-secondary dark:hover:bg-secondary-hover dark:text-secondary-variant transition-colors">Enviar mensagem</button>
+                        <button type="submit" class="w-full cursor-pointer tracking-[.1rem] mt-2 text-[16px] text-[#ffffff] bg-primary-variant font-semibold rounded-sm px-5 py-3 me-2 mb-2 hover:bg-primary-hover dark:bg-secondary dark:hover:bg-secondary-hover dark:text-secondary-variant transition-colors">Enviar mensagem</button>
                     </form>
                 </div>
                 <div>
                     <div>
-                        <h2>Prefere um contato direto?</h2>
+                        <h2 class="font-semibold text-lg">Prefere um contato direto?</h2>
                         {% for item in infoEmpresa.all%}
                             <ul class="text-sm text-gray-50 font-medium inline-flex flex-col gap-2">
                                 <li>
