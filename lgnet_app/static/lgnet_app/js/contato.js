@@ -1,5 +1,6 @@
 export default function contato() {
-  const inputContato = document.querySelector("[data-form-contato]");
+  const inputContato = document.querySelector("[data-form-telefone]");
+  let timeoutErro = null;
   if (inputContato) {
     inputContato.addEventListener("input", function (e) {
       let v = e.target.value.replace(/\D/g, "");
@@ -13,6 +14,44 @@ export default function contato() {
       else if (v.length > 0) v = `(${v.slice(0, 2)}`;
 
       e.target.value = v;
+    });
+  }
+
+  const form = document.querySelector("[data-form-contato]");
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nome = form.elements["nome_completo"].value;
+      const telefone = form.elements["telefone"].value;
+      const assunto = form.elements["assunto"].value;
+      let hasError = false;
+      let errorNome = document.getElementById("erro-nome");
+      let errorTelefone = document.getElementById("erro-telefone");
+      let errorAssunto = document.getElementById("erro-assunto");
+
+      if (nome.length > 70) {
+        errorNome.classList.remove("hidden");
+        hasError = true;
+      }
+
+      if (assunto.length > 70) {
+        errorAssunto.classList.remove("hidden");
+        hasError = true;
+      }
+
+      if (telefone.length < 11) {
+        errorTelefone.classList.remove("hidden");
+        hasError = true;
+      }
+
+      if(hasError) {
+        if (timeoutErro) clearTimeout(timeoutErro);
+        timeoutErro = setTimeout(() => {
+          errorNome.classList.add("hidden");
+          errorAssunto.classList.add("hidden");
+          errorTelefone.classList.add("hidden");
+        }, 6000);
+      }
     });
   }
 }

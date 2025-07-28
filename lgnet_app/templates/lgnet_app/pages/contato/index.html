@@ -34,56 +34,49 @@
                         [&>div>input]:shadow-[0_0_1px_1px_#D3D3D3]
                         [&>div>input]:px-3
                         [&>div>input]:py-[10px]
-                        [&>div>input]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
                         [&>div>input]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                        [&>div>input]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
                     ">
                         {% csrf_token %}
                         <div>
-                            <label for="{{ form.nome_completo.id_for_label }}">Nome Completo</label>
-                            {{ form.nome_completo }}
-                            {% if form.nome_completo.errors %}
-                                <span class="mt-1 text-red-600">{{form.nome_completo.errors.0}}</span>
-                            {% endif %}
+                            <label for="nome_completo">Nome Completo</label>
+                            <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite seu nome completo" required>
+                            <span id="erro-nome" class="hidden text-red-600">Nome muito longo (máx. 70 caracteres)</span>
                         </div>
                         <div>
-                            <label for="{{ form.email.id_for_label }}">E-mail</label>
-                            {{ form.email }}
-                            {% if form.email.errors %}
-                                <span class="mt-1 text-red-600">{{form.email.errors.0}}</span>
-                            {% endif %}
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required>
                         </div>
                         <div>
-                            <label for="{{ form.telefone.id_for_label }}">Telefone</label>
-                            {{ form.telefone }}
-                            {% if form.telefone.errors %}
-                                <span class="mt-1 text-red-600">{{form.telefone.errors.0}}</span>
-                            {% endif %}
+                            <label for="telefone">Telefone</label>
+                            <input data-form-telefone type="text" name="telefone" id="telefone" placeholder="(83) 99999-9999" required>
+                            <span id="erro-telefone" class="hidden text-red-600">Telefone inválido, insira um telefone válido.</span>
                         </div>
                         <div>
-                            <label for="{{ form.assunto.id_for_label }}">Assunto</label>
-                            {{ form.assunto }}
-                            {% if form.assunto.errors %}
-                                <span class="mt-1 text-red-600">{{form.assunto.errors.0}}</span>
-                            {% endif %}
+                            <label for="assunto">Assunto</label>
+                            <input type="text" name="assunto" id="assunto" placeholder="Do que se trata?" required>
+                            <span id="erro-assunto" class="hidden text-red-600">Assunto muito longo (máx. 70 caracteres)</span>
                         </div>
-                        <div class="   
-                            [&>textarea]:transition-all                   
-                            [&>textarea]:rounded-sm
-                            [&>textarea]:border-none
-                            [&>textarea]:ring-0
-                            [&>textarea]:shadow-[0_0_1px_1px_#D3D3D3]
-                            [&>textarea]:px-3
-                            [&>textarea]:py-[10px]
-                            [&>textarea]:max-h-48
-                            [&>textarea]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
-                            [&>textarea]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
-                            [&>textarea]:placeholder:text-sm
-                        ">
-                            <label for="{{ form.mensagem.id_for_label }}">Mensagem</label>
-                            {{ form.mensagem }}
-                            {% if form.mensagem.errors %}
-                                <span class="mt-1 text-red-600">{{form.mensagem.errors.0}}</span>
-                            {% endif %}
+                        <div>
+                            <label for="mensagem">Mensagem</label>
+                            <textarea 
+                            name="mensagem" 
+                            id="mensagem" 
+                            class="     
+                                transition-all                   
+                                rounded-sm
+                                border-none
+                                ring-0
+                                shadow-[0_0_1px_1px_#D3D3D3]
+                                px-3
+                                py-[10px]
+                                min-h-32
+                                max-h-56
+                                hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                                focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                                placeholder:text-sm
+                            " 
+                        placeholder="Diga como podemos ajudar" required></textarea>
                         </div>
                         <button type="submit" class="w-full cursor-pointer tracking-[.1rem] mt-2 text-[16px] text-[#ffffff] bg-primary-variant font-semibold rounded-sm px-5 py-3 me-2 mb-2 hover:bg-primary-hover dark:bg-secondary dark:hover:bg-secondary-hover dark:text-secondary-variant transition-colors">Enviar mensagem</button>
                     </form>
@@ -92,7 +85,7 @@
                     <div>
                         <h2 class="font-semibold text-lg">Prefere um contato direto?</h2>
                         {% for item in infoEmpresa.all%}
-                            <ul class="text-sm text-gray-50 font-medium inline-flex flex-col gap-2">
+                            <ul class="text-sm text-gray-50 font-medium inline-flex flex-col gap-2 mt-2">
                                 <li>
                                     <a class="flex items-center flex-start gap-[6px] text-neutral-700 dark:text-light-background group" href="#">
                                         <span class="transition-all flex items-center justify-center h-8 w-8 text-xl text-primary-variant dark:text-secondary"><i class="fa-regular fa-envelope"></i></span>

@@ -34,6 +34,9 @@ explorar = [
 ]
 
 def planos_api(request):
+    def normalizar_plano(plano):
+        return plano.replace("MEGA", "Mb")
+
     cidade_nome = request.GET.get("cidade")
     contato = info_empresa.first().contato.replace(" ", "")
 
@@ -69,7 +72,7 @@ def planos_api(request):
             "plano": plano.plano,
             "vantagens": lista_vantagens,
             "ordem": plano.ordem,
-            "mensagem": f"Olá, tenho interesse no plano de {plano.plano}. Gostaria de saber como funciona a instalação.",
+            "mensagem": f"Olá, tenho interesse no plano de {normalizar_plano(plano.plano)}. Gostaria de saber como funciona a instalação.",
             "contato": contato
         })
 
