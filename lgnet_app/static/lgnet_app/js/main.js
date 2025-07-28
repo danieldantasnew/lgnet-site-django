@@ -6,6 +6,7 @@ import planos from "./planos.js";
 import selecionar_cidade from "./selecionarCidade.js";
 import acessibilidade from "./acessibilidade.js";
 import menuMobile from "./menuMobile.js";
+import contato from "./contato.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const swiperPlanos = new Swiper(".mySwiperPlans", {
@@ -36,4 +37,5 @@ document.addEventListener("DOMContentLoaded", () => {
   banners();
   planos(swiperPlanos);
   selecionar_cidade(swiperPlanos);
+  contato();
 });

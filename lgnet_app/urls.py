@@ -7,9 +7,9 @@ app_name = 'lgnet'
 
 urlpatterns = [
     path("api/planos/", views.planos_api, name="planos_api"),
-    path("sobre", views.sobreView, name="sobre"),
-    path("contato", views.contatoView, name="contato"),
-    path('', views.inicioView, name='inicio'),
+    path("sobre", views.sobre, name="sobre"),
+    path("contato", views.contato, name="contato"),
+    path('', views.inicio, name='inicio'),
 ]
 
 if settings.DEBUG:

@@ -5,7 +5,7 @@
         <img class="absolute top-10 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
         <div class="mb-18 lg:mb-0">
             <h1 class="max-w-72 leading-16 text-balance md:max-w-96 text-5xl md:text-6xl md:leading-20">Nós temos o essencial para você<strong class="text-4xl md:text-5xl">.</strong></h1>
-            <span class="hidden lg:block">{% include "lgnet_app/partials/utilities/button.html" %}</span>
+            <span class="mt-14 hidden lg:block">{% include "lgnet_app/partials/utilities/button.html" %}</span>
         </div>
 
 
@@ -14,7 +14,7 @@
                 {% render_servico_essencial icone=essencial.icone|safe titulo=essencial.titulo descricao=essencial.descricao %}
             {% endfor %}
         </div>
-        <span class="lg:hidden">{% include "lgnet_app/partials/utilities/button.html" %}</span>
+        <span class="lg:hidden mt-14">{% include "lgnet_app/partials/utilities/button.html" %}</span>
         <img class="absolute bottom-10 left-0" src="{% static 'lgnet_app/images/decorador.png' %}" alt="decorador">
     </div>
 </section>

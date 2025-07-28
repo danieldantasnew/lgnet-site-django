@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades
+from .forms import ContatoForm
 
 info_empresa = InformacoesEmpresa.objects.all()
 redes_sociais = RedeSocial.objects.all()
@@ -34,6 +35,7 @@ explorar = [
 
 def planos_api(request):
     cidade_nome = request.GET.get("cidade")
+    contato = info_empresa.first().contato.replace(" ", "")
 
     if not cidade_nome:
         return JsonResponse({"error": "Cidade não informada"}, status=400)
@@ -67,11 +69,13 @@ def planos_api(request):
             "plano": plano.plano,
             "vantagens": lista_vantagens,
             "ordem": plano.ordem,
+            "mensagem": f"Olá, tenho interesse no plano de {plano.plano}. Gostaria de saber como funciona a instalação.",
+            "contato": contato
         })
 
     return JsonResponse(data, safe=False)
 
-def inicioView(request):
+def inicio(request):
     planos = Planos.objects.all()
     essenciais = ServicosEssenciais.objects.all()
     vantagens = Vantagens.objects.all()
@@ -153,7 +157,7 @@ def inicioView(request):
 
     return render(request, 'lgnet_app/pages/principal/index.html', context)
 
-def sobreView(request):
+def sobre(request):
     context = {
         'infoEmpresa': info_empresa,
         'redeSocial': redes_sociais,
@@ -163,8 +167,11 @@ def sobreView(request):
 
     return render(request, 'lgnet_app/pages/sobre/index.html', context)
 
-def contatoView(request):
+def contato(request):
+    form = ContatoForm(request.POST or None)
+    
     context = {
+        'form': form,
         'infoEmpresa': info_empresa,
         'redeSocial': redes_sociais,
         'cidades': cidades,
@@ -172,11 +179,14 @@ def contatoView(request):
     }
 
     if(request.method == "POST"):
-        nome = request.POST.get('nome_completo')
-        email = request.POST.get('email')
-        telefone = request.POST.get('telefone')
-        assunto = request.POST.get('assunto')
-        mensagem = request.POST.get('mensagem')
+        if form.is_valid():
+            nome = form.cleaned_data['nome_completo']
+            email = form.cleaned_data['email']
+            telefone = form.cleaned_data['telefone']
+            assunto = form.cleaned_data['assunto']
+            mensagem = form.cleaned_data['mensagem']
 
-        print(nome, email, telefone, assunto, mensagem)
+            form = ContatoForm()
+
+            print(nome, email, telefone, assunto, mensagem)
     return render(request, 'lgnet_app/pages/contato/index.html', context)

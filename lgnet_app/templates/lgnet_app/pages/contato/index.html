@@ -10,7 +10,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 dark:text-light-background">
                 <div>
-                    <form method="post" class="
+                    <form data-form-contato method="post" class="
                     flex 
                     flex-col 
                         gap-6
@@ -34,46 +34,56 @@
                         [&>div>input]:shadow-[0_0_1px_1px_#D3D3D3]
                         [&>div>input]:px-3
                         [&>div>input]:py-[10px]
-                        [&>div>input]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
                         [&>div>input]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                        [&>div>input]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
                     ">
                         {% csrf_token %}
                         <div>
-                            <label for="nome_completo">Nome Completo</label>
-                            <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite seu nome completo">
+                            <label for="{{ form.nome_completo.id_for_label }}">Nome Completo</label>
+                            {{ form.nome_completo }}
+                            {% if form.nome_completo.errors %}
+                                <span class="mt-1 text-red-600">{{form.nome_completo.errors.0}}</span>
+                            {% endif %}
                         </div>
                         <div>
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+                            <label for="{{ form.email.id_for_label }}">E-mail</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <span class="mt-1 text-red-600">{{form.email.errors.0}}</span>
+                            {% endif %}
                         </div>
                         <div>
-                            <label for="telefone">Telefone</label>
-                            <input type="text" name="telefone" id="telefone" placeholder="(99) 99999-9999">
+                            <label for="{{ form.telefone.id_for_label }}">Telefone</label>
+                            {{ form.telefone }}
+                            {% if form.telefone.errors %}
+                                <span class="mt-1 text-red-600">{{form.telefone.errors.0}}</span>
+                            {% endif %}
                         </div>
                         <div>
-                            <label for="assunto">Assunto</label>
-                            <input type="text" name="assunto" id="assunto" placeholder="Do que se trata?">
+                            <label for="{{ form.assunto.id_for_label }}">Assunto</label>
+                            {{ form.assunto }}
+                            {% if form.assunto.errors %}
+                                <span class="mt-1 text-red-600">{{form.assunto.errors.0}}</span>
+                            {% endif %}
                         </div>
-                        <div>
-                            <label for="mensagem">Mensagem</label>
-                            <textarea 
-                            name="mensagem" 
-                            id="mensagem" 
-                            class="     
-                                transition-all                   
-                                rounded-sm
-                                border-none
-                                ring-0
-                                shadow-[0_0_1px_1px_#D3D3D3]
-                                px-3
-                                py-[10px]
-                                min-h-32
-                                max-h-56
-                                hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
-                                focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
-                                placeholder:text-sm
-                            " 
-                        placeholder="Diga como podemos ajudar"></textarea>
+                        <div class="   
+                            [&>textarea]:transition-all                   
+                            [&>textarea]:rounded-sm
+                            [&>textarea]:border-none
+                            [&>textarea]:ring-0
+                            [&>textarea]:shadow-[0_0_1px_1px_#D3D3D3]
+                            [&>textarea]:px-3
+                            [&>textarea]:py-[10px]
+                            [&>textarea]:max-h-48
+                            [&>textarea]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                            [&>textarea]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                            [&>textarea]:placeholder:text-sm
+                        ">
+                            <label for="{{ form.mensagem.id_for_label }}">Mensagem</label>
+                            {{ form.mensagem }}
+                            {% if form.mensagem.errors %}
+                                <span class="mt-1 text-red-600">{{form.mensagem.errors.0}}</span>
+                            {% endif %}
                         </div>
                         <button type="submit" class="w-full cursor-pointer tracking-[.1rem] mt-2 text-[16px] text-[#ffffff] bg-primary-variant font-semibold rounded-sm px-5 py-3 me-2 mb-2 hover:bg-primary-hover dark:bg-secondary dark:hover:bg-secondary-hover dark:text-secondary-variant transition-colors">Enviar mensagem</button>
                     </form>
