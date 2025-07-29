@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
 from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades
 from .forms import ContatoForm
@@ -189,7 +190,21 @@ def contato(request):
             assunto = form.cleaned_data['assunto']
             mensagem = form.cleaned_data['mensagem']
 
-            form = ContatoForm()
-
             print(nome, email, telefone, assunto, mensagem)
+
+            message_email = (
+                f"Mensagem de {nome}\n"
+                f"Diz: {mensagem}"
+            )
+
+            send_mail(
+                subject=f"[Contato LGNET] {assunto},",
+                message=message_email,
+                from_email=email,
+                recipient_list=['danieldantasbarboza@gmail.com'],
+                fail_silently=False,
+            )
+
+            return JsonResponse({"mensagem": "Formulário enviado com sucesso!"}, status=200)
+        
     return render(request, 'lgnet_app/pages/contato/index.html', context)

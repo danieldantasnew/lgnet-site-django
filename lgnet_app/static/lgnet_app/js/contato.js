@@ -17,6 +17,21 @@ export default function contato() {
     });
   }
 
+  const fetchApi = async (form) => {
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+      });
+
+      if(!response) throw new Error("Erro");
+      const json = await response.json();
+      console.log(json);
+    } catch (error) {}
+  };
+
   const form = document.querySelector("[data-form-contato]");
   if (form) {
     form.addEventListener("submit", (event) => {
@@ -44,13 +59,15 @@ export default function contato() {
         hasError = true;
       }
 
-      if(hasError) {
+      if (hasError) {
         if (timeoutErro) clearTimeout(timeoutErro);
         timeoutErro = setTimeout(() => {
           errorNome.classList.add("hidden");
           errorAssunto.classList.add("hidden");
           errorTelefone.classList.add("hidden");
-        }, 6000);
+        }, 7000);
+      } else {
+        fetchApi(event.target);
       }
     });
   }
