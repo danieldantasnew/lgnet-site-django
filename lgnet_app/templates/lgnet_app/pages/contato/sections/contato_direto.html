@@ -1,0 +1,58 @@
+<div class="flex flex-col gap-2 relative">
+    <div>
+        <h2 class="font-semibold text-lg">Prefere um contato direto?</h2>
+        {% for item in infoEmpresa.all%}
+            <ul class="text-sm text-gray-50 font-medium inline-flex flex-col gap-2 mt-2">
+                <li>
+                    <a class="flex items-center flex-start gap-[6px] text-neutral-700 dark:text-light-background group" href="#">
+                        <span class="transition-all flex items-center justify-center h-8 w-8 text-xl text-primary-variant dark:text-secondary"><i class="fa-solid fa-envelope"></i></span>
+                        <span class="group-hover:underline underline-offset-4">{{item.email}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center flex-start gap-[6px] text-neutral-700 dark:text-light-background group" href="#">
+                        <span class="transition-all flex items-center justify-center h-8 w-8 text-lg text-primary-variant dark:text-secondary"><i class="fa-solid fa-phone"></i></span>
+                        <span class="group-hover:underline underline-offset-4">{{item.contato}}</span>
+                    </a>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+    <div class="h-full w-full">
+        <div id="map" class="min-h-120 lg:min-h-auto lg:max-w-140 rounded-lg w-full h-full"></div>
+        <div class="z-[4000] absolute left-0 bottom-0 w-full lg:max-w-140 p-4">
+            <div class="relative w-full p-4 shadow-xl bg-light-background dark:bg-dark-primary rounded-sm">
+                <h3 class="text-[16px] text-primary-variant-2 dark:text-light-background font-bold">Escritório mais próximo</h3>
+                <div class="flex items-center gap-1 mt-1">
+                    <i class="fa-solid fa-map-pin text-xs mb-[2px] text-primary-variant dark:text-secondary"></i>
+                    <p class="text-xs text-neutral-600 dark:text-light-background">R. do Prado - Liberdade, Patos - PB, 58703-000.</p>
+                </div>
+                <a href="escritorios" class="
+                    transition-all
+                    mt-3 
+                    p-2 
+                    flex 
+                    gap-2 
+                    border-2 
+                    border-primary-variant-2 
+                    text-primary-variant-2 
+                    text-xs 
+                    rounded-sm 
+                    max-w-40
+                    hover:bg-primary-variant
+                    hover:text-light-background
+                    hover:border-primary-variant
+                    dark:text-secondary
+                    dark:border-secondary
+                    dark:hover:border-secondary
+                    dark:hover:bg-secondary
+                    dark:hover:text-secondary-variant
+                ">
+                    <span class="font-semibold">Nossos escritórios</span>
+                    <i class="fa-solid fa-arrow-right text-sm mt-[1px]"></i>
+                </a>
+                <span class="absolute right-2 top-2"><i class="fa-solid fa-map-location-dot text-xl"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
