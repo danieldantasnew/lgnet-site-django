@@ -1,4 +1,5 @@
 import buscarPlanos from "./buscarPlanos.js";
+import { map } from "./map.js";
 
 function haversine(lat1, lon1, lat2, lon2) {
   const toRadians = (angle) => (angle * Math.PI) / 180;
@@ -47,8 +48,11 @@ function salvarCidadeNoStorage(cidade) {
       id: String(cidade.id),
       city: cidade.city,
       state: cidade.state,
+      latitude: cidade.latitude,
+      longitude: cidade.longitude,
     })
   );
+  map();
 }
 
 function atualizarUIComCidade(cidade, localizacaoTexto, loadingCidade) {

@@ -27,6 +27,7 @@
   --animate-hiddenItem: hiddenItem .4s forwards;
   --animate-slideIn: slideIn .3s forwards;
   --animate-slideOut: slideOut .3s forwards;
+  --animate-slideTop: slideTop .3s forwards;
 
   @keyframes fadeIn {
     from {
@@ -113,6 +114,19 @@
       animation-timing-function: ease;
       transform: translateX(100%);
     }
+  }
+}
+
+@keyframes slideTop{
+  from {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateY(0);
   }
 }
 
