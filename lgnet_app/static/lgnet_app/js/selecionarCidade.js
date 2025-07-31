@@ -1,5 +1,6 @@
 import {ativarLocalizacao} from "./ativarLocalizacao.js";
 import buscarPlanos from "./buscarPlanos.js";
+import { map } from "./map.js";
 
 function init(swiperPlanos, dataLocation, localizacao) {
   const dropdown = document.querySelector("[data-dropdown-cidade]");
@@ -62,20 +63,33 @@ function init(swiperPlanos, dataLocation, localizacao) {
     checkInputField();
     const selected = dropList.find((item) => item.text == input.value);
 
+    const teste = async ()=> {
+      const lat = -7.0322119;
+      const lon = -37.2948154;
+
+      const response = await fetch(`/api/cidade-proxima/?latitude=${lat}&longitude=${lon}`);
+      const data = await response.json();
+      console.log(data)
+    }
+
+    teste()
+
     if (selected) {
       localizacao.forEach((item) => (item.innerText = input.value));
       input.value = `${selected.city} - ${selected.state}`;
       localStorage.setItem(
         "data_location",
         JSON.stringify({
-          id: `${selected.id}`,
-          city: `${selected.city}`,
-          state: `${selected.state}`,
+          id: String(selected.id),
+          city: selected.city,
+          state: selected.state,
+          latitude: selected.latitude,
+          longitude: selected.longitude,
         })
       );
       document.modalComponent.close();
       buscarPlanos(selected.city);
-      swiperPlanos.slideTo(0);
+      map();
     }
   };
 

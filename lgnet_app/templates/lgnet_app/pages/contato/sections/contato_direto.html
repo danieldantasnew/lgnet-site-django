@@ -20,12 +20,12 @@
     </div>
     <div class="h-full w-full overflow-hidden">
         <div id="map" class="min-h-120 lg:min-h-auto lg:max-w-140 rounded-lg w-full h-full"></div>
-        <div class="z-10 absolute left-0 bottom-0 w-full lg:max-w-140 p-4">
+        <div data-info-map class="hidden z-10 absolute left-0 bottom-0 w-full lg:max-w-140 p-4">
             <div class="animate-slideTop relative w-full p-4 shadow-[0_0_1rem_1px_rgba(0,0,0,.2)] bg-light-background dark:bg-dark-primary rounded-sm">
                 <h3 class="text-[16px] text-primary-variant-2 dark:text-light-background font-bold">Escritório mais próximo</h3>
                 <div class="flex items-center gap-1 mt-1">
                     <i class="fa-solid fa-map-pin text-xs mb-[2px] text-primary-variant dark:text-secondary"></i>
-                    <p class="text-xs text-neutral-600 dark:text-light-background">R. do Prado - Liberdade, Patos - PB, 58703-000.</p>
+                    <p class="text-xs text-neutral-600 dark:text-light-background line-clamp-1 text-ellipsis pr-1">Carregando endereço...</p>
                 </div>
                 <a href="escritorios" class="
                     transition-all

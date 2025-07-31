@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
 from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades
 from .forms import ContatoForm
+from .utils import encontrar_cidade_mais_proxima
 
 info_empresa = InformacoesEmpresa.objects.all()
 redes_sociais = RedeSocial.objects.all()
@@ -33,6 +34,28 @@ explorar = [
         "link": "perguntas-frequentes",
     },
 ]
+
+
+def encontrar_cidade_mais_proxima_api(request):
+    try:
+        latitude = float(request.GET.get("latitude"))
+        longitude = float(request.GET.get("longitude"))
+    except (TypeError, ValueError):
+        return JsonResponse({"error": "Parâmetros inválidos"}, status=400)
+    
+    cidade = encontrar_cidade_mais_proxima(cidades, latitude, longitude)
+
+    print(type(cidade))
+    if cidade:
+        return JsonResponse({
+            "id": f"{cidade.id}",
+            "city": f"{cidade.nome}",
+            "state": f"{cidade.sigla_estado}",
+            "latitude": f"{cidade.latitude}",
+            "longitude": f"{cidade.longitude}",
+            }, status=200)
+    
+    return JsonResponse({"erro": "Nenhuma cidade encontrada"}, status=404)
 
 def planos_api(request):
     def normalizar_plano(plano):

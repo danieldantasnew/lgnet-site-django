@@ -377,9 +377,6 @@
   .z-50 {
     z-index: 50;
   }
-  .z-\[4000\] {
-    z-index: 4000;
-  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -525,6 +522,12 @@
   }
   .ml-\[2px\] {
     margin-left: 2px;
+  }
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
   .line-clamp-3 {
     overflow: hidden;
@@ -727,11 +730,17 @@
   .max-w-40 {
     max-width: calc(var(--spacing) * 40);
   }
+  .max-w-44 {
+    max-width: calc(var(--spacing) * 44);
+  }
   .max-w-72 {
     max-width: calc(var(--spacing) * 72);
   }
   .max-w-80 {
     max-width: calc(var(--spacing) * 80);
+  }
+  .max-w-90 {
+    max-width: calc(var(--spacing) * 90);
   }
   .max-w-106 {
     max-width: calc(var(--spacing) * 106);
@@ -1222,8 +1231,23 @@
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
   }
+  .pr-1 {
+    padding-right: calc(var(--spacing) * 1);
+  }
+  .pr-2 {
+    padding-right: calc(var(--spacing) * 2);
+  }
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
+  }
+  .pr-4 {
+    padding-right: calc(var(--spacing) * 4);
+  }
+  .pr-6 {
+    padding-right: calc(var(--spacing) * 6);
+  }
+  .pr-60 {
+    padding-right: calc(var(--spacing) * 60);
   }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);

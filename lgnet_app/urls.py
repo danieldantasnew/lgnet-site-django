@@ -7,6 +7,7 @@ app_name = 'lgnet'
 
 urlpatterns = [
     path("api/planos/", views.planos_api, name="planos_api"),
+    path("api/cidade-proxima/", views.encontrar_cidade_mais_proxima_api, name="encontrar_cidade_mais_proxima_api"),
     path("sobre", views.sobre, name="sobre"),
     path("contato", views.contato, name="contato"),
     path('', views.inicio, name='inicio'),
