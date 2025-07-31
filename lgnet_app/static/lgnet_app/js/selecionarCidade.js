@@ -16,7 +16,7 @@ function init(swiperPlanos, dataLocation, localizacao) {
       longitude: item.dataset.selectedLongitude,
       text: item.innerText.trim(),
     }));
-  ativarLocalizacao(dropList, localizacao);
+  ativarLocalizacao(localizacao);
 
   if (dataLocation)
     input.value = `${dataLocation.city} - ${dataLocation.state}`;
@@ -63,28 +63,18 @@ function init(swiperPlanos, dataLocation, localizacao) {
     checkInputField();
     const selected = dropList.find((item) => item.text == input.value);
 
-    const teste = async ()=> {
-      const lat = -7.0322119;
-      const lon = -37.2948154;
-
-      const response = await fetch(`/api/cidade-proxima/?latitude=${lat}&longitude=${lon}`);
-      const data = await response.json();
-      console.log(data)
-    }
-
-    teste()
-
     if (selected) {
       localizacao.forEach((item) => (item.innerText = input.value));
       input.value = `${selected.city} - ${selected.state}`;
       localStorage.setItem(
         "data_location",
         JSON.stringify({
-          id: String(selected.id),
+          id: selected.id,
           city: selected.city,
           state: selected.state,
           latitude: selected.latitude,
           longitude: selected.longitude,
+          text: selected.text,
         })
       );
       document.modalComponent.close();
@@ -145,7 +135,7 @@ export default function selecionar_cidade(swiperPlanos) {
   if (dataLocation) {
     localizacao.forEach(
       (item) =>
-        (item.innerText = `${dataLocation.city} - ${dataLocation.state}`)
+        (item.innerText = dataLocation.text)
     );
     buscarPlanos(`${dataLocation.city}`);
   } else {

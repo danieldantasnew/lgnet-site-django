@@ -1,44 +1,11 @@
 import buscarPlanos from "./buscarPlanos.js";
 import { map } from "./map.js";
 
-function haversine(lat1, lon1, lat2, lon2) {
-  const toRadians = (angle) => (angle * Math.PI) / 180;
+async function encontrarCidadeMaisProxima(latCliente, longCliente) {
+  const response = await fetch(`/api/cidade-proxima/?latitude=${latCliente}&longitude=${longCliente}`);
+  const data = await response.json();
 
-  const R = 6371; // Raio da Terra em km
-  const dLat = toRadians(lat2 - lat1);
-  const dLon = toRadians(lon2 - lon1);
-
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(toRadians(lat1)) *
-      Math.cos(toRadians(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  return R * c;
-}
-
-function encontrarCidadeMaisProxima(cidades, latCliente, longCliente) {
-  let cidadeMaisProxima = null;
-  let menorDistancia = Infinity;
-
-  for (const cidade of cidades) {
-    const dist = haversine(
-      latCliente,
-      longCliente,
-      parseFloat(cidade.latitude),
-      parseFloat(cidade.longitude)
-    );
-
-    if (dist < menorDistancia) {
-      menorDistancia = dist;
-      cidadeMaisProxima = cidade;
-    }
-  }
-
-  return cidadeMaisProxima;
+  return data;
 }
 
 function salvarCidadeNoStorage(cidade) {
@@ -50,6 +17,7 @@ function salvarCidadeNoStorage(cidade) {
       state: cidade.state,
       latitude: cidade.latitude,
       longitude: cidade.longitude,
+      text: cidade.text,
     })
   );
   map();
@@ -63,6 +31,7 @@ function atualizarUIComCidade(cidade, localizacaoTexto, loadingCidade) {
   successCityInfo.innerText = cidade.text;
   firstDiv.classList.add("hidden");
   buscarPlanos(cidade.city);
+  console.log(localizacaoTexto)
   localizacaoTexto.forEach((item) => (item.innerText = cidade.text));
   success.style.display = "flex";
 
@@ -71,15 +40,13 @@ function atualizarUIComCidade(cidade, localizacaoTexto, loadingCidade) {
   }, 3000);
 }
 
-function cidadeMaisProxima(
-  cidadesDisponiveis,
+async function cidadeMaisProxima(
   latitudeCliente,
   longitudeCliente,
   localizacaoTexto,
   loadingCidade
 ) {
-  const cidade = encontrarCidadeMaisProxima(
-    cidadesDisponiveis,
+  const cidade = await encontrarCidadeMaisProxima(
     latitudeCliente,
     longitudeCliente
   );
@@ -91,7 +58,6 @@ function cidadeMaisProxima(
 }
 
 async function getLocation(
-  dropList,
   localizacaoTexto,
   dataContentInfo,
   loadingCidade
@@ -110,7 +76,6 @@ async function getLocation(
 
     if (position.coords) {
       cidadeMaisProxima(
-        dropList,
         position.coords.latitude,
         position.coords.longitude,
         localizacaoTexto,
@@ -126,14 +91,14 @@ async function getLocation(
   }
 }
 
-export function ativarLocalizacao(dropList, localizacaoTexto) {
+export function ativarLocalizacao(localizacaoTexto) {
   const buttonMap = document.querySelector("[data-map]");
   const span = buttonMap.querySelector("[data-map-info]");
   const dataContentInfo = document.querySelector("[data-content-info]");
   const loadingCidade = document.querySelector("[data-loading-cidade]");
 
   const handleClick = () =>
-    getLocation(dropList, localizacaoTexto, dataContentInfo, loadingCidade);
+    getLocation(localizacaoTexto, dataContentInfo, loadingCidade);
 
   setTimeout(() => {
     span.classList.add("animate-fadeInOut");

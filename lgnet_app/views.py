@@ -45,14 +45,14 @@ def encontrar_cidade_mais_proxima_api(request):
     
     cidade = encontrar_cidade_mais_proxima(cidades, latitude, longitude)
 
-    print(type(cidade))
     if cidade:
         return JsonResponse({
-            "id": f"{cidade.id}",
-            "city": f"{cidade.nome}",
-            "state": f"{cidade.sigla_estado}",
-            "latitude": f"{cidade.latitude}",
-            "longitude": f"{cidade.longitude}",
+            "id": cidade.id,
+            "city": cidade.nome,
+            "state": cidade.sigla_estado,
+            "latitude": cidade.latitude,
+            "longitude": cidade.longitude,
+            "text": f"{cidade.nome} - {cidade.sigla_estado}",
             }, status=200)
     
     return JsonResponse({"erro": "Nenhuma cidade encontrada"}, status=404)
