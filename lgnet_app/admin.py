@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, Banners, Valores
+from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, Banners, Valores, Escritorio, HorarioFuncionamento
 
 class DownloadAdmin(admin.ModelAdmin):
     list_display = ("velocidade", "icone",)
@@ -41,6 +41,13 @@ class InformacoesEmpresaAdmin(admin.ModelAdmin):
 class BannersAdmin(admin.ModelAdmin):
     list_display = ("titulo", "imagem_principal", "imagem_de_fundo",)
 
+class EscritorioAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'endereco', 'latitude', 'longitude', "criado_em", "ultima_atualizacao",)
+
+class HorarioFuncionamentoAdmin(admin.ModelAdmin):
+    list_display = ('escritorio', 'dia_semana', 'horario_inicio', 'horario_fim', "criado_em", "ultima_atualizacao",)
+    ordering = ('escritorio', )
+
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
 admin.site.register(Vantagens, VantagensAdmin)
@@ -51,3 +58,5 @@ admin.site.register(Cidades, CidadesAdmin)
 admin.site.register(InformacoesEmpresa, InformacoesEmpresaAdmin)
 admin.site.register(Valores, ValoresAdmin)
 admin.site.register(Banners, BannersAdmin)
+admin.site.register(Escritorio, EscritorioAdmin)
+admin.site.register(HorarioFuncionamento, HorarioFuncionamentoAdmin)

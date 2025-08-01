@@ -1,6 +1,28 @@
 let mapInstance = null;
 let markerInstance = null;
 
+async function searchDesk(latitude, longitude) {
+  if (latitude & longitude) {
+    try {
+      const response = await fetch(
+        `/api/escritorios/?latitude=${latitude}&longitude=${longitude}`
+      );
+      if (!response) throw new Error("Falha na requisição");
+      return await response.json();
+    } catch (error) {
+      console.error(error.message);
+    }
+  } else {
+    try {
+      const response = await fetch("/api/escritorios/");
+      if (!response) throw new Error("Falha na requisição");
+      return await response.json();
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+}
+
 async function fetchAddress(latitude, longitude) {
   let FinalAddress = "";
   try {
@@ -19,12 +41,16 @@ async function fetchAddress(latitude, longitude) {
   return FinalAddress;
 }
 
-async function infoMap(latitude, longitude) {
+async function infoMap(latitude, longitude, textAddressLocalApi) {
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
     info.classList.add("hidden");
     const address = info.querySelector("div > p");
-    let FinalAddress = await fetchAddress(latitude, longitude);
+    
+    let FinalAddress = "";
+    if (textAddressLocalApi) FinalAddress = textAddressLocalApi;
+    else FinalAddress = await fetchAddress(latitude, longitude);
+
     if (address instanceof HTMLParagraphElement) {
       address.innerText = FinalAddress;
       address.title = FinalAddress;
@@ -58,7 +84,7 @@ function googleMapsTooltip(latitude, longitude) {
   }
 }
 
-export function map() {
+export async function map() {
   let defaultCoords = {
     latitude: -7.0322119,
     longitude: -37.2948154,
@@ -70,6 +96,7 @@ export function map() {
     if (coords) {
       coords.latitude = parseFloat(coords.latitude);
       coords.longitude = parseFloat(coords.longitude);
+      coords = await searchDesk(coords.latitude, coords.longitude);
     } else {
       throw new Error("Erro ao capturar as coordenadas");
     }
@@ -84,7 +111,7 @@ export function map() {
     markerInstance.setLngLat([longitude, latitude]);
 
     googleMapsTooltip(latitude, longitude);
-    infoMap(latitude, longitude);
+    infoMap(latitude, longitude, coords.address);
     return;
   } else {
     if (
@@ -132,9 +159,10 @@ export function map() {
       );
 
       googleMapsTooltip(latitude, longitude);
-      infoMap(latitude, longitude);
+      infoMap(latitude, longitude, coords.address);
     }
   }
 }
 
 map();
+searchDesk();

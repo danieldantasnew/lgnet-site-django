@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
-from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades
+from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades, Escritorio
 from .forms import ContatoForm
 from .utils import encontrar_cidade_mais_proxima
 
@@ -35,6 +35,48 @@ explorar = [
     },
 ]
 
+
+def buscar_escritorio_api(request):
+    latitude = request.GET.get("latitude")
+    longitude = request.GET.get("longitude")
+    escritorios = Escritorio.objects.all()
+
+    if latitude and longitude:
+        try:
+            latitude = float(latitude)
+            longitude = float(longitude)
+        except (TypeError, ValueError):
+            return JsonResponse({"error": "Parâmetros inválidos"}, status=400)
+
+        escritorio = encontrar_cidade_mais_proxima(escritorios, latitude, longitude)
+
+        if escritorio:
+            return JsonResponse({
+                "id": escritorio.id,
+                "desk": escritorio.nome,
+                "address": escritorio.endereco,
+                "latitude": escritorio.latitude,
+                "longitude": escritorio.longitude,
+                "horarios": list(escritorio.horarios.values(
+                    "dia_semana", "horario_inicio", "horario_fim"
+                )),
+                }, status=200)
+        
+        return JsonResponse({"erro": "Nenhum escritório encontrado"}, status=404)
+    else:
+        dados = []
+        for escritorio in escritorios:
+            dados.append({
+                "id": escritorio.id,
+                "desk": escritorio.nome,
+                "address": escritorio.endereco,
+                "latitude": escritorio.latitude,
+                "longitude": escritorio.longitude,
+                "horarios": list(escritorio.horarios.values(
+                    "dia_semana", "horario_inicio", "horario_fim"
+                )),
+            })
+        return JsonResponse(dados, safe=False)
 
 def encontrar_cidade_mais_proxima_api(request):
     try:

@@ -178,6 +178,12 @@ class Escritorio(models.Model):
     endereco = models.TextField("Endereço exato")
     latitude = models.CharField("Latitude", max_length=20)
     longitude = models.CharField("Longitude", max_length=20)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
+
+    class Meta:
+        verbose_name = "Escritorio"
+        verbose_name_plural = "Escritorios"
 
     def __str__(self):
         return f"{self.nome}"
@@ -198,10 +204,15 @@ class HorarioFuncionamento(models.Model):
     horario_inicio = models.TimeField("Horário de Início")
     horario_fim = models.TimeField("Horário de Encerramento")
 
+    criado_em = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
+
     class Meta:
         constraints = [
-        models.UniqueConstraint(fields=['escritorio', 'dia_semana'], name='dia_unico_por_escritorio')
-    ]
+            models.UniqueConstraint(fields=['escritorio', 'dia_semana'], name='dia_unico_por_escritorio')
+        ]
+        verbose_name = "Horário Funcionamento"
+        verbose_name_plural = "Horário Funcionamento"
 
     def __str__(self):
-        return f"{self.get_dia_display()} - {self.horario_inicio} às {self.horario_fim}"
+        return f"{self.dia_semana} - {self.horario_inicio} às {self.horario_fim}"
