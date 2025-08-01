@@ -87,8 +87,8 @@ class Cidades(models.Model):
     estado = models.CharField("Estado", max_length=100)
     sigla_estado = models.CharField("Sigla do Estado", max_length=4, default="PB")
     cep = models.CharField("CEP", help_text="58700-000", max_length=10)
-    latitude = models.TextField("Latitude", help_text="Insira a latitude do escritório da LGNET referente a cidade que deseja cadastrar.")
-    longitude = models.TextField("Longitude",help_text="Insira a longitude do escritório da LGNET referente a cidade que deseja cadastrar.")
+    latitude = models.TextField("Latitude")
+    longitude = models.TextField("Longitude")
     planos = models.ManyToManyField("Planos", related_name="cidades", help_text="Planos disponíveis nesta cidade")
 
     criado_em = models.DateTimeField(auto_now_add=True)
@@ -157,7 +157,6 @@ class InformacoesEmpresa(models.Model):
     def __str__(self):
         return f"{self.nome_empresa}"
         
-
 class Banners(models.Model):
     titulo = models.CharField("Titulo do Banner", max_length=50)
     imagem_principal = models.ImageField("Imagem Principal", upload_to="banners/", height_field=None, width_field=None, max_length=None, help_text="Sugestão: Insira uma imagem com resolução 1244px de largura e 464px de altura para desktop")
@@ -173,3 +172,36 @@ class Banners(models.Model):
 
     def __str__(self):
         return f"{self.titulo}"
+    
+class Escritorio(models.Model):
+    nome = models.CharField("Nome do escritório", max_length=70)
+    endereco = models.TextField("Endereço exato")
+    latitude = models.CharField("Latitude", max_length=20)
+    longitude = models.CharField("Longitude", max_length=20)
+
+    def __str__(self):
+        return f"{self.nome}"
+
+class HorarioFuncionamento(models.Model):
+    DIAS_DA_SEMANA = [
+        (0, 'Segunda-feira'),
+        (1, 'Terça-feira'),
+        (2, 'Quarta-feira'),
+        (3, 'Quinta-feira'),
+        (4, 'Sexta-feira'),
+        (5, 'Sábado'),
+        (6, 'Domingo'),
+    ]
+
+    escritorio = models.ForeignKey(Escritorio, on_delete=models.CASCADE,related_name="horarios")
+    dia_semana = models.IntegerField(choices=DIAS_DA_SEMANA, unique=False)
+    horario_inicio = models.TimeField("Horário de Início")
+    horario_fim = models.TimeField("Horário de Encerramento")
+
+    class Meta:
+        constraints = [
+        models.UniqueConstraint(fields=['escritorio', 'dia_semana'], name='dia_unico_por_escritorio')
+    ]
+
+    def __str__(self):
+        return f"{self.get_dia_display()} - {self.horario_inicio} às {self.horario_fim}"

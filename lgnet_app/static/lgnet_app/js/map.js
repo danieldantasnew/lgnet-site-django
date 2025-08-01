@@ -97,25 +97,7 @@ export function map() {
         center: [longitude, latitude],
         zoom: 18,
         attributionControl: false,
-        style: {
-          version: 8,
-          sources: {
-            osm: {
-              type: "raster",
-              tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-              tileSize: 250,
-              attribution:
-                'LGNET | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            },
-          },
-          layers: [
-            {
-              id: "osm",
-              type: "raster",
-              source: "osm",
-            },
-          ],
-        },
+        style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
       });
 
       const el = document.createElement("div");

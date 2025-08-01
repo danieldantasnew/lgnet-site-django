@@ -25,13 +25,12 @@ function salvarCidadeNoStorage(cidade) {
 
 function atualizarUIComCidade(cidade, localizacaoTexto, loadingCidade) {
   const firstDiv = loadingCidade.querySelector("div");
-  const success = loadingCidade.querySelector("[data-sucess-cidade]");
-  const successCityInfo = loadingCidade.querySelector("[data-sucess-cidade] strong");
+  const success = loadingCidade.querySelector("[data-success-cidade]");
+  const successCityInfo = loadingCidade.querySelector("[data-success-cidade] strong");
 
   successCityInfo.innerText = cidade.text;
   firstDiv.classList.add("hidden");
   buscarPlanos(cidade.city);
-  console.log(localizacaoTexto)
   localizacaoTexto.forEach((item) => (item.innerText = cidade.text));
   success.style.display = "flex";
 

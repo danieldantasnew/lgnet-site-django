@@ -27,6 +27,7 @@ class CidadesAdmin(admin.ModelAdmin):
 
 class ValoresAdmin(admin.ModelAdmin):
     list_display = ("nome", "icone", "criado_em", "ultima_atualizacao")
+    
 
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
     list_display = ("nome_empresa", "endereco_completo", "email", "contato")
