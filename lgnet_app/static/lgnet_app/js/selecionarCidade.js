@@ -1,8 +1,8 @@
 import {ativarLocalizacao} from "./ativarLocalizacao.js";
 import buscarPlanos from "./buscarPlanos.js";
-import { map } from "./map.js";
+import { map } from "./contato.js";
 
-function init(swiperPlanos, dataLocation, localizacao) {
+function init(dataLocation, localizacao) {
   const dropdown = document.querySelector("[data-dropdown-cidade]");
   const input = document.querySelector("[data-input-cidade]");
   const listDropDown = dropdown.querySelectorAll("li");
@@ -129,7 +129,7 @@ function effectClose() {
 }
 
 
-export default function selecionar_cidade(swiperPlanos) {
+export default function selecionar_cidade() {
   const localizacao = document.querySelectorAll("[data-local]");
   let dataLocation = JSON.parse(localStorage.getItem("data_location"));
   if (dataLocation) {
@@ -141,13 +141,13 @@ export default function selecionar_cidade(swiperPlanos) {
   } else {
     buscarPlanos("Patos");
     document.modalComponent.open('template[data-tpl="bem-vindo"]', effectClose, 200);
-    init(swiperPlanos, dataLocation, localizacao);
+    init(dataLocation, localizacao);
   }
 
   localizacao.forEach((item) =>
     item.addEventListener("click", () => {
       document.modalComponent.open('template[data-tpl="selecionar-cidade"]', effectClose, 200);
-      init(swiperPlanos, dataLocation, localizacao);
+      init(dataLocation, localizacao);
     })
   );
 }

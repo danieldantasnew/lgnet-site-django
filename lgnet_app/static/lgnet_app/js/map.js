@@ -1,13 +1,10 @@
-let mapInstance = null;
-let markerInstance = null;
-
-async function searchDesk(latitude, longitude) {
-  if (latitude & longitude) {
+export async function searchDesk(latitude, longitude) {
+  if (latitude && longitude) {
     try {
       const response = await fetch(
         `/api/escritorios/?latitude=${latitude}&longitude=${longitude}`
       );
-      if (!response) throw new Error("Falha na requisição");
+      if (!response.ok) throw new Error("Falha na requisição");
       return await response.json();
     } catch (error) {
       console.error(error.message);
@@ -15,7 +12,7 @@ async function searchDesk(latitude, longitude) {
   } else {
     try {
       const response = await fetch("/api/escritorios/");
-      if (!response) throw new Error("Falha na requisição");
+      if (!response.ok) throw new Error("Falha na requisição");
       return await response.json();
     } catch (error) {
       console.error(error.message);
@@ -23,17 +20,17 @@ async function searchDesk(latitude, longitude) {
   }
 }
 
-async function fetchAddress(latitude, longitude) {
+export async function fetchAddress(latitude, longitude) {
   let FinalAddress = "";
   try {
     const response = await fetch(
       `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
     );
 
-    if (!response) throw new Error("Não foi possível localizar o endereço");
+    if (!response.ok) throw new Error("Não foi possível localizar o endereço");
     const { display_name } = await response.json();
 
-    FinalAddress = `${display_name}.`;
+    FinalAddress = display_name ? `${display_name}.` : "Endereço não encontrado.";
   } catch (error) {
     FinalAddress = error.message;
   }
@@ -41,7 +38,7 @@ async function fetchAddress(latitude, longitude) {
   return FinalAddress;
 }
 
-async function infoMap(latitude, longitude, textAddressLocalApi) {
+export async function infoMap(latitude, longitude, textAddressLocalApi) {
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
     info.classList.add("hidden");
@@ -72,7 +69,7 @@ function handleClick(e) {
   }
 }
 
-function googleMapsTooltip(latitude, longitude) {
+export function googleMapsTooltip(latitude, longitude) {
   const button = document.querySelector("[data-btn-tooltip-map]");
 
   if (button instanceof HTMLButtonElement) {
@@ -83,86 +80,3 @@ function googleMapsTooltip(latitude, longitude) {
     button.addEventListener("click", handleClick);
   }
 }
-
-export async function map() {
-  let defaultCoords = {
-    latitude: -7.0322119,
-    longitude: -37.2948154,
-  };
-
-  let coords = null;
-  try {
-    coords = JSON.parse(localStorage.getItem("data_location"));
-    if (coords) {
-      coords.latitude = parseFloat(coords.latitude);
-      coords.longitude = parseFloat(coords.longitude);
-      coords = await searchDesk(coords.latitude, coords.longitude);
-    } else {
-      throw new Error("Erro ao capturar as coordenadas");
-    }
-  } catch (erro) {
-    coords = defaultCoords;
-  }
-
-  let { latitude, longitude } = coords;
-
-  if (mapInstance && markerInstance) {
-    mapInstance.setCenter([longitude, latitude]);
-    markerInstance.setLngLat([longitude, latitude]);
-
-    googleMapsTooltip(latitude, longitude);
-    infoMap(latitude, longitude, coords.address);
-    return;
-  } else {
-    if (
-      typeof maplibregl !== "undefined" &&
-      typeof maplibregl.Map == "function" &&
-      document.getElementById("map")
-    ) {
-      mapInstance = new maplibregl.Map({
-        container: "map",
-        center: [longitude, latitude],
-        zoom: 18,
-        attributionControl: false,
-        style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
-      });
-
-      const el = document.createElement("div");
-      el.className = "marker-wrapper";
-      el.style.width = "32px";
-      el.style.height = "32px";
-      el.style.position = "relative";
-      el.innerHTML = `
-        <div class="
-          absolute 
-          top-0 
-          left-0 
-          w-11 
-          h-11 
-          z-10 
-          bg-size-[100%_100%] 
-          bg-[url('../images/mapPin.svg')]
-        ">
-        </div>
-      `;
-
-      markerInstance = new maplibregl.Marker({ element: el })
-        .setLngLat([longitude, latitude])
-        .addTo(mapInstance);
-
-      mapInstance.addControl(new maplibregl.NavigationControl(), "top-right");
-      mapInstance.addControl(
-        new maplibregl.AttributionControl({
-          compact: true,
-        }),
-        "top-left"
-      );
-
-      googleMapsTooltip(latitude, longitude);
-      infoMap(latitude, longitude, coords.address);
-    }
-  }
-}
-
-map();
-searchDesk();
