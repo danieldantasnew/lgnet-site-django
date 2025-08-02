@@ -48,14 +48,15 @@ def horarios_disponiveis_escritorio(horarios):
             primeiro_horario_fim_minuto = f"{horario['primeiro_horario_fim'].minute}".zfill(2)
 
 
-            
-            segundo_horario_inicio_hora = f"{horario['segundo_horario_inicio'].hour}".zfill(2)
-            segundo_horario_inicio_minuto = f"{horario['segundo_horario_inicio'].minute}".zfill(2)
-            
-            segundo_horario_fim_hora = f"{horario['segundo_horario_fim'].hour}".zfill(2)
-            segundo_horario_fim_minuto = f"{horario['segundo_horario_fim'].minute}".zfill(2)
+            if(horario['segundo_horario_inicio'] and horario['segundo_horario_fim']):
+
+                segundo_horario_inicio_hora = f"{horario['segundo_horario_inicio'].hour}".zfill(2)
+                segundo_horario_inicio_minuto = f"{horario['segundo_horario_inicio'].minute}".zfill(2)
+                
+                segundo_horario_fim_hora = f"{horario['segundo_horario_fim'].hour}".zfill(2)
+                segundo_horario_fim_minuto = f"{horario['segundo_horario_fim'].minute}".zfill(2)
+
+                return f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}, {segundo_horario_inicio_hora}:{segundo_horario_inicio_minuto} - {segundo_horario_fim_hora}:{segundo_horario_fim_minuto}"
 
 
-            print(f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}, {segundo_horario_inicio_hora}:{segundo_horario_inicio_minuto} - {segundo_horario_fim_hora}:{segundo_horario_fim_minuto}")
-            # return f"{inicio_hora}:{inicio_minuto} - {fim_hora}:{fim_minute}"
-    return horarios
+            return f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}"

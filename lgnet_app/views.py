@@ -52,7 +52,8 @@ def buscar_escritorio_api(request):
 
         if escritorio:
             horarios = list(escritorio.horarios.values(
-                    "dia_semana", "horario_inicio", "horario_fim"
+                    "dia_semana", "primeiro_horario_inicio", "primeiro_horario_fim",
+                    "segundo_horario_inicio", "segundo_horario_fim",
                 ))
             
             return JsonResponse({
@@ -61,7 +62,8 @@ def buscar_escritorio_api(request):
                 "address": escritorio.endereco,
                 "latitude": escritorio.latitude,
                 "longitude": escritorio.longitude,
-                "horarios": horarios_disponiveis_escritorio(horarios),
+                "isOpen": False,
+                "openingHour": horarios_disponiveis_escritorio(horarios),
                 }, status=200)
         
         return JsonResponse({"erro": "Nenhum escritório encontrado"}, status=404)
@@ -74,10 +76,7 @@ def buscar_escritorio_api(request):
                 "address": escritorio.endereco,
                 "latitude": escritorio.latitude,
                 "longitude": escritorio.longitude,
-                "horarios": list(escritorio.horarios.values(
-                    "dia_semana", "primeiro_horario_inicio", "primeiro_horario_fim",
-                    "segundo_horario_inicio", "segundo_horario_fim",
-                )),
+                "horarios": horarios_disponiveis_escritorio(horarios),
             })
         return JsonResponse(dados, safe=False)
 

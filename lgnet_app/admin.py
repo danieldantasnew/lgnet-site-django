@@ -48,6 +48,9 @@ class HorarioFuncionamentoAdmin(admin.ModelAdmin):
     list_display = ('escritorio', 'dia_semana', 'primeiro_horario_inicio', 'primeiro_horario_fim', 'segundo_horario_inicio', 'segundo_horario_fim', "criado_em", "ultima_atualizacao",)
     ordering = ('escritorio', )
 
+    class Media:
+        js = ('lgnet_app/admin/js/horarioFuncionamento.js',)  
+
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
 admin.site.register(Vantagens, VantagensAdmin)
