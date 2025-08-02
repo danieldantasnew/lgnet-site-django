@@ -5,7 +5,9 @@ export async function searchDesk(latitude, longitude) {
         `/api/escritorios/?latitude=${latitude}&longitude=${longitude}`
       );
       if (!response.ok) throw new Error("Falha na requisição");
-      return await response.json();
+      const json = await response.json()
+      console.log(json)
+      return json; //Formato Temporário para verificar como estará os dados na segunda em horário de expediente.
     } catch (error) {
       console.error(error.message);
     }
