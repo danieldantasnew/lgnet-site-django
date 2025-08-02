@@ -45,7 +45,7 @@ class EscritorioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'endereco', 'latitude', 'longitude', "criado_em", "ultima_atualizacao",)
 
 class HorarioFuncionamentoAdmin(admin.ModelAdmin):
-    list_display = ('escritorio', 'dia_semana', 'horario_inicio', 'horario_fim', "criado_em", "ultima_atualizacao",)
+    list_display = ('escritorio', 'dia_semana', 'primeiro_horario_inicio', 'primeiro_horario_fim', 'segundo_horario_inicio', 'segundo_horario_fim', "criado_em", "ultima_atualizacao",)
     ordering = ('escritorio', )
 
 admin.site.register(Planos, PlanosAdmin)

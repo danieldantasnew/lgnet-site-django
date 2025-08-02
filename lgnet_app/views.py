@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
 from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades, Escritorio
 from .forms import ContatoForm
-from .utils import encontrar_cidade_mais_proxima
+from .utils import encontrar_cidade_mais_proxima, horarios_disponiveis_escritorio
 
 info_empresa = InformacoesEmpresa.objects.all()
 redes_sociais = RedeSocial.objects.all()
@@ -51,15 +51,17 @@ def buscar_escritorio_api(request):
         escritorio = encontrar_cidade_mais_proxima(escritorios, latitude, longitude)
 
         if escritorio:
+            horarios = list(escritorio.horarios.values(
+                    "dia_semana", "horario_inicio", "horario_fim"
+                ))
+            
             return JsonResponse({
                 "id": escritorio.id,
                 "desk": escritorio.nome,
                 "address": escritorio.endereco,
                 "latitude": escritorio.latitude,
                 "longitude": escritorio.longitude,
-                "horarios": list(escritorio.horarios.values(
-                    "dia_semana", "horario_inicio", "horario_fim"
-                )),
+                "horarios": horarios_disponiveis_escritorio(horarios),
                 }, status=200)
         
         return JsonResponse({"erro": "Nenhum escritório encontrado"}, status=404)
@@ -73,7 +75,8 @@ def buscar_escritorio_api(request):
                 "latitude": escritorio.latitude,
                 "longitude": escritorio.longitude,
                 "horarios": list(escritorio.horarios.values(
-                    "dia_semana", "horario_inicio", "horario_fim"
+                    "dia_semana", "primeiro_horario_inicio", "primeiro_horario_fim",
+                    "segundo_horario_inicio", "segundo_horario_fim",
                 )),
             })
         return JsonResponse(dados, safe=False)

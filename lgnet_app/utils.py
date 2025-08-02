@@ -1,4 +1,5 @@
 import math
+from datetime import datetime
 
 def haversine(lat1, lon1, lat2, lon2):
     def to_radians(angle):
@@ -36,3 +37,25 @@ def encontrar_cidade_mais_proxima(cidades, latCliente, longCliente):
             cidade_mais_proxima = cidade
     
     return cidade_mais_proxima
+
+def horarios_disponiveis_escritorio(horarios):
+    for horario in horarios:
+        if horario['dia_semana'] == datetime.now().weekday():
+            primeiro_horario_inicio_hora = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
+            primeiro_horario_inicio_minuto = f"{horario['primeiro_horario_inicio'].minute}".zfill(2)
+            
+            primeiro_horario_fim_hora = f"{horario['primeiro_horario_fim'].hour}".zfill(2)
+            primeiro_horario_fim_minuto = f"{horario['primeiro_horario_fim'].minute}".zfill(2)
+
+
+            
+            segundo_horario_inicio_hora = f"{horario['segundo_horario_inicio'].hour}".zfill(2)
+            segundo_horario_inicio_minuto = f"{horario['segundo_horario_inicio'].minute}".zfill(2)
+            
+            segundo_horario_fim_hora = f"{horario['segundo_horario_fim'].hour}".zfill(2)
+            segundo_horario_fim_minuto = f"{horario['segundo_horario_fim'].minute}".zfill(2)
+
+
+            print(f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}, {segundo_horario_inicio_hora}:{segundo_horario_inicio_minuto} - {segundo_horario_fim_hora}:{segundo_horario_fim_minuto}")
+            # return f"{inicio_hora}:{inicio_minuto} - {fim_hora}:{fim_minute}"
+    return horarios

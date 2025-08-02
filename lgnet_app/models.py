@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class Download(models.Model):
     icone = models.TextField("Ícone", default='<i class="fa-solid fa-download"></i>', help_text="Cole um ícone do FontAwesome ou código SVG")
@@ -201,8 +202,13 @@ class HorarioFuncionamento(models.Model):
 
     escritorio = models.ForeignKey(Escritorio, on_delete=models.CASCADE,related_name="horarios")
     dia_semana = models.IntegerField(choices=DIAS_DA_SEMANA, unique=False)
-    horario_inicio = models.TimeField("Horário de Início")
-    horario_fim = models.TimeField("Horário de Encerramento")
+    primeiro_horario_inicio = models.TimeField("Horário de Início do 1º turno",default=datetime.time(8, 0))
+    primeiro_horario_fim = models.TimeField("Horário de Encerramento do 1º turno", default=datetime.time(12, 0))
+
+    tem_segundo_turno = models.BooleanField("Tem segundo turno?", default=True)
+    
+    segundo_horario_inicio = models.TimeField("Horário de Início do 2º turno",default=datetime.time(14, 0), blank=True, null=True)
+    segundo_horario_fim = models.TimeField("Horário de Encerramento do 2º turno", default=datetime.time(18, 0), blank=True, null=True)
 
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
@@ -215,4 +221,7 @@ class HorarioFuncionamento(models.Model):
         verbose_name_plural = "Horário Funcionamento"
 
     def __str__(self):
-        return f"{self.dia_semana} - {self.horario_inicio} às {self.horario_fim}"
+        if self.tem_segundo_turno:
+            return f"{self.dia_semana}: {self.primeiro_horario_inicio}–{self.primeiro_horario_fim} e {self.segundo_horario_inicio}–{self.segundo_horario_fim}"
+        
+        return f"{self.dia_semana}: {self.primeiro_horario_inicio}–{self.primeiro_horario_fim}"
