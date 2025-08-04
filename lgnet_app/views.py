@@ -276,3 +276,12 @@ def contato(request):
             return JsonResponse({"mensagem": "Formulário enviado com sucesso!"}, status=200)
         
     return render(request, 'lgnet_app/pages/contato/index.html', context)
+
+def escritorios(request):
+    context = {
+        'infoEmpresa': info_empresa,
+        'redeSocial': redes_sociais,
+        'cidades': cidades,
+        'explorar': explorar,
+    }
+    return render(request, 'lgnet_app/pages/escritorios/index.html', context)
