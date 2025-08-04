@@ -46,6 +46,9 @@ def proxima_dia_de_disponibilidade(horarios):
         for horario in horarios:
             if(horario['dia_semana'] == dia_verificacao):
                 horario_inicial = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
+
+                if dia_verificacao == hoje + 1:
+                    return (f"Aberto amanhã a partir das {horario_inicial}h")
                 
                 return (f"Aberto {dias_semana[dia_verificacao]} a partir das {horario_inicial}h")
 
