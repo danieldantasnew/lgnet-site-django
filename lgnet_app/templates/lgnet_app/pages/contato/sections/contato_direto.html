@@ -20,12 +20,19 @@
     </div>
     <div class="h-full w-full overflow-hidden">
         <div id="map" class="min-h-120 lg:min-h-auto lg:max-w-140 rounded-lg w-full h-full"></div>
-        <div data-info-map class="hidden z-10 absolute left-0 bottom-0 w-full lg:max-w-140 p-4">
+        <div data-info-map class="hidden z-10 absolute left-0 bottom-0 w-full lg:max-w-140 px-4 py-5">
             <div class="animate-slideTop relative w-full p-4 shadow-[0_0_1rem_1px_rgba(0,0,0,.2)] bg-light-background dark:bg-dark-primary rounded-sm">
                 <h3 class="text-[16px] text-primary-variant-2 dark:text-light-background font-bold">Escritório mais próximo</h3>
                 <div class="flex items-center gap-1 mt-1">
-                    <i class="fa-solid fa-map-pin text-xs mb-[2px] text-primary-variant dark:text-secondary"></i>
-                    <p class="text-xs text-neutral-600 dark:text-light-background line-clamp-1 text-ellipsis pr-1">Carregando endereço...</p>
+                    <span class=""><i class="fa-solid fa-map-pin text-xs mb-[2px] text-primary-variant dark:text-secondary"></i></span>
+                    <p data-endereco class="text-xs text-neutral-600 dark:text-light-background line-clamp-1 text-ellipsis pr-1">Carregando endereço...</p>
+                </div>
+                <div class="flex items-center gap-1 mt-[2px]">
+                    <span class=""><i class="fa-solid fa-clock text-xs mb-[1px] text-primary-variant dark:text-secondary"></i></span>
+                    <div class="flex items-center">
+                        <p data-funcionamento class="text-xs text-neutral-600 dark:text-light-background line-clamp-1 text-ellipsis pr-1">Carregando horário de funcionamento...</p>
+                        <p data-aberto-fechado class="before:h-1 before:w-1 before:rounded-full before:bg-neutral-500 dark:before:bg-neutral-300 before:block before:mx-1 flex items-center gap-1 text-xs"></p>
+                    </div>
                 </div>
                 <a href="escritorios" class="
                     transition-all
@@ -52,25 +59,46 @@
                     <i class="fa-solid fa-arrow-right text-sm mt-[1px]"></i>
                 </a>
                 
-                <button data-btn-tooltip-map data-tooltip-target="tooltip-default" type="button" 
-                class="
-                    text-neutral-500
-                    dark:text-neutral-300
-                    transition-all
-                    absolute 
-                    right-3 
-                    top-3 
-                    hover:text-primary-variant
-                    dark:hover:text-secondary
-                    cursor-pointer
-                "
-                >
-                    <i class="fa-solid fa-map-location-dot text-xl"></i>
-                </button>
+                <div class="                        
+                        absolute 
+                        right-3 
+                        top-4
+                        flex
+                        gap-2
+                        
+                        [&>button]:text-neutral-500
+                        [&>button]:transition-all
+                        [&>button]:dark:text-neutral-400
+                        [&>button]:dark:bg-[#3d3d3d]
+                        [&>button]:dark:hover:text-secondary
+                        [&>button]:cursor-pointer
+                        [&>button]:bg-neutral-200
+                        [&>button]:p-1
+                        [&>button]:h-8
+                        [&>button]:w-8
+                        [&>button]:rounded-full
+                        [&>button]:hover:bg-neutral-500
+                        [&>button]:hover:text-light-background
 
-                <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 !bottom-1 text-sm font-medium text-white transition-opacity duration-300 bg-neutral-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-neutral-700">
-                    Ver no Google Maps
-                    <div class="tooltip-arrow" data-popper-arrow></div>
+                        [&>div]:text-nowrap
+                    ">
+                    <button data-btn-tooltip-street-view data-tooltip-target="tooltip-street-view" type="button">
+                        <i class="fa-solid fa-street-view text-lg"></i>
+                    </button>
+
+                    <div id="tooltip-street-view" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 !bottom-1 text-sm font-medium text-white transition-opacity duration-300 bg-neutral-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-neutral-500">
+                        Ver no Street View
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+
+                    <button data-btn-tooltip-map data-tooltip-target="tooltip-map" type="button">
+                        <i class="fa-solid fa-map-location-dot text-lg"></i>
+                    </button>
+
+                    <div id="tooltip-map" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 !bottom-1 text-sm font-medium text-white transition-opacity duration-300 bg-neutral-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-neutral-500">
+                        Ver no Google Maps
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
                 </div>
 
             </div>

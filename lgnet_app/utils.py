@@ -39,9 +39,11 @@ def encontrar_cidade_mais_proxima(cidades, latCliente, longCliente):
     return cidade_mais_proxima
 
 def horarios_disponiveis_escritorio(horarios):
+    aberto_hoje = False
     hoje = datetime.now().weekday()
     for horario in horarios:
         if horario['dia_semana'] == hoje:
+            aberto_hoje = True
             primeiro_horario_inicio_hora = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
             primeiro_horario_inicio_minuto = f"{horario['primeiro_horario_inicio'].minute}".zfill(2)
             
@@ -61,6 +63,12 @@ def horarios_disponiveis_escritorio(horarios):
 
 
             return f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}"
+        
+        if not aberto_hoje:
+            for horario in horarios:
+                print(horario)
+
+
     return None
 
 def escritorio_esta_aberto(horarios):
@@ -88,6 +96,8 @@ def escritorio_esta_aberto(horarios):
             )
 
             if dentro_primeiro_turno or dentro_segundo_turno:
-                return True
+                return "Aberto agora"
+            else: 
+                return "Fechado agora"
 
-    return False
+    return "Fechado hoje"

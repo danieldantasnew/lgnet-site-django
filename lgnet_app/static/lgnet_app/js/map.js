@@ -5,9 +5,7 @@ export async function searchDesk(latitude, longitude) {
         `/api/escritorios/?latitude=${latitude}&longitude=${longitude}`
       );
       if (!response.ok) throw new Error("Falha na requisição");
-      const json = await response.json()
-      console.log(json)
-      return json; //Formato Temporário para verificar como estará os dados na segunda em horário de expediente.
+      return await response.json();
     } catch (error) {
       console.error(error.message);
     }
@@ -32,7 +30,9 @@ export async function fetchAddress(latitude, longitude) {
     if (!response.ok) throw new Error("Não foi possível localizar o endereço");
     const { display_name } = await response.json();
 
-    FinalAddress = display_name ? `${display_name}.` : "Endereço não encontrado.";
+    FinalAddress = display_name
+      ? `${display_name}.`
+      : "Endereço não encontrado.";
   } catch (error) {
     FinalAddress = error.message;
   }
@@ -40,25 +40,79 @@ export async function fetchAddress(latitude, longitude) {
   return FinalAddress;
 }
 
-export async function infoMap(latitude, longitude, textAddressLocalApi) {
+export async function infoMap(
+  latitude,
+  longitude,
+  textAddressLocalApi,
+  textOperationApi,
+  isOpenText,
+) {
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
     info.classList.add("hidden");
-    const address = info.querySelector("div > p");
-    
+    const address = info.querySelector("div > [data-endereco]");
+    const operation = info.querySelector("div > [data-funcionamento]");
+    const isOpenOrClose = info.querySelector("div > [data-aberto-fechado]");
+
     let FinalAddress = "";
     if (textAddressLocalApi) FinalAddress = textAddressLocalApi;
     else FinalAddress = await fetchAddress(latitude, longitude);
 
-    if (address instanceof HTMLParagraphElement) {
+    if (
+      address instanceof HTMLParagraphElement &&
+      operation instanceof HTMLParagraphElement &&
+      isOpenOrClose instanceof HTMLParagraphElement
+    ) {
       address.innerText = FinalAddress;
       address.title = FinalAddress;
+      operation.innerText = textOperationApi
+        ? textOperationApi
+        : "Sem informação de horário";
+
+      isOpenOrClose.innerText = isOpenText;
+      if(isOpenText.includes("Aberto")) {
+        isOpenOrClose.classList.remove("text-red-600");
+        isOpenOrClose.classList.add("text-green-600");
+        isOpenOrClose.classList.add("dark:text-green-400");
+      }
+
+      else {
+        isOpenOrClose.classList.remove("text-green-600");
+        isOpenOrClose.classList.remove("dark:text-green-400");
+        isOpenOrClose.classList.add("text-red-600");
+      }
+      
       info.classList.remove("hidden");
     }
   }
 }
 
-function handleClick(e) {
+function handleClickStreetView(e) {
+  const btn = e.currentTarget;
+  const latitude = btn.getAttribute("data-latitude");
+  const longitude = btn.getAttribute("data-longitude");
+
+  if (latitude && longitude) {
+    window.open(
+      `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${latitude},${longitude}&heading=45&pitch=10&fov=80`,
+      "_blank"
+    );
+  }
+}
+
+export function streetViewTooltip(latitude, longitude) {
+  const button = document.querySelector("[data-btn-tooltip-street-view]");
+
+  if (button instanceof HTMLButtonElement) {
+    button.setAttribute("data-latitude", latitude);
+    button.setAttribute("data-longitude", longitude);
+
+    button.removeEventListener("click", handleClickStreetView);
+    button.addEventListener("click", handleClickStreetView);
+  }
+}
+
+function handleClickGoogleMaps(e) {
   const btn = e.currentTarget;
   const latitude = btn.getAttribute("data-latitude");
   const longitude = btn.getAttribute("data-longitude");
@@ -78,7 +132,7 @@ export function googleMapsTooltip(latitude, longitude) {
     button.setAttribute("data-latitude", latitude);
     button.setAttribute("data-longitude", longitude);
 
-    button.removeEventListener("click", handleClick);
-    button.addEventListener("click", handleClick);
+    button.removeEventListener("click", handleClickGoogleMaps);
+    button.addEventListener("click", handleClickGoogleMaps);
   }
 }

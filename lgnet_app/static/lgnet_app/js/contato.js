@@ -1,4 +1,4 @@
-import { googleMapsTooltip, infoMap, searchDesk } from "./map.js";
+import { googleMapsTooltip, infoMap, searchDesk, streetViewTooltip } from "./map.js";
 
 let mapInstance = null;
 let markerInstance = null;
@@ -31,7 +31,8 @@ export async function map() {
     markerInstance.setLngLat([longitude, latitude]);
 
     googleMapsTooltip(latitude, longitude);
-    infoMap(latitude, longitude, coords.address);
+    streetViewTooltip(latitude, longitude);
+    infoMap(latitude, longitude, coords.address, coords.openingHour, coords.isOpen);
     return;
   } else {
     if (
@@ -79,7 +80,8 @@ export async function map() {
       );
 
       googleMapsTooltip(latitude, longitude);
-      infoMap(latitude, longitude, coords.address);
+      streetViewTooltip(latitude, longitude);
+      infoMap(latitude, longitude, coords.address, coords.openingHour, coords.isOpen);
     }
   }
 }
