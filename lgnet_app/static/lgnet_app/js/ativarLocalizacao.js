@@ -83,7 +83,7 @@ async function getLocation(
       window.scrollTo(0, 0);
     }
   } catch (error) {
-    console.log("Erro ao obter localização:", error);
+    console.error("Erro ao obter localização:", error);
     loadingCidade.classList.remove("animate-fadeIn");
     loadingCidade.style.display = "none";
     dataContentInfo.classList.remove("animate-hiddenItem");

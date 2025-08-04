@@ -1,5 +1,5 @@
 import math
-from datetime import datetime, time
+from datetime import datetime
 
 def haversine(lat1, lon1, lat2, lon2):
     def to_radians(angle):
@@ -38,38 +38,65 @@ def encontrar_cidade_mais_proxima(cidades, latCliente, longCliente):
     
     return cidade_mais_proxima
 
-def horarios_disponiveis_escritorio(horarios):
-    aberto_hoje = False
+def proxima_dia_de_disponibilidade(horarios):
+    dias_semana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
     hoje = datetime.now().weekday()
-    for horario in horarios:
-        if horario['dia_semana'] == hoje:
-            aberto_hoje = True
-            primeiro_horario_inicio_hora = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
-            primeiro_horario_inicio_minuto = f"{horario['primeiro_horario_inicio'].minute}".zfill(2)
-            
-            primeiro_horario_fim_hora = f"{horario['primeiro_horario_fim'].hour}".zfill(2)
-            primeiro_horario_fim_minuto = f"{horario['primeiro_horario_fim'].minute}".zfill(2)
-
-
-            if(horario['segundo_horario_inicio'] and horario['segundo_horario_fim']):
-
-                segundo_horario_inicio_hora = f"{horario['segundo_horario_inicio'].hour}".zfill(2)
-                segundo_horario_inicio_minuto = f"{horario['segundo_horario_inicio'].minute}".zfill(2)
+    for i in range(7):
+        dia_verificacao = (hoje + i) % 7
+        for horario in horarios:
+            if(horario['dia_semana'] == dia_verificacao):
+                horario_inicial = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
                 
-                segundo_horario_fim_hora = f"{horario['segundo_horario_fim'].hour}".zfill(2)
-                segundo_horario_fim_minuto = f"{horario['segundo_horario_fim'].minute}".zfill(2)
+                return (f"Aberto {dias_semana[dia_verificacao]} a partir das {horario_inicial}h")
 
-                return f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}, {segundo_horario_inicio_hora}:{segundo_horario_inicio_minuto} - {segundo_horario_fim_hora}:{segundo_horario_fim_minuto}"
+    return "Sem horário disponível na semana."
 
-
-            return f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}"
+def horarios_disponiveis_escritorio(horarios):
+    hoje = datetime.now().weekday()
+    horarios_normalizados = []
+    horario_hoje_em_texto = ''
+    
+    for horario in horarios:
+        primeiro_horario_inicio_hora = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
+        primeiro_horario_inicio_minuto = f"{horario['primeiro_horario_inicio'].minute}".zfill(2)
         
-        if not aberto_hoje:
-            for horario in horarios:
-                print(horario)
+        primeiro_horario_fim_hora = f"{horario['primeiro_horario_fim'].hour}".zfill(2)
+        primeiro_horario_fim_minuto = f"{horario['primeiro_horario_fim'].minute}".zfill(2)
 
 
-    return None
+        if(horario['segundo_horario_inicio'] and horario['segundo_horario_fim']):
+
+            segundo_horario_inicio_hora = f"{horario['segundo_horario_inicio'].hour}".zfill(2)
+            segundo_horario_inicio_minuto = f"{horario['segundo_horario_inicio'].minute}".zfill(2)
+            
+            segundo_horario_fim_hora = f"{horario['segundo_horario_fim'].hour}".zfill(2)
+            segundo_horario_fim_minuto = f"{horario['segundo_horario_fim'].minute}".zfill(2)
+
+            horarios_em_texto = f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}, {segundo_horario_inicio_hora}:{segundo_horario_inicio_minuto} - {segundo_horario_fim_hora}:{segundo_horario_fim_minuto}"
+
+            horarios_normalizados.append({"dia_semana": horario['dia_semana'], "horario_normalizado": horarios_em_texto})
+
+        else:
+            horarios_em_texto = f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}"
+
+            horarios_normalizados.append(
+                {"dia_semana": horario['dia_semana'],
+                "horario_normalizado": horarios_em_texto
+            })
+
+        if horario['dia_semana'] == hoje:
+            horario_hoje_em_texto = horarios_em_texto
+        
+    if(len(horario_hoje_em_texto) == 0):
+        return {
+        "horarios": horarios_normalizados,
+        "horario_hoje": proxima_dia_de_disponibilidade(horarios),
+    }
+
+    return {
+        "horarios": horarios_normalizados,
+        "horario_hoje": horario_hoje_em_texto,
+    }
 
 def escritorio_esta_aberto(horarios):
     hoje = datetime.now().weekday()

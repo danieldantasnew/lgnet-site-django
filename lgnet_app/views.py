@@ -56,6 +56,8 @@ def buscar_escritorio_api(request):
                     "segundo_horario_inicio", "segundo_horario_fim",
                 ))
             
+            horarios_normalizados = horarios_disponiveis_escritorio(horarios)
+            
             return JsonResponse({
                 "id": escritorio.id,
                 "desk": escritorio.nome,
@@ -63,7 +65,8 @@ def buscar_escritorio_api(request):
                 "latitude": escritorio.latitude,
                 "longitude": escritorio.longitude,
                 "isOpen": escritorio_esta_aberto(horarios),
-                "openingHour": horarios_disponiveis_escritorio(horarios),
+                "allSchedules": horarios_normalizados['horarios'],
+                "openingHour": horarios_normalizados['horario_hoje'],
                 }, status=200)
         
         return JsonResponse({"erro": "Nenhum escritório encontrado"}, status=404)
@@ -256,8 +259,6 @@ def contato(request):
             telefone = form.cleaned_data['telefone']
             assunto = form.cleaned_data['assunto']
             mensagem = form.cleaned_data['mensagem']
-
-            print(nome, email, telefone, assunto, mensagem)
 
             message_email = (
                 f"Mensagem de {nome}\n"
