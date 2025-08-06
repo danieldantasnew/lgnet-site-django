@@ -1,38 +1,55 @@
-import { googleMapsTooltip, infoMap, searchDesk, streetViewTooltip } from "./map.js";
+import {
+  applyOffSetInMap,
+  centerMarker,
+  createMarker,
+  hiddenLabelMarker,
+  searchDesk,
+  updateInfoDesk,
+} from "./map.js";
 
 let mapInstance = null;
 let markerInstance = null;
 
 export async function map() {
-  let defaultCoords = {
+  let defaultInfoMap = {
     latitude: -7.0322119,
     longitude: -37.2948154,
+    address: "Sem informações",
+    openingHour: "Sem informações",
+    isOpen: false,
+    desk: "Patos",
   };
 
-  let coords = null;
+  let infoMap = null;
   try {
     const localData = localStorage.getItem("data_location");
     if (localData) {
-      coords = JSON.parse(localData);
-      coords.latitude = parseFloat(coords.latitude);
-      coords.longitude = parseFloat(coords.longitude);
-      coords = await searchDesk(coords.latitude, coords.longitude);
+      infoMap = JSON.parse(localData);
+      infoMap.latitude = parseFloat(infoMap.latitude);
+      infoMap.longitude = parseFloat(infoMap.longitude);
+      infoMap = await searchDesk(infoMap.latitude, infoMap.longitude);
     } else {
       throw new Error("Erro ao capturar as coordenadas");
     }
   } catch (erro) {
-    coords = defaultCoords;
+    infoMap = defaultInfoMap;
   }
 
-  let { latitude, longitude } = coords;
+  let { latitude, longitude } = infoMap;
 
   if (mapInstance && markerInstance) {
     mapInstance.setCenter([longitude, latitude]);
     markerInstance.setLngLat([longitude, latitude]);
 
-    googleMapsTooltip(latitude, longitude);
-    streetViewTooltip(latitude, longitude);
-    infoMap(latitude, longitude, coords.address, coords.openingHour, coords.isOpen);
+    const markerElement = markerInstance.getElement();
+
+    if (markerElement) {
+      const title = markerElement.querySelector("h3");
+      title.innerText = infoMap.desk;
+    }
+
+    updateInfoDesk(infoMap);
+    applyOffSetInMap(mapInstance, latitude, longitude);
     return;
   } else {
     if (
@@ -43,31 +60,14 @@ export async function map() {
       mapInstance = new maplibregl.Map({
         container: "map",
         center: [longitude, latitude],
-        zoom: 18,
+        zoom: 19,
         attributionControl: false,
         style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
       });
 
-      const el = document.createElement("div");
-      el.className = "marker-wrapper";
-      el.style.width = "32px";
-      el.style.height = "32px";
-      el.style.position = "relative";
-      el.innerHTML = `
-        <div class="
-          absolute 
-          top-0 
-          left-0 
-          w-11 
-          h-11 
-          z-10 
-          bg-size-[100%_100%] 
-          bg-[url('../images/mapPin.svg')]
-        ">
-        </div>
-      `;
+      const marker = createMarker(infoMap.desk);
 
-      markerInstance = new maplibregl.Marker({ element: el })
+      markerInstance = new maplibregl.Marker({ element: marker })
         .setLngLat([longitude, latitude])
         .addTo(mapInstance);
 
@@ -79,9 +79,11 @@ export async function map() {
         "top-left"
       );
 
-      googleMapsTooltip(latitude, longitude);
-      streetViewTooltip(latitude, longitude);
-      infoMap(latitude, longitude, coords.address, coords.openingHour, coords.isOpen);
+      centerMarker(markerInstance, mapInstance, latitude, longitude);
+
+      hiddenLabelMarker(markerInstance, mapInstance);
+      updateInfoDesk(infoMap);
+      applyOffSetInMap(mapInstance, latitude, longitude);
     }
   }
 }

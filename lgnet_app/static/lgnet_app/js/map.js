@@ -40,12 +40,12 @@ export async function fetchAddress(latitude, longitude) {
   return FinalAddress;
 }
 
-export async function infoMap(
+export async function infoOfDesk(
   latitude,
   longitude,
   textAddressLocalApi,
   textOperationApi,
-  isOpenText,
+  isOpenText
 ) {
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
@@ -70,18 +70,16 @@ export async function infoMap(
         : "Sem informação de horário";
 
       isOpenOrClose.innerText = isOpenText;
-      if(isOpenText.includes("Aberto")) {
+      if (isOpenText.includes("Aberto")) {
         isOpenOrClose.classList.remove("text-red-600");
         isOpenOrClose.classList.add("text-green-600");
         isOpenOrClose.classList.add("dark:text-green-400");
-      }
-
-      else {
+      } else {
         isOpenOrClose.classList.remove("text-green-600");
         isOpenOrClose.classList.remove("dark:text-green-400");
         isOpenOrClose.classList.add("text-red-600");
       }
-      
+
       info.classList.remove("hidden");
     }
   }
@@ -134,5 +132,84 @@ export function googleMapsTooltip(latitude, longitude) {
 
     button.removeEventListener("click", handleClickGoogleMaps);
     button.addEventListener("click", handleClickGoogleMaps);
+  }
+}
+
+export function applyOffSetInMap(mapInstance, latitude, longitude) {
+  mapInstance.easeTo({
+    center: [longitude, latitude],
+    offset: [0, -100],
+    duration: 1000,
+  });
+}
+
+export function updateInfoDesk(infoToMap) {
+  googleMapsTooltip(infoToMap.latitude, infoToMap.longitude);
+  streetViewTooltip(infoToMap.latitude, infoToMap.longitude);
+  infoOfDesk(
+    infoToMap.latitude,
+    infoToMap.longitude,
+    infoToMap.address,
+    infoToMap.openingHour,
+    infoToMap.isOpen
+  );
+}
+
+export function createMarker(desk) {
+  const marker = document.createElement("div");
+  marker.className = "marker-wrapper";
+  marker.style.width = "32px";
+  marker.style.height = "32px";
+  marker.style.position = "relative";
+  marker.style.cursor = "pointer";
+
+  marker.innerHTML = `
+    <div>
+      <h3 class="font-semibold text-dark-variant text-sm absolute -top-6 left-[50%] translate-x-[-50%] text-nowrap">${desk}</h3> 
+      <div class="
+        absolute 
+        top-0 
+        left-0
+        w-11 
+        h-11 
+        z-10 
+        bg-size-[100%_100%] 
+        bg-[url('../images/mapPin.svg')]
+      ">
+      </div>
+    </div>
+  `;
+
+  return marker;
+}
+
+export function hiddenLabelMarker(markerInstance, mapInstance) {
+  mapInstance.on("zoom", () => {
+    const currentZoom = mapInstance.getZoom();
+    const markerElement = markerInstance.getElement();
+
+    if (markerElement) {
+      const title = markerElement.querySelector("h3");
+
+      if (title instanceof HTMLHeadingElement && currentZoom < 17) {
+        title.classList.add("hidden");
+      } else {
+        title.classList.remove("hidden");
+      }
+    }
+  });
+}
+
+export function centerMarker(markerInstance, mapInstance, latitude, longitude) {
+  const markerElement = markerInstance.getElement();
+
+  if (markerElement && markerElement instanceof HTMLDivElement) {
+    markerElement.addEventListener("click", () => {
+      mapInstance.easeTo({
+        center: [longitude, latitude],
+        zoom: 19,
+        offset: [0, -100],
+      });
+    });
   }
 }
