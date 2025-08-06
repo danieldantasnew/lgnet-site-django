@@ -191,7 +191,7 @@ export function hiddenLabelMarker(markerInstance, mapInstance) {
     if (markerElement) {
       const title = markerElement.querySelector("h3");
 
-      if (title instanceof HTMLHeadingElement && currentZoom < 17) {
+      if (title instanceof HTMLHeadingElement && currentZoom < 14) {
         title.classList.add("hidden");
       } else {
         title.classList.remove("hidden");

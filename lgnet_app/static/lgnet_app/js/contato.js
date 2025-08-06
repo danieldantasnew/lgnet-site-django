@@ -47,7 +47,8 @@ export async function map() {
       const title = markerElement.querySelector("h3");
       title.innerText = infoMap.desk;
     }
-
+    
+    centerMarker(markerInstance, mapInstance, latitude, longitude);
     updateInfoDesk(infoMap);
     applyOffSetInMap(mapInstance, latitude, longitude);
     return;
