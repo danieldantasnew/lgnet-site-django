@@ -1,4 +1,5 @@
 {% extends 'lgnet_app/base.html' %}
+{% load static %}
 {% block title %}LGNET | Início{% endblock %}
 
 {% block content %}
@@ -8,4 +9,9 @@
     {% include 'lgnet_app/pages/principal/sections/autoatendimento.html' %}
     {% include 'lgnet_app/pages/principal/sections/app_mobile.html' %}
     {% include 'lgnet_app/partials/explorar.html' %}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script type="module" src="{% static 'lgnet_app/js/banners.js' %}"></script>
 {% endblock %}

@@ -1,6 +1,5 @@
 import {ativarLocalizacao} from "./ativarLocalizacao.js";
 import buscarPlanos from "./buscarPlanos.js";
-import { map } from "./contato.js";
 
 function init(dataLocation, localizacao) {
   const dropdown = document.querySelector("[data-dropdown-cidade]");
@@ -79,7 +78,6 @@ function init(dataLocation, localizacao) {
       );
       document.modalComponent.close();
       buscarPlanos(selected.city);
-      map();
     }
   };
 

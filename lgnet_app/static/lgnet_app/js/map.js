@@ -1,3 +1,20 @@
+export function watchCityChangeForMapUpdate(callback) {
+  const handleChange = ()=> {
+    callback();
+  }
+
+  const cityElement = document.querySelector("[data-local]");
+  
+  const observer = new MutationObserver(handleChange);
+  observer.observe(cityElement, {
+    subtree: true,
+    characterData: true,
+    childList: true,
+  });
+
+  return observer;
+}
+
 export async function searchDesk(latitude, longitude) {
   if (latitude && longitude) {
     try {
@@ -155,7 +172,7 @@ export function updateInfoDesk(infoToMap) {
   );
 }
 
-export function createMarker(desk) {
+export function createMarker(deskName) {
   const marker = document.createElement("div");
   marker.className = "marker-wrapper";
   marker.style.width = "32px";
@@ -165,7 +182,7 @@ export function createMarker(desk) {
 
   marker.innerHTML = `
     <div>
-      <h3 class="font-semibold text-dark-variant text-sm absolute -top-6 left-[50%] translate-x-[-50%] text-nowrap">${desk}</h3> 
+      <h3 class="font-semibold text-dark-variant text-sm absolute -top-6 left-[50%] translate-x-[-50%] text-nowrap">${deskName}</h3> 
       <div class="
         absolute 
         top-0 

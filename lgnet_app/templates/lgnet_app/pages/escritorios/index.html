@@ -3,7 +3,22 @@
 {% block title %}LGNET | Escritórios{% endblock %}
 
 {% block content %}
-<section>
-    <h2>Nossos Escritórios</h2>
-</section>
+    <section class="bg-light-background dark:bg-dark-primary py-8 lg:pt-16 lg:pb-20 px-4 transition-colors duration-300">
+        <div class="container px-0 flex flex-col gap-8">
+            <div>
+                <h1 class="mb-[2px]">Nossos Escritórios<strong>.</strong></h1>
+                <p class="sub-text">Confira nossas localizações, horários e outras informações no mapa interativo.</p>
+            </div>
+
+            <div id="map" class="min-h-160 rounded-lg w-full h-full shadow-lg"></div>
+        </div>
+    </section>
+    {% include "lgnet_app/partials/explorar.html" %}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <link href="https://unpkg.com/maplibre-gl@^5.6.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@^5.6.1/dist/maplibre-gl.js"></script>
+  <script type="module" src="{% static 'lgnet_app/js/nossosEscritorios.js' %}"></script>
 {% endblock %}

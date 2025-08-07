@@ -1,5 +1,4 @@
 import buscarPlanos from "./buscarPlanos.js";
-import { map } from "./contato.js";
 
 async function encontrarCidadeMaisProxima(latCliente, longCliente) {
   const response = await fetch(`/api/cidade-proxima/?latitude=${latCliente}&longitude=${longCliente}`);
@@ -20,7 +19,6 @@ function salvarCidadeNoStorage(cidade) {
       text: cidade.text,
     })
   );
-  map();
 }
 
 function atualizarUIComCidade(cidade, localizacaoTexto, loadingCidade) {

@@ -5,6 +5,7 @@ import {
   hiddenLabelMarker,
   searchDesk,
   updateInfoDesk,
+  watchCityChangeForMapUpdate,
 } from "./map.js";
 
 let mapInstance = null;
@@ -47,7 +48,7 @@ export async function map() {
       const title = markerElement.querySelector("h3");
       title.innerText = infoMap.desk;
     }
-    
+
     centerMarker(markerInstance, mapInstance, latitude, longitude);
     updateInfoDesk(infoMap);
     applyOffSetInMap(mapInstance, latitude, longitude);
@@ -72,6 +73,16 @@ export async function map() {
         .setLngLat([longitude, latitude])
         .addTo(mapInstance);
 
+        
+      const geolocateControl = new maplibregl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+        showUserHeading: true,
+      });
+
+      
       mapInstance.addControl(new maplibregl.NavigationControl(), "top-right");
       mapInstance.addControl(
         new maplibregl.AttributionControl({
@@ -79,7 +90,8 @@ export async function map() {
         }),
         "top-left"
       );
-
+      mapInstance.addControl(geolocateControl, "top-right");
+      
       centerMarker(markerInstance, mapInstance, latitude, longitude);
 
       hiddenLabelMarker(markerInstance, mapInstance);
@@ -89,7 +101,7 @@ export async function map() {
   }
 }
 
-export default function contato() {
+function contato() {
   const inputContato = document.querySelector("[data-form-telefone]");
   const form = document.querySelector("[data-form-contato]");
   let timeoutErro = null;
@@ -185,3 +197,6 @@ export default function contato() {
   }
   map();
 }
+
+watchCityChangeForMapUpdate(map);
+contato();

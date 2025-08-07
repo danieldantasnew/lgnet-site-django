@@ -74,14 +74,25 @@ def buscar_escritorio_api(request):
     else:
         dados = []
         for escritorio in escritorios:
-            dados.append({
-                "id": escritorio.id,
-                "desk": escritorio.nome,
-                "address": escritorio.endereco,
-                "latitude": escritorio.latitude,
-                "longitude": escritorio.longitude,
-                "horarios": horarios_disponiveis_escritorio(horarios),
-            })
+            if escritorio:
+                horarios = list(escritorio.horarios.values(
+                        "dia_semana", "primeiro_horario_inicio", "primeiro_horario_fim",
+                        "segundo_horario_inicio", "segundo_horario_fim",
+                    ))
+                
+                horarios_normalizados = horarios_disponiveis_escritorio(horarios)
+                dados.append({
+                    "id": escritorio.id,
+                    "desk": escritorio.nome,
+                    "address": escritorio.endereco,
+                    "latitude": escritorio.latitude,
+                    "longitude": escritorio.longitude,
+                    "telephone": escritorio.telefone,
+                    "isOpen": escritorio_esta_aberto(horarios),
+                    "allSchedules": horarios_normalizados['horarios'],
+                    "openingHour": horarios_normalizados['horario_hoje'],
+                    })
+        
         return JsonResponse(dados, safe=False)
 
 def encontrar_cidade_mais_proxima_api(request):

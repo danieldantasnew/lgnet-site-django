@@ -1,4 +1,4 @@
-export default function banners() {
+function banners() {
   const progressCircle = document.querySelector(".autoplay-progress svg");
   const progressContent = document.querySelector(".autoplay-progress span");
   const swiper = new Swiper(".mySwiper", {
@@ -24,3 +24,5 @@ export default function banners() {
     },
   });
 }
+
+banners();
