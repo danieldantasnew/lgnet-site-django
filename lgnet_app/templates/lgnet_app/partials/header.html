@@ -40,7 +40,7 @@
     <div class="text-[#ffffff] container flex-auto">
       <div class="flex justify-between items-center [&>nav]:hidden [&>div]:hidden [&>nav]:lg:flex [&>div]:lg:flex">
         <a
-          href="/"
+          href="{%url 'lgnet:inicio'%}"
           class="*:w-20 *:h-12 **:fill-primary-variant dark:**:fill-white"
         >
           {% include 'lgnet_app/partials/utilities/logo.html' %}
@@ -105,9 +105,9 @@
       *:*:pr-3
       "
     >
-      <li><a onclick="document.modalComponent.close()" href="#">1 - Menu</a></li>
-      <li><a onclick="document.modalComponent.close()" href="#planos">2 - Conteúdo</a></li>
-      <li><a onclick="document.modalComponent.close()" href="#footer">3 - Rodapé</a></li>
+      <li><a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#">1 - Menu</a></li>
+      <li><a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#planos">2 - Conteúdo</a></li>
+      <li><a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#footer">3 - Rodapé</a></li>
       <li>
         <a data-contraste-acessibilidade class="transition-all">
           <span class="mr-1"><i class="fa-solid fa-circle-half-stroke"></i></span>

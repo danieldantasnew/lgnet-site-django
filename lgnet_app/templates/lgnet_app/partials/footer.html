@@ -33,19 +33,19 @@
           <div>
             <h3 class="text-xl font-bold mb-3">Institucional</h3>
             <ul>
-              <li><a href="sobre">Quem somos</a></li>
-              <li><a href="acessibilidade">Acessibilidade</a></li>
+              <li><a href="{%url 'lgnet:sobre'%}">Quem somos</a></li>
+              <li><a href="{%url 'lgnet:acessibilidade'%}">Acessibilidade</a></li>
               <li><a href="http://blog.lgnetpb.com.br/">Nosso blog</a></li>
-              <li><a href="escritorios">Nossos escritórios</a></li>
+              <li><a href="{% url 'lgnet:escritorios'%}">Nossos escritórios</a></li>
               <li><a href="https://selecao.lgnetpb.com.br/" target="_blank">Trabalhe conosco</a></li>
             </ul>
           </div>
           <div>
             <h3 class="text-xl font-bold mb-3">Navegação</h3>
             <ul class="text-sm text-gray-50  font-medium flex flex-col gap-2 **:hover:text-secondary">
-              <li><a href="/#planos">Planos</a></li>
-              <li><a href="/#autoatendimento">Autoatendimento</a></li>
-              <li><a href="/#explorar">Explorar</a></li>
+              <li><a href="{% url 'lgnet:inicio'%}#planos">Planos</a></li>
+              <li><a href="{% url 'lgnet:inicio'%}#autoatendimento">Autoatendimento</a></li>
+              <li><a href="{% url 'lgnet:inicio'%}#explorar">Explorar</a></li>
               <li><a href="contato">Contato</a></li>
             </ul>
           </div>
@@ -53,7 +53,7 @@
             <h3 class="text-xl font-bold mb-3">Contato</h3>
               <ul class="text-sm text-gray-50 font-medium flex flex-col gap-2">
                 <li>
-                  <a class="flex items-center justify-center lg:!justify-start gap-[6px]" href="#">
+                  <a class="flex items-center justify-center lg:!justify-start gap-[6px]" href="{% url 'lgnet:inicio'%}#">
                     <span class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant dark:bg-amber-100 dark:text-secondary-variant"><i class="fa-regular fa-envelope"></i></span>
                     {{item.email}}
                   </a>
