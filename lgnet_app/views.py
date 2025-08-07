@@ -64,6 +64,7 @@ def buscar_escritorio_api(request):
                 "address": escritorio.endereco,
                 "latitude": escritorio.latitude,
                 "longitude": escritorio.longitude,
+                "telephone": escritorio.telefone,
                 "isOpen": escritorio_esta_aberto(horarios),
                 "allSchedules": horarios_normalizados['horarios'],
                 "openingHour": horarios_normalizados['horario_hoje'],

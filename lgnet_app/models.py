@@ -179,6 +179,8 @@ class Escritorio(models.Model):
     endereco = models.TextField("Endereço exato")
     latitude = models.CharField("Latitude", max_length=20)
     longitude = models.CharField("Longitude", max_length=20)
+    telefone = models.CharField("Telefone", max_length=20, default="", null=True, blank=True)
+
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)
 
