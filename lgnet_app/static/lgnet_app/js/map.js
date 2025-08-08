@@ -160,7 +160,7 @@ export function applyOffSetInMap(mapInstance, latitude, longitude) {
   });
 }
 
-export function updateInfoDesk(infoToMap) {
+export function updateInfoDesk(infoToMap, unique=true) {
   googleMapsTooltip(infoToMap.latitude, infoToMap.longitude);
   streetViewTooltip(infoToMap.latitude, infoToMap.longitude);
   infoOfDesk(
@@ -176,8 +176,15 @@ export function createFeaturesToMarkers(items) {
   const featuresArray = items.map((item) => ({
     type: "Feature",
     properties: {
-      message: `${item.desk}`,
-      iconSize: [60, 60],
+      id: item.id,
+      address: item.address,
+      desk: item.desk,
+      latitude: item.latitude,
+      longitude: item.longitude,
+      telephone: item.telephone,
+      isOpen: item.isOpen,
+      allSchedules: item.allSchedules,
+      openingHour: item.openingHour,
     },
     geometry: {
       type: "Point",
@@ -202,16 +209,16 @@ export function createMarkers(mapInstance, items) {
     el.style.width = "32px";
     el.style.height = "32px";
     el.style.cursor = "pointer";
-    el.style.textAlign = "center"
+    el.style.textAlign = "center";
 
     el.innerHTML = `
       <div class="relative">
-        <h3 class="font-medium text-dark-variant text-sm text-nowrap text-center
+        <h3 class="font-semibold text-primary-variant text-xs text-nowrap text-center
           absolute
-          -top-6
+          -top-5
           left-[50%]
           translate-x-[-50%]
-        ">${marker.properties.message}</h3> 
+        ">${marker.properties.desk}</h3> 
         <div class="
           w-11 
           h-11 
@@ -222,6 +229,10 @@ export function createMarkers(mapInstance, items) {
         </div>
       </div>
     `;
+
+    el.addEventListener("click", () => {
+      updateInfoDesk(marker.properties, false)
+    });
 
     const markerEl = new maplibregl.Marker({ element: el })
       .setLngLat(marker.geometry.coordinates)
@@ -245,7 +256,7 @@ export function hiddenLabelMarker(markerInstance, mapInstance) {
     if (markerElement) {
       const title = markerElement.querySelector("h3");
 
-      if (title instanceof HTMLHeadingElement && currentZoom < 14) {
+      if (title instanceof HTMLHeadingElement && currentZoom < 8) {
         title.classList.add("hidden");
       } else {
         title.classList.remove("hidden");
@@ -266,4 +277,34 @@ export function centerMarker(markerInstance, mapInstance, latitude, longitude) {
       });
     });
   }
+}
+
+export function initMap() {
+  const map = new maplibregl.Map({
+    container: "map",
+    center: [-37.2948154, -7.0322119],
+    zoom: 8,
+    attributionControl: false,
+    style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
+  });
+
+  const geolocateControl = new maplibregl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true,
+    },
+    trackUserLocation: true,
+    showUserHeading: true,
+  });
+
+  map.addControl(new maplibregl.NavigationControl(), "top-right");
+  map.addControl(new maplibregl.FullscreenControl(), "top-right");
+  map.addControl(geolocateControl, "top-right");
+  map.addControl(
+    new maplibregl.AttributionControl({
+      compact: true,
+    }),
+    "top-left"
+  );
+
+  return map;
 }

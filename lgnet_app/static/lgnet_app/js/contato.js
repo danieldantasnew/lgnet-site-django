@@ -1,6 +1,7 @@
 import {
   applyOffSetInMap,
   createMarkers,
+  initMap,
   searchDesk,
   updateInfoDesk,
   watchCityChangeForMapUpdate,
@@ -56,35 +57,10 @@ export async function map() {
       typeof maplibregl.Map == "function" &&
       document.getElementById("map")
     ) {
-      mapInstance = new maplibregl.Map({
-        container: "map",
-        center: [longitude, latitude],
-        zoom: 19,
-        attributionControl: false,
-        style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
-      });
+      mapInstance = initMap();
 
       createMarkers(mapInstance, [infoMap]);
 
-        
-      const geolocateControl = new maplibregl.GeolocateControl({
-      positionOptions: {
-          enableHighAccuracy: true,
-        },
-        trackUserLocation: true,
-        showUserHeading: true,
-      });
-
-      
-      mapInstance.addControl(new maplibregl.NavigationControl(), "top-right");
-      mapInstance.addControl(
-        new maplibregl.AttributionControl({
-          compact: true,
-        }),
-        "top-left"
-      );
-      mapInstance.addControl(geolocateControl, "top-right");
-      
       updateInfoDesk(infoMap);
       applyOffSetInMap(mapInstance, latitude, longitude);
     }

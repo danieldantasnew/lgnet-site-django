@@ -154,6 +154,8 @@
     @apply text-neutral-600;
     @apply font-medium;
     @apply dark:text-secondary;
+    @apply text-sm;
+    @apply lg:text-[16px];
   }
 
   .essencial > :nth-child(even) {

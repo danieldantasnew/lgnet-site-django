@@ -1,5 +1,6 @@
 import {
   createMarkers,
+  initMap,
   searchDesk,
   watchCityChangeForMapUpdate,
 } from "./map.js";
@@ -21,13 +22,8 @@ async function map() {
     typeof maplibregl.Map == "function" &&
     document.getElementById("map")
   ) {
-    mapInstanceDesk = new maplibregl.Map({
-      container: "map",
-      center: [-37.2948154, -7.0322119],
-      zoom: 19,
-      attributionControl: false,
-      style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
-    });
+
+    mapInstanceDesk = initMap()
     
     const desks = await searchDesk();
 
@@ -35,22 +31,7 @@ async function map() {
       createMarkers(mapInstanceDesk, desks);
     }
 
-    const geolocateControl = new maplibregl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true,
-      },
-      trackUserLocation: true,
-      showUserHeading: true,
-    });
 
-    mapInstanceDesk.addControl(new maplibregl.NavigationControl(), "top-right");
-    mapInstanceDesk.addControl(geolocateControl, "top-right");
-    mapInstanceDesk.addControl(
-      new maplibregl.AttributionControl({
-        compact: true,
-      }),
-      "top-left"
-    );
   }
 }
 
