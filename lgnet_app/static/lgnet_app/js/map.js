@@ -1,10 +1,10 @@
 export function watchCityChangeForMapUpdate(callback) {
-  const handleChange = ()=> {
+  const handleChange = () => {
     callback();
-  }
+  };
 
   const cityElement = document.querySelector("[data-local]");
-  
+
   const observer = new MutationObserver(handleChange);
   observer.observe(cityElement, {
     subtree: true,
@@ -172,32 +172,69 @@ export function updateInfoDesk(infoToMap) {
   );
 }
 
-export function createMarker(deskName) {
-  const marker = document.createElement("div");
-  marker.className = "marker-wrapper";
-  marker.style.width = "32px";
-  marker.style.height = "32px";
-  marker.style.position = "relative";
-  marker.style.cursor = "pointer";
+export function createFeaturesToMarkers(items) {
+  const featuresArray = items.map((item) => ({
+    type: "Feature",
+    properties: {
+      message: `${item.desk}`,
+      iconSize: [60, 60],
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [item.longitude, item.latitude],
+    },
+  }));
 
-  marker.innerHTML = `
-    <div>
-      <h3 class="font-semibold text-dark-variant text-sm absolute -top-6 left-[50%] translate-x-[-50%] text-nowrap">${deskName}</h3> 
-      <div class="
-        absolute 
-        top-0 
-        left-0
-        w-11 
-        h-11 
-        z-10 
-        bg-size-[100%_100%] 
-        bg-[url('../images/mapPin.svg')]
-      ">
+  const geojson = {
+    type: "FeatureCollection",
+    features: featuresArray,
+  };
+
+  return geojson;
+}
+
+export function createMarkers(mapInstance, items) {
+  const geojson = createFeaturesToMarkers(items);
+
+  geojson.features.forEach((marker) => {
+    const el = document.createElement("div");
+    el.className = "marker-wrapper";
+    el.style.width = "32px";
+    el.style.height = "32px";
+    el.style.cursor = "pointer";
+    el.style.textAlign = "center"
+
+    el.innerHTML = `
+      <div class="relative">
+        <h3 class="font-medium text-dark-variant text-sm text-nowrap text-center
+          absolute
+          -top-6
+          left-[50%]
+          translate-x-[-50%]
+        ">${marker.properties.message}</h3> 
+        <div class="
+          w-11 
+          h-11 
+          z-10 
+          bg-size-[100%_100%] 
+          bg-[url('../images/mapPin.svg')]
+        ">
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
-  return marker;
+    const markerEl = new maplibregl.Marker({ element: el })
+      .setLngLat(marker.geometry.coordinates)
+      .addTo(mapInstance);
+
+    hiddenLabelMarker(markerEl, mapInstance);
+    centerMarker(
+      markerEl,
+      mapInstance,
+      marker.geometry.coordinates[1],
+      marker.geometry.coordinates[0]
+    );
+  });
 }
 
 export function hiddenLabelMarker(markerInstance, mapInstance) {

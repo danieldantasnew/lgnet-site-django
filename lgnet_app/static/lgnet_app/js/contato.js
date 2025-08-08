@@ -1,8 +1,6 @@
 import {
   applyOffSetInMap,
-  centerMarker,
-  createMarker,
-  hiddenLabelMarker,
+  createMarkers,
   searchDesk,
   updateInfoDesk,
   watchCityChangeForMapUpdate,
@@ -49,7 +47,6 @@ export async function map() {
       title.innerText = infoMap.desk;
     }
 
-    centerMarker(markerInstance, mapInstance, latitude, longitude);
     updateInfoDesk(infoMap);
     applyOffSetInMap(mapInstance, latitude, longitude);
     return;
@@ -67,11 +64,7 @@ export async function map() {
         style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
       });
 
-      const marker = createMarker(infoMap.desk);
-
-      markerInstance = new maplibregl.Marker({ element: marker })
-        .setLngLat([longitude, latitude])
-        .addTo(mapInstance);
+      createMarkers(mapInstance, [infoMap]);
 
         
       const geolocateControl = new maplibregl.GeolocateControl({
@@ -92,9 +85,6 @@ export async function map() {
       );
       mapInstance.addControl(geolocateControl, "top-right");
       
-      centerMarker(markerInstance, mapInstance, latitude, longitude);
-
-      hiddenLabelMarker(markerInstance, mapInstance);
       updateInfoDesk(infoMap);
       applyOffSetInMap(mapInstance, latitude, longitude);
     }

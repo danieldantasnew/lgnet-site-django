@@ -1,7 +1,10 @@
-import { centerMarker, createMarker, hiddenLabelMarker, searchDesk, watchCityChangeForMapUpdate } from "./map.js";
+import {
+  createMarkers,
+  searchDesk,
+  watchCityChangeForMapUpdate,
+} from "./map.js";
 
 let mapInstanceDesk = null;
-let markers = null;
 
 async function map() {
   let defaultInfoMap = {
@@ -25,28 +28,19 @@ async function map() {
       attributionControl: false,
       style: `https://api.maptiler.com/maps/openstreetmap/style.json?key=74jM7R1fOiBt0ecwKxi8`,
     });
-      const desks = await searchDesk();
+    
+    const desks = await searchDesk();
 
-      if(desks instanceof Object) {
-        markers = desks.map((item)=> {
-          const markerElement = createMarker(item.desk);
-          const marker =  new maplibregl.Marker({ element: markerElement })
-            .setLngLat([item.longitude, item.latitude])
-            .addTo(mapInstanceDesk);
-
-            hiddenLabelMarker(marker, mapInstanceDesk);
-            centerMarker(marker, mapInstanceDesk, item.latitude, item.longitude);
-
-            return marker;
-        });
-      }
+    if (desks instanceof Object) {
+      createMarkers(mapInstanceDesk, desks);
+    }
 
     const geolocateControl = new maplibregl.GeolocateControl({
       positionOptions: {
-          enableHighAccuracy: true,
-        },
-        trackUserLocation: true,
-        showUserHeading: true,
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
+      showUserHeading: true,
     });
 
     mapInstanceDesk.addControl(new maplibregl.NavigationControl(), "top-right");
@@ -58,7 +52,6 @@ async function map() {
       "top-left"
     );
   }
-
 }
 
 // watchCityChangeForMapUpdate(map);
