@@ -60,7 +60,6 @@ export async function fetchAddress(latitude, longitude) {
 async function infoOfDesk(
   infoMap
 ) {
-  console.log(infoMap.allSchedules)
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
     info.classList.add("hidden");
@@ -113,7 +112,10 @@ async function infoOfDesk(
     if(allSchedules instanceof HTMLDivElement) {
       infoMap.allSchedules ? allSchedules.innerHTML = `
         <ul>
-          ${infoMap.allSchedules.map((item)=> `<li>${item.weekday}</li>`)}
+          ${infoMap.allSchedules.map((item)=> `<li>${item.weekday}</li>`).join("")}
+        </ul>
+        <ul>
+          ${infoMap.allSchedules.map((item)=> `<li>${item.standardSchedule}</li>`).join("")}
         </ul>
       ` : allSchedules.innerHTML = "Sem informações"
     }
