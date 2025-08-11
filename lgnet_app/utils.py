@@ -54,10 +54,39 @@ def proxima_dia_de_disponibilidade(horarios):
 
     return "Sem horário disponível na semana."
 
+def normalizar_dias_da_semana(horarios):
+    dias_semana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
+    todos_os_dias_semana = set(range(0,7))
+    dias_cadastrados: list[int] = []
+    semana_normalizada = []
+    for horario in horarios:
+        dias_cadastrados.append(int(horario['weekday']))
+        semana_normalizada.append({
+            'numberWeekDay': horario['weekday'],
+            'weekday': dias_semana[horario['weekday']],
+            'standardSchedule': horario['standardSchedule']
+        })
+        
+    dias_NAO_cadastrados = list(todos_os_dias_semana - set(dias_cadastrados))
+
+    for item in dias_NAO_cadastrados:
+        semana_normalizada.append({
+            'numberWeekDay': item,
+            'weekday': dias_semana[item],
+            'standardSchedule': 'Fechado'
+        })
+
+
+    semana_normalizada = sorted(semana_normalizada, key=lambda item: item['numberWeekDay'])
+    semana_normalizada = [{'weekday': dado['weekday'], 'standardSchedule': dado['standardSchedule']} for dado in semana_normalizada] 
+
+    return semana_normalizada
+
 def horarios_disponiveis_escritorio(horarios):
     hoje = datetime.now().weekday()
     horarios_normalizados = []
     horario_hoje_em_texto = ''
+    
     
     for horario in horarios:
         primeiro_horario_inicio_hora = f"{horario['primeiro_horario_inicio'].hour}".zfill(2)
@@ -92,12 +121,13 @@ def horarios_disponiveis_escritorio(horarios):
         
     if(len(horario_hoje_em_texto) == 0):
         return {
-        "horarios": horarios_normalizados,
+        "horarios": normalizar_dias_da_semana(horarios_normalizados),
         "horario_hoje": proxima_dia_de_disponibilidade(horarios),
     }
 
+    
     return {
-        "horarios": horarios_normalizados,
+        "horarios": normalizar_dias_da_semana(horarios_normalizados),
         "horario_hoje": horario_hoje_em_texto,
     }
 
