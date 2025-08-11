@@ -77,14 +77,14 @@ def horarios_disponiveis_escritorio(horarios):
 
             horarios_em_texto = f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}, {segundo_horario_inicio_hora}:{segundo_horario_inicio_minuto} - {segundo_horario_fim_hora}:{segundo_horario_fim_minuto}"
 
-            horarios_normalizados.append({"dia_semana": horario['dia_semana'], "horario_normalizado": horarios_em_texto})
+            horarios_normalizados.append({"weekday": horario['dia_semana'], "standardSchedule": horarios_em_texto})
 
         else:
             horarios_em_texto = f"{primeiro_horario_inicio_hora}:{primeiro_horario_inicio_minuto} - {primeiro_horario_fim_hora}:{primeiro_horario_fim_minuto}"
 
             horarios_normalizados.append(
-                {"dia_semana": horario['dia_semana'],
-                "horario_normalizado": horarios_em_texto
+                {"weekday": horario['dia_semana'],
+                "standardSchedule": horarios_em_texto
             })
 
         if horario['dia_semana'] == hoje:

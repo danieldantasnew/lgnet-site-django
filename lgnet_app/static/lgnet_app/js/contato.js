@@ -10,7 +10,7 @@ import {
 let mapInstance = null;
 let markerInstance = null;
 
-export async function map() {
+export async function loadMap() {
   let defaultInfoMap = {
     latitude: -7.0322119,
     longitude: -37.2948154,
@@ -161,7 +161,7 @@ function contato() {
       }
     });
   }
-  map();
+  loadMap();
 }
 
 watchCityChangeForMapUpdate(map);

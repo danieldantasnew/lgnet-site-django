@@ -60,6 +60,7 @@ export async function fetchAddress(latitude, longitude) {
 async function infoOfDesk(
   infoMap
 ) {
+  console.log(infoMap)
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
     info.classList.add("hidden");
@@ -68,6 +69,7 @@ async function infoOfDesk(
     const isOpenOrClose = info.querySelector("[data-aberto-fechado]");
     const telephone = info.querySelector("[data-info-telefone]");
     const deskName = info.querySelector("[data-nome-escritorio]");
+    const allSchedules = info.querySelector("[data-todos-horarios]");
 
     let FinalAddress = "";
     if (infoMap.address) FinalAddress = infoMap.address;
@@ -106,6 +108,14 @@ async function infoOfDesk(
 
     if(telephone instanceof HTMLParagraphElement) {
       infoMap.telephone ? telephone.innerText = infoMap.telephone : telephone.innerText = "Sem informação"
+    }
+
+    if(allSchedules instanceof HTMLDivElement) {
+      infoMap.allSchedules ? allSchedules.innerHTML = `
+        <ul>
+          ${infoMap.allSchedules.map((item)=> `<li>${item.weekday}</li>`)}
+        </ul>
+      ` : allSchedules.innerHTML = "Sem informações"
     }
   }
 }

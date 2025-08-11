@@ -1,13 +1,8 @@
-import {
-  createMarkers,
-  initMap,
-  searchDesk,
-  watchCityChangeForMapUpdate,
-} from "./map.js";
+import { createMarkers, initMap, searchDesk } from "./map.js";
 
 let mapInstanceDesk = null;
 
-async function map() {
+async function loadMap() {
   let defaultInfoMap = {
     latitude: -7.0322119,
     longitude: -37.2948154,
@@ -22,21 +17,29 @@ async function map() {
     typeof maplibregl.Map == "function" &&
     document.getElementById("map")
   ) {
-
     mapInstanceDesk = initMap();
     const info = document.querySelector("[data-info-map]");
     const desks = await searchDesk();
 
-    if (desks instanceof Object) {
+    if (desks instanceof Object && Array.isArray(desks)) {
       createMarkers(mapInstanceDesk, desks);
+    } else {
+      console.error("Não foi possível carregar os escritórios");
     }
 
-    if(info instanceof HTMLDivElement) {
+    if (info instanceof HTMLDivElement) {
       const closeInfoMap = info.querySelector("[data-close-info-map]");
-      closeInfoMap.addEventListener("click", ()=>info.classList.add("hidden"));
+      if (closeInfoMap) {
+        closeInfoMap.addEventListener("click", () => {
+          info.classList.add("animate-fadeOut");
+          setTimeout(() => {
+            info.classList.remove("animate-fadeOut");
+            info.classList.add("hidden");
+          }, 250);
+        });
+      }
     }
   }
 }
 
-// watchCityChangeForMapUpdate(map);
-map();
+loadMap();
