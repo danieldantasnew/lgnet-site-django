@@ -10,12 +10,12 @@
                 <p class="sub-text">Confira nossas localizações, horários e outras informações no mapa interativo.</p>
             </div>
 
-            <div class="relative h-full w-full overflow-hidden rounded-lg shadow-lg">
+            <div class="relative h-full w-full overflow-hidden rounded-lg shadow-lg dark:shadow-neutral-700">
                 <div id="map" class="w-full h-full min-h-120 lg:min-h-160"></div>
-                <div data-info-map class="animate-fadeIn absolute top-0 left-0 z-30 h-full w-full lg:w-[40vw] lg:max-w-[420px] dark:text-light-background bg-light-background dark:bg-dark-primary">
+                <div data-info-map class="hidden animate-fadeIn absolute top-0 left-0 z-30 h-full w-full lg:w-[40vw] lg:max-w-[440px] dark:text-light-background bg-light-background dark:bg-dark-primary">
                     <div class="flex items-center justify-between py-5 px-4 bg-primary-variant dark:bg-secondary text-light-background dark:text-secondary-variant">
                         <h2 class="text-xl font-semibold">Dados do Escritório</h2>
-                        <span class="text-2xl cursor-pointer"><i class="fa-regular fa-circle-xmark"></i></span>
+                        <span data-close-info-map class="text-2xl cursor-pointer"><i class="fa-regular fa-circle-xmark"></i></span>
                     </div>
                     <div class="
                         px-4
@@ -28,18 +28,18 @@
                         [&_h4]:text-neutral-400
                         [&_h4]:mb-1
                         [&_p]:text-neutral-600
-                        [&_p]:text-[16px]
+                        [&_p]:text-sm
                         [&_p]:font-medium
                         dark:[&_p]:text-neutral-50
                     ">
                         <div class="flex items-center gap-2">
                             <span class="text-xl text-primary-variant dark:text-secondary p-2 bg-neutral-100 dark:bg-neutral-600 rounded-full h-9 w-9 flex items-center justify-center"><i class="fa-solid fa-building"></i></span>
-                            <p class="!text-lg text-neutral-600 dark:!text-light-background !font-medium">Escritório de Patos G</p>
+                            <p data-nome-escritorio class="!text-lg text-neutral-600 dark:!text-light-background !font-medium"></p>
                         </div>
                         <div class="flex items-center justify-between">
                             <div>
                                 <h4>Endereço</h4>
-                                <p class="truncate max-w-70">Rua dos Pegas, Patos, PB</p>
+                                <p data-endereco class="truncate max-w-69"></p>
                             </div>
                             <div class="
                                 flex
@@ -60,6 +60,14 @@
                                 [&>button]:hover:text-light-background
                                 [&>div]:text-nowrap
                             ">
+                                <button data-btn-tooltip-copy-address data-tooltip-target="tooltip-copy-address" type="button">
+                                    <i class="fa-regular fa-copy text-lg"></i>
+                                </button>
+                                <div id="tooltip-copy-address" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 !bottom-1 text-sm font-medium text-white transition-opacity duration-300 bg-neutral-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-neutral-500">
+                                    Copiar endereço
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+
                                 <button data-btn-tooltip-street-view data-tooltip-target="tooltip-street-view" type="button">
                                     <i class="fa-solid fa-street-view text-lg"></i>
                                 </button>
@@ -78,11 +86,17 @@
                         </div>
                         <div>
                             <h4>Funcionamento Hoje</h4>
-                            <p></p>
+                            <div class="flex items-center gap-1 mt-[2px]">
+                                <div class="flex items-center gap-1">
+                                    <p data-funcionamento class="text-xs text-neutral-600 dark:text-light-background font-medium truncate max-w-70"></p>
+                                    <span class="h-1 w-1 rounded-full bg-neutral-500 dark:bg-neutral-300 block m-1"></span>
+                                    <p data-aberto-fechado class="flex items-center gap-1 text-xs font-semibold"></p>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <h4>Telefone</h4>
-                            <p>(83) 99999-9999</p>
+                            <p data-info-telefone></p>
                         </div>
                         <div>
                             <h4>Horários de funcionamento</h4>

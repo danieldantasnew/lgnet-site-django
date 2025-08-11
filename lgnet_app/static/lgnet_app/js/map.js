@@ -57,47 +57,55 @@ export async function fetchAddress(latitude, longitude) {
   return FinalAddress;
 }
 
-export async function infoOfDesk(
-  latitude,
-  longitude,
-  textAddressLocalApi,
-  textOperationApi,
-  isOpenText
+async function infoOfDesk(
+  infoMap
 ) {
   const info = document.querySelector("[data-info-map]");
   if (info instanceof HTMLElement) {
     info.classList.add("hidden");
-    const address = info.querySelector("div > [data-endereco]");
-    const operation = info.querySelector("div > [data-funcionamento]");
-    const isOpenOrClose = info.querySelector("div > [data-aberto-fechado]");
+    const address = info.querySelector("[data-endereco]");
+    const operation = info.querySelector("[data-funcionamento]");
+    const isOpenOrClose = info.querySelector("[data-aberto-fechado]");
+    const telephone = info.querySelector("[data-info-telefone]");
+    const deskName = info.querySelector("[data-nome-escritorio]");
 
     let FinalAddress = "";
-    if (textAddressLocalApi) FinalAddress = textAddressLocalApi;
-    else FinalAddress = await fetchAddress(latitude, longitude);
+    if (infoMap.address) FinalAddress = infoMap.address;
+    else FinalAddress = await fetchAddress(infoMap.latitude, infoMap.longitude);
 
     if (
       address instanceof HTMLParagraphElement &&
-      operation instanceof HTMLParagraphElement &&
       isOpenOrClose instanceof HTMLParagraphElement
     ) {
       address.innerText = FinalAddress;
       address.title = FinalAddress;
-      operation.innerText = textOperationApi
-        ? textOperationApi
-        : "Sem informação de horário";
 
-      isOpenOrClose.innerText = isOpenText;
-      if (isOpenText.includes("Aberto")) {
-        isOpenOrClose.classList.remove("text-red-600");
-        isOpenOrClose.classList.add("text-green-600");
-        isOpenOrClose.classList.add("dark:text-green-400");
+      isOpenOrClose.innerText = infoMap.isOpen;
+      if (infoMap.isOpen.includes("Aberto")) {
+        isOpenOrClose.classList.remove("!text-red-600");
+        isOpenOrClose.classList.add("!text-green-600");
+        isOpenOrClose.classList.add("!dark:text-green-400");
       } else {
-        isOpenOrClose.classList.remove("text-green-600");
-        isOpenOrClose.classList.remove("dark:text-green-400");
-        isOpenOrClose.classList.add("text-red-600");
+        isOpenOrClose.classList.remove("!text-green-600");
+        isOpenOrClose.classList.remove("!dark:text-green-400");
+        isOpenOrClose.classList.add("!text-red-600");
       }
 
       info.classList.remove("hidden");
+    }
+
+    if(operation instanceof HTMLParagraphElement) {
+      operation.innerText = infoMap.openingHour
+        ? infoMap.openingHour
+        : "Sem informação de horário";
+    }
+
+    if(deskName instanceof HTMLParagraphElement) {
+      infoMap.desk ? deskName.innerText = infoMap.desk : deskName.innerText = "Sem informação"
+    }
+
+    if(telephone instanceof HTMLParagraphElement) {
+      infoMap.telephone ? telephone.innerText = infoMap.telephone : telephone.innerText = "Sem informação"
     }
   }
 }
@@ -115,7 +123,7 @@ function handleClickStreetView(e) {
   }
 }
 
-export function streetViewTooltip(latitude, longitude) {
+function streetViewTooltip(latitude, longitude) {
   const button = document.querySelector("[data-btn-tooltip-street-view]");
 
   if (button instanceof HTMLButtonElement) {
@@ -140,7 +148,7 @@ function handleClickGoogleMaps(e) {
   }
 }
 
-export function googleMapsTooltip(latitude, longitude) {
+function googleMapsTooltip(latitude, longitude) {
   const button = document.querySelector("[data-btn-tooltip-map]");
 
   if (button instanceof HTMLButtonElement) {
@@ -160,16 +168,10 @@ export function applyOffSetInMap(mapInstance, latitude, longitude) {
   });
 }
 
-export function updateInfoDesk(infoToMap, unique=true) {
+export function updateInfoDesk(infoToMap) {
   googleMapsTooltip(infoToMap.latitude, infoToMap.longitude);
   streetViewTooltip(infoToMap.latitude, infoToMap.longitude);
-  infoOfDesk(
-    infoToMap.latitude,
-    infoToMap.longitude,
-    infoToMap.address,
-    infoToMap.openingHour,
-    infoToMap.isOpen
-  );
+  infoOfDesk(infoToMap);
 }
 
 export function createFeaturesToMarkers(items) {
@@ -231,7 +233,7 @@ export function createMarkers(mapInstance, items) {
     `;
 
     el.addEventListener("click", () => {
-      updateInfoDesk(marker.properties, false)
+      updateInfoDesk(marker.properties)
     });
 
     const markerEl = new maplibregl.Marker({ element: el })

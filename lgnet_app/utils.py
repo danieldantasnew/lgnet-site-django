@@ -131,3 +131,9 @@ def escritorio_esta_aberto(horarios):
                 return "Fechado agora"
 
     return "Fechado hoje"
+
+def telefone_ou_vazio(tel):
+    if(len(tel) == 0):
+        return None
+    else: 
+        return tel

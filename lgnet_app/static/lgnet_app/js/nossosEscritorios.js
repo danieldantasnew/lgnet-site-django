@@ -23,15 +23,18 @@ async function map() {
     document.getElementById("map")
   ) {
 
-    mapInstanceDesk = initMap()
-    
+    mapInstanceDesk = initMap();
+    const info = document.querySelector("[data-info-map]");
     const desks = await searchDesk();
 
     if (desks instanceof Object) {
       createMarkers(mapInstanceDesk, desks);
     }
 
-
+    if(info instanceof HTMLDivElement) {
+      const closeInfoMap = info.querySelector("[data-close-info-map]");
+      closeInfoMap.addEventListener("click", ()=>info.classList.add("hidden"));
+    }
   }
 }
 
