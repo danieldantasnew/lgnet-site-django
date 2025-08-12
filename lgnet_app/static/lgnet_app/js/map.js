@@ -1,3 +1,5 @@
+import { notification } from "./notification.js";
+
 export function watchCityChangeForMapUpdate(callback) {
   const handleChange = () => {
     callback();
@@ -69,6 +71,7 @@ async function infoOfDesk(
     const telephone = info.querySelector("[data-info-telefone]");
     const deskName = info.querySelector("[data-nome-escritorio]");
     const allSchedules = info.querySelector("[data-todos-horarios]");
+    const buttonCopy = info.querySelector("[data-btn-tooltip-copy-address]");
 
     let FinalAddress = "";
     if (infoMap.address) FinalAddress = infoMap.address;
@@ -93,6 +96,14 @@ async function infoOfDesk(
       }
 
       info.classList.remove("hidden");
+    }
+
+    if(buttonCopy instanceof HTMLButtonElement) {
+      buttonCopy.addEventListener("click", ()=> {
+        navigator.clipboard.writeText(FinalAddress).then(()=> {
+          notification("Copiado para área de transferência")
+        });
+      });
     }
 
     if(operation instanceof HTMLParagraphElement) {

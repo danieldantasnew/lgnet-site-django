@@ -28,6 +28,7 @@
   --animate-slideIn: slideIn .3s forwards;
   --animate-slideOut: slideOut .3s forwards;
   --animate-slideTop: slideTop .3s forwards;
+  --animate-slideBottom: slideBottom .3s forwards;
 
   @keyframes fadeIn {
     from {
@@ -127,6 +128,19 @@
     opacity: 1;
     animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     transform: translateY(0);
+  }
+}
+
+@keyframes slideBottom{
+  from {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateY(50%);
   }
 }
 
