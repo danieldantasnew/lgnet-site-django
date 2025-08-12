@@ -1,7 +1,7 @@
 let notificationTimeout = null;
 let currentNotification = null;
 
-export function notification(text, color) {
+export function notification(message, color) {
     const container = document.querySelector("[data-notification]");
     const clone = container.content.cloneNode(true);
     
@@ -16,7 +16,7 @@ export function notification(text, color) {
         if(color) newNotification.style.backgroundColor = `${color}`;
         const content = newNotification.querySelector("p");
         if(content instanceof HTMLParagraphElement) {
-            content.innerText = text ? text : "Esta é uma notificação";
+            content.innerText = message ? message : "Esta é uma notificação";
         }
     }
     
