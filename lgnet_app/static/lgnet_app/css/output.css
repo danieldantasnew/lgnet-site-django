@@ -13,6 +13,7 @@
     --color-amber-100: oklch(96.2% 0.059 95.617);
     --color-amber-200: oklch(92.4% 0.12 95.746);
     --color-amber-950: oklch(27.9% 0.077 45.635);
+    --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-600: oklch(62.7% 0.194 149.214);
     --color-blue-200: oklch(88.2% 0.059 254.128);
@@ -1159,6 +1160,9 @@
       background-color: color-mix(in oklab, var(--color-primary-variant) 10%, transparent);
     }
   }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
+  }
   .bg-secondary {
     background-color: var(--color-secondary);
   }
@@ -1167,6 +1171,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-yellow-400 {
+    background-color: var(--color-yellow-400);
   }
   .bg-\[url\(\'\.\.\/images\/mapPin\.svg\'\)\] {
     background-image: url('../images/mapPin.svg');

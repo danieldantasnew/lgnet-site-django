@@ -27,7 +27,7 @@ export async function searchDesk(latitude, longitude) {
       return await response.json();
     } catch (error) {
       console.error(error.message);
-      notification(error.message, "red");
+      notification(error.message, "error");
     }
   } else {
     try {
@@ -36,7 +36,7 @@ export async function searchDesk(latitude, longitude) {
       return await response.json();
     } catch (error) {
       console.error(error.message);
-      notification(error.message, "red");
+      notification(error.message, "error");
     }
   }
 }
@@ -103,7 +103,7 @@ async function infoOfDesk(
     if(buttonCopy instanceof HTMLButtonElement) {
       buttonCopy.addEventListener("click", ()=> {
         navigator.clipboard.writeText(FinalAddress).then(()=> {
-          notification("Copiado para área de transferência")
+          notification("Copiado para área de transferência", "success")
         });
       });
     }

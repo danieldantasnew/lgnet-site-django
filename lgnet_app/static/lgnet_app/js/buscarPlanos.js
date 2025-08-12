@@ -86,7 +86,7 @@ export default function buscarPlanos(cidade) {
     })
     .catch((error) => {
       console.error(error);
-      notification(`Erro ao carregar planos`, "red");
+      notification(`Erro ao carregar planos`, "error");
       container.innerHTML = "<p>Erro ao carregar planos.</p>";
     });
   }

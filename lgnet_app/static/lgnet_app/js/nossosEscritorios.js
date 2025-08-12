@@ -26,7 +26,7 @@ async function loadMap() {
       createMarkers(mapInstanceDesk, desks);
     } else {
       console.error("Não foi possível carregar os escritórios");
-      notification("Não foi possível carregar os escritórios", "red");
+      notification("Não foi possível carregar os escritórios", "error");
     }
 
     if (info instanceof HTMLDivElement) {

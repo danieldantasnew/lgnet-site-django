@@ -1,7 +1,14 @@
 let notificationTimeout = null;
 let currentNotification = null;
 
-export function notification(message, color) {
+function colorTypeOfNotification(type) {
+    if(type == "error") return "#e7000b "
+    else if(type == "success") return "#00a63e"
+    else if(type == "alert") return "oklch(76.9% 0.188 70.08)"
+    else return "#171717"
+}
+
+export function notification(message, typeNotification) {
     const container = document.querySelector("[data-notification]");
     const clone = container.content.cloneNode(true);
     
@@ -13,7 +20,7 @@ export function notification(message, color) {
     }
     
     if(newNotification instanceof HTMLDivElement) {
-        if(color) newNotification.style.backgroundColor = `${color}`;
+        if(typeNotification) newNotification.style.backgroundColor = `${ colorTypeOfNotification(typeNotification)}`;
         const content = newNotification.querySelector("p");
         if(content instanceof HTMLParagraphElement) {
             content.innerText = message ? message : "Esta é uma notificação";

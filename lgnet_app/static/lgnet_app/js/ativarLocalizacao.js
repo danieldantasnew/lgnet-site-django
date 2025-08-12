@@ -83,7 +83,7 @@ async function getLocation(
     }
   } catch (error) {
     console.error("Erro ao obter localização:", error);
-    notification(`Erro ao obter localização`, "red");
+    notification(`Erro ao obter localização`, "error");
     loadingCidade.classList.remove("animate-fadeIn");
     loadingCidade.style.display = "none";
     dataContentInfo.classList.remove("animate-hiddenItem");
