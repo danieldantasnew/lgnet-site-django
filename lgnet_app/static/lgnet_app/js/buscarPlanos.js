@@ -1,4 +1,5 @@
 import contratarPlano from "./contratarPlano.js";
+import { notification } from "./notification.js";
 
 export default function buscarPlanos(cidade) {
   const container = document.getElementById("planos-container");
@@ -85,6 +86,7 @@ export default function buscarPlanos(cidade) {
     })
     .catch((error) => {
       console.error(error);
+      notification(`Erro ao carregar planos`, "red");
       container.innerHTML = "<p>Erro ao carregar planos.</p>";
     });
   }

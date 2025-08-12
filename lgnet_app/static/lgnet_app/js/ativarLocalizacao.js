@@ -1,4 +1,5 @@
 import buscarPlanos from "./buscarPlanos.js";
+import { notification } from "./notification.js";
 
 async function encontrarCidadeMaisProxima(latCliente, longCliente) {
   const response = await fetch(`/api/cidade-proxima/?latitude=${latCliente}&longitude=${longCliente}`);
@@ -82,6 +83,7 @@ async function getLocation(
     }
   } catch (error) {
     console.error("Erro ao obter localização:", error);
+    notification(`Erro ao obter localização`, "red");
     loadingCidade.classList.remove("animate-fadeIn");
     loadingCidade.style.display = "none";
     dataContentInfo.classList.remove("animate-hiddenItem");

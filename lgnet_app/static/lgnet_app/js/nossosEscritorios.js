@@ -1,4 +1,5 @@
 import { createMarkers, initMap, searchDesk } from "./map.js";
+import { notification } from "./notification.js";
 
 let mapInstanceDesk = null;
 
@@ -25,6 +26,7 @@ async function loadMap() {
       createMarkers(mapInstanceDesk, desks);
     } else {
       console.error("Não foi possível carregar os escritórios");
+      notification("Não foi possível carregar os escritórios", "red");
     }
 
     if (info instanceof HTMLDivElement) {

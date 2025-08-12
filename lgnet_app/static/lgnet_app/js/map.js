@@ -27,6 +27,7 @@ export async function searchDesk(latitude, longitude) {
       return await response.json();
     } catch (error) {
       console.error(error.message);
+      notification(error.message, "red");
     }
   } else {
     try {
@@ -35,6 +36,7 @@ export async function searchDesk(latitude, longitude) {
       return await response.json();
     } catch (error) {
       console.error(error.message);
+      notification(error.message, "red");
     }
   }
 }
