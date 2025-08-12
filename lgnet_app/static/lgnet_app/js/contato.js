@@ -164,5 +164,5 @@ function contato() {
   loadMap();
 }
 
-watchCityChangeForMapUpdate(map);
+watchCityChangeForMapUpdate(loadMap);
 contato();
