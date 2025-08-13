@@ -34,13 +34,13 @@
     from {
       opacity: 0;
       transform: scale(0);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     to {
       opacity: 1;
       transform: scale(1);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
@@ -48,13 +48,13 @@
     from {
       opacity: 1;
       transform: scale(1);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     to {
       opacity: 0;
       transform: scale(0);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
@@ -62,35 +62,35 @@
     0% {
       opacity: 0;
       transform: scale(0);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     10% {
       opacity: 1;
       transform: scale(1);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     90% {
       opacity: 1;
       transform: scale(1);
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     100% {
       opacity: 0;
       transform: scale(0);
       display: none;
-      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
   }
 
   @keyframes hiddenItem {
     0% {
       opacity: 0;
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
       transform: scale(1);
     }
     100% {
       opacity: 1;
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
       transform: scale(0);
     }
   }
@@ -121,12 +121,12 @@
 @keyframes slideTop{
   from {
     opacity: 0;
-    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transform: translateY(50%);
   }
   to {
     opacity: 1;
-    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transform: translateY(0);
   }
 }
