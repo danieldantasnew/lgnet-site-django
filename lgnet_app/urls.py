@@ -11,6 +11,7 @@ urlpatterns = [
     path("api/cidade-proxima/", views.encontrar_cidade_mais_proxima_api, name="encontrar_cidade_mais_proxima_api"),
     path("escritorios", views.escritorios, name="acessibilidade"),
     path("escritorios", views.escritorios, name="escritorios"),
+    path("conta", views.minha_lgnet, name="conta"),
     path("contato", views.contato, name="contato"),
     path("sobre", views.sobre, name="sobre"),
     path('', views.inicio, name='inicio'),

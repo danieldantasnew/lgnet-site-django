@@ -300,3 +300,12 @@ def escritorios(request):
         'explorar': explorar,
     }
     return render(request, 'lgnet_app/pages/escritorios/index.html', context)
+
+def minha_lgnet(request):
+    context = {
+        'infoEmpresa': info_empresa,
+        'redeSocial': redes_sociais,
+        'cidades': cidades,
+        'explorar': explorar,
+    }
+    return render(request, 'lgnet_app/pages/minha_lgnet/index.html', context)
