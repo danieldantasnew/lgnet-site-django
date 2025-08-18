@@ -3,9 +3,78 @@
 {% block title %}LGNET | Minha Conta{% endblock %}
 
 {% block content %}
-    <section >
-        <div class="container">
-            <h2>login</h2>
+    <section class="bg-light-background dark:bg-dark-variant">
+        <div class="grid grid-cols-2 gap-14">
+            <div>
+                <img src="{% static 'lgnet_app/images/login.png'%}" alt="Imagem para tela de login">
+            </div>
+            <div class="mt-20 max-w-105">
+                <div>
+                    <h2 class="text-4xl font-semibold text-ellipsis text-nowrap  relative text-primary-variant-2 dark:text-light-background">
+                        Login
+                        <span class="absolute h-[6px] content-[''] top-11 left-0 w-10 bg-secondary inline-block rounded-full group-hover:bg-[#ffffff]"></span>
+                    </h2>
+                    
+                    <p class="mt-6 sub-text">Para acessar sua conta, informe seus dados.</p>
+                </div>
+                <form class="
+                    mt-8
+                    flex 
+                    flex-col 
+                    gap-3
+                    [&>div]:flex
+                    [&>div]:flex-col
+                    [&>div]:gap-2
+                    [&>div>label]:flex
+                    [&>div>label]:flex-col
+                    [&>div>label]:gap-1
+                    [&>div>label]:text-sm
+                    [&>div>label]:text-neutral-800
+                    dark:[&>div>label]:text-neutral-200
+                    [&>div>label]:font-semibold
+                    [&>div>input]:w-full
+                    [&>div>input]:placeholder:text-sm
+                    dark:[&>div>input]:placeholder:text-neutral-300
+                    dark:[&>div>input]:bg-dark-variant
+                    [&>div>input]:border-none
+                    [&>div>input]:outline-none
+                    [&>div>input]:focus:!outline-none
+                    [&>div>input]:focus:border-none
+                    [&>div>input]:focus:!ring-0
+                    [&>div>input]:focus:!ring-transparent
+                    [&>div>input]:focus:!ring-offset-0
+                    [&>div>input]:transition-all
+                    [&>div>input]:duration-300
+                    [&>div>input]:rounded-sm
+                    [&>div>input]:shadow-[0_0_1px_1px_#D3D3D3]
+                    [&>div>input]:px-3
+                    [&>div>input]:py-[10px]
+                    [&>div>input]:hover:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+
+                    [&>div>input]:focus:shadow-[0_0_1px_1px_var(--color-primary-hover),0_0_1px_3px_var(--color-primary-variant)]
+                    
+                    dark:[&>div>input]:hover:shadow-[0_0_1px_1px_var(--color-secondary-hover),0_0_1px_3px_var(--color-secondary)]
+                    
+                    dark:[&>div>input]:focus:shadow-[0_0_1px_1px_var(--color-secondary-hover),0_0_1px_3px_var(--color-secondary)]
+                ">
+                    <div>
+                        <label>
+                            Digite o seu CPF/CNPJ
+                        </label>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label>
+                            Digite sua senha
+                        </label>
+                        <input type="text">
+                    </div>
+                    
+                    <a href="{% url 'lgnet:esqueci-minha-senha' %}" class="text-sm text-[#0B94CF] underline underline-offset-4 font-medium">Esqueci minha senha</a>
+
+                    <button class="">Acessar Conta</button>
+                </form>
+            </div>
         </div>
     </section>
 {% endblock %}

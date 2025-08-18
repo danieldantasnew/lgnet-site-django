@@ -9,6 +9,7 @@ urlpatterns = [
     path("api/escritorios/", views.buscar_escritorio_api, name="escritorios_api"),
     path("api/planos/", views.planos_api, name="planos_api"),
     path("api/cidade-proxima/", views.encontrar_cidade_mais_proxima_api, name="encontrar_cidade_mais_proxima_api"),
+    path("escritorios", views.escritorios, name="esqueci-minha-senha"),
     path("escritorios", views.escritorios, name="acessibilidade"),
     path("escritorios", views.escritorios, name="escritorios"),
     path("conta", views.minha_lgnet, name="conta"),
