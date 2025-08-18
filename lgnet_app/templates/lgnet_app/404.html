@@ -1,0 +1,44 @@
+{% extends 'lgnet_app/base.html' %}
+{% load static %}
+{% block title %}Página não encontrada{% endblock %}
+
+{% block content %}
+    <section class="py-24">
+        <div class="container flex flex-col justify-center items-center gap-3 text-center">
+            <a href="https://www.freepik.com/free-vector/error-404-concept-landing-page_4660894.htm" target="_blank">
+                <img src="{%static 'lgnet_app/images/404.svg'%}" alt="Imagem de Página não encontrada">
+            </a>
+            
+            <div class="text-neutral-500 dark:text-neutral-200 font-medium mt-3 [&>p]:text-sm lg:[&>p]:text-lg">
+                <h1>Essa página fugiu mais rápido que o Wi-Fi do vizinho...</h1>
+                <p class="mt-1">A página que você procura não foi encontrada :(</p>
+                <p>Sugerimos que você volte para a página inicial</p>
+            </div>
+            <a href="{%url 'lgnet:inicio'%}"
+            class="
+                transition-all
+                mt-3 
+                p-2 
+                flex 
+                gap-2 
+                border-2 
+                border-primary-variant-2 
+                text-primary-variant-2 
+                text-sm 
+                rounded-sm 
+                max-w-40
+                hover:bg-primary-variant
+                hover:text-light-background
+                hover:border-primary-variant
+                dark:text-secondary
+                dark:border-secondary
+                dark:hover:border-secondary
+                dark:hover:bg-secondary
+                dark:hover:text-secondary-variant
+                ">
+                <i class="fa-solid fa-arrow-left text-lg mt-[1px]"></i>
+                <span class="font-semibold">Página Inicial</span>
+            </a>
+        </div>
+    </section>
+{% endblock %}

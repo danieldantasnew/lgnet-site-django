@@ -309,3 +309,14 @@ def minha_lgnet(request):
         'explorar': explorar,
     }
     return render(request, 'lgnet_app/pages/minha_lgnet/index.html', context)
+
+def custom_not_found(request, exception):
+    context = {
+        'infoEmpresa': info_empresa,
+        'redeSocial': redes_sociais,
+        'cidades': cidades,
+    }
+    
+    return render(request,'lgnet_app/404.html', context)
+
+handler404 = custom_not_found
