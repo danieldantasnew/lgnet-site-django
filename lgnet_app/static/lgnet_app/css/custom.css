@@ -61,6 +61,10 @@ body {
   border-top: 8px solid #ffcd00;
 }
 
+.dark img {
+  filter: brightness(85%);
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
