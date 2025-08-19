@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, Banners, Valores, Escritorio, HorarioFuncionamento
+from .models import Planos, ServicosEssenciais, Vantagens, Upload, Download, RedeSocial, Cidades, InformacoesEmpresa, Banners, Valores, Escritorio, HorarioFuncionamento, PerguntasFrequentes
 
 class DownloadAdmin(admin.ModelAdmin):
     list_display = ("velocidade", "icone",)
@@ -51,6 +51,9 @@ class HorarioFuncionamentoAdmin(admin.ModelAdmin):
     class Media:
         js = ('lgnet_app/admin/js/horarioFuncionamento.js',)  
 
+class PerguntasFrequentesAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "descricao",)
+
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
 admin.site.register(Vantagens, VantagensAdmin)
@@ -63,3 +66,4 @@ admin.site.register(Valores, ValoresAdmin)
 admin.site.register(Banners, BannersAdmin)
 admin.site.register(Escritorio, EscritorioAdmin)
 admin.site.register(HorarioFuncionamento, HorarioFuncionamentoAdmin)
+admin.site.register(PerguntasFrequentes, PerguntasFrequentesAdmin)

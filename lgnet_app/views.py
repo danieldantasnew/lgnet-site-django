@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404
-from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades, Escritorio
+from .models import Planos, ServicosEssenciais, Vantagens, RedeSocial, InformacoesEmpresa, Banners, Cidades, Escritorio, PerguntasFrequentes
 from .forms import ContatoForm
 from .utils import encontrar_cidade_mais_proxima, horarios_disponiveis_escritorio,escritorio_esta_aberto, telefone_ou_vazio
 
@@ -309,6 +309,16 @@ def minha_lgnet(request):
         'explorar': explorar,
     }
     return render(request, 'lgnet_app/pages/minha_lgnet/index.html', context)
+
+def perguntas_frequentes(request):
+    perguntas = PerguntasFrequentes.objects.all()
+    context = {
+        'infoEmpresa': info_empresa,
+        'redeSocial': redes_sociais,
+        'cidades': cidades,
+        'perguntas': perguntas,
+    }
+    return render(request, 'lgnet_app/pages/perguntas_frequentes/index.html', context)
 
 def custom_not_found(request, exception):
     context = {

@@ -227,3 +227,11 @@ class HorarioFuncionamento(models.Model):
             return f"{self.dia_semana}: {self.primeiro_horario_inicio}–{self.primeiro_horario_fim} e {self.segundo_horario_inicio}–{self.segundo_horario_fim}"
         
         return f"{self.dia_semana}: {self.primeiro_horario_inicio}–{self.primeiro_horario_fim}"
+    
+class PerguntasFrequentes(models.Model):
+    titulo = models.CharField("Título", max_length=100)
+    descricao = models.TextField("Descrição")
+
+    class Meta:
+        verbose_name = "Perguntas Frequentes"
+        verbose_name_plural = "Perguntas Frequentes"

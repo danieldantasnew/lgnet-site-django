@@ -1,0 +1,23 @@
+{% extends 'lgnet_app/base.html' %}
+{% block title %}LGNET | Perguntas Frequentes{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <h2 class="text-4xl font-semibold text-ellipsis text-nowrap  relative text-primary-variant-2 dark:text-light-background">
+                Perguntas Frequentes
+                <span class="absolute h-[6px] content-[''] top-11 left-0 w-10 bg-secondary inline-block rounded-full group-hover:bg-[#ffffff]"></span>
+            </h2>
+            <div>
+                <div>Busca</div>
+                <div>
+                    {% for pergunta  in perguntas.all %}
+                        <div>
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

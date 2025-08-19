@@ -181,6 +181,7 @@ JAZZMIN_SETTINGS = {
         "lgnet_app.Banners": "fa-solid fa-bullhorn",
         "lgnet_app.Escritorio": "fa-solid fa-building",
         "lgnet_app.HorarioFuncionamento": "fa-solid fa-clock",
+        "lgnet_app.PerguntasFrequentes": "fa-solid fa-circle-question",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
