@@ -2,18 +2,27 @@
 {% block title %}LGNET | Perguntas Frequentes{% endblock %}
 
 {% block content %}
-    <section>
-        <div class="container">
-            <h2 class="text-4xl font-semibold text-ellipsis text-nowrap  relative text-primary-variant-2 dark:text-light-background">
-                Perguntas Frequentes
-                <span class="absolute h-[6px] content-[''] top-11 left-0 w-10 bg-secondary inline-block rounded-full group-hover:bg-[#ffffff]"></span>
-            </h2>
-            <div>
-                <div>Busca</div>
-                <div>
-                    {% for pergunta  in perguntas.all %}
-                        <div>
-                            
+    <section class="bg-light-background dark:bg-dark-primary">
+        <div class="container py-20 !max-w-240">
+            <div class="flex justify-center">            
+                <h2 class="text-4xl font-semibold text-ellipsis text-nowrap  relative text-primary-variant-2 dark:text-light-background">
+                    Perguntas Frequentes
+                    <span class="absolute h-[6px] content-[''] top-11 left-0 w-10 bg-secondary inline-block rounded-full group-hover:bg-[#ffffff]"></span>
+                </h2>
+            </div>
+            <div class="mt-10">
+                <div class="border-2 border-neutral-800 p-4"></div>
+                <div class="flex flex-col gap-6 mt-14">
+                    {% for pergunta in perguntas.all %}
+                        <div class="border-b-2 border-neutral-200 pb-4">
+                            <div class="flex justify-between">
+                                <h3 class="text-[16px] text-neutral-950 font-semibold">{{pergunta.titulo}}</h3>
+                                <span class="p-[10px] h-3 w-3 rounded-full border-2 border-neutral-900 bg-transparent flex justify-center items-center">
+                                    <i class="fa-solid fa-plus text-sm"></i>
+                                    {% comment %} <i class="fa-solid fa-minus"></i> {% endcomment %}
+                                </span>
+                            </div>
+                            <p class="mt-2 max-w-220 text-neutral-500 font-medium text-[16px]">{{pergunta.descricao}}</p>
                         </div>
                     {% endfor %}
                 </div>
