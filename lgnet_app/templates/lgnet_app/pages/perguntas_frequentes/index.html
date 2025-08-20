@@ -1,4 +1,5 @@
 {% extends 'lgnet_app/base.html' %}
+{% load static %}
 {% block title %}LGNET | Perguntas Frequentes{% endblock %}
 
 {% block content %}
@@ -14,19 +15,37 @@
                 <div class="border-2 border-neutral-800 p-4"></div>
                 <div class="flex flex-col gap-6 mt-14">
                     {% for pergunta in perguntas.all %}
-                        <div class="border-b-2 border-neutral-200 pb-4">
+                        <div data-ask="{{pergunta.id}}" class="border-b-2 border-neutral-200 pb-4">
                             <div class="flex justify-between">
                                 <h3 class="text-[16px] text-neutral-950 font-semibold">{{pergunta.titulo}}</h3>
-                                <span class="p-[10px] h-3 w-3 rounded-full border-2 border-neutral-900 bg-transparent flex justify-center items-center">
+                                <button data-action class="
+                                    p-[10px] 
+                                    h-3 
+                                    w-3 
+                                    rounded-full 
+                                    border-2 
+                                    border-neutral-900 
+                                    bg-transparent 
+                                    flex 
+                                    justify-center 
+                                    items-center 
+                                    hover:bg-primary-variant 
+                                    hover:text-light-background
+                                    cursor-pointer
+                                ">
                                     <i class="fa-solid fa-plus text-sm"></i>
-                                    {% comment %} <i class="fa-solid fa-minus"></i> {% endcomment %}
-                                </span>
+                                </button>
                             </div>
-                            <p class="mt-2 max-w-220 text-neutral-500 font-medium text-[16px]">{{pergunta.descricao}}</p>
+                            <p data-description class=" hidden mt-2 max-w-220 text-neutral-500 font-medium text-[16px]">{{pergunta.descricao}}</p>
                         </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script type="module" src="{% static 'lgnet_app/js/perguntasFrequentes.js' %}"></script>
 {% endblock %}
