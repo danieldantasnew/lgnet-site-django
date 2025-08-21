@@ -164,6 +164,19 @@ def planos_api(request):
 
     return JsonResponse(data, safe=False)
 
+def perguntas_frequentes_api(request):
+    perguntas = PerguntasFrequentes.objects.all()
+    perguntas_lista = []
+    for pergunta in perguntas:
+        perguntas_lista.append({
+            "id": pergunta.id,
+            "question": pergunta.titulo,
+            "answer": pergunta.resposta,
+        })
+
+    print(perguntas_lista)
+    return JsonResponse(perguntas_lista, safe=False, status=200)
+
 def inicio(request):
     planos = Planos.objects.all()
     essenciais = ServicosEssenciais.objects.all()
