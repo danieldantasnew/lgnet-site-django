@@ -52,7 +52,7 @@ class HorarioFuncionamentoAdmin(admin.ModelAdmin):
         js = ('lgnet_app/admin/js/horarioFuncionamento.js',)  
 
 class PerguntasFrequentesAdmin(admin.ModelAdmin):
-    list_display = ("titulo", "descricao",)
+    list_display = ("titulo", "resposta",)
 
 admin.site.register(Planos, PlanosAdmin)
 admin.site.register(ServicosEssenciais, ServicosAdmin)
