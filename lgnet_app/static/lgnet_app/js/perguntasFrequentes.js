@@ -8,59 +8,10 @@ async function fetchQuestions() {
   }
 }
 
-const handleSearchInput = (questions) => {
-  const input = document.querySelector("[data-input-search]");
-  const handleChange = (event) => {};
-
-  if (input instanceof HTMLInputElement) {
-    input.addEventListener("input", handleChange);
-  }
-};
-
-const handleIconButton = (button) => {
-  const icon = button.querySelector("i");
-  if (icon instanceof HTMLElement) {
-    if (icon.classList.contains("fa-plus")) {
-      icon.classList.remove("fa-plus");
-      icon.classList.add("fa-minus");
-    } else {
-      icon.classList.add("fa-plus");
-      icon.classList.remove("fa-minus");
-    }
-  }
-};
-
-const showDescription = (event) => {
-  const topic = event.currentTarget;
-  if (topic instanceof HTMLDivElement) {
-    const description = topic.querySelector("[data-description]");
-    if (description instanceof HTMLParagraphElement) {
-      const isOpen = description.classList.contains("open");
-      if (isOpen) {
-        description.style.maxHeight = description.scrollHeight + "px";
-        requestAnimationFrame(() => {
-          description.style.maxHeight = "0";
-          description.classList.remove("opacity-100");
-        });
-      } else {
-        description.style.maxHeight = description.scrollHeight + "px";
-        description.classList.add("opacity-100");
-      }
-
-      description.classList.toggle("open");
-    }
-    handleIconButton(event.currentTarget);
-  }
-};
-
-async function perguntasFrequentes() {
-  const divQuestions = document.querySelector("[data-questions]");
-  let questionsToSearch = [];
-  const questions = await fetchQuestions();
-
-  if (divQuestions instanceof HTMLDivElement && Array.isArray(questions)) {
-    questions.forEach((question) => {
-      divQuestions.innerHTML += `
+const addQuestions = (container, questions) => {
+  container.innerHTML = "";
+  questions.forEach((question) => {
+    container.innerHTML += `
             <div data-ask="${question.id}" class="cursor-pointer p-4 bg-neutral-50 dark:bg-neutral-800 rounded-sm">
                 <div class="flex justify-between">
                     <h3 class="text-sm sm:!text-[16px] text-neutral-950 dark:text-neutral-50 font-semibold">${question.question}</h3>
@@ -108,14 +59,75 @@ async function perguntasFrequentes() {
                 </p>
             </div>
             `;
-
-      const asks = divQuestions.querySelectorAll("[data-ask]");
-      if (asks instanceof NodeList) {
-        asks.forEach((ask) => ask.addEventListener("click", showDescription));
-      }
-    });
-    handleSearchInput(questionsToSearch);
+  });
+  const asks = container.querySelectorAll("[data-ask]");
+  if (asks instanceof NodeList) {
+    asks.forEach((ask) => ask.addEventListener("click", showDescription));
   }
+};
+
+const handleSearchInput = (container, questions) => {
+  const input = document.querySelector("[data-input-search]");
+  const handleChange = (event) => {
+    addQuestions(
+      container,
+      questions.filter((question) => question.id == 1)
+    );
+  };
+
+  if (input instanceof HTMLInputElement) {
+    input.addEventListener("input", handleChange);
+  }
+};
+
+const handleIconButton = (button) => {
+  const icon = button.querySelector("i");
+  if (icon instanceof HTMLElement) {
+    if (icon.classList.contains("fa-plus")) {
+      icon.classList.remove("fa-plus");
+      icon.classList.add("fa-minus");
+    } else {
+      icon.classList.add("fa-plus");
+      icon.classList.remove("fa-minus");
+    }
+  }
+};
+
+const showDescription = (event) => {
+  const topic = event.currentTarget;
+  if (topic instanceof HTMLDivElement) {
+    const description = topic.querySelector("[data-description]");
+    if (description instanceof HTMLParagraphElement) {
+      const isOpen = description.classList.contains("open");
+      if (isOpen) {
+        description.style.maxHeight = description.scrollHeight + "px";
+        requestAnimationFrame(() => {
+          description.style.maxHeight = "0";
+          description.classList.remove("opacity-100");
+        });
+      } else {
+        description.style.maxHeight = description.scrollHeight + "px";
+        description.classList.add("opacity-100");
+      }
+
+      description.classList.toggle("open");
+    }
+    handleIconButton(event.currentTarget);
+  }
+};
+
+async function perguntasFrequentes() {
+  const divQuestions = document.querySelector("[data-questions]");
+  const questions = await fetchQuestions();
+  let questionsToSearch = questions.slice();
+
+  if (
+    divQuestions instanceof HTMLDivElement &&
+    Array.isArray(questionsToSearch)
+  ) {
+    addQuestions(divQuestions, questionsToSearch);
+  }
+  handleSearchInput(divQuestions, questionsToSearch);
 }
 
 perguntasFrequentes();
