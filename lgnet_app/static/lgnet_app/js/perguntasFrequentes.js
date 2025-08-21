@@ -1,5 +1,30 @@
-function perguntasFrequentes() {
+async function fetchQuestions() {
+    try {
+        const response = await fetch("api/perguntas-frequentes/");
+        if(!response.ok) throw new Error("Erro ao buscar perguntas");
+        return await response.json();
+    } catch (error) {
+        return error.message;
+    }
+}
+
+function handleSearchInput(questions) {
+    const input = document.querySelector("[data-input-search]");
+    const handleChange = (event)=> {
+        // console.log(event.target.value)
+    }
+
+    if(input instanceof HTMLInputElement) {
+        input.addEventListener("input", handleChange);
+        // console.log(questions)
+    }
+}
+
+async function perguntasFrequentes() {
     const questions = document.querySelectorAll("[data-ask]");
+    let questionsToSearch = [];
+    const teste = await fetchQuestions()
+    console.log(teste)
 
     const handleIconButton = (button)=> {
         const icon = button.querySelector("i");
@@ -41,9 +66,11 @@ function perguntasFrequentes() {
     if(questions instanceof NodeList) {
         questions.forEach((question)=> {
             if(question instanceof HTMLDivElement) {
-                question.addEventListener("click", showDescription)
+                question.addEventListener("click", showDescription);
+                questionsToSearch.push(question);
             }
-        })
+        });
+        handleSearchInput(questionsToSearch);
     }
 }
 

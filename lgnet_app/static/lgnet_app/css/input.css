@@ -6,29 +6,29 @@
 @theme {
   --font-myfont: "Montserrat", sans-serif;
   --color-primary: #003465;
-  --color-primary-variant: #0093D2;
-  --color-primary-variant-2: #04080B;
+  --color-primary-variant: #0093d2;
+  --color-primary-variant-2: #04080b;
   --color-primary-hover: #184c76;
 
   --color-secondary: #ffcd00;
   --color-secondary-variant: #2a2500;
 
   --color-secondary-hover: #c49000;
-  --color-backgroundColor: #F7F7F7;
+  --color-backgroundColor: #f7f7f7;
   --color-light-background: #ffffff;
 
   --color-dark-primary: #242424;
   --color-dark-variant: #111111;
   --color-dark-variant-2: #2f2f2f;
 
-  --animate-fadeIn: fadeIn .3s  forwards;
-  --animate-fadeOut: fadeOut .3s  forwards;
+  --animate-fadeIn: fadeIn 0.3s forwards;
+  --animate-fadeOut: fadeOut 0.3s forwards;
   --animate-fadeInOut: fadeInOut 3s forwards;
-  --animate-hiddenItem: hiddenItem .4s forwards;
-  --animate-slideIn: slideIn .3s forwards;
-  --animate-slideOut: slideOut .3s forwards;
-  --animate-slideTop: slideTop .3s forwards;
-  --animate-slideBottom: slideBottom .3s forwards;
+  --animate-hiddenItem: hiddenItem 0.4s forwards;
+  --animate-slideIn: slideIn 0.3s forwards;
+  --animate-slideOut: slideOut 0.3s forwards;
+  --animate-slideTop: slideTop 0.3s forwards;
+  --animate-slideBottom: slideBottom 0.3s forwards;
 
   @keyframes fadeIn {
     from {
@@ -118,7 +118,7 @@
   }
 }
 
-@keyframes slideTop{
+@keyframes slideTop {
   from {
     opacity: 0;
     animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -131,7 +131,7 @@
   }
 }
 
-@keyframes slideBottom{
+@keyframes slideBottom {
   from {
     opacity: 1;
     animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -191,6 +191,33 @@
     @apply flex;
     @apply items-center;
     @apply font-medium;
+  }
+
+  .input-config {
+    @apply w-full;
+    @apply placeholder:text-sm;
+    @apply placeholder:font-medium;
+    @apply dark:placeholder:text-neutral-300;
+    @apply dark:bg-dark-variant;
+    @apply border-none;
+    @apply outline-none;
+    @apply focus:!outline-none;
+    @apply focus:border-none;
+    @apply focus:!ring-0;
+    @apply focus:!ring-transparent;
+    @apply focus:!ring-offset-0;
+    @apply transition-all;
+    @apply duration-300;
+    @apply rounded-sm;
+    @apply shadow-[0_0_1px_2px_#C3C3C3];
+    @apply py-[10px];
+    @apply pl-3;
+    @apply pr-3;
+    @apply hover:shadow-[0_0_1px_2px_var(--color-primary-hover),0_0_1px_4px_var(--color-primary-variant)];
+    @apply focus:shadow-[0_0_1px_2px_var(--color-primary-hover),0_0_1px_4px_var(--color-primary-variant)];
+    @apply dark:hover:shadow-[0_0_1px_2px_var(--color-secondary-hover),0_0_1px_4px_var(--color-secondary)];
+    @apply dark:focus:shadow-[0_0_1px_2px_var(--color-secondary-hover),0_0_1px_4px_var(--color-secondary)];
+    @apply dark:text-neutral-50;
   }
 
   .error {

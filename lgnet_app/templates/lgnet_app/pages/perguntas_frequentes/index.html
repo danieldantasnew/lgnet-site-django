@@ -4,15 +4,43 @@
 
 {% block content %}
     <section class="bg-light-background dark:bg-dark-variant">
-        <div class="container px-4 py-12 lg:!py-20 !max-w-240">
+        <div class="container px-4 py-12 lg:!py-18 !max-w-240">
             <div class="flex justify-center">            
                 <h2 class="text-3xl lg:!text-4xl font-semibold text-ellipsis text-nowrap relative text-primary-variant-2 dark:text-light-background">
                     Perguntas Frequentes
                     <span class="absolute h-[4px] content-[''] top-8 lg:!top-10 left-0 w-10 lg:!w-12 bg-secondary inline-block rounded-full group-hover:bg-[#ffffff]"></span>
                 </h2>
             </div>
-            <div class="mt-6 md:mt-10">
-                <div class="border-2 border-neutral-700 p-2">Busca</div>
+            <div class="mt-6 md:!mt-10">
+                <div class="relative">
+                    <input 
+                    data-input-search
+                    id="search"
+                    type="text"
+                    class="
+                        peer
+                        input-config
+                        !pl-8
+                        !pr-4
+                        "
+                        placeholder="Buscar"
+                        >
+                        <span class="
+                            absolute 
+                            top-[50%]
+                            translate-y-[-50%]
+                            left-2
+                            text-neutral-400
+                            transition-colors
+                            duration-300
+                            peer-focus:text-primary-hover
+                            peer-hover:text-primary-hover
+                            dark:peer-focus:text-secondary
+                            dark:peer-hover:text-secondary
+                        ">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                </div>
                 <div class="flex flex-col gap-1 mt-8 md:mt-14 md:max-h-320 overflow-y-auto">
                     {% for pergunta in perguntas.all %}
                         <div data-ask="{{pergunta.id}}" class="cursor-pointer p-4 bg-neutral-50 dark:bg-neutral-800 rounded-sm">
@@ -58,7 +86,7 @@
                                 ease-[cubic-bezier(0.075,0.82,0.165,1)]
                                 dark:text-neutral-200
                             ">
-                                {{pergunta.descricao}}
+                                {{pergunta.resposta}}
                             </p>
                         </div>
                     {% endfor %}
@@ -68,18 +96,19 @@
     </section>
 <div class="py-8 px-4 sm:!py-12 bg-neutral-50 dark:bg-neutral-900 flex flex-col justify-center items-center text-center">
     <div class="
-    flex
-    [&>div]:flex
-    [&>div]:justify-center
-    [&>div]:items-center
-    [&>div]:h-12
-    [&>div]:w-12
-    [&>div]:rounded-full
-    [&>div]:border-2
-    [&>div]:bg-neutral-500
-    [&>div]:text-light-background
-    [&>div]:border-neutral-50
-    [&>div>i]:text-[28px]
+        flex
+        [&>div]:flex
+        [&>div]:justify-center
+        [&>div]:items-center
+        [&>div]:h-12
+        [&>div]:w-12
+        [&>div]:rounded-full
+        [&>div]:border-2
+        [&>div]:bg-neutral-500
+        dark:[&>div]:bg-neutral-800
+        [&>div]:text-light-background
+        [&>div]:border-neutral-50
+        [&>div>i]:text-[28px]
     ">
         <div class="-mr-1"><i class="fa-solid fa-envelope"></i></div>
         <div><i class="fa-solid fa-headset"></i></div>
