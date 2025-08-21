@@ -8,55 +8,55 @@ async function fetchQuestions() {
   }
 }
 
-function handleSearchInput(questions) {
+const handleSearchInput = (questions) => {
   const input = document.querySelector("[data-input-search]");
   const handleChange = (event) => {};
 
   if (input instanceof HTMLInputElement) {
     input.addEventListener("input", handleChange);
   }
-}
+};
+
+const handleIconButton = (button) => {
+  const icon = button.querySelector("i");
+  if (icon instanceof HTMLElement) {
+    if (icon.classList.contains("fa-plus")) {
+      icon.classList.remove("fa-plus");
+      icon.classList.add("fa-minus");
+    } else {
+      icon.classList.add("fa-plus");
+      icon.classList.remove("fa-minus");
+    }
+  }
+};
+
+const showDescription = (event) => {
+  const topic = event.currentTarget;
+  if (topic instanceof HTMLDivElement) {
+    const description = topic.querySelector("[data-description]");
+    if (description instanceof HTMLParagraphElement) {
+      const isOpen = description.classList.contains("open");
+      if (isOpen) {
+        description.style.maxHeight = description.scrollHeight + "px";
+        requestAnimationFrame(() => {
+          description.style.maxHeight = "0";
+          description.classList.remove("opacity-100");
+        });
+      } else {
+        description.style.maxHeight = description.scrollHeight + "px";
+        description.classList.add("opacity-100");
+      }
+
+      description.classList.toggle("open");
+    }
+    handleIconButton(event.currentTarget);
+  }
+};
 
 async function perguntasFrequentes() {
   const divQuestions = document.querySelector("[data-questions]");
   let questionsToSearch = [];
   const questions = await fetchQuestions();
-
-  const handleIconButton = (button) => {
-    const icon = button.querySelector("i");
-    if (icon instanceof HTMLElement) {
-      if (icon.classList.contains("fa-plus")) {
-        icon.classList.remove("fa-plus");
-        icon.classList.add("fa-minus");
-      } else {
-        icon.classList.add("fa-plus");
-        icon.classList.remove("fa-minus");
-      }
-    }
-  };
-
-  const showDescription = (event) => {
-    const topic = event.currentTarget;
-    if (topic instanceof HTMLDivElement) {
-      const description = topic.querySelector("[data-description]");
-      if (description instanceof HTMLParagraphElement) {
-        const isOpen = description.classList.contains("open");
-        if (isOpen) {
-          description.style.maxHeight = description.scrollHeight + "px";
-          requestAnimationFrame(() => {
-            description.style.maxHeight = "0";
-            description.classList.remove("opacity-100");
-          });
-        } else {
-          description.style.maxHeight = description.scrollHeight + "px";
-          description.classList.add("opacity-100");
-        }
-
-        description.classList.toggle("open");
-      }
-      handleIconButton(event.currentTarget);
-    }
-  };
 
   if (divQuestions instanceof HTMLDivElement && Array.isArray(questions)) {
     questions.forEach((question) => {
