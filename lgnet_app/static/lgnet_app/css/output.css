@@ -660,6 +660,9 @@
   .h-\[6px\] {
     height: 6px;
   }
+  .h-\[14px\] {
+    height: 14px;
+  }
   .h-\[18px\] {
     height: 18px;
   }
@@ -776,6 +779,9 @@
   }
   .w-\[3px\] {
     width: 3px;
+  }
+  .w-\[14px\] {
+    width: 14px;
   }
   .w-\[50vw\] {
     width: 50vw;
