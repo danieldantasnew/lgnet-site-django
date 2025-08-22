@@ -10,6 +10,10 @@ async function fetchQuestions() {
 
 const addQuestions = (container, questions) => {
   container.innerHTML = "";
+  if (questions.length == 0) {
+    container.innerHTML += `<p class="text-center font-medium text-lg">Sem resultados</p>`;
+    return;
+  }
   questions.forEach((question) => {
     container.innerHTML += `
             <div data-ask="${question.id}" class="cursor-pointer p-4 bg-neutral-50 dark:bg-neutral-800 rounded-sm">
@@ -69,9 +73,12 @@ const addQuestions = (container, questions) => {
 const handleSearchInput = (container, questions) => {
   const input = document.querySelector("[data-input-search]");
   const handleChange = (event) => {
+    const { value } = event.target;
+    const regex = new RegExp(value, "i");
+
     addQuestions(
       container,
-      questions.filter((question) => question.id == 1)
+      questions.filter((question) => regex.test(question.question))
     );
   };
 
