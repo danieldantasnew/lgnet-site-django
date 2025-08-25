@@ -61,10 +61,6 @@ body {
   border-top: 8px solid #ffcd00;
 }
 
-.dark img {
-  filter: brightness(85%);
-}
-
 @keyframes spin {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
@@ -100,4 +96,13 @@ body {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary-hover);
+}
+
+.scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }

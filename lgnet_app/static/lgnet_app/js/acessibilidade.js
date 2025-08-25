@@ -1,7 +1,86 @@
 import { toggleDark } from "./darkMode.js";
 import addMatchMedia from "./matchMedia.js";
 
-export default function acessibilidade() {
+function expandModalAcessibilidade(dropdown) {
+  const expand = document.querySelector('[data-acessibilidade="expandir"]');
+  const handleExpand = (event) => {
+    const icon = expand.querySelector("i");
+    if (icon) {
+      if (dropdown.classList.contains("!w-126")) {
+        dropdown.classList.remove("!w-126");
+        icon.className = "fa-solid fa-up-right-and-down-left-from-center";
+      } else {
+        dropdown.classList.add("!w-126");
+        icon.className = "fa-solid fa-down-left-and-up-right-to-center";
+      }
+    }
+  };
+
+  if (expand instanceof HTMLSpanElement) {
+    expand.addEventListener("click", handleExpand);
+  }
+}
+
+function dropdownAcessibilidade() {
+  const button = document.querySelector(
+    '[data-dropdown="acessibilidade-open"]'
+  );
+  const dropdown = document.querySelector(
+    '[data-dropdown="acessibilidade-modal"]'
+  );
+  const close = document.querySelector(
+    '[data-dropdown="acessibilidade-close"]'
+  );
+
+  let outsideClickHandler = null;
+
+  const closeDropdown = () => {
+    dropdown.classList.add("animate-fadeOut");
+    setTimeout(() => {
+      dropdown.classList.add("hidden");
+      dropdown.classList.remove("animate-fadeOut");
+    }, 300);
+
+    if (outsideClickHandler) {
+      document.removeEventListener("click", outsideClickHandler);
+      outsideClickHandler = null;
+    }
+  };
+
+  const openDropdown = () => {
+    dropdown.classList.remove("hidden");
+
+    outsideClickHandler = (event) => {
+      if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+        closeDropdown();
+        document.removeEventListener("click", outsideClickHandler);
+        outsideClickHandler = null;
+      }
+    };
+
+    setTimeout(() => {
+      document.addEventListener("click", outsideClickHandler);
+    }, 0);
+  };
+
+  if (
+    button instanceof HTMLButtonElement &&
+    dropdown instanceof HTMLDivElement
+  ) {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isHidden = dropdown.classList.contains("hidden");
+      isHidden ? openDropdown() : closeDropdown();
+    });
+    expandModalAcessibilidade(dropdown);
+  }
+
+  if (close instanceof HTMLSpanElement) {
+    close.addEventListener("click", closeDropdown);
+  }
+}
+
+function acessibilidadeMobile() {
   const isMobileFunc = () => {
     const isMobile = addMatchMedia("max-width: 1023px");
     if (!isMobile) {
@@ -27,4 +106,9 @@ export default function acessibilidade() {
     );
     contrastButton.addEventListener("click", toggleDark);
   });
+}
+
+export default function initAcessibilidade() {
+  dropdownAcessibilidade();
+  acessibilidadeMobile();
 }

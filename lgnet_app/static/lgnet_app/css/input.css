@@ -150,6 +150,7 @@
   padding: 0 1rem;
 }
 
+
 @layer components {
   .container h1 {
     @apply font-bold;

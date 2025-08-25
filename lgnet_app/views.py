@@ -34,7 +34,66 @@ explorar = [
         "link": "perguntas-frequentes",
     },
 ]
+opcoes_acessibilidade = [
+    {
+        'titulo': "NAVEGAÇÃO",
+        'recursos': [
+            {
+                'atributo': "data-acessibilidade-leitor",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/leitor.html",
+                'titulo': "Leitor de Sites",
+            },
+            {
+                'atributo': "data-acessibilidade-sem_som",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/sem_som.html",
+                'titulo': "Parar sons",
+            },
+            {
+                'atributo': "data-acessibilidade-link",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/link.html",
+                'titulo': "Destacar links",
+            },
+            {
+                'atributo': "data-acessibilidade-sem_imagem",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/sem_imagem.html",
+                'titulo': "Esconder imagens",
+            },
+        ]
+    },
+    {
+        'titulo': "CONTROLE DE FONTE",
+        'recursos': [
+            {
+                'atributo': "data-acessibilidade-tamanho_fonte",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/tamanho_fonte.html",
+                'titulo': "Tamanho da fonte",
+            },
+            {
+                'atributo': "data-acessibilidade-bold",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/bold.html",
+                'titulo': "Destacar letras",
+            },
+            {
+                'atributo': "data-acessibilidade-espaco_entre_letras",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/espaco_entre_letras.html",
+                'titulo': "Espaço entre letras",
+            },
+            {
+                'atributo': "data-acessibilidade-espaco_entre_linhas",
+                'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/espaco_entre_linhas.html",
+                'titulo': "Espaço entre linhas",
+            },
+        ]
+    },
+]
 
+GLOBAL_CONTEXT = {
+    'infoEmpresa': info_empresa,
+    'redeSocial': redes_sociais,
+    'cidades': cidades,
+    'explorar': explorar,
+    'opcoesAcessibilidade': opcoes_acessibilidade,
+}
 
 def buscar_escritorio_api(request):
     latitude = request.GET.get("latitude")
@@ -244,40 +303,27 @@ def inicio(request):
     banners = Banners.objects.all()
 
     context = {
+        **GLOBAL_CONTEXT,
         'planos': planos,
         'essenciais': essenciais,
         'vantagens': vantagens,
         'autoatendimento': autoatendimento,
         'mobiles': mobile,
-        'redeSocial': redes_sociais,
-        'infoEmpresa': info_empresa,
-        'explorar': explorar,
         'banners': banners,
-        'cidades': cidades,
     }
 
 
     return render(request, 'lgnet_app/pages/principal/index.html', context)
 
 def sobre(request):
-    context = {
-        'infoEmpresa': info_empresa,
-        'redeSocial': redes_sociais,
-        'cidades': cidades,
-        'explorar': explorar,
-    }
-
-    return render(request, 'lgnet_app/pages/sobre/index.html', context)
+    return render(request, 'lgnet_app/pages/sobre/index.html', GLOBAL_CONTEXT)
 
 def contato(request):
     form = ContatoForm(request.POST or None)
     
     context = {
+        **GLOBAL_CONTEXT,
         'form': form,
-        'infoEmpresa': info_empresa,
-        'redeSocial': redes_sociais,
-        'cidades': cidades,
-        'explorar': explorar,
     }
 
     if(request.method == "POST"):
@@ -306,40 +352,20 @@ def contato(request):
     return render(request, 'lgnet_app/pages/contato/index.html', context)
 
 def escritorios(request):
-    context = {
-        'infoEmpresa': info_empresa,
-        'redeSocial': redes_sociais,
-        'cidades': cidades,
-        'explorar': explorar,
-    }
-    return render(request, 'lgnet_app/pages/escritorios/index.html', context)
+    return render(request, 'lgnet_app/pages/escritorios/index.html', GLOBAL_CONTEXT)
 
 def minha_lgnet(request):
-    context = {
-        'infoEmpresa': info_empresa,
-        'redeSocial': redes_sociais,
-        'cidades': cidades,
-        'explorar': explorar,
-    }
-    return render(request, 'lgnet_app/pages/minha_lgnet/index.html', context)
+    return render(request, 'lgnet_app/pages/minha_lgnet/index.html', GLOBAL_CONTEXT)
 
 def perguntas_frequentes(request):
     perguntas = PerguntasFrequentes.objects.all()
     context = {
-        'infoEmpresa': info_empresa,
-        'redeSocial': redes_sociais,
-        'cidades': cidades,
+        **GLOBAL_CONTEXT,
         'perguntas': perguntas,
     }
     return render(request, 'lgnet_app/pages/perguntas_frequentes/index.html', context)
 
 def custom_not_found(request, exception):
-    context = {
-        'infoEmpresa': info_empresa,
-        'redeSocial': redes_sociais,
-        'cidades': cidades,
-    }
-    
-    return render(request,'lgnet_app/404.html', context)
+    return render(request,'lgnet_app/404.html', GLOBAL_CONTEXT)
 
 handler404 = custom_not_found
