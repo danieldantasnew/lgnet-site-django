@@ -4,11 +4,11 @@
 
 {% block content %}
     <section class="bg-light-background dark:bg-dark-variant">
-        <div class="grid grid-cols-2 gap-14">
-            <div>
-                <img src="{% static 'lgnet_app/images/login.png'%}" alt="Imagem para tela de login">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="shadow-[0_1rem_8px_1px_rgba(0,0,0,.1)] hidden lg:block *:h-full *:w-full">
+                <img class="object-cover" src="{% static 'lgnet_app/images/login.png'%}" alt="Imagem para tela de login">
             </div>
-            <div class="mt-20 max-w-105">
+            <div class="m-auto lg:m-[initial] mt-12 lg:mt-20 max-w-96 lg:!max-w-105 p-4 !pb-24 lg:pb-0">
                 <div>
                     <h2 class="text-4xl font-semibold text-ellipsis text-nowrap  relative text-primary-variant-2 dark:text-light-background">
                         Login
@@ -32,6 +32,7 @@
                     [&>div>label]:text-neutral-800
                     dark:[&>div>label]:text-neutral-200
                     [&>div>label]:font-semibold
+                    [&>div>input]:dark:text-light-background
                     [&>div>input]:w-full
                     [&>div>input]:placeholder:text-sm
                     dark:[&>div>input]:placeholder:text-neutral-300
@@ -67,10 +68,10 @@
                         <label>
                             Digite sua senha
                         </label>
-                        <input type="text">
+                        <input type="password">
                     </div>
                     
-                    <a href="{% url 'lgnet:esqueci-minha-senha' %}" class="text-sm text-[#0B94CF] underline underline-offset-4 font-medium">Esqueci minha senha</a>
+                    <a href="{% url 'lgnet:esqueci-minha-senha' %}" class="text-sm text-[#0B94CF] hover:underline underline-offset-4 font-medium">Esqueci minha senha</a>
 
                     <button class="w-full cursor-pointer tracking-[.1rem] mt-5 text-[16px] text-[#ffffff] bg-primary-variant font-semibold rounded-sm px-5 py-3 hover:bg-primary-hover dark:bg-secondary dark:hover:bg-secondary-hover dark:text-secondary-variant transition-colors disabled:bg-neutral-400 disabled:cursor-not-allowed">Acessar Conta</button>
                 </form>
