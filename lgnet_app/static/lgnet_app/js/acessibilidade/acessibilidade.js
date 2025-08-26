@@ -108,10 +108,10 @@ function acessibilidadeMobile() {
 }
 
 export default function initAcessibilidade() {
-  let readerMode = null;
+  const state = { readerMode: null};
   dropdownAcessibilidade();
   acessibilidadeMobile();
-  readerWebSite(readerMode);
+  readerWebSite(state);
 
   document.addEventListener("click", (e) => {
     const onBtn = e.target.closest("[data-dark-on]");
@@ -126,8 +126,7 @@ export default function initAcessibilidade() {
       return;
     }
 
-    console.log(readerMode)
-    if (!e.target.closest("[data-acessibilidade-leitor]") && readerMode && readerMode !== 3 && readerMode !== 4) {
+    if (!e.target.closest("[data-acessibilidade-leitor]") && state.readerMode) {
       speakMessageClicked(e);
       return;
     }

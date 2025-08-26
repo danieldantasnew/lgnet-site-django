@@ -42,30 +42,30 @@ function removeSpeechSynthesis() {
   speaker("Leitor desativado!", true);
 }
 
-export function readerWebSite(readerMode) {
+export function readerWebSite(state) {
   const buttonReader = document.querySelector("[data-acessibilidade-leitor]");
   if (buttonReader instanceof HTMLButtonElement) {
     buttonReader.addEventListener("click", () => {
-      switch (readerMode) {
+      switch (state.readerMode) {
         case null:
           addSpeechSynthesisNormalMode();
-          readerMode = 1;
+          state.readerMode = 1;
           break;
         case 1:
           addSpeechSynthesisFastMode();
-          readerMode += 1;
+          state.readerMode += 1;
           break;
         case 2:
           addSpeechSynthesisSlowMode();
-          readerMode += 1;
+          state.readerMode += 1;
           break;
         case 3:
           removeSpeechSynthesis();
-          readerMode = null;
+          state.readerMode = null;
           break;
 
         default:
-          readerMode = null;
+          state.readerMode = null;
           break;
       }
     });
