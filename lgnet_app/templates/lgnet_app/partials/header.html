@@ -56,69 +56,6 @@
   </div>
 </header>
 
-<template data-tpl="acessibilidade">
-  <div data-menu-acessibilidade-mobile class="
-    animate-slideIn 
-    fixed z-50 
-    top-0 
-    right-0 
-    h-full 
-    w-[75vw] 
-    bg-light-background 
-    dark:bg-dark-primary 
-    flex 
-    flex-col 
-    gap-4 
-    items-start 
-    dark:shadow-[1px_0_4px_4px_rgba(255,255,255,.05)]
-  ">
-    <div class="flex items-center justify-between w-full gap-2 bg-primary-variant dark:bg-dark-variant text-light-background pl-6 pr-3 py-5">
-      <h2 class="font-semibold text-sm">Menu de Acessibilidade</h2>
-      <span onclick="document.modalComponent.close()" class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
-    </div>
-    <div class="
-      px-2
-      w-full 
-      h-full 
-      overflow-auto
-      *:gap-4 
-    ">
-    <ol
-    class="
-      w-full 
-      flex 
-      flex-col
-      *:text-sm       
-      *:text-primary-variant 
-      dark:*:text-light-background  
-      *:font-semibold text-white 
-      **:tracking-tighter 
-      *:*:cursor-pointer 
-      *:*:hover:text-primary 
-      dark:*:*:hover:text-secondary
-      *:py-5
-      *:border-b-2
-      *:border-neutral-100
-      dark:*:border-neutral-100/10
-      *:*:py-6
-      *:*:pl-6
-      *:*:pr-3
-      "
-    >
-      <li><a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#">1 - Menu</a></li>
-      <li><a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#planos">2 - Conteúdo</a></li>
-      <li><a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#footer">3 - Rodapé</a></li>
-      <li>
-        <a data-contraste-acessibilidade class="transition-all">
-          <span class="mr-1"><i class="fa-solid fa-circle-half-stroke"></i></span>
-          <span>Alto Contraste</span>
-        </a>
-      </li>
-    </ol>
-    </div>
-  </div>
-</template>
-
 <template data-tpl="menuMobile">
   <div data-menu-mobile class="animate-slideIn fixed z-50 top-0 right-0 h-full w-[75vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start
   ">

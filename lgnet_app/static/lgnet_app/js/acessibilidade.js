@@ -1,4 +1,3 @@
-import { toggleDark } from "./darkMode.js";
 import addMatchMedia from "./matchMedia.js";
 
 function expandModalAcessibilidade(dropdown) {
@@ -100,11 +99,6 @@ function acessibilidadeMobile() {
       effectAcessibilidade,
       200
     );
-
-    const contrastButton = document.querySelector(
-      "[data-contraste-acessibilidade]"
-    );
-    contrastButton.addEventListener("click", toggleDark);
   });
 }
 

@@ -1,105 +1,61 @@
 <div
-  class="hidden lg:flex relative lg:before:inline-block lg:before:h-5 lg:before:w-[1px] lg:before:bg-white lg:before:rounded-sm items-center"
->
+  class="hidden lg:flex relative lg:before:inline-block lg:before:h-5 lg:before:w-[1px] lg:before:bg-white lg:before:rounded-sm items-center">
   <button
     class="text-[#ffffff] hover:text-primary font-semibold rounded-lg text-sm pl-5 text-center inline-flex items-center cursor-pointer dark:hover:text-secondary group/acessibilidade"
-    type="button"
-    data-dropdown="acessibilidade-open"
-  >
-    <svg
-      class="h-5 w-5 mr-1 group-hover/acessibilidade:fill-primary dark:group-hover/acessibilidade:fill-secondary"
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#ffffff"
-    >
+    type="button" data-dropdown="acessibilidade-open">
+    <svg class="h-5 w-5 mr-1 group-hover/acessibilidade:fill-primary dark:group-hover/acessibilidade:fill-secondary"
+      xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
       <path
-        d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM360-120v-480q-49-4-99-11t-98-18q-17-4-27.5-19t-5.5-32q5-17 21-25t34-4q70 15 145.5 22t149.5 7q74 0 149.5-7T775-709q18-4 34 4t21 25q5 17-5.5 32T797-629q-48 11-98 18t-99 11v480q0 17-11.5 28.5T560-80q-17 0-28.5-11.5T520-120v-200h-80v200q0 17-11.5 28.5T400-80q-17 0-28.5-11.5T360-120Z"
-      />
+        d="M480-720q-33 0-56.5-23.5T400-800q0-33 23.5-56.5T480-880q33 0 56.5 23.5T560-800q0 33-23.5 56.5T480-720ZM360-120v-480q-49-4-99-11t-98-18q-17-4-27.5-19t-5.5-32q5-17 21-25t34-4q70 15 145.5 22t149.5 7q74 0 149.5-7T775-709q18-4 34 4t21 25q5 17-5.5 32T797-629q-48 11-98 18t-99 11v480q0 17-11.5 28.5T560-80q-17 0-28.5-11.5T520-120v-200h-80v200q0 17-11.5 28.5T400-80q-17 0-28.5-11.5T360-120Z" />
     </svg>
     Acessibilidade
-    <svg
-      class="w-2.5 h-2.5 ms-1"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 10 6"
-    >
-      <path
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="m1 1 4 4 4-4"
-      />
+    <svg class="w-2.5 h-2.5 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
     </svg>
   </button>
 
-  <div
-    data-dropdown="acessibilidade-modal"
-    class="scroll-hidden animate-fadeIn z-20 hidden bg-light-background dark:bg-dark-primary rounded-lg shadow-[0_0_6px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_6px_1px_rgba(255,255,255,.1)] w-96 absolute right-0 top-10 transition-all overflow-hidden"
-  >
+  <div data-dropdown="acessibilidade-modal"
+    class="scroll-hidden animate-fadeIn z-20 hidden bg-light-background dark:bg-dark-primary rounded-lg shadow-[0_0_6px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_6px_1px_rgba(255,255,255,.1)] w-96 absolute right-0 top-10 transition-all overflow-hidden">
     <div class="flex gap-1 items-center justify-between py-3 px-4 relative bg-primary-variant dark:bg-dark-variant">
-      <h3
-        class="text-light-background font-semibold text-[16px]"
-      >
+      <h3 class="text-light-background font-semibold text-[16px]">
         Menu de Acessibilidade
       </h3>
-      <div class="
-        *:text-[16px] 
-        *:cursor-pointer
-        *:duration-300
-        text-light-background 
-        *:hover:text-primary
-        dark:*:hover:text-secondary
-        flex
-        items-center
-      ">
-        <span aria-label="Expandir/recolher menu de acessibilidade" data-acessibilidade="expandir" class="mr-3"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></span>
-        <span aria-label="Fechar menu de acessibilidade" data-dropdown="acessibilidade-close" class="flex items-center"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
+      <div
+        class="*:text-[16px] *:cursor-pointer *:duration-300 text-light-background *:hover:text-primary dark:*:hover:text-secondary flex items-center">
+        <span aria-label="Expandir/recolher menu de acessibilidade" data-acessibilidade="expandir" class="mr-3"><i
+            class="fa-solid fa-up-right-and-down-left-from-center"></i></span>
+        <span aria-label="Fechar menu de acessibilidade" data-dropdown="acessibilidade-close"
+          class="flex items-center"><i class="fa-regular fa-circle-xmark text-2xl"></i></span>
       </div>
     </div>
-
-    <div class="pt-4 pb-10 px-4 flex flex-col gap-6 max-h-[82dvh] overflow-y-auto overflow-x-hidden scroll-hidden">
-      {% include "lgnet_app/partials/header_tools/acessibilidade/contraste.html" %}
-      {% for opcao in opcoesAcessibilidade %}
-        <div>
-          <h4 class="text-neutral-400 text-sm font-semibold">{{opcao.titulo}}</h4>
-          <div class="mt-2 mb-6 bg-neutral-300 dark:bg-neutral-700 h-[2px] w-full"></div>
-          <div class="
-              grid
-              grid-cols-2
-              gap-3
-              [&>div]:h-26
-              [&>div]:px-2
-              [&>div]:py-3
-              [&>div]:cursor-pointer
-              [&>div]:rounded-sm
-              [&>div]:transition-all
-              [&>div]:shadow-[0_0_2px_1px_var(--color-neutral-300)]
-              [&>div]:hover:shadow-[0_0_1px_3px_var(--color-primary-variant)]
-              [&>div]:dark:shadow-[0_0_2px_1px_rgba(255,255,255,.1)]
-              [&>div]:hover:dark:shadow-[0_0_1px_3px_var(--color-secondary)]
-              [&>div>svg]:*:fill-neutral-500
-              [&>div>svg]:*:dark:fill-neutral-400
-              [&>div>p]:mt-6
-              [&>div>p]:text-primary-variant-2
-              [&>div>p]:dark:text-light-background
-              [&>div>p]:font-semibold
-              [&>div>p]:text-sm
-          ">
-            {% for recurso in opcao.recursos %}
-              <div {{recurso.atributo}}>
-                  {% if recurso.icone %}
-                    {% include recurso.icone %}
-                  {% endif %}
-                  <p>{{recurso.titulo}}</p>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+    {% include "lgnet_app/partials/header_tools/acessibilidade/recursos_assistivos.html"%}
   </div>
 </div>
+
+<template data-tpl="acessibilidade">
+  <div data-menu-acessibilidade-mobile
+    class="animate-slideIn fixed z-50 top-0 right-0 h-full w-full sm:w-[75vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start dark:shadow-[1px_0_4px_4px_rgba(255,255,255,.05)] max-w-116 overflow-y-auto overflow-x-hidden">
+    <div
+      class="flex items-center justify-between w-full gap-2 bg-primary-variant dark:bg-dark-variant text-light-background pl-6 pr-3 py-5">
+      <h2 class="font-semibold text-sm">Menu de Acessibilidade</h2>
+      <span onclick="document.modalComponent.close()"
+        class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i
+          class="fa-regular fa-circle-xmark text-2xl"></i></span>
+    </div>
+    <div class="px-2 w-full h-full overflow-auto *:gap-4">
+      <ol
+        class="w-full flex flex-col *:text-sm *:text-primary-variant dark:*:text-light-background *:font-semibold text-white **:tracking-tighter *:*:cursor-pointer *:*:hover:text-primary dark:*:*:hover:text-secondary *:py-5 *:border-b-2 *:border-neutral-100 dark:*:border-neutral-100/10 *:*:py-6 *:*:pl-6 *:*:pr-3">
+        <li>
+          <a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#">1 - Menu</a>
+        </li>
+        <li>
+          <a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#planos">2 - Conteúdo</a>
+        </li>
+        <li>
+          <a onclick="document.modalComponent.close()" href="{%url 'lgnet:inicio'%}#footer">3 - Rodapé</a>
+        </li>
+      </ol>
+      {% include "lgnet_app/partials/header_tools/acessibilidade/recursos_assistivos.html"%}
+    </div>
+  </div>
+</template>

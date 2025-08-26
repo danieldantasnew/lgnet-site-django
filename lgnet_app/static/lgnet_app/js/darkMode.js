@@ -16,14 +16,17 @@ export function toggleDark() {
 }
 
 export default function darkMode() {
-  const darkOn = document.querySelector("[data-dark-on]");
-  const darkOff = document.querySelector("[data-dark-off]");
+  document.addEventListener("click", (e) => {
+    const onBtn = e.target.closest("[data-dark-on]");
+    if (onBtn) {
+      addDark();
+      return;
+    }
 
-  if (darkOn) {
-    darkOn.addEventListener("click", addDark);
-  }
-
-  if (darkOff) {
-    darkOff.addEventListener("click", removeDark);
-  }
+    const offBtn = e.target.closest("[data-dark-off]");
+    if (offBtn) {
+      removeDark();
+      return;
+    }
+  });
 }
