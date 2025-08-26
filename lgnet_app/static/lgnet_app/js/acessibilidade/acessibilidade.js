@@ -1,43 +1,9 @@
 import { addDark, removeDark } from "./highContrast.js";
 import {
-  addSpeechSynthesisFastMode,
-  addSpeechSynthesisNormalMode,
-  addSpeechSynthesisSlowMode,
-  removeSpeechSynthesis,
+  readerWebSite,
   speakMessageClicked,
-} from "./speechSynthesis.js";
+} from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
-
-function readerWebSite(readerMode) {
-  const buttonReader = document.querySelector("[data-acessibilidade-leitor]");
-
-  if (buttonReader instanceof HTMLButtonElement) {
-    buttonReader.addEventListener("click", () => {
-      switch (readerMode) {
-        case 0:
-          addSpeechSynthesisNormalMode();
-          readerMode += 1;
-          break;
-        case 1:
-          addSpeechSynthesisFastMode();
-          readerMode += 1;
-          break;
-        case 2:
-          addSpeechSynthesisSlowMode();
-          readerMode += 1;
-          break;
-        case 3:
-          removeSpeechSynthesis();
-          readerMode += 1;
-          break;
-
-        default:
-          readerMode = 0;
-          break;
-      }
-    });
-  }
-}
 
 function expandModalAcessibilidade(dropdown) {
   const expand = document.querySelector('[data-acessibilidade="expandir"]');
@@ -142,7 +108,7 @@ function acessibilidadeMobile() {
 }
 
 export default function initAcessibilidade() {
-  let readerMode = 0;
+  let readerMode = null;
   dropdownAcessibilidade();
   acessibilidadeMobile();
   readerWebSite(readerMode);
@@ -160,7 +126,8 @@ export default function initAcessibilidade() {
       return;
     }
 
-    if (!e.target.closest("[data-acessibilidade-leitor]") && readerMode !== 3 && readerMode !== 4) {
+    console.log(readerMode)
+    if (!e.target.closest("[data-acessibilidade-leitor]") && readerMode && readerMode !== 3 && readerMode !== 4) {
       speakMessageClicked(e);
       return;
     }
