@@ -1,8 +1,7 @@
-import darkMode from "./darkMode.js";
 import modal from "./modal.js";
 import selecionar_cidade from "./selecionarCidade.js";
-import acessibilidade from "./acessibilidade.js";
 import menuMobile from "./menuMobile.js";
+import ativarAcessibilidade from "./acessibilidade/acessibilidade.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const swiperPlanos = new Swiper(".mySwiperPlans", {
@@ -25,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   },
   });
 
-  acessibilidade();
-  menuMobile()
-  darkMode();
+  ativarAcessibilidade();
+  menuMobile();
   modal();
   selecionar_cidade();
 });

@@ -34,7 +34,7 @@ explorar = [
         "link": "perguntas-frequentes",
     },
 ]
-opcoes_acessibilidade = [
+recursos_assistivos = [
     {
         'titulo': "NAVEGAÇÃO",
         'recursos': [
@@ -92,7 +92,7 @@ GLOBAL_CONTEXT = {
     'redeSocial': redes_sociais,
     'cidades': cidades,
     'explorar': explorar,
-    'opcoesAcessibilidade': opcoes_acessibilidade,
+    'recursosAssistivos': recursos_assistivos,
 }
 
 def buscar_escritorio_api(request):

@@ -1,4 +1,43 @@
-import addMatchMedia from "./matchMedia.js";
+import { addDark, removeDark } from "./highContrast.js";
+import {
+  addSpeechSynthesisFastMode,
+  addSpeechSynthesisNormalMode,
+  addSpeechSynthesisSlowMode,
+  removeSpeechSynthesis,
+  speakMessageClicked,
+} from "./speechSynthesis.js";
+import addMatchMedia from "../matchMedia.js";
+
+function readerWebSite(readerMode) {
+  const buttonReader = document.querySelector("[data-acessibilidade-leitor]");
+
+  if (buttonReader instanceof HTMLButtonElement) {
+    buttonReader.addEventListener("click", () => {
+      switch (readerMode) {
+        case 0:
+          addSpeechSynthesisNormalMode();
+          readerMode += 1;
+          break;
+        case 1:
+          addSpeechSynthesisFastMode();
+          readerMode += 1;
+          break;
+        case 2:
+          addSpeechSynthesisSlowMode();
+          readerMode += 1;
+          break;
+        case 3:
+          removeSpeechSynthesis();
+          readerMode += 1;
+          break;
+
+        default:
+          readerMode = 0;
+          break;
+      }
+    });
+  }
+}
 
 function expandModalAcessibilidade(dropdown) {
   const expand = document.querySelector('[data-acessibilidade="expandir"]');
@@ -103,6 +142,27 @@ function acessibilidadeMobile() {
 }
 
 export default function initAcessibilidade() {
+  let readerMode = 0;
   dropdownAcessibilidade();
   acessibilidadeMobile();
+  readerWebSite(readerMode);
+
+  document.addEventListener("click", (e) => {
+    const onBtn = e.target.closest("[data-dark-on]");
+    if (onBtn) {
+      addDark();
+      return;
+    }
+
+    const offBtn = e.target.closest("[data-dark-off]");
+    if (offBtn) {
+      removeDark();
+      return;
+    }
+
+    if (!e.target.closest("[data-acessibilidade-leitor]") && readerMode !== 3 && readerMode !== 4) {
+      speakMessageClicked(e);
+      return;
+    }
+  });
 }

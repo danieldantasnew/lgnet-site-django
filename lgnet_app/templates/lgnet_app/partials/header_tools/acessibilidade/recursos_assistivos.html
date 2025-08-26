@@ -1,6 +1,6 @@
 <div class="pt-4 pb-10 mt-5 lg:mt-0 px-2 lg:px-4 flex flex-col gap-6 max-h-[82dvh] overflow-y-auto overflow-x-hidden scroll-hidden">
     {% include "lgnet_app/partials/header_tools/acessibilidade/contraste.html"%} 
-    {% for opcao in opcoesAcessibilidade %}
+    {% for opcao in recursosAssistivos %}
     <div>
         <h4 class="text-neutral-400 text-sm font-semibold">{{opcao.titulo}}</h4>
         <div class="mt-2 mb-6 bg-neutral-300 dark:bg-neutral-700 h-[2px] w-full"></div>
@@ -9,35 +9,36 @@
             grid 
             grid-cols-2 
             gap-3 
-            [&>div]:h-26 
-            [&>div]:px-2 
-            [&>div]:py-3 
-            [&>div]:cursor-pointer 
-            [&>div]:rounded-sm 
-            [&>div]:transition-all 
-            [&>div]:shadow-[0_0_2px_1px_var(--color-neutral-300)] 
-            [&>div]:hover:shadow-[0_0_1px_3px_var(--color-primary-variant)] 
-            [&>div]:dark:shadow-[0_0_2px_1px_rgba(255,255,255,.1)] 
-            [&>div]:hover:dark:shadow-[0_0_1px_3px_var(--color-secondary)] 
-            [&>div>svg]:*:fill-neutral-500 
-            [&>div>svg]:*:dark:fill-neutral-400 
-            [&>div>svg]:h-6
-            [&>div>svg]:w-6
-            [&>div>svg]:lg:h-8
-            [&>div>svg]:lg:w-8
-            [&>div>p]:mt-10 
-            [&>div>p]:lg:mt-6 
-            [&>div>p]:text-primary-variant-2 
-            [&>div>p]:dark:text-light-background 
-            [&>div>p]:font-semibold 
-            [&>div>p]:text-xs
-            [&>div>p]:lg:text-sm
+            [&>button]:h-26 
+            [&>button]:px-2 
+            [&>button]:py-3 
+            [&>button]:cursor-pointer 
+            [&>button]:rounded-sm 
+            [&>button]:transition-all 
+            [&>button]:shadow-[0_0_2px_1px_var(--color-neutral-300)] 
+            [&>button]:hover:shadow-[0_0_1px_3px_var(--color-primary-variant)] 
+            [&>button]:dark:shadow-[0_0_2px_1px_rgba(255,255,255,.1)] 
+            [&>button]:hover:dark:shadow-[0_0_1px_3px_var(--color-secondary)] 
+            [&>button>svg]:*:fill-neutral-500 
+            [&>button>svg]:*:dark:fill-neutral-400 
+            [&>button>svg]:h-6
+            [&>button>svg]:w-6
+            [&>button>svg]:lg:h-8
+            [&>button>svg]:lg:w-8
+            [&>button>p]:mt-10 
+            [&>button>p]:lg:mt-6 
+            [&>button>p]:text-primary-variant-2 
+            [&>button>p]:dark:text-light-background 
+            [&>button>p]:font-semibold 
+            [&>button>p]:text-left
+            [&>button>p]:text-xs
+            [&>button>p]:lg:text-sm
         ">
         {% for recurso in opcao.recursos %}
-        <div {{recurso.atributo}}>
+        <button {{recurso.atributo}}>
             {% if recurso.icone %} {% include recurso.icone %} {% endif %}
             <p>{{recurso.titulo}}</p>
-        </div>
+        </button>
         {% endfor %}
         </div>
     </div>

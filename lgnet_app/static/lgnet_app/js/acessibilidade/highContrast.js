@@ -15,18 +15,3 @@ export function toggleDark() {
   else addDark();
 }
 
-export default function darkMode() {
-  document.addEventListener("click", (e) => {
-    const onBtn = e.target.closest("[data-dark-on]");
-    if (onBtn) {
-      addDark();
-      return;
-    }
-
-    const offBtn = e.target.closest("[data-dark-off]");
-    if (offBtn) {
-      removeDark();
-      return;
-    }
-  });
-}

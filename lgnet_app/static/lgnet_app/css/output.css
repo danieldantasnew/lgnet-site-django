@@ -1540,6 +1540,9 @@
   .\!text-green-600 {
     color: var(--color-green-600) !important;
   }
+  .\!text-primary-variant-2 {
+    color: var(--color-primary-variant-2) !important;
+  }
   .\!text-red-600 {
     color: var(--color-red-600) !important;
   }
@@ -1967,6 +1970,11 @@
   .\*\:bg-primary-variant {
     :is(& > *) {
       background-color: var(--color-primary-variant);
+    }
+  }
+  .\*\:\!fill-primary-variant-2 {
+    :is(& > *) {
+      fill: var(--color-primary-variant-2) !important;
     }
   }
   .\*\:fill-green-500 {
@@ -4070,6 +4078,11 @@
       height: calc(var(--spacing) * 8);
     }
   }
+  .\[\&\>button\]\:h-26 {
+    &>button {
+      height: calc(var(--spacing) * 26);
+    }
+  }
   .\[\&\>button\]\:w-8 {
     &>button {
       width: calc(var(--spacing) * 8);
@@ -4085,6 +4098,11 @@
       border-radius: calc(infinity * 1px);
     }
   }
+  .\[\&\>button\]\:rounded-sm {
+    &>button {
+      border-radius: var(--radius-sm);
+    }
+  }
   .\[\&\>button\]\:bg-neutral-200 {
     &>button {
       background-color: var(--color-neutral-200);
@@ -4095,9 +4113,25 @@
       padding: calc(var(--spacing) * 1);
     }
   }
+  .\[\&\>button\]\:px-2 {
+    &>button {
+      padding-inline: calc(var(--spacing) * 2);
+    }
+  }
+  .\[\&\>button\]\:py-3 {
+    &>button {
+      padding-block: calc(var(--spacing) * 3);
+    }
+  }
   .\[\&\>button\]\:text-neutral-500 {
     &>button {
       color: var(--color-neutral-500);
+    }
+  }
+  .\[\&\>button\]\:shadow-\[0_0_2px_1px_var\(--color-neutral-300\)\] {
+    &>button {
+      --tw-shadow: 0 0 2px 1px var(--tw-shadow-color, var(--color-neutral-300));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .\[\&\>button\]\:transition-all {
@@ -4125,6 +4159,16 @@
       }
     }
   }
+  .\[\&\>button\]\:hover\:shadow-\[0_0_1px_3px_var\(--color-primary-variant\)\] {
+    &>button {
+      &:hover {
+        @media (hover: hover) {
+          --tw-shadow: 0 0 1px 3px var(--tw-shadow-color, var(--color-primary-variant));
+          box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+        }
+      }
+    }
+  }
   .\[\&\>button\]\:dark\:bg-\[\#3d3d3d\] {
     &>button {
       &:where(.dark, .dark *) {
@@ -4139,6 +4183,14 @@
       }
     }
   }
+  .\[\&\>button\]\:dark\:shadow-\[0_0_2px_1px_rgba\(255\,255\,255\,\.1\)\] {
+    &>button {
+      &:where(.dark, .dark *) {
+        --tw-shadow: 0 0 2px 1px var(--tw-shadow-color, rgba(255,255,255,.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
   .\[\&\>button\]\:dark\:hover\:text-secondary {
     &>button {
       &:where(.dark, .dark *) {
@@ -4146,6 +4198,107 @@
           @media (hover: hover) {
             color: var(--color-secondary);
           }
+        }
+      }
+    }
+  }
+  .\[\&\>button\]\:hover\:dark\:shadow-\[0_0_1px_3px_var\(--color-secondary\)\] {
+    &>button {
+      &:hover {
+        @media (hover: hover) {
+          &:where(.dark, .dark *) {
+            --tw-shadow: 0 0 1px 3px var(--tw-shadow-color, var(--color-secondary));
+            box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+          }
+        }
+      }
+    }
+  }
+  .\[\&\>button\>p\]\:mt-10 {
+    &>button>p {
+      margin-top: calc(var(--spacing) * 10);
+    }
+  }
+  .\[\&\>button\>p\]\:text-left {
+    &>button>p {
+      text-align: left;
+    }
+  }
+  .\[\&\>button\>p\]\:text-xs {
+    &>button>p {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+  .\[\&\>button\>p\]\:font-semibold {
+    &>button>p {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+  .\[\&\>button\>p\]\:text-primary-variant-2 {
+    &>button>p {
+      color: var(--color-primary-variant-2);
+    }
+  }
+  .\[\&\>button\>p\]\:lg\:mt-6 {
+    &>button>p {
+      @media (width >= 64rem) {
+        margin-top: calc(var(--spacing) * 6);
+      }
+    }
+  }
+  .\[\&\>button\>p\]\:lg\:text-sm {
+    &>button>p {
+      @media (width >= 64rem) {
+        font-size: var(--text-sm);
+        line-height: var(--tw-leading, var(--text-sm--line-height));
+      }
+    }
+  }
+  .\[\&\>button\>p\]\:dark\:text-light-background {
+    &>button>p {
+      &:where(.dark, .dark *) {
+        color: var(--color-light-background);
+      }
+    }
+  }
+  .\[\&\>button\>svg\]\:h-6 {
+    &>button>svg {
+      height: calc(var(--spacing) * 6);
+    }
+  }
+  .\[\&\>button\>svg\]\:w-6 {
+    &>button>svg {
+      width: calc(var(--spacing) * 6);
+    }
+  }
+  .\[\&\>button\>svg\]\:\*\:fill-neutral-500 {
+    &>button>svg {
+      :is(& > *) {
+        fill: var(--color-neutral-500);
+      }
+    }
+  }
+  .\[\&\>button\>svg\]\:lg\:h-8 {
+    &>button>svg {
+      @media (width >= 64rem) {
+        height: calc(var(--spacing) * 8);
+      }
+    }
+  }
+  .\[\&\>button\>svg\]\:lg\:w-8 {
+    &>button>svg {
+      @media (width >= 64rem) {
+        width: calc(var(--spacing) * 8);
+      }
+    }
+  }
+  .\[\&\>button\>svg\]\:\*\:dark\:fill-neutral-400 {
+    &>button>svg {
+      :is(& > *) {
+        &:where(.dark, .dark *) {
+          fill: var(--color-neutral-400);
         }
       }
     }
