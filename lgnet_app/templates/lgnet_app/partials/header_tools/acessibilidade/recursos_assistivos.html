@@ -35,7 +35,7 @@
             [&>button>p]:lg:text-sm
         ">
         {% for recurso in opcao.recursos %}
-        <button {{recurso.atributo}}>
+        <button {{recurso.atributo}} class="relative">
             {% if recurso.icone %} {% include recurso.icone %} {% endif %}
             <p>{{recurso.titulo}}</p>
         </button>

@@ -1,3 +1,5 @@
+import { highlightActive } from "./acessibilidade.js";
+
 let rate = 1;
 
 function speaker(message, desactivateSpeech = false) {
@@ -17,9 +19,9 @@ function speaker(message, desactivateSpeech = false) {
 }
 
 export function speakMessageClicked(event) {
-  if(event.target) {
+  if (event.target) {
     const content = event.target.innerText || event.target.textContent;
-    if(content) speaker(content);
+    if (content) speaker(content);
   }
 }
 
@@ -43,32 +45,36 @@ function removeSpeechSynthesis() {
 }
 
 export function readerWebSite(state) {
-  const buttonReader = document.querySelector("[data-acessibilidade-leitor]");
-  if (buttonReader instanceof HTMLButtonElement) {
-    buttonReader.addEventListener("click", () => {
-      switch (state.readerMode) {
-        case null:
-          addSpeechSynthesisNormalMode();
-          state.readerMode = 1;
-          break;
-        case 1:
-          addSpeechSynthesisFastMode();
-          state.readerMode += 1;
-          break;
-        case 2:
-          addSpeechSynthesisSlowMode();
-          state.readerMode += 1;
-          break;
-        case 3:
-          removeSpeechSynthesis();
-          state.readerMode = null;
-          break;
+  document.addEventListener("click", (e) => {
+    const buttonReader = e.target.closest("[data-acessibilidade-leitor]");
+    if (!(buttonReader instanceof HTMLButtonElement)) return;
 
-        default:
-          state.readerMode = null;
-          break;
-      }
+    switch (state.readerMode) {
+      case null:
+        addSpeechSynthesisNormalMode();
+        state.readerMode = 1;
+        break;
+      case 1:
+        addSpeechSynthesisFastMode();
+        state.readerMode += 1;
+        break;
+      case 2:
+        addSpeechSynthesisSlowMode();
+        state.readerMode += 1;
+        break;
+      case 3:
+        removeSpeechSynthesis();
+        state.readerMode = null;
+        break;
+      default:
+        state.readerMode = null;
+        break;
+    }
+
+    highlightActive({
+      attr: "data-acessibilidade-leitor",
+      numberOfIndicators: 3,
+      stateItem: state.readerMode,
     });
-    
-  }
+  });
 }
