@@ -2,6 +2,8 @@ import { addDark, removeDark } from "./highContrast.js";
 import { readerWebSite, speakMessageClicked } from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
 
+export const state = { readerMode: null };
+
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
     const buttons = document.querySelectorAll("[data-acessibilidade-leitor]");
@@ -193,10 +195,9 @@ function acessibilidadeMobile() {
 }
 
 export default function initAcessibilidade() {
-  const state = { readerMode: null };
   dropdownAcessibilidade();
   acessibilidadeMobile();
-  readerWebSite(state);
+  readerWebSite();
   syncAllHighlights(state);
 
   document.addEventListener("click", (e) => {
