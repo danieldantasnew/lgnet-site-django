@@ -2,8 +2,9 @@ import { addDark, removeDark } from "./highContrast.js";
 import { activateReaderWebSite, speakMessageClicked } from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
 import stopSoundsButton  from "./stopSounds.js";
+import highlightLinks from "./links.js";
 
-export const state = { readerMode: null, stopSounds: false };
+export const state = { readerMode: null, stopSounds: false, highlightLinks: false };
 
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
@@ -216,6 +217,12 @@ export default function initAcessibilidade() {
     const stopSound = e.target.closest("[data-acessibilidade-sem_som]");
     if (stopSound) {
       stopSoundsButton();
+      return;
+    }
+
+    const linksButton = e.target.closest("[data-acessibilidade-link]");
+    if (linksButton) {
+      highlightLinks();
       return;
     }
 
