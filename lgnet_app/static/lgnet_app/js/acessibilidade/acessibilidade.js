@@ -1,8 +1,9 @@
 import { addDark, removeDark } from "./highContrast.js";
 import { activateReaderWebSite, speakMessageClicked } from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
+import stopSoundsButton  from "./stopSounds.js";
 
-export const state = { readerMode: null };
+export const state = { readerMode: null, stopSounds: false };
 
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
@@ -212,6 +213,12 @@ export default function initAcessibilidade() {
       return;
     }
 
+    const stopSound = e.target.closest("[data-acessibilidade-sem_som]");
+    if (stopSound) {
+      stopSoundsButton();
+      return;
+    }
+
     if (!e.target.closest("[data-acessibilidade-leitor]") && state.readerMode) {
       speakMessageClicked(e);
       return;
@@ -222,5 +229,6 @@ export default function initAcessibilidade() {
       activateReaderWebSite();
       return;
     }
+    
   });
 }
