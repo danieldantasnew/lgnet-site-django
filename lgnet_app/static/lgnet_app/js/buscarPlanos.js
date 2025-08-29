@@ -72,10 +72,10 @@ export default function buscarPlanos(cidade) {
                         .join("")}
                     </ul>
                   </div>
-                  <a
+                  <button
                     data-btn-contratar-plano
                     class="cursor-pointer bg-primary-variant hover:bg-primary-hover text-[#ffffff] text-center text-xl py-3 mt-6 font-semibold transition-colors dark:bg-secondary dark:text-dark-variant dark:hover:bg-secondary-hover"
-                    >Assine já</a>
+                    >Assine já</button>
                 </div>
               </div>
               `;
