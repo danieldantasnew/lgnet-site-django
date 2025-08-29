@@ -1,5 +1,5 @@
 import { addDark, removeDark } from "./highContrast.js";
-import { readerWebSite, speakMessageClicked } from "./readingMode.js";
+import { activateReaderWebSite, speakMessageClicked } from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
 
 export const state = { readerMode: null };
@@ -197,7 +197,6 @@ function acessibilidadeMobile() {
 export default function initAcessibilidade() {
   dropdownAcessibilidade();
   acessibilidadeMobile();
-  readerWebSite();
   syncAllHighlights(state);
 
   document.addEventListener("click", (e) => {
@@ -215,6 +214,12 @@ export default function initAcessibilidade() {
 
     if (!e.target.closest("[data-acessibilidade-leitor]") && state.readerMode) {
       speakMessageClicked(e);
+      return;
+    }
+
+    const buttonReader = e.target.closest("[data-acessibilidade-leitor]");
+    if (buttonReader) {
+      activateReaderWebSite();
       return;
     }
   });

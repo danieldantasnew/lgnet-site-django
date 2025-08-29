@@ -91,11 +91,7 @@ function removeSpeechSynthesis() {
   speaker("Leitor desativado!", true);
 }
 
-export function readerWebSite() {
-  document.addEventListener("click", (e) => {
-    const buttonReader = e.target.closest("[data-acessibilidade-leitor]");
-    if (!(buttonReader instanceof HTMLButtonElement)) return;
-
+export function activateReaderWebSite() {
     switch (state.readerMode) {
       case null:
         addSpeechSynthesisNormalMode();
@@ -112,7 +108,6 @@ export function readerWebSite() {
       case 3:
         removeSpeechSynthesis();
         state.readerMode = null;
-        break;
       default:
         state.readerMode = null;
         break;
@@ -124,5 +119,4 @@ export function readerWebSite() {
       numberOfIndicators: 3,
       stateItem: state.readerMode,
     });
-  });
 }
