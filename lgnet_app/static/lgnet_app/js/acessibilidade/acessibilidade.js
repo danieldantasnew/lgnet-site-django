@@ -4,8 +4,9 @@ import addMatchMedia from "../matchMedia.js";
 import stopSoundsButton  from "./stopSounds.js";
 import highlightLinksActionButton from "./links.js";
 import hiddenImagesActionButton from "./hiddenImages.js";
+import fontSizeActionButton from "./fontSize.js";
 
-export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false };
+export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false, increaseFontSize: false };
 
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
@@ -230,6 +231,12 @@ export default function initAcessibilidade() {
     const imagesButton = e.target.closest("[data-acessibilidade-sem_imagem]");
     if (imagesButton) {
       hiddenImagesActionButton();
+      return;
+    }
+
+    const fontSize = e.target.closest("[data-acessibilidade-tamanho_fonte]");
+    if (fontSize) {
+      fontSizeActionButton();
       return;
     }
 
