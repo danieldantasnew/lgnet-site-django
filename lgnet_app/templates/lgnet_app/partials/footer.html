@@ -23,7 +23,8 @@
           [&>div>ul]:font-medium 
           [&>div>ul]:flex 
           [&>div>ul]:flex-col 
-          [&>div>ul]:gap-4 
+          [&>div>ul]:gap-5 
+          [&>div>ul>li>a]:transition-all 
           [&>div>ul>li>a]:hover:text-secondary
           [&>div]:text-center
           [&>div>ul]:text-nowrap
@@ -78,11 +79,13 @@
           </div>
           <span class="absolute -bottom-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
         </div>
-        <div class="flex-col-reverse lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm">
+        <div class="flex-col-reverse lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm py-3">
           <p>® 2025 LGNET. Todos os direitos reservados.</p>
-          <ul class="flex gap-2 font-medium [&>li>a:hover]:underline text-[10px] sm:text-xs">
+          <ul class="flex items-center gap-2 font-medium [&>li>a:hover]:underline text-[10px] sm:text-xs">
             <li><a href="#">Termos e condições</a></li>
-            <li class="before:h-1 before:w-1 before:bg-[#ffffff] before:rounded-full before:inline-block after:h-1 after:w-1 after:bg-[#ffffff] after:rounded-full after:inline-block flex items-center gap-2"><a href="#">Política de privacidade</a></li>
+            <li class="before:h-1 before:w-1 before:bg-[#ffffff] before:rounded-full before:inline-block after:h-1 after:w-1 after:bg-[#ffffff] after:rounded-full after:inline-block flex items-center gap-2">
+              <a href="#">Política de privacidade</a>
+            </li>
             <li><a href="#">Cookies</a></li>
           </ul>
         </div>

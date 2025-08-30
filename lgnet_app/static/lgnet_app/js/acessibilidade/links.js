@@ -3,6 +3,7 @@ import { highlightActive, state } from "./acessibilidade.js";
 const classes = [
   "!shadow-[0_0_0_2px_var(--color-secondary-variant)]",
   "!bg-secondary",
+  "p-2",
   "hover:!bg-secondary-variant",
   "hover:!text-secondary",
   "!text-secondary-variant",
@@ -10,6 +11,7 @@ const classes = [
   "[&>svg]:**:fill-secondary-variant",
   "[&>svg]:hover:*:fill-secondary",
   "[&>svg]:hover:**:fill-secondary",
+  "dark:p-2",
   "dark:!shadow-[0_0_0_2px_var(--color-light-background)]",
   "dark:!bg-primary-variant",
   "dark:hover:!text-primary-variant",
@@ -24,6 +26,7 @@ const classes = [
 function activateHighlightLinks(links) {
   links.forEach((link) => {
     if (link instanceof HTMLAnchorElement) {
+      if(link.querySelector("img")) return;
       classes.forEach((anchor) => link.classList.add(anchor));
     }
   });
