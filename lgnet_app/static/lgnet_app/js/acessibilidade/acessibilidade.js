@@ -3,8 +3,9 @@ import { activateReaderWebSite, speakMessageClicked } from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
 import stopSoundsButton  from "./stopSounds.js";
 import highlightLinks from "./links.js";
+import allmages from "./hiddenImages.js";
 
-export const state = { readerMode: null, stopSounds: false, highlightLinks: false };
+export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false };
 
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
@@ -223,6 +224,12 @@ export default function initAcessibilidade() {
     const linksButton = e.target.closest("[data-acessibilidade-link]");
     if (linksButton) {
       highlightLinks();
+      return;
+    }
+    
+    const imagesButton = e.target.closest("[data-acessibilidade-sem_imagem]");
+    if (imagesButton) {
+      allmages();
       return;
     }
 
