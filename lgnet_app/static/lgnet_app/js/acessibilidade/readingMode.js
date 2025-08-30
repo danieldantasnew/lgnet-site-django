@@ -91,7 +91,7 @@ function removeSpeechSynthesis() {
   speaker("Leitor desativado!", true);
 }
 
-export function activateReaderWebSite() {
+export function readerModeActionButton() {
     switch (state.readerMode) {
       case null:
         addSpeechSynthesisNormalMode();

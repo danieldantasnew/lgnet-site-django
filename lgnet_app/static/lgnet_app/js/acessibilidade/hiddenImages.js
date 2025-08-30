@@ -43,7 +43,7 @@ function showImage(images) {
   });
 }
 
-export default function allmages() {
+export default function hiddenImagesActionButton() {
   const allImages = document.querySelectorAll("[data-img]");
   if (allImages instanceof NodeList) {
     if (!state.hiddenImgs) {

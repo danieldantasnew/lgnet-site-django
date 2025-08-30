@@ -1,9 +1,9 @@
 import { addDark, removeDark } from "./highContrast.js";
-import { activateReaderWebSite, speakMessageClicked } from "./readingMode.js";
+import { readerModeActionButton, speakMessageClicked } from "./readingMode.js";
 import addMatchMedia from "../matchMedia.js";
 import stopSoundsButton  from "./stopSounds.js";
-import highlightLinks from "./links.js";
-import allmages from "./hiddenImages.js";
+import highlightLinksActionButton from "./links.js";
+import hiddenImagesActionButton from "./hiddenImages.js";
 
 export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false };
 
@@ -223,13 +223,13 @@ export default function initAcessibilidade() {
 
     const linksButton = e.target.closest("[data-acessibilidade-link]");
     if (linksButton) {
-      highlightLinks();
+      highlightLinksActionButton();
       return;
     }
     
     const imagesButton = e.target.closest("[data-acessibilidade-sem_imagem]");
     if (imagesButton) {
-      allmages();
+      hiddenImagesActionButton();
       return;
     }
 
@@ -240,7 +240,7 @@ export default function initAcessibilidade() {
 
     const buttonReader = e.target.closest("[data-acessibilidade-leitor]");
     if (buttonReader) {
-      activateReaderWebSite();
+      readerModeActionButton();
       return;
     }
     

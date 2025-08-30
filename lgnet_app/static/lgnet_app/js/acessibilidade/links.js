@@ -40,7 +40,7 @@ function disableHighlightLinks(links) {
   });
 }
 
-export default function highlightLinks() {
+export default function highlightLinksActionButton() {
   const allLinks = document.querySelectorAll("a");
 
   if (allLinks instanceof NodeList) {
