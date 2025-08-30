@@ -11,7 +11,7 @@ function createDivPlaceholderFromImage(image) {
     placeholder.style[prop] = computed.getPropertyValue(prop);
   }
 
-  placeholder.style.backgroundColor = "rgba(0,0,0,0.2)";
+  placeholder.style.backgroundColor = "rgba(90,90,90,0.2)";
 
   image.insertAdjacentElement("afterend", placeholder);
 
