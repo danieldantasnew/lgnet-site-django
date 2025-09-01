@@ -6,8 +6,10 @@ import highlightLinksActionButton from "./links.js";
 import hiddenImagesActionButton from "./hiddenImages.js";
 import fontSizeActionButton from "./fontSize.js";
 import hightlightLettersActionButton from "./highlightsLetters.js";
+import { letterSpacingButton } from "./letterSpacing.js";
+import { lineSpacingButton } from "./lineSpacing.js";
 
-export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false, increaseFontSize: false, highlightLetters: false };
+export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false, increaseFontSize: false, highlightLetters: false, letterSpacing: 0, lineSpacing: 0 };
 
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
@@ -244,6 +246,18 @@ export default function initAcessibilidade() {
     const highlightLetters = e.target.closest("[data-acessibilidade-bold]");
     if (highlightLetters) {
       hightlightLettersActionButton();
+      return;
+    }
+
+    const spacingLetters = e.target.closest("[data-acessibilidade-espaco_entre_letras]");
+    if (spacingLetters) {
+      letterSpacingButton();
+      return;
+    }
+
+    const lineSpacing = e.target.closest("[data-acessibilidade-espaco_entre_linhas]");
+    if (lineSpacing) {
+      lineSpacingButton();
       return;
     }
 
