@@ -72,7 +72,6 @@ static_root/
 .DS_Store
 Thumbs.db
 ehthumbs.db
-Icon?
 Desktop.ini
 
 # 🌐 Node (se usou Tailwind ou npm/yarn)
