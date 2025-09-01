@@ -5,8 +5,9 @@ import stopSoundsButton  from "./stopSounds.js";
 import highlightLinksActionButton from "./links.js";
 import hiddenImagesActionButton from "./hiddenImages.js";
 import fontSizeActionButton from "./fontSize.js";
+import hightlightLettersActionButton from "./highlightsLetters.js";
 
-export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false, increaseFontSize: false };
+export const state = { readerMode: null, stopSounds: false, highlightLinks: false, hiddenImgs: false, increaseFontSize: false, highlightLetters: false };
 
 function syncAllHighlights(state) {
   const observer = new MutationObserver(() => {
@@ -237,6 +238,12 @@ export default function initAcessibilidade() {
     const fontSize = e.target.closest("[data-acessibilidade-tamanho_fonte]");
     if (fontSize) {
       fontSizeActionButton();
+      return;
+    }
+
+    const highlightLetters = e.target.closest("[data-acessibilidade-bold]");
+    if (highlightLetters) {
+      hightlightLettersActionButton();
       return;
     }
 
