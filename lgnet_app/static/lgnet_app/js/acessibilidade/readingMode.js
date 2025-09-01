@@ -92,31 +92,29 @@ function removeSpeechSynthesis() {
 }
 
 export function readerModeActionButton() {
-    switch (state.readerMode) {
-      case null:
-        addSpeechSynthesisNormalMode();
-        state.readerMode = 1;
-        break;
-      case 1:
-        addSpeechSynthesisFastMode();
-        state.readerMode += 1;
-        break;
-      case 2:
-        addSpeechSynthesisSlowMode();
-        state.readerMode += 1;
-        break;
-      case 3:
-        removeSpeechSynthesis();
-        state.readerMode = null;
-      default:
-        state.readerMode = null;
-        break;
-    }
+  switch (state.readerMode) {
+    case null:
+      addSpeechSynthesisNormalMode();
+      state.readerMode = 1;
+      break;
+    case 1:
+      addSpeechSynthesisFastMode();
+      state.readerMode++;
+      break;
+    case 2:
+      addSpeechSynthesisSlowMode();
+      state.readerMode++;
+      break;
+    default:
+      removeSpeechSynthesis();
+      state.readerMode = null;
+      break;
+  }
 
-    decorationWhenReaderOn(state);
-    highlightActive({
-      attr: "data-acessibilidade-leitor",
-      numberOfIndicators: 3,
-      stateItem: state.readerMode,
-    });
+  decorationWhenReaderOn(state);
+  highlightActive({
+    attr: "data-acessibilidade-leitor",
+    numberOfIndicators: 3,
+    stateItem: state.readerMode,
+  });
 }
