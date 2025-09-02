@@ -1,4 +1,4 @@
-import { highlightActive, state } from "./acessibilidade.js";
+import {state} from "./values.js";
 
 function addBold(allText) {
   allText.forEach((text) => {
@@ -29,11 +29,5 @@ export default function hightlightLettersActionButton() {
       state.highlightLetters = false;
       removeBold(allText);
     }
-
-    highlightActive({
-      attr: "data-acessibilidade-bold",
-      numberOfIndicators: 1,
-      stateItem: state.highlightLetters,
-    });
   }
 }

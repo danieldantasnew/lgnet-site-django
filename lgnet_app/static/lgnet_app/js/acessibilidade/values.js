@@ -1,3 +1,17 @@
+import showRestoreResourcesBtn, {
+  hiddenRestoreResourcesBtn,
+  isInitialValues,
+} from "./restoreResources.js";
+import { syncHighlight } from "./highlights.js";
+import hightlightLettersActionButton from "./boldLetters.js";
+import hiddenImagesActionButton from "./hiddenImages.js";
+import highlightLinksActionButton from "./links.js";
+import { readerModeActionButton } from "./readingMode.js";
+import stopSoundsButton from "./stopSounds.js";
+import { lineSpacingButton } from "./lineSpacing.js";
+import { letterSpacingButton } from "./letterSpacing.js";
+import fontSizeActionButton from "./fontSize.js";
+
 export const icons = {
   readerTooltip: `<svg width="64" height="64" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.3471 18.779C17.8531 18.2313 18.4568 17.7739 19.1584 17.4069C19.86 17.0399 20.6051 16.8219 21.3939 16.753C26.0903 16.3784 30.457 16.243 34.494 16.3469C38.531 16.4507 42.2013 16.8141 45.505 17.437C48.8088 18.0598 51.7451 18.9234 54.3141 20.0277C56.8831 21.132 59.0479 22.4973 60.8084 24.1235C66.6768 29.5445 69.6082 35.7509 69.6026 42.7426C69.597 49.7344 67.2993 55.7145 62.7096 60.6831C58.1198 65.6516 52.3402 68.4153 45.3709 68.9742C38.4015 69.5331 31.9826 67.102 26.1143 61.6811C24.3537 60.0548 22.8214 58.0048 21.5173 55.5313C20.2132 53.0577 19.12 50.1989 18.2376 46.9548C17.3552 43.7108 16.7025 40.0807 16.2796 36.0646C15.8566 32.0485 15.6459 27.6848 15.6477 22.9734C15.654 22.1817 15.8123 21.4216 16.1227 20.6932C16.433 19.9648 16.8412 19.3267 17.3471 18.779ZM39.2361 38.9992C38.0435 40.2902 37.4822 41.8201 37.5523 43.5888C37.6224 45.3574 38.303 46.8381 39.594 48.0307C40.8851 49.2233 42.4149 49.7845 44.1836 49.7144C45.9522 49.6444 47.4329 48.9638 48.6255 47.6727C49.8181 46.3817 50.3794 44.8519 50.3093 43.0832C50.2392 41.3145 49.5586 39.8339 48.2676 38.6413C46.9765 37.4487 45.4467 36.8874 43.678 36.9575C41.9094 37.0276 40.4287 37.7082 39.2361 38.9992Z" fill="#0B94CF"/>
@@ -10,3 +24,89 @@ export const icons = {
         <path d="M38.2772 35.3946C37.7566 34.874 36.9111 34.874 36.3905 35.3946C35.8698 35.9153 35.8698 36.7608 36.3905 37.2814L42.1132 43L36.3946 48.7228C35.874 49.2434 35.874 50.0889 36.3946 50.6095C36.9153 51.1302 37.7608 51.1302 38.2814 50.6095L44 44.8868L49.7228 50.6054C50.2434 51.126 51.0889 51.126 51.6095 50.6054C52.1302 50.0847 52.1302 49.2392 51.6095 48.7186L45.8868 43L51.6054 37.2772C52.126 36.7566 52.126 35.9111 51.6054 35.3905C51.0847 34.8698 50.2392 34.8698 49.7186 35.3905L44 41.1132L38.2772 35.3946Z" fill="#EF0000"/>
     </svg>`,
 };
+
+export const initialState = {
+  readerMode: null,
+  stopSounds: false,
+  highlightLinks: false,
+  hiddenImgs: false,
+  increaseFontSize: false,
+  highlightLetters: false,
+  letterSpacing: 0,
+  lineSpacing: 0,
+};
+
+const stateObj = {
+  readerMode: null,
+  stopSounds: false,
+  highlightLinks: false,
+  hiddenImgs: false,
+  increaseFontSize: false,
+  highlightLetters: false,
+  letterSpacing: 0,
+  lineSpacing: 0,
+};
+
+export const state = new Proxy(stateObj, {
+  set(target, prop, value) {
+    target[prop] = value;
+
+    const isInitialState = isInitialValues();
+    if (isInitialState) hiddenRestoreResourcesBtn();
+    else showRestoreResourcesBtn();
+
+    syncHighlight();
+    return true;
+  },
+});
+
+export const resources = [
+  {
+    name: "bold",
+    numberOfIndicators: 1,
+    stateItem: "highlightLetters",
+    action: hightlightLettersActionButton,
+  },
+  {
+    name: "sem_imagem",
+    numberOfIndicators: 1,
+    stateItem: "hiddenImgs",
+    action: hiddenImagesActionButton,
+  },
+  {
+    name: "link",
+    numberOfIndicators: 1,
+    stateItem: "highlightLinks",
+    action: highlightLinksActionButton,
+  },
+  {
+    name: "tamanho_fonte",
+    numberOfIndicators: 1,
+    stateItem: "increaseFontSize",
+    action: fontSizeActionButton,
+  },
+  {
+    name: "sem_som",
+    numberOfIndicators: 1,
+    stateItem: "stopSounds",
+    action: stopSoundsButton,
+  },
+  {
+    name: "espaco_entre_linhas",
+    numberOfIndicators: 3,
+    stateItem: "lineSpacing",
+    action: lineSpacingButton,
+  },
+  {
+    name: "espaco_entre_letras",
+    numberOfIndicators: 3,
+    stateItem: "letterSpacing",
+    action: letterSpacingButton,
+  },
+  {
+    name: "leitor",
+    numberOfIndicators: 3,
+    stateItem: "readerMode",
+    action: readerModeActionButton,
+  },
+];

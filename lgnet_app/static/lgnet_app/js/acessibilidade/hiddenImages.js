@@ -1,4 +1,4 @@
-import { highlightActive, state } from "./acessibilidade.js";
+import {state} from "./values.js";
 
 function createDivPlaceholderFromImage(image) {
   const placeholder = document.createElement("div");
@@ -53,11 +53,5 @@ export default function hiddenImagesActionButton() {
       state.hiddenImgs = false;
       showImage(allImages);
     }
-
-    highlightActive({
-      attr: "data-acessibilidade-sem_imagem",
-      numberOfIndicators: 1,
-      stateItem: state.hiddenImgs,
-    });
   }
 }

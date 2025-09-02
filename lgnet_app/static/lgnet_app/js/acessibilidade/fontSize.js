@@ -1,4 +1,4 @@
-import { highlightActive, state } from "./acessibilidade.js";
+import {state} from "./values.js";
 
 function increaseFont(content, pixels) {
             content.forEach((element)=> {
@@ -36,11 +36,5 @@ export default function fontSizeActionButton() {
             state.increaseFontSize = false;
             decreaseFont(content, 2);
         }
-
-        highlightActive({
-            attr: "data-acessibilidade-tamanho_fonte",
-            numberOfIndicators: 1,
-            stateItem: state.increaseFontSize,
-        });
     }
 }

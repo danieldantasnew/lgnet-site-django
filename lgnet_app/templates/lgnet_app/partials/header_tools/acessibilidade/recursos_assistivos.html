@@ -1,4 +1,4 @@
-<div data-dropdown="acessibilidade-modal" class="pt-4 pb-10 mt-5 lg:mt-0 px-2 lg:px-4 flex flex-col gap-6 max-h-[82dvh] overflow-y-auto overflow-x-hidden scroll-hidden">
+<div data-dropdown="acessibilidade-modal" class="pt-4 pb-16 mt-5 lg:mt-0 px-2 lg:px-4 flex flex-col gap-6 max-h-[84dvh] overflow-y-auto overflow-x-hidden scroll-hidden">
     {% include "lgnet_app/partials/header_tools/acessibilidade/contraste.html"%} 
     {% for opcao in recursosAssistivos %}
         <div>
@@ -34,13 +34,35 @@
                 [&>button>p]:text-xs
                 [&>button>p]:lg:text-sm
             ">
-            {% for recurso in opcao.recursos %}
-            <button {{recurso.atributo}} class="relative">
-                {% if recurso.icone %} {% include recurso.icone %} {% endif %}
-                <p>{{recurso.titulo}}</p>
-            </button>
-            {% endfor %}
+                {% for recurso in opcao.recursos %}
+                    <button data-acessibilidade="{{recurso.atributo}}" class="relative">
+                        {% if recurso.icone %} {% include recurso.icone %} {% endif %}
+                        <p>{{recurso.titulo}}</p>
+                    </button>
+                {% endfor %}
             </div>
         </div>
     {% endfor %}
+    <button data-btn-restaurar-recursos 
+    class="
+        hidden 
+        animate-slideTop
+        cursor-pointer
+        font-semibold
+        absolute 
+        bottom-4 
+        rounded-sm
+        left-[50%] 
+        translate-x-[-50%] 
+        py-2 
+        px-4
+        bg-primary-variant
+        hover:bg-primary-hover
+        dark:bg-secondary
+        dark:hover:bg-secondary-hover
+        text-light-background
+        dark:text-secondary-variant
+    ">
+        Restaurar Recursos
+    </button>
 </div>

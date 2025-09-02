@@ -39,22 +39,22 @@ recursos_assistivos = [
         'titulo': "NAVEGAÇÃO",
         'recursos': [
             {
-                'atributo': "data-acessibilidade-leitor",
+                'atributo': "leitor",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/leitor.html",
                 'titulo': "Leitor de Sites",
             },
             {
-                'atributo': "data-acessibilidade-sem_som",
+                'atributo': "sem_som",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/sem_som.html",
                 'titulo': "Parar sons",
             },
             {
-                'atributo': "data-acessibilidade-link",
+                'atributo': "link",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/link.html",
                 'titulo': "Destacar links",
             },
             {
-                'atributo': "data-acessibilidade-sem_imagem",
+                'atributo': "sem_imagem",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/sem_imagem.html",
                 'titulo': "Esconder imagens",
             },
@@ -64,22 +64,22 @@ recursos_assistivos = [
         'titulo': "CONTROLE DE FONTE",
         'recursos': [
             {
-                'atributo': "data-acessibilidade-tamanho_fonte",
+                'atributo': "tamanho_fonte",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/tamanho_fonte.html",
                 'titulo': "Tamanho da fonte",
             },
             {
-                'atributo': "data-acessibilidade-bold",
+                'atributo': "bold",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/bold.html",
                 'titulo': "Destacar letras",
             },
             {
-                'atributo': "data-acessibilidade-espaco_entre_letras",
+                'atributo': "espaco_entre_letras",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/espaco_entre_letras.html",
                 'titulo': "Espaço entre letras",
             },
             {
-                'atributo': "data-acessibilidade-espaco_entre_linhas",
+                'atributo': "espaco_entre_linhas",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/espaco_entre_linhas.html",
                 'titulo': "Espaço entre linhas",
             },

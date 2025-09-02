@@ -1,4 +1,4 @@
-import { highlightActive, state } from "./acessibilidade.js";
+import {state} from "./values.js";
 
 function setSpacing(allText, pixels) {
   allText.forEach((text) => {
@@ -41,10 +41,4 @@ export function lineSpacingButton() {
       state.lineSpacing = 0;
       break;
   }
-
-  highlightActive({
-    attr: "data-acessibilidade-espaco_entre_linhas",
-    numberOfIndicators: 3,
-    stateItem: state.lineSpacing,
-  });
 }

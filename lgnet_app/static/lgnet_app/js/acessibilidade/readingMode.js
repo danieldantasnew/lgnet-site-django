@@ -1,6 +1,5 @@
 import svgToPng from "../svgToPng.js";
-import { highlightActive, state } from "./acessibilidade.js";
-import { icons } from "./icons.js";
+import {state, icons} from "./values.js";
 
 let rate = 1;
 
@@ -91,7 +90,7 @@ function removeSpeechSynthesis() {
   speaker("Leitor desativado!", true);
 }
 
-export function readerModeActionButton() {
+export function readerModeActionButton(e) {
   switch (state.readerMode) {
     case null:
       addSpeechSynthesisNormalMode();
@@ -112,9 +111,4 @@ export function readerModeActionButton() {
   }
 
   decorationWhenReaderOn(state);
-  highlightActive({
-    attr: "data-acessibilidade-leitor",
-    numberOfIndicators: 3,
-    stateItem: state.readerMode,
-  });
 }

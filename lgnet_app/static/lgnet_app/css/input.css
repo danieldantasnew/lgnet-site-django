@@ -6,7 +6,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --font-myfont: "Montserrat", sans-serif;
-  --font-helvetica: Helvetica, sans-serif;
+  --font-helvetica: Arial, Helvetica, sans-serif;
   --color-primary: #003465;
   --color-primary-variant: #0093d2;
   --color-primary-variant-2: #04080b;

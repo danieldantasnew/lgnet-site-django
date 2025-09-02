@@ -1,4 +1,4 @@
-import { highlightActive, state } from "./acessibilidade.js";
+import {state} from "./values.js";
 
 function pauseSounds(audios, videos) {
   audios.forEach((audio) => {
@@ -40,11 +40,5 @@ export default function stopSoundsButton() {
       state.stopSounds = false;
       playSounds(allAudios, allVideos);
     }
-
-    highlightActive({
-      attr: "data-acessibilidade-sem_som",
-      numberOfIndicators: 1,
-      stateItem: state.stopSounds,
-    });
   }
 }

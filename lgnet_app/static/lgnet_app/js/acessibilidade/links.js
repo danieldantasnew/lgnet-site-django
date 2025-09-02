@@ -1,4 +1,4 @@
-import { highlightActive, state } from "./acessibilidade.js";
+import {state} from "./values.js";
 
 const classes = [
   "!shadow-[0_0_0_2px_var(--color-secondary-variant)]",
@@ -51,10 +51,5 @@ export default function highlightLinksActionButton() {
       state.highlightLinks = false;
       disableHighlightLinks(allLinks);
     }
-    highlightActive({
-      attr: "data-acessibilidade-link",
-      numberOfIndicators: 1,
-      stateItem: state.highlightLinks,
-    });
   }
 }
