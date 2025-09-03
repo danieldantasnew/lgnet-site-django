@@ -13,7 +13,6 @@ export function hiddenRestoreResourcesBtn() {
   if (button instanceof HTMLButtonElement) {
     button.classList.remove("animate-slideTop");
     button.classList.add("animate-fadeOut");
-    button.classList.add("!opacity-100");
 
     if (timeoutAnimation) clearTimeout(timeoutAnimation);
 

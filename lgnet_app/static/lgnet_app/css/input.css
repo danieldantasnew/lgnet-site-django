@@ -6,7 +6,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --font-myfont: "Montserrat", sans-serif;
-  --font-helvetica: Arial, Helvetica, sans-serif;
+  --font-helvetica: Helvetica, Arial, sans-serif;
   --color-primary: #003465;
   --color-primary-variant: #0093d2;
   --color-primary-variant-2: #04080b;
@@ -149,12 +149,13 @@
 
 @keyframes halfSpin {
   from {
-    animation-timing-function: linear;
-    transform: rotate(220deg);
-  }
-  to {
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
     transform: rotate(0);
+  }
+
+  to {
+    animation-timing-function: ease-in-out;
+    transform: rotate(-360deg);
   }
 }
 
@@ -163,7 +164,6 @@
   margin: auto;
   padding: 0 1rem;
 }
-
 
 @layer components {
   .container h1 {

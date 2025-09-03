@@ -7,7 +7,7 @@ function addBold() {
   allText.forEach((text) => {
     if (text.closest('[data-dropdown="acessibilidade-modal"]')) return;
     if (text.childNodes.length > 0 && text.textContent.trim().length > 0) {
-      text.classList.add("font-black", "font-helvetica");
+      text.classList.add("!font-black", "!font-helvetica");
     }
   });
 }
@@ -16,7 +16,7 @@ export function removeBold() {
   allText.forEach((text) => {
     if (text.closest('[data-dropdown="acessibilidade-modal"]')) return;
     if (text.childNodes.length > 0 && text.textContent.trim().length > 0) {
-      text.classList.remove("font-black", "font-helvetica");
+      text.classList.remove("!font-black", "!font-helvetica");
     }
   });
 }

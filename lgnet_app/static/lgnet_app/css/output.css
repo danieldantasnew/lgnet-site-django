@@ -75,7 +75,7 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-myfont: "Montserrat", sans-serif;
-    --font-helvetica: Arial, Helvetica, sans-serif;
+    --font-helvetica: Helvetica, Arial, sans-serif;
     --color-primary: #003465;
     --color-primary-variant: #0093d2;
     --color-primary-variant-2: #04080b;
@@ -1381,8 +1381,8 @@
   .text-left {
     text-align: left;
   }
-  .font-helvetica {
-    font-family: var(--font-helvetica);
+  .\!font-helvetica {
+    font-family: var(--font-helvetica) !important;
   }
   .font-myfont {
     font-family: var(--font-myfont);
@@ -1458,13 +1458,13 @@
     --tw-leading: calc(var(--spacing) * 16);
     line-height: calc(var(--spacing) * 16);
   }
+  .\!font-black {
+    --tw-font-weight: var(--font-weight-black) !important;
+    font-weight: var(--font-weight-black) !important;
+  }
   .\!font-medium {
     --tw-font-weight: var(--font-weight-medium) !important;
     font-weight: var(--font-weight-medium) !important;
-  }
-  .font-black {
-    --tw-font-weight: var(--font-weight-black);
-    font-weight: var(--font-weight-black);
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -3633,15 +3633,6 @@
       }
     }
   }
-  .dark\:hover\:\!bg-light-background {
-    &:where(.dark, .dark *) {
-      &:hover {
-        @media (hover: hover) {
-          background-color: var(--color-light-background) !important;
-        }
-      }
-    }
-  }
   .dark\:hover\:bg-dark-variant {
     &:where(.dark, .dark *) {
       &:hover {
@@ -3674,15 +3665,6 @@
       &:hover {
         @media (hover: hover) {
           background-color: var(--color-secondary-variant);
-        }
-      }
-    }
-  }
-  .dark\:hover\:\!text-primary-variant {
-    &:where(.dark, .dark *) {
-      &:hover {
-        @media (hover: hover) {
-          color: var(--color-primary-variant) !important;
         }
       }
     }
@@ -4954,12 +4936,12 @@
 }
 @keyframes halfSpin {
   from {
-    animation-timing-function: linear;
-    transform: rotate(220deg);
+    animation-timing-function: ease-in-out;
+    transform: rotate(0);
   }
   to {
-    animation-timing-function: linear;
-    transform: rotate(0);
+    animation-timing-function: ease-in-out;
+    transform: rotate(-360deg);
   }
 }
 @layer components {

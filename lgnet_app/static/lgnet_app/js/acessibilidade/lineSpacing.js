@@ -5,7 +5,6 @@ const allText = document.querySelectorAll(
 
 function setSpacing(allText, pixels) {
   allText.forEach((text) => {
-    console.log(text)
     if (text.closest('[data-dropdown="acessibilidade-modal"]')) return;
     if (text.childNodes.length > 0 && text.textContent.trim().length > 0) {
       const style = window.getComputedStyle(text);
@@ -28,15 +27,15 @@ export function lineSpacingButton() {
   switch (state.lineSpacing) {
     case 0:
       state.lineSpacing++;
-      setSpacing(allText, 2);
+      setSpacing(allText, 1);
       break;
     case 1:
       state.lineSpacing++;
-      setSpacing(allText, 3);
+      setSpacing(allText, 2);
       break;
     case 2:
       state.lineSpacing++;
-      setSpacing(allText, 4);
+      setSpacing(allText, 3);
       break;
     default:
       resetLineSpacing(allText);

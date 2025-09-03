@@ -7,9 +7,7 @@ function setSpacing(allText, pixels) {
   allText.forEach((text) => {
     if (text.closest('[data-dropdown="acessibilidade-modal"]')) return;
     if (text.childNodes.length > 0 && text.textContent.trim().length > 0) {
-      const style = window.getComputedStyle(text);
-      const currentLetterSpacing = parseFloat(style.letterSpacing);
-      text.style.letterSpacing = currentLetterSpacing + pixels + "px";
+      text.style.letterSpacing = `${pixels}px`;
     }
   });
 }

@@ -15,8 +15,6 @@ const classes = [
   "dark:p-2",
   "dark:!shadow-[0_0_0_2px_var(--color-light-background)]",
   "dark:!bg-primary-variant",
-  "dark:hover:!text-primary-variant",
-  "dark:hover:!bg-light-background",
   "dark:!text-light-background",
   "dark:[&>svg]:*:fill-light-background",
   "dark:[&>svg]:**:fill-light-background",
