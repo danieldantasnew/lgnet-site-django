@@ -96,6 +96,7 @@
     --animate-slideOut: slideOut 0.3s forwards;
     --animate-slideTop: slideTop 0.3s forwards;
     --animate-slideBottom: slideBottom 0.3s forwards;
+    --animate-uniqueSpin: halfSpin 0.4s forwards;
   }
 }
 @layer base {
@@ -922,6 +923,9 @@
   .flex-col-reverse {
     flex-direction: column-reverse;
   }
+  .flex-row {
+    flex-direction: row;
+  }
   .flex-nowrap {
     flex-wrap: nowrap;
   }
@@ -1519,9 +1523,6 @@
   .text-\[\#535354\] {
     color: #535354;
   }
-  .text-\[\#ffffff\] {
-    color: #ffffff;
-  }
   .text-black {
     color: var(--color-black);
   }
@@ -2110,6 +2111,13 @@
       }
     }
   }
+  .group-hover\:animate-uniqueSpin {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        animation: var(--animate-uniqueSpin);
+      }
+    }
+  }
   .group-hover\:bg-\[\#ffffff\] {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -2117,10 +2125,10 @@
       }
     }
   }
-  .group-hover\:text-\[\#ffffff\] {
+  .group-hover\:text-light-background {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
-        color: #ffffff;
+        color: var(--color-light-background);
       }
     }
   }
@@ -2365,13 +2373,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-secondary) !important;
-      }
-    }
-  }
-  .hover\:text-\[\#ffffff\] {
-    &:hover {
-      @media (hover: hover) {
-        color: #ffffff;
       }
     }
   }
@@ -3319,11 +3320,6 @@
       color: #919ca2;
     }
   }
-  .dark\:text-\[\#ffffff\] {
-    &:where(.dark, .dark *) {
-      color: #ffffff;
-    }
-  }
   .dark\:text-amber-950 {
     &:where(.dark, .dark *) {
       color: var(--color-amber-950);
@@ -3524,13 +3520,6 @@
     &:where(.dark, .dark *) {
       :is(& > *) {
         stroke: var(--color-secondary);
-      }
-    }
-  }
-  .dark\:\*\:text-\[\#ffffff\] {
-    &:where(.dark, .dark *) {
-      :is(& > *) {
-        color: #ffffff;
       }
     }
   }
@@ -4963,13 +4952,23 @@
     transform: translateY(50%);
   }
 }
+@keyframes halfSpin {
+  from {
+    animation-timing-function: linear;
+    transform: rotate(220deg);
+  }
+  to {
+    animation-timing-function: linear;
+    transform: rotate(0);
+  }
+}
 @layer components {
   .container h1 {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
     &:where(.dark, .dark *) {
-      color: #ffffff;
+      color: var(--color-light-background);
     }
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));

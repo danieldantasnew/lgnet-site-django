@@ -5,18 +5,18 @@
     {% include 'lgnet_app/partials/loading_cidade.html' %}
     <div data-content-info class="flex flex-col justify-center items-start gap-6 lg:gap-4">
         <div class="z-0 w-full *:w-36 *:h-auto **:fill-primary-variant dark:**:fill-secondary flex justify-center mt-7 absolute top-4 translate-x-[-50%] left-[50%]">{% include 'lgnet_app/partials/utilities/logo.html' %}</div>
-        <div class="dark:text-[#ffffff] text-black font-medium">
+        <div class="dark:text-light-background text-black font-medium">
             {% include "lgnet_app/partials/button_ativar_localizacao.html" %}
             <h2 class="text-xl md:text-3xl mt-3 md:mt-6 mb-[2px]">Em qual cidade você está?</h2>
             <p class="text-[#535354] dark:text-secondary text-sm">Informe sua cidade e aproveite ofertas personalizadas para você.</p>
         </div>
         <div class="relative w-full">
-            <input data-input-cidade type="text" id="floating_outlined" class="mt-1 block font-semibold px-2.5 pb-2.5 pt-4 w-full text-sm text-[#101828] bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-[#ffffff] dark:border-gray-200 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-primary-variant peer" placeholder=" " />
+            <input data-input-cidade type="text" id="floating_outlined" class="mt-1 block font-semibold px-2.5 pb-2.5 pt-4 w-full text-sm text-[#101828] bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-light-background dark:border-gray-200 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-primary-variant peer" placeholder=" " />
         
-            <label for="floating_outlined" class="absolute font-medium text-sm text-[#6a7282] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#ffffff] dark:text-[#ffffff] dark:bg-dark-variant px-2 peer-focus:px-2 peer-focus:text-primary-variant peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">Digite sua cidade</label>
+            <label for="floating_outlined" class="absolute font-medium text-sm text-[#6a7282] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#ffffff] dark:text-light-background dark:bg-dark-variant px-2 peer-focus:px-2 peer-focus:text-primary-variant peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">Digite sua cidade</label>
         
             <!-- Dropdown menu -->
-            <div data-dropdown-cidade class="w-full max-h-60 overflow-y-auto hidden z-10 absolute top-14 left-[50%] translate-x-[-50%] bg-[#ffffff] divide-y divide-gray-100 rounded-lg shadow-[0_0_1px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_1px_1px_rgba(255,255,255,.1)] dark:bg-dark-primary dark:text-[#ffffff]">
+            <div data-dropdown-cidade class="w-full max-h-60 overflow-y-auto hidden z-10 absolute top-14 left-[50%] translate-x-[-50%] bg-[#ffffff] divide-y divide-gray-100 rounded-lg shadow-[0_0_1px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_1px_1px_rgba(255,255,255,.1)] dark:bg-dark-primary dark:text-light-background">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                     {% for cidade in cidades %}
                         <li id="{{cidade.id}}"
@@ -26,13 +26,13 @@
                             data-selected-latitude="{{cidade.latitude}}"
                             data-selected-longitude="{{cidade.longitude}}"
                             class="cursor-pointer">
-                                <a class="font-medium block px-6 py-2 text-dark-variant dark:text-[#ffffff] hover:bg-primary-variant dark:hover:bg-dark-variant dark:hover:text-white">{{cidade.nome}} - {{cidade.sigla_estado}}</a>
+                                <a class="font-medium block px-6 py-2 text-dark-variant dark:text-light-background hover:bg-primary-variant dark:hover:bg-dark-variant dark:hover:text-white">{{cidade.nome}} - {{cidade.sigla_estado}}</a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
-        <button data-button-cidade class="bg-primary-variant text-[#ffffff] dark:bg-secondary dark:text-secondary-variant rounded-full self-end p-2 h-12 w-12 cursor-pointer hover:bg-primary-hover dark:hover:bg-secondary-hover flex items-center justify-center">
+        <button data-button-cidade class="bg-primary-variant text-light-background dark:bg-secondary dark:text-secondary-variant rounded-full self-end p-2 h-12 w-12 cursor-pointer hover:bg-primary-hover dark:hover:bg-secondary-hover flex items-center justify-center">
             <i class="fa-solid fa-arrow-right text-2xl"></i>
         </button>
     </div>

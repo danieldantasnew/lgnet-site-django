@@ -9,7 +9,7 @@
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 essencial text-primary-variant-2 dark:text-[#ffffff] *:bg-[#ffffff]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 essencial text-primary-variant-2 dark:text-light-background *:bg-[#ffffff]">
             {% for essencial in essenciais.all%}
                 {% render_servico_essencial icone=essencial.icone|safe titulo=essencial.titulo descricao=essencial.descricao %}
             {% endfor %}

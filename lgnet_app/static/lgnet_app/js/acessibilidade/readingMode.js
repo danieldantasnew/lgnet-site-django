@@ -85,9 +85,9 @@ function addSpeechSynthesisSlowMode() {
   speaker("Leitor modo lento ativado!");
 }
 
-function removeSpeechSynthesis() {
+export function removeSpeechSynthesis(reset=false) {
   rate = 1;
-  speaker("Leitor desativado!", true);
+  if(!reset) speaker("Leitor desativado!", true);
 }
 
 export function readerModeActionButton(e) {

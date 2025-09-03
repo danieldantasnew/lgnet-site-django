@@ -31,6 +31,7 @@
   --animate-slideOut: slideOut 0.3s forwards;
   --animate-slideTop: slideTop 0.3s forwards;
   --animate-slideBottom: slideBottom 0.3s forwards;
+  --animate-uniqueSpin: halfSpin 0.4s forwards;
 
   @keyframes fadeIn {
     from {
@@ -146,6 +147,17 @@
   }
 }
 
+@keyframes halfSpin {
+  from {
+    animation-timing-function: linear;
+    transform: rotate(220deg);
+  }
+  to {
+    animation-timing-function: linear;
+    transform: rotate(0);
+  }
+}
+
 @utility container {
   max-width: 1240px !important;
   margin: auto;
@@ -157,7 +169,7 @@
   .container h1 {
     @apply font-bold;
     @apply text-primary;
-    @apply dark:text-[#ffffff];
+    @apply dark:text-light-background;
     @apply text-2xl;
     @apply lg:text-[30px];
   }

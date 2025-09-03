@@ -1,4 +1,7 @@
 import {state} from "./values.js";
+const allText = document.querySelectorAll(
+  "p, h1, h2, h3, h4, h5, h6, li, a, span, strong, em, td, th, label"
+);
 
 function setSpacing(allText, pixels) {
   allText.forEach((text) => {
@@ -11,7 +14,7 @@ function setSpacing(allText, pixels) {
   });
 }
 
-function resetSpacing(allText) {
+export function resetLetterSpacing() {
   allText.forEach((text) => {
     if (text.closest('[data-dropdown="acessibilidade-modal"]')) return;
     if (text.childNodes.length > 0 && text.textContent.trim().length > 0) {
@@ -21,8 +24,6 @@ function resetSpacing(allText) {
 }
 
 export function letterSpacingButton() {
-  const allText = document.querySelectorAll("body *");
-
   switch (state.letterSpacing) {
     case 0:
       state.letterSpacing++;
@@ -37,7 +38,7 @@ export function letterSpacingButton() {
       setSpacing(allText, 4);
       break;
     default:
-      resetSpacing(allText);
+      resetLetterSpacing(allText);
       state.letterSpacing = 0;
       break;
   }

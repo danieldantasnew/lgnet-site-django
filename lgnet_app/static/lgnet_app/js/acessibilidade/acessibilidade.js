@@ -134,7 +134,6 @@ export default function initAcessibilidade() {
         `[data-acessibilidade="${attribute.name}"]`
       );
       if (button) {
-        console.log(event.target)
         attribute.action();
         return;
       }

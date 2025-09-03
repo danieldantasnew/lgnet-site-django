@@ -1,4 +1,4 @@
-  <footer id="footer" class="footer bg-primary-variant text-[#ffffff] dark:bg-dark-primary py-12">
+  <footer id="footer" class="footer bg-primary-variant text-light-background dark:bg-dark-primary py-12">
     {% for item in infoEmpresa.all%}
       <div class="container m-auto flex flex-col gap-13 *:flex">
         <div class="flex-col items-center gap-3 lg:!gap-0 justify-center lg:!flex-row lg:!justify-between ">
@@ -71,7 +71,7 @@
             <p class="text-[12px] font-medium max-w-106">{{item.endereco_completo}}</p>
             <div class="flex gap-2">
               {% for item in redeSocial.all %}
-                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-[#ffffff] hover:text-[22px] dark:bg-amber-100 dark:text-secondary-variant dark:hover:bg-secondary-variant dark:hover:text-amber-100" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
+                <a class="transition-all flex items-center justify-center h-8 w-8 rounded-full bg-[#f9fafb] text-xl text-primary-variant hover:bg-primary-variant-2 hover:text-light-background hover:text-[22px] dark:bg-amber-100 dark:text-secondary-variant dark:hover:bg-secondary-variant dark:hover:text-amber-100" target="_blank" href="{{item.link}}" alt="{{item.nome}}">
                   {{item.icone|safe}}
                 </a>
               {% endfor %}

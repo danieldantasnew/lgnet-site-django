@@ -38,7 +38,7 @@ export default function buscarPlanos(cidade) {
                 >
                   <div class="px-4 py-6">
                     <div
-                      class="flex items-center justify-center h-9 w-9 p-1 rounded-full bg-neutral-100 *:text-primary-variant-2 *:text-xl dark:bg-dark-variant-2 dark:*:text-[#ffffff]"
+                      class="flex items-center justify-center h-9 w-9 p-1 rounded-full bg-neutral-100 *:text-primary-variant-2 *:text-xl dark:bg-dark-variant-2 dark:*:text-light-background"
                     >
                       ${plano.icone}
                     </div>
@@ -48,7 +48,7 @@ export default function buscarPlanos(cidade) {
                       ${plano.categoria}
                     </h3>
                     <p
-                      class="text-4xl mt-[1px] font-semibold tracking-tight text-primary-variant dark:text-[#ffffff] text-left"
+                      class="text-4xl mt-[1px] font-semibold tracking-tight text-primary-variant dark:text-light-background text-left"
                     >
                       ${plano.plano}
                     </p>
@@ -56,7 +56,7 @@ export default function buscarPlanos(cidade) {
                     <div class="h-[2px] w-full bg-neutral-200 rounded-full"></div>
                     <ul
                       role="list"
-                      class="mt-5 space-y-2 font-normal text-neutral-500 text-sm dark:text-[#ffffff] *:flex *:items-center *:gap-x-2"
+                      class="mt-5 space-y-2 font-normal text-neutral-500 text-sm dark:text-light-background *:flex *:items-center *:gap-x-2"
                     >
                       ${plano.vantagens
                         .map((vantagem) => {
@@ -74,7 +74,7 @@ export default function buscarPlanos(cidade) {
                   </div>
                   <button
                     data-btn-contratar-plano
-                    class="cursor-pointer bg-primary-variant hover:bg-primary-hover text-[#ffffff] text-center text-xl py-3 mt-6 font-semibold transition-colors dark:bg-secondary dark:text-dark-variant dark:hover:bg-secondary-hover"
+                    class="cursor-pointer bg-primary-variant hover:bg-primary-hover text-light-background text-center text-xl py-3 mt-6 font-semibold transition-colors dark:bg-secondary dark:text-dark-variant dark:hover:bg-secondary-hover"
                     >Assine já</button>
                 </div>
               </div>

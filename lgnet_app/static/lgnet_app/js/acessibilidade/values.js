@@ -3,14 +3,17 @@ import showRestoreResourcesBtn, {
   isInitialValues,
 } from "./restoreResources.js";
 import { syncHighlight } from "./highlights.js";
-import hightlightLettersActionButton from "./boldLetters.js";
-import hiddenImagesActionButton from "./hiddenImages.js";
-import highlightLinksActionButton from "./links.js";
-import { readerModeActionButton } from "./readingMode.js";
-import stopSoundsButton from "./stopSounds.js";
-import { lineSpacingButton } from "./lineSpacing.js";
-import { letterSpacingButton } from "./letterSpacing.js";
-import fontSizeActionButton from "./fontSize.js";
+import hightlightLettersActionButton, { removeBold } from "./boldLetters.js";
+import hiddenImagesActionButton, { showImage } from "./hiddenImages.js";
+import highlightLinksActionButton, { disableHighlightLinks } from "./links.js";
+import {
+  readerModeActionButton,
+  removeSpeechSynthesis,
+} from "./readingMode.js";
+import stopSoundsButton, { pauseSounds } from "./stopSounds.js";
+import { lineSpacingButton, resetLineSpacing } from "./lineSpacing.js";
+import { letterSpacingButton, resetLetterSpacing } from "./letterSpacing.js";
+import fontSizeActionButton, { decreaseFont } from "./fontSize.js";
 
 export const icons = {
   readerTooltip: `<svg width="64" height="64" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,47 +69,55 @@ export const resources = [
     numberOfIndicators: 1,
     stateItem: "highlightLetters",
     action: hightlightLettersActionButton,
+    reset: removeBold,
   },
   {
     name: "sem_imagem",
     numberOfIndicators: 1,
     stateItem: "hiddenImgs",
     action: hiddenImagesActionButton,
+    reset: showImage,
   },
   {
     name: "link",
     numberOfIndicators: 1,
     stateItem: "highlightLinks",
     action: highlightLinksActionButton,
+    reset: disableHighlightLinks,
   },
   {
     name: "tamanho_fonte",
     numberOfIndicators: 1,
     stateItem: "increaseFontSize",
     action: fontSizeActionButton,
+    reset: decreaseFont,
   },
   {
     name: "sem_som",
     numberOfIndicators: 1,
     stateItem: "stopSounds",
     action: stopSoundsButton,
+    reset: pauseSounds,
   },
   {
     name: "espaco_entre_linhas",
     numberOfIndicators: 3,
     stateItem: "lineSpacing",
     action: lineSpacingButton,
+    reset: resetLineSpacing,
   },
   {
     name: "espaco_entre_letras",
     numberOfIndicators: 3,
     stateItem: "letterSpacing",
     action: letterSpacingButton,
+    reset: resetLetterSpacing,
   },
   {
     name: "leitor",
     numberOfIndicators: 3,
     stateItem: "readerMode",
     action: readerModeActionButton,
+    reset: () => removeSpeechSynthesis(true),
   },
 ];

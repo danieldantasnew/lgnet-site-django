@@ -1,4 +1,5 @@
 import {state} from "./values.js";
+const allImages = document.querySelectorAll("[data-img]");
 
 function createDivPlaceholderFromImage(image) {
   const placeholder = document.createElement("div");
@@ -29,8 +30,8 @@ function hiddenImage(images) {
   });
 }
 
-function showImage(images) {
-  images.forEach((image) => {
+export function showImage() {
+  allImages.forEach((image) => {
     if (image instanceof HTMLImageElement) {
       image.style.display = ""
       if (
@@ -44,14 +45,13 @@ function showImage(images) {
 }
 
 export default function hiddenImagesActionButton() {
-  const allImages = document.querySelectorAll("[data-img]");
   if (allImages instanceof NodeList) {
     if (!state.hiddenImgs) {
       state.hiddenImgs = true;
       hiddenImage(allImages);
     } else {
       state.hiddenImgs = false;
-      showImage(allImages);
+      showImage();
     }
   }
 }

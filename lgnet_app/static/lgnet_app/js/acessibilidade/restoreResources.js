@@ -19,29 +19,19 @@ export function hiddenRestoreResourcesBtn() {
 
     timeoutAnimation = setTimeout(() => {
       button.classList.add("animate-slideTop");
+      button.classList.remove("flex");
       button.classList.add("hidden");
       button.classList.remove("animate-fadeOut");
     }, 180);
   }
 }
 
-export const lastState = {
-  readerMode: 3,
-  stopSounds: true,
-  highlightLinks: true,
-  hiddenImgs: true,
-  increaseFontSize: true,
-  highlightLetters: true,
-  letterSpacing: 3,
-  lineSpacing: 3,
-};
-
 function restoreResources() {
-  Object.keys(lastState).forEach((key) => {
-    state[key] = lastState[key];
+  Object.keys(initialState).forEach((key) => {
+    state[key] = initialState[key];
   });
 
-  resources.forEach((resource)=> resource.action());
+  resources.forEach((resource)=> resource.reset());
 
   hiddenRestoreResourcesBtn();
 }
@@ -49,6 +39,7 @@ function restoreResources() {
 export default function showRestoreResourcesBtn() {
   if (button instanceof HTMLButtonElement) {
     button.classList.remove("hidden");
+    button.classList.add("flex");
     button.addEventListener("click", restoreResources);
   }
 }

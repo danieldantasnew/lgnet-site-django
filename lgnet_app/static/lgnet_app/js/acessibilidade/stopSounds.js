@@ -1,27 +1,29 @@
 import {state} from "./values.js";
+const allAudios = document.querySelectorAll("audio");
+const allVideos = document.querySelectorAll("video");
 
-function pauseSounds(audios, videos) {
-  audios.forEach((audio) => {
+export function pauseSounds() {
+  allAudios.forEach((audio) => {
     if (audio instanceof HTMLAudioElement) {
       audio.muted = true;
     }
   });
 
-  videos.forEach((video) => {
+  allVideos.forEach((video) => {
     if (video instanceof HTMLVideoElement) {
       video.muted = true;
     }
   });
 }
 
-function playSounds(audios, videos) {
-  audios.forEach((audio) => {
+function playSounds() {
+  allAudios.forEach((audio) => {
     if (audio instanceof HTMLAudioElement) {
       audio.muted = false;
     }
   });
 
-  videos.forEach((video) => {
+  allVideos.forEach((video) => {
     if (video instanceof HTMLVideoElement) {
       video.muted = false;
     }
@@ -29,9 +31,6 @@ function playSounds(audios, videos) {
 }
 
 export default function stopSoundsButton() {
-  const allAudios = document.querySelectorAll("audio");
-  const allVideos = document.querySelectorAll("video");
-
   if (allAudios && allVideos) {
     if (!state.stopSounds) {
       state.stopSounds = true;
