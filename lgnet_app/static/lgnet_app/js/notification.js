@@ -33,7 +33,7 @@ export function notification(message, typeNotification) {
     if(notificationTimeout) clearTimeout(notificationTimeout);
     notificationTimeout = setTimeout(() => {
         currentNotification.classList.remove('animate-slideTop');
-        currentNotification.classList.add('animate-slideBottom');
+        currentNotification.classList.add('animate-slideHiddenBottom');
         setTimeout(() => {
             newNotification.remove();
         }, 100);

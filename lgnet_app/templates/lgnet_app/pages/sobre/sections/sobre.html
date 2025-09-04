@@ -1,9 +1,9 @@
 <section class="bg-light-background dark:bg-dark-primary py-4">
     <div class="container grid grid-cols-1 lg:!grid-cols-[1fr_2fr] gap-2 lg:!gap-8 py-4 lg:!py-10">
-        <div class="overflow-hidden rounded-lg h-full lg:!max-h-90 max-h-120">
+        <div data-animation="fadeIn" class="overflow-hidden rounded-lg h-full lg:!max-h-90 max-h-120">
             <img data-img src="{{item.imagem_sobre.url}}" alt="Imagem da empresa">
         </div>
-        <div class="mt-4 lg:mt-12">
+        <div data-animation="slideTop" class="mt-4 lg:mt-12">
             <h1 class="mb-4">Sobre a {{item.nome_empresa}}<strong>.</strong></h1>
             <p class="text-sm sm:text-lg">{{item.sobre}}</p>
         </div>
