@@ -4,25 +4,25 @@
 
 {% block content %}
     <section class="bg-light-background dark:bg-dark-variant">
-        <div class="container px-4 py-12 lg:!py-18 !max-w-240">
-            <div class="flex justify-center">            
+        <div class="container px-4 py-10 lg:!py-14 !max-w-240">
+            <div data-animation="slideTop" class="flex justify-center">            
                 <h2 class="text-3xl lg:!text-4xl font-semibold text-ellipsis text-nowrap relative text-primary-variant-2 dark:text-light-background">
                     Perguntas Frequentes
                     <span class="absolute h-[4px] content-[''] top-8 lg:!top-10 left-0 w-10 lg:!w-12 bg-secondary inline-block rounded-full group-hover:bg-[#ffffff]"></span>
                 </h2>
             </div>
-            <div class="mt-6 md:!mt-10 min-h-[80dvh]">
+            <div data-animation="slideTop" class="mt-8 md:!mt-10 min-h-[80dvh]">
                 <div class="relative">
                     <input 
-                    data-input-search
-                    id="search"
-                    type="text"
-                    class="
-                        peer
-                        input-config
-                        !pl-8
-                        !pr-4
-                        "
+                        data-input-search
+                        id="search"
+                        type="text"
+                        class="
+                            peer
+                            input-config
+                            !pl-8
+                            !pr-4
+                            "
                         placeholder="Buscar"
                         >
                         <span class="
@@ -41,61 +41,63 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </span>
                 </div>
-                <div data-questions class="flex flex-col gap-1 mt-8 md:mt-14 md:max-h-320 overflow-y-auto">
+                <div data-questions class="flex flex-col gap-1 mt-12 md:mt-14 md:max-h-320 overflow-y-auto">
 
                 </div>
             </div>
         </div>
     </section>
-<div class="py-8 px-4 sm:!py-12 bg-neutral-50 dark:bg-neutral-900 flex flex-col justify-center items-center text-center">
-    <div class="
-        flex
-        [&>div]:flex
-        [&>div]:justify-center
-        [&>div]:items-center
-        [&>div]:h-12
-        [&>div]:w-12
-        [&>div]:rounded-full
-        [&>div]:border-2
-        [&>div]:bg-neutral-500
-        dark:[&>div]:bg-neutral-800
-        [&>div]:text-light-background
-        [&>div]:border-neutral-50
-        [&>div>i]:text-[28px]
-    ">
-        <div class="-mr-1"><i class="fa-solid fa-envelope"></i></div>
-        <div><i class="fa-solid fa-headset"></i></div>
-        <div class="-ml-1"><i class="fa-solid fa-location-dot"></i></div>
+<div class="py-8 px-4 sm:!py-12 bg-neutral-50 dark:bg-neutral-900">
+    <div data-animation="fadeIn" class="flex flex-col justify-center items-center text-center">
+        <div class="
+            flex
+            [&>div]:flex
+            [&>div]:justify-center
+            [&>div]:items-center
+            [&>div]:h-12
+            [&>div]:w-12
+            [&>div]:rounded-full
+            [&>div]:border-2
+            [&>div]:bg-neutral-500
+            dark:[&>div]:bg-neutral-800
+            [&>div]:text-light-background
+            [&>div]:border-neutral-50
+            [&>div>i]:text-[28px]
+        ">
+            <div class="-mr-1"><i class="fa-solid fa-envelope"></i></div>
+            <div><i class="fa-solid fa-headset"></i></div>
+            <div class="-ml-1"><i class="fa-solid fa-location-dot"></i></div>
+        </div>
+        <div>
+            <h3 class="text-lg sm:!text-xl text-primary-variant-2 dark:text-light-background font-bold mt-2">Ainda tem dúvidas?</h3>
+            <p class="mt-[2px] text-xs sm:!text-sm text-neutral-600 dark:text-neutral-300 font-semibold">Não encontrou a resposta que procurava? Converse com a nossa equipe.</p>
+        </div>
+        <a href="{%url 'lgnet:contato'%}" class="
+            transition-all
+            mt-5
+            p-2
+            flex
+            gap-2
+            border-2
+            border-primary-variant-2
+            text-primary-variant-2
+            text-xs
+            sm:!text-sm
+            rounded-sm
+            max-w-44
+            hover:bg-primary-variant
+            hover:text-light-background
+            hover:border-primary-variant
+            dark:text-secondary
+            dark:border-secondary
+            dark:hover:border-secondary
+            dark:hover:bg-secondary
+            dark:hover:text-secondary-variant
+        ">
+            <span class="font-semibold">Entrar em contato</span>
+            <i class="fa-solid fa-arrow-right text-sm mt-[1px] sm:!mt-[3px]"></i>
+        </a>
     </div>
-    <div>
-        <h3 class="text-lg sm:!text-xl text-primary-variant-2 dark:text-light-background font-bold mt-2">Ainda tem dúvidas?</h3>
-        <p class="mt-[2px] text-xs sm:!text-sm text-neutral-600 dark:text-neutral-300 font-semibold">Não encontrou a resposta que procurava? Converse com a nossa equipe.</p>
-    </div>
-    <a href="{%url 'lgnet:contato'%}" class="
-        transition-all
-        mt-5 
-        p-2 
-        flex 
-        gap-2 
-        border-2 
-        border-primary-variant-2 
-        text-primary-variant-2 
-        text-xs 
-        sm:!text-sm 
-        rounded-sm 
-        max-w-44
-        hover:bg-primary-variant
-        hover:text-light-background
-        hover:border-primary-variant
-        dark:text-secondary
-        dark:border-secondary
-        dark:hover:border-secondary
-        dark:hover:bg-secondary
-        dark:hover:text-secondary-variant
-    ">
-        <span class="font-semibold">Entrar em contato</span>
-        <i class="fa-solid fa-arrow-right text-sm mt-[1px] sm:!mt-[3px]"></i>
-    </a>
 </div>
 {% endblock %}
 

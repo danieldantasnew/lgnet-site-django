@@ -11,7 +11,7 @@ async function fetchQuestions() {
 const addQuestions = (container, questions) => {
   container.innerHTML = "";
   if (questions.length == 0) {
-    container.innerHTML += `<p class="text-center font-medium text-lg">Sem resultados</p>`;
+    container.innerHTML += `<p class="text-center font-medium text-lg dark:text-neutral-50">Sem resultados</p>`;
     return;
   }
   questions.forEach((question) => {
