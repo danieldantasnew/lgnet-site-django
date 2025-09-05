@@ -33,6 +33,7 @@
   --animate-slideHiddenBottom: slideHiddenBottom 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   --animate-slideBottom: slideBottom 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   --animate-slideToRightWithFade: slideToRightWithFade 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  --animate-slideToRight: slideToRight 0.3s ease forwards;
   --animate-uniqueSpin: uniqueSpin 0.4s forwards;
 
   @keyframes fadeIn {
@@ -147,6 +148,21 @@
   }
 }
 
+@keyframes slideToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    
+  }
+  40% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes uniqueSpin {
   from {
     animation-timing-function: ease-in-out;
@@ -223,8 +239,9 @@
     @apply w-full;
     @apply placeholder:text-sm;
     @apply placeholder:font-medium;
-    @apply dark:placeholder:text-neutral-300;
-    @apply dark:bg-dark-variant;
+    @apply dark:placeholder:text-neutral-500;
+    @apply dark:bg-dark-primary;
+    @apply focus:dark:bg-dark-variant;
     @apply border-none;
     @apply outline-none;
     @apply focus:!outline-none;
