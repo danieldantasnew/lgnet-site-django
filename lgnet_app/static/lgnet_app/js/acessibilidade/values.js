@@ -39,16 +39,7 @@ export const initialState = {
   lineSpacing: 0,
 };
 
-const stateObj = {
-  readerMode: null,
-  stopSounds: false,
-  highlightLinks: false,
-  hiddenImgs: false,
-  increaseFontSize: false,
-  highlightLetters: false,
-  letterSpacing: 0,
-  lineSpacing: 0,
-};
+const stateObj = {...initialState};
 
 export const state = new Proxy(stateObj, {
   set(target, prop, value) {
