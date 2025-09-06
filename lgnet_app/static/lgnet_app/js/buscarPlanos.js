@@ -2,7 +2,7 @@ import contratarPlano from "./contratarPlano.js";
 import { notification } from "./notification.js";
 
 export default function buscarPlanos(cidade) {
-  const container = document.getElementById("planos-container");
+  const container = document.querySelector("[data-plans]");
 
   if(container) {
       fetch(`/api/planos/?cidade=${encodeURIComponent(cidade)}`)
@@ -29,9 +29,18 @@ export default function buscarPlanos(cidade) {
         .sort((planoA, planoB) => planoA.ordem - planoB.ordem)
         .forEach((plano) => {
           html += `
-              <div class="swiper-slide max-w-[280px] !mx-4 !bg-transparent">
+              <div class="animate-fadeIn flex-[1_1_280px] mb-4 max-w-[292px] !bg-transparent transition-all">
                 <div
-                  class="rounded-lg bg-[#ffffff] shadow-[0_0_2px_1px_rgba(0,0,0,.05)] overflow-hidden flex flex-col gap-4 dark:bg-dark-variant dark:shadow-[0_0_1px_1.5px_rgb(255,255,255)]
+                  class="
+                    rounded-lg 
+                    bg-light-background 
+                    shadow-[0_0_2px_1px_rgba(0,0,0,.05)] 
+                    overflow-hidden 
+                    flex 
+                    flex-col 
+                    gap-4 
+                    dark:bg-dark-variant 
+                    dark:shadow-[0_0_1px_1.5px_rgb(255,255,255)]
                   "
                   data-plano-mensagem="${plano.mensagem}"
                   data-plano-contato="${plano.contato}"
