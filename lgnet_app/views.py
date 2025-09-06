@@ -233,7 +233,6 @@ def perguntas_frequentes_api(request):
             "answer": pergunta.resposta,
         })
 
-    print(perguntas_lista)
     return JsonResponse(perguntas_lista, safe=False, status=200)
 
 def inicio(request):
