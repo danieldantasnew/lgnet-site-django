@@ -1,7 +1,7 @@
   <footer id="footer" class="footer bg-primary-variant text-light-background dark:bg-dark-primary py-12">
     {% for item in infoEmpresa.all%}
       <div class="container m-auto flex flex-col gap-13 *:flex">
-        <div data-animation="slideTop" class="flex-col items-center gap-3 lg:!gap-0 justify-center lg:!flex-row lg:!justify-between ">
+        <div class="flex-col items-center gap-3 lg:!gap-0 justify-center lg:!flex-row lg:!justify-between ">
             <a
               href="#"
               class="*:w-24 *:h-14 **:fill-white"
@@ -11,7 +11,6 @@
             <p class="text-lg font-semibold">{{item.slogan}}</p>
         </div>
         <div 
-        data-animation="slideTop"
         class="
           relative
           flex-col
@@ -81,7 +80,7 @@
           </div>
           <span class="absolute -bottom-8 w-full h-[2px] inline-block rounded-xs bg-[#ffffff]/10"></span>
         </div>
-        <div data-animation="slideTop" class="flex-col-reverse lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm py-3">
+        <div class="flex-col-reverse lg:flex-row gap-4 lg:!gap-0 justify-center items-center lg:!justify-between text-sm py-3">
           <p>® 2025 LGNET. Todos os direitos reservados.</p>
           <ul class="flex items-center gap-2 font-medium [&>li>a:hover]:underline text-[10px] sm:text-xs">
             <li><a href="#">Termos e condições</a></li>
