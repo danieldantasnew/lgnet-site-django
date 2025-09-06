@@ -407,6 +407,9 @@
   .z-50 {
     z-index: 50;
   }
+  .z-60 {
+    z-index: 60;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -2993,6 +2996,11 @@
       max-height: calc(var(--spacing) * 90) !important;
     }
   }
+  .lg\:min-h-10 {
+    @media (width >= 64rem) {
+      min-height: calc(var(--spacing) * 10);
+    }
+  }
   .lg\:min-h-58 {
     @media (width >= 64rem) {
       min-height: calc(var(--spacing) * 58);
@@ -3001,6 +3009,16 @@
   .lg\:min-h-160 {
     @media (width >= 64rem) {
       min-height: calc(var(--spacing) * 160);
+    }
+  }
+  .lg\:min-h-\[60vh\] {
+    @media (width >= 64rem) {
+      min-height: 60vh;
+    }
+  }
+  .lg\:min-h-\[80vh\] {
+    @media (width >= 64rem) {
+      min-height: 80vh;
     }
   }
   .lg\:min-h-auto {
