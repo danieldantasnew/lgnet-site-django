@@ -311,7 +311,6 @@ def inicio(request):
         'banners': banners,
     }
 
-
     return render(request, 'lgnet_app/pages/principal/index.html', context)
 
 def sobre(request):

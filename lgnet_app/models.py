@@ -137,12 +137,14 @@ class InformacoesEmpresa(models.Model):
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
 
+    img_app_mobile = models.ImageField("Imagem do App Mobile", upload_to="sobre/", height_field=None, width_field=None, max_length=None, help_text="Imagens com proporção 9:16 funcionam perfeitamente.")
+
     sobre = models.TextField("Sobre", default="")
-    imagem_sobre = models.ImageField("Imagem da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
+    imagem_sobre = models.ImageField("Imagem 1 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None,)
 
     visao = models.CharField("Visão da empresa", max_length=132, default="")
     missao = models.CharField("Missão da empresa", max_length=132, default="")
-    imagem_visao_missao = models.ImageField("Imagem da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
+    imagem_visao_missao = models.ImageField("Imagem 2 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None,)
 
     atuacao = models.TextField("Atuação", default="")
     forca = models.TextField("Força", default="")
