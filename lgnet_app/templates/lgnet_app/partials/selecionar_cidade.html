@@ -1,7 +1,7 @@
 {% load static %}
 
 <div data-cidade class="fixed top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] bg-[#ffffff] dark:bg-dark-variant w-[90vw] max-w-[390px] md:max-w-full md:w-150 rounded-lg z-50 pt-24 pb-6 px-8 animate-fadeIn dark:shadow-[0_0_0_2px_rgba(255,255,255,1)]">
-    <i onclick="document.modalComponent.close()" class="fa-regular fa-circle-xmark cursor-pointer text-3xl text-gray-400 hover:text-primary-variant dark:hover:text-secondary absolute top-4 right-4 transition-all"></i>
+    <i onclick="document.modalComponent.close()" class="fa-regular fa-circle-xmark cursor-pointer text-3xl text-gray-400 hover:text-primary-variant dark:hover:text-secondary absolute top-4 right-4 transition-all z-60"></i>
     {% include 'lgnet_app/partials/loading_cidade.html' %}
     <div data-content-info class="flex flex-col justify-center items-start gap-6 lg:gap-4">
         <div class="z-0 w-full *:w-36 *:h-auto **:fill-primary-variant dark:**:fill-secondary flex justify-center mt-7 absolute top-4 translate-x-[-50%] left-[50%]">{% include 'lgnet_app/partials/utilities/logo.html' %}</div>
