@@ -15,11 +15,14 @@
   </button>
 
   <div data-dropdown="acessibilidade-modal"
-    class="scroll-hidden animate-fadeIn z-20 hidden bg-light-background dark:bg-dark-primary rounded-lg shadow-[0_0_6px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_6px_1px_rgba(255,255,255,.1)] w-96 absolute right-0 top-10 transition-all overflow-hidden">
+    class="scroll-hidden animate-fadeIn z-20 hidden bg-light-background dark:bg-dark-primary rounded-lg shadow-[0_0_6px_1px_rgba(0,0,0,.1)] dark:shadow-[0_0_6px_1px_rgba(255,255,255,.1)] w-98 absolute right-0 top-10 transition-all overflow-hidden">
     <div class="flex gap-1 items-center justify-between py-3 px-4 relative bg-primary-variant dark:bg-dark-variant">
-      <h3 class="text-light-background font-semibold text-[16px]">
-        Menu de Acessibilidade
-      </h3>
+      <div class="flex gap-1 relative">
+        <h3 class="text-light-background font-semibold text-[16px]">
+          Menu de Acessibilidade
+        </h3>
+        <p class="absolute top-0 right-[-26px] inline text-[6px] font-semibold h-auto text-light-background text-center bg-primary dark:bg-primary-variant rounded-full px-[2px] py-[1px]">Beta</p>
+      </div>
       <div
         class="*:text-[16px] *:cursor-pointer *:duration-300 text-light-background *:hover:text-primary dark:*:hover:text-secondary flex items-center">
         <span aria-label="Expandir/recolher menu de acessibilidade" data-acessibilidade="expandir" class="mr-3"><i
@@ -37,7 +40,11 @@
     class="animate-slideIn fixed z-50 top-0 right-0 h-full w-full sm:w-[75vw] bg-light-background dark:bg-dark-primary flex flex-col gap-4 items-start dark:shadow-[1px_0_4px_4px_rgba(255,255,255,.05)] max-w-116 overflow-y-auto overflow-x-hidden">
     <div
       class="flex items-center justify-between w-full gap-2 bg-primary-variant dark:bg-dark-variant text-light-background pl-6 pr-3 py-5">
-      <h2 class="font-semibold text-sm">Menu de Acessibilidade</h2>
+      <div class="flex gap-1 relative">
+        <h2 class="font-semibold text-sm">Menu de Acessibilidade</h2>
+        <p class="absolute top-0 right-[-26px] inline text-[6px] font-semibold h-auto text-light-background text-center bg-primary dark:bg-primary-variant rounded-full px-[2px] py-[1px]">Beta</p>
+      </div>
+      
       <span onclick="document.modalComponent.close()"
         class="cursor-pointer hover:text-primary dark:hover:text-secondary transition-colors"><i
           class="fa-regular fa-circle-xmark text-2xl"></i></span>
