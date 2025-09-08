@@ -29,7 +29,7 @@ export default function buscarPlanos(cidade) {
         .sort((planoA, planoB) => planoA.ordem - planoB.ordem)
         .forEach((plano) => {
           html += `
-              <div class="animate-fadeIn flex-[1_1_280px] mb-4 max-w-[292px] !bg-transparent transition-all">
+              <div class="animate-fadeIn flex-[1_1_272px] mb-4 max-w-[292px] !bg-transparent transition-all">
                 <div
                   class="
                     rounded-lg 

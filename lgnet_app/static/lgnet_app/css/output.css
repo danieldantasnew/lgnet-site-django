@@ -877,6 +877,9 @@
   .min-w-\[380px\] {
     min-width: 380px;
   }
+  .flex-\[1_1_272px\] {
+    flex: 1 1 272px;
+  }
   .flex-\[1_1_280px\] {
     flex: 1 1 280px;
   }
@@ -2695,6 +2698,11 @@
   .sm\:items-center {
     @media (width >= 40rem) {
       align-items: center;
+    }
+  }
+  .sm\:\!justify-start {
+    @media (width >= 40rem) {
+      justify-content: flex-start !important;
     }
   }
   .sm\:justify-start {
