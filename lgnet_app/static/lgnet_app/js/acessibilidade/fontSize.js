@@ -4,7 +4,7 @@ const content = document.querySelectorAll(
 );
 const pixels = 2;
 
-function increaseFont() {
+export function increaseFont() {
   content.forEach((element) => {
     if (element.closest('[data-dropdown="acessibilidade-modal"]')) return;
     if (

@@ -22,7 +22,7 @@ const classes = [
   "dark:hover:[&>svg]:**:fill-primary-variant",
 ];
 
-function activateHighlightLinks() {
+export function activateHighlightLinks() {
   allLinks.forEach((link) => {
     if (link instanceof HTMLAnchorElement) {
       if(link.querySelector("img")) return;

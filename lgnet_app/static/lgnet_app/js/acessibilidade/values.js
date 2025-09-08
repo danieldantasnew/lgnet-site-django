@@ -3,17 +3,45 @@ import showRestoreResourcesBtn, {
   isInitialValues,
 } from "./restoreResources.js";
 import { syncHighlight } from "./highlights.js";
-import hightlightLettersActionButton, { removeBold } from "./boldLetters.js";
-import hiddenImagesActionButton, { showImage } from "./hiddenImages.js";
-import highlightLinksActionButton, { disableHighlightLinks } from "./links.js";
+import hightlightLettersActionButton, { addBold, removeBold } from "./boldLetters.js";
+import hiddenImagesActionButton, { hiddenImage, showImage } from "./hiddenImages.js";
+import highlightLinksActionButton, { activateHighlightLinks, disableHighlightLinks } from "./links.js";
 import {
+  applyInitStateOfReadingMode,
   readerModeActionButton,
   removeSpeechSynthesis,
 } from "./readingMode.js";
-import stopSoundsButton, { pauseSounds } from "./stopSounds.js";
-import { lineSpacingButton, resetLineSpacing } from "./lineSpacing.js";
-import { letterSpacingButton, resetLetterSpacing } from "./letterSpacing.js";
-import fontSizeActionButton, { decreaseFont } from "./fontSize.js";
+import stopSoundsButton, { pauseSounds, playSounds } from "./stopSounds.js";
+import { applyInitStateOfLine, lineSpacingButton, resetLineSpacing } from "./lineSpacing.js";
+import { applyInitStateOfLetter, letterSpacingButton, resetLetterSpacing } from "./letterSpacing.js";
+import fontSizeActionButton, { decreaseFont, increaseFont } from "./fontSize.js";
+
+function setStateInLocalStorage(state, reset = null) {
+  if (reset) {
+    localStorage.removeItem("resources");
+  } else {
+    localStorage.setItem("resources", JSON.stringify(state));
+  }
+}
+
+function getStateInLocalStorage(state) {
+  let data = localStorage.getItem("resources");
+  if (data) {
+    data = JSON.parse(data);
+    Object.keys(data).forEach((key) => {
+      state[key] = data[key];
+    });
+
+    resources.forEach((resource)=> {
+      const stateResource = state[resource.stateItem];
+      if(stateResource) {
+        resource.applyIfActive();
+        showRestoreResourcesBtn();
+      }
+    });
+    
+  }
+}
 
 export const icons = {
   readerTooltip: `<svg width="64" height="64" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,17 +67,23 @@ export const initialState = {
   lineSpacing: 0,
 };
 
-const stateObj = {...initialState};
+const stateObj = { ...initialState };
 
 export const state = new Proxy(stateObj, {
   set(target, prop, value) {
     target[prop] = value;
 
     const isInitialState = isInitialValues();
-    if (isInitialState) hiddenRestoreResourcesBtn();
-    else showRestoreResourcesBtn();
+    if (isInitialState) {
+      setStateInLocalStorage({}, true);
+      hiddenRestoreResourcesBtn();
+    } else {
+      setStateInLocalStorage({ ...state });
+      showRestoreResourcesBtn();
+    }
 
     syncHighlight();
+
     return true;
   },
 });
@@ -59,6 +93,7 @@ export const resources = [
     name: "bold",
     numberOfIndicators: 1,
     stateItem: "highlightLetters",
+    applyIfActive: addBold,
     action: hightlightLettersActionButton,
     reset: removeBold,
   },
@@ -66,6 +101,7 @@ export const resources = [
     name: "sem_imagem",
     numberOfIndicators: 1,
     stateItem: "hiddenImgs",
+    applyIfActive: hiddenImage,
     action: hiddenImagesActionButton,
     reset: showImage,
   },
@@ -73,6 +109,7 @@ export const resources = [
     name: "link",
     numberOfIndicators: 1,
     stateItem: "highlightLinks",
+    applyIfActive: activateHighlightLinks,
     action: highlightLinksActionButton,
     reset: disableHighlightLinks,
   },
@@ -80,6 +117,7 @@ export const resources = [
     name: "tamanho_fonte",
     numberOfIndicators: 1,
     stateItem: "increaseFontSize",
+    applyIfActive: increaseFont,
     action: fontSizeActionButton,
     reset: decreaseFont,
   },
@@ -87,13 +125,15 @@ export const resources = [
     name: "sem_som",
     numberOfIndicators: 1,
     stateItem: "stopSounds",
+    applyIfActive: pauseSounds,
     action: stopSoundsButton,
-    reset: pauseSounds,
+    reset: playSounds,
   },
   {
     name: "espaco_entre_linhas",
     numberOfIndicators: 3,
     stateItem: "lineSpacing",
+    applyIfActive: applyInitStateOfLine,
     action: lineSpacingButton,
     reset: resetLineSpacing,
   },
@@ -101,6 +141,7 @@ export const resources = [
     name: "espaco_entre_letras",
     numberOfIndicators: 3,
     stateItem: "letterSpacing",
+    applyIfActive: applyInitStateOfLetter,
     action: letterSpacingButton,
     reset: resetLetterSpacing,
   },
@@ -108,7 +149,12 @@ export const resources = [
     name: "leitor",
     numberOfIndicators: 3,
     stateItem: "readerMode",
+    applyIfActive: applyInitStateOfReadingMode,
     action: readerModeActionButton,
     reset: () => removeSpeechSynthesis(true),
   },
 ];
+
+document.addEventListener("DOMContentLoaded", () => {
+  getStateInLocalStorage(stateObj);
+});

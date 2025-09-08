@@ -16,7 +16,7 @@ export function pauseSounds() {
   });
 }
 
-function playSounds() {
+export function playSounds() {
   allAudios.forEach((audio) => {
     if (audio instanceof HTMLAudioElement) {
       audio.muted = false;

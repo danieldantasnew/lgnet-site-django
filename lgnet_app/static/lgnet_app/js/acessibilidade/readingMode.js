@@ -1,5 +1,5 @@
 import svgToPng from "../svgToPng.js";
-import {state, icons} from "./values.js";
+import { state, icons } from "./values.js";
 
 let rate = 1;
 
@@ -71,23 +71,51 @@ export function speakMessageClicked(event) {
   }
 }
 
-function addSpeechSynthesisNormalMode() {
+function addSpeechSynthesisNormalMode(alreadyActived) {
+  if (alreadyActived) {
+    speaker("");
+    return;
+  }
   speaker("Leitor ativado!");
 }
 
-function addSpeechSynthesisFastMode() {
+function addSpeechSynthesisFastMode(alreadyActived) {
   rate = 1.8;
+  if (alreadyActived) {
+    speaker("");
+    return;
+  }
   speaker("Leitor modo rápido ativado!");
 }
 
-function addSpeechSynthesisSlowMode() {
+function addSpeechSynthesisSlowMode(alreadyActived) {
   rate = 0.5;
+  if (alreadyActived) {
+    speaker("");
+    return;
+  }
   speaker("Leitor modo lento ativado!");
 }
 
-export function removeSpeechSynthesis(reset=false) {
+export function removeSpeechSynthesis(reset = false) {
   rate = 1;
-  if(!reset) speaker("Leitor desativado!", true);
+  if (!reset) speaker("Leitor desativado!", true);
+}
+
+export function applyInitStateOfReadingMode() {
+  switch (state.readerMode) {
+    case 1:
+      addSpeechSynthesisNormalMode(true);
+      break;
+    case 2:
+      addSpeechSynthesisFastMode(true);
+      break;
+    default:
+      addSpeechSynthesisSlowMode(true);
+      break;
+  }
+
+  decorationWhenReaderOn(state);
 }
 
 export function readerModeActionButton(e) {

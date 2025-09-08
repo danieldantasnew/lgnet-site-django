@@ -23,6 +23,20 @@ export function resetLineSpacing() {
   });
 }
 
+export function applyInitStateOfLine() {
+  switch (state.letterSpacing-1) {
+    case 1:
+      setSpacing(allText, 3);
+      break;
+    case 2:
+      setSpacing(allText, 4);
+      break;
+    default:
+      setSpacing(allText, 2);
+      break;
+  }
+}
+
 export function lineSpacingButton() {
   switch (state.lineSpacing) {
     case 0:

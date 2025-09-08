@@ -21,6 +21,20 @@ export function resetLetterSpacing() {
   });
 }
 
+export function applyInitStateOfLetter() {
+  switch (state.letterSpacing-1) {
+    case 1:
+      setSpacing(allText, 3);
+      break;
+    case 2:
+      setSpacing(allText, 4);
+      break;
+    default:
+      setSpacing(allText, 2);
+      break;
+  }
+}
+
 export function letterSpacingButton() {
   switch (state.letterSpacing) {
     case 0:
