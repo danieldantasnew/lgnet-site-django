@@ -12,12 +12,9 @@
 
   <title>{% block title %}LGNET | Início{% endblock %}</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
-  referrerpolicy="no-referrer">
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -35,7 +32,7 @@
     <template data-notification>
       {% include 'lgnet_app/partials/notification.html' %}
     </template>
-    
+
     <template data-tpl="selecionar-cidade">
       {% include 'lgnet_app/partials/selecionar_cidade.html' %}
     </template>
@@ -59,20 +56,27 @@
   </div>
   <script>
     const isDark = localStorage.getItem("theme") === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
     if (isDark) {
-        document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("dark");
     }
   </script>
 
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js">
+  </script>
   <script>
     new window.VLibras.Widget("https://vlibras.gov.br/app");
   </script>
-  
+  <script>
+    const vlibras = document.querySelector(".vlibras");
+    if (vlibras) {
+      vlibras.style.setProperty("z-index", "10", "important");
+    }
+  </script>
+
   {% block scripts %}
-    <script type="module" src="{% static 'lgnet_app/js/preloader.js' %}"></script>
-    <script type="module" src="{% static 'lgnet_app/js/main.js' %}"></script>
+  <script type="module" src="{% static 'lgnet_app/js/preloader.js' %}"></script>
+  <script type="module" src="{% static 'lgnet_app/js/main.js' %}"></script>
   {% endblock %}
 </body>
 

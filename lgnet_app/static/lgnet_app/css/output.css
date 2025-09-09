@@ -2851,6 +2851,22 @@
       }
     }
   }
+  .sm\:after\:h-1 {
+    @media (width >= 40rem) {
+      &::after {
+        content: var(--tw-content);
+        height: calc(var(--spacing) * 1);
+      }
+    }
+  }
+  .sm\:after\:h-\[5px\] {
+    @media (width >= 40rem) {
+      &::after {
+        content: var(--tw-content);
+        height: 5px;
+      }
+    }
+  }
   .md\:\!mt-10 {
     @media (width >= 48rem) {
       margin-top: calc(var(--spacing) * 10) !important;
