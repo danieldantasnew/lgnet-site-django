@@ -37,9 +37,9 @@ export default function buscarPlanos(cidade) {
                     shadow-[0_0_2px_1px_rgba(0,0,0,.05)] 
                     overflow-hidden 
                     flex 
-                    flex-col 
-                    gap-4 
-                    dark:bg-dark-variant 
+                    flex-col
+                    gap-4
+                    dark:bg-dark-variant
                     dark:shadow-[0_0_1px_1.5px_rgb(255,255,255)]
                   "
                   data-plano-mensagem="${plano.mensagem}"

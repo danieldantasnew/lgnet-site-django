@@ -1,32 +1,16 @@
 import { state } from "./values.js";
 const allImages = document.querySelectorAll("[data-img]");
-
-function createDivPlaceholderFromImage(image) {
-  const placeholder = document.createElement("div");
-  placeholder.className = "img-placeholder";
-
-  const computed = getComputedStyle(image);
-
-  for (let i = 0; i < computed.length; i++) {
-    const prop = computed[i];
-    placeholder.style[prop] = computed.getPropertyValue(prop);
-  }
-
-  placeholder.style.backgroundColor = "rgba(90,90,90,0.2)";
-
-  image.insertAdjacentElement("afterend", placeholder);
-
-  image.style.display = "none";
-
-  return placeholder;
-}
+const carousel = document.querySelectorAll('[ data-wrapper-img="carousel"]');
 
 export function hiddenImage() {
   allImages.forEach((image) => {
     if (image instanceof HTMLImageElement) {
-      setTimeout(() => {
-        createDivPlaceholderFromImage(image);
-      }, 100);
+      image.classList.add("!opacity-0");
+      if (carousel) {
+        carousel.forEach((element) => {
+          element.classList.add("bg-neutral-200/20", "dark:bg-neutral-600/20");
+        });
+      }
     }
   });
 }
@@ -34,12 +18,14 @@ export function hiddenImage() {
 export function showImage() {
   allImages.forEach((image) => {
     if (image instanceof HTMLImageElement) {
-      image.style.display = "";
-      if (
-        image.nextElementSibling &&
-        image.nextElementSibling.classList.contains("img-placeholder")
-      ) {
-        image.nextElementSibling.remove();
+      image.classList.remove("!opacity-0");
+      if (carousel) {
+        carousel.forEach((element) => {
+          element.classList.remove(
+            "bg-neutral-200/20",
+            "dark:bg-neutral-600/20"
+          );
+        });
       }
     }
   });

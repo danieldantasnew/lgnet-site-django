@@ -30,7 +30,9 @@
           "
         >
           <div class="w-full">
-            <img data-img class="w-full" src="{% static item.imagem %}" alt="{{item.titulo}}" />
+            <div data-wrapper-img class="w-full relative bg-neutral-200/50 dark:bg-neutral-700/50 min-h-[189.82px]">
+              <img data-img class="w-full" src="{% static item.imagem %}" alt="{{item.titulo}}" />
+            </div>
           </div>
           <div class="p-4">
             <h2

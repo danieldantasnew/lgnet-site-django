@@ -10,12 +10,15 @@
         >
           <div class="container m-auto w-full h-full">
             <a href="www.google.com" target="_blank">
-              <img
-                data-img
-                src="{{ slide.imagem_principal.url }}"
-                alt="{{ slide.titulo }}"
-                class="w-full h-full object-cover"
-              />
+              <div data-wrapper-img="carousel" class="relative w-full h-full">
+                <img
+                  data-img
+                  src="{{ slide.imagem_principal.url }}"
+                  alt="{{ slide.titulo }}"
+                  class="object-cover"
+                />
+              </div>
+              
             </a>
           </div>
         </div>
