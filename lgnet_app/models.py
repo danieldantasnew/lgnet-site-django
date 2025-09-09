@@ -137,8 +137,6 @@ class InformacoesEmpresa(models.Model):
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
 
-    img_app_mobile = models.ImageField("Imagem do App Mobile", upload_to="sobre/", height_field=None, width_field=None, max_length=None, help_text="Imagens com proporção 9:16 funcionam perfeitamente.", null=True, blank=True)
-
     sobre = models.TextField("Sobre", default="")
     imagem_sobre = models.ImageField("Imagem 1 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
 
@@ -149,6 +147,12 @@ class InformacoesEmpresa(models.Model):
     atuacao = models.TextField("Atuação", default="")
     forca = models.TextField("Força", default="")
     valores = models.ManyToManyField("Valores", verbose_name=("Valores"), related_name="valores", blank=True)
+
+    img_app_mobile = models.ImageField("Imagem do App Mobile", upload_to="sobre/", height_field=None, width_field=None, max_length=None, help_text="Imagens com proporção 9:16 funcionam perfeitamente.", null=True, blank=True)
+
+    link_apple = models.TextField("Link do app na Apple Store", default="", null=True, blank=True)
+    
+    link_google = models.TextField("Link do app na Google Play", default="", null=True, blank=True)
     
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)

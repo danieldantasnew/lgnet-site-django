@@ -42,20 +42,22 @@
             dark:*:hover:!bg-secondary 
             dark:*:hover:!text-secondary-variant
             ">
-                <a data-animation="slideToRightWithFade" class="group/link" href="#">
-                    <span class="text-xl self-center"><i class="fa-brands fa-google-play"></i></span>
-                    <div class="font-medium group-hover/link:font-semibold">
-                        <h5 class="text-[9px]">Download via</h5>
-                        <p class="text-sm -mt-[2px]">Google Play</p>
-                    </div>
-                </a>
-                <a data-animation="slideToRightWithFade" class="group/link" href="#">
-                    <span class="text-2xl self-center"><i class="fa-brands fa-apple"></i></span>
-                    <div class="font-medium group-hover/link:font-semibold">
-                        <h5 class="text-[9px]">Download via</h5>
-                        <p class="text-sm -mt-[2px]">App Store</p>
-                    </div>
-                </a>
+                {% for info in infoEmpresa.all %}
+                    <a data-animation="slideToRightWithFade" class="group/link" href="{{info.link_google}}" target="_blank">
+                        <span class="text-xl self-center"><i class="fa-brands fa-google-play"></i></span>
+                        <div class="font-medium group-hover/link:font-semibold">
+                            <h5 class="text-[9px]">Download via</h5>
+                            <p class="text-sm -mt-[2px]">Google Play</p>
+                        </div>
+                    </a>
+                    <a data-animation="slideToRightWithFade" class="group/link" href="{{info.link_apple}}" target="_blank">
+                        <span class="text-2xl self-center"><i class="fa-brands fa-apple"></i></span>
+                        <div class="font-medium group-hover/link:font-semibold">
+                            <h5 class="text-[9px]">Download via</h5>
+                            <p class="text-sm -mt-[2px]">App Store</p>
+                        </div>
+                    </a>
+                {% endfor %} 
             </div>
         </div>
         <span data-animation="slideTop" class="hidden lg:block">{% include "lgnet_app/partials/utilities/device.html" %}</span>
