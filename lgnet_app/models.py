@@ -137,14 +137,14 @@ class InformacoesEmpresa(models.Model):
     email = models.EmailField("Email")
     contato = models.CharField("Telefone", max_length=100)
 
-    img_app_mobile = models.ImageField("Imagem do App Mobile", upload_to="sobre/", height_field=None, width_field=None, max_length=None, help_text="Imagens com proporção 9:16 funcionam perfeitamente.")
+    img_app_mobile = models.ImageField("Imagem do App Mobile", upload_to="sobre/", height_field=None, width_field=None, max_length=None, help_text="Imagens com proporção 9:16 funcionam perfeitamente.", null=True, blank=True)
 
     sobre = models.TextField("Sobre", default="")
-    imagem_sobre = models.ImageField("Imagem 1 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None,)
+    imagem_sobre = models.ImageField("Imagem 1 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
 
     visao = models.CharField("Visão da empresa", max_length=132, default="")
     missao = models.CharField("Missão da empresa", max_length=132, default="")
-    imagem_visao_missao = models.ImageField("Imagem 2 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None,)
+    imagem_visao_missao = models.ImageField("Imagem 2 da Seção sobre", upload_to="sobre/", height_field=None, width_field=None, max_length=None, null=True, blank=True)
 
     atuacao = models.TextField("Atuação", default="")
     forca = models.TextField("Força", default="")
@@ -165,6 +165,8 @@ class Banners(models.Model):
     imagem_principal = models.ImageField("Imagem Principal", upload_to="banners/", height_field=None, width_field=None, max_length=None, help_text="Sugestão: Insira uma imagem com resolução 1244px de largura e 464px de altura para desktop")
     
     imagem_de_fundo= models.ImageField("Imagem de Fundo", upload_to="banners/", height_field=None, width_field=None, max_length=None, help_text="Pode ser qualquer resolução de imagem mas o ideal é uma altura de 464px para desktop")
+
+    mensagem = models.TextField("Mensagem para mandar pelo whatsapp", default="")
     
     criado_em = models.DateTimeField(auto_now_add=True)
     ultima_atualizacao = models.DateTimeField('Última atualização', auto_now=True)

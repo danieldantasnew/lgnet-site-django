@@ -9,17 +9,18 @@
           class="swiper-slide w-full h-full flex justify-center items-center bg-cover bg-center bg-no-repeat"
         >
           <div class="container m-auto w-full h-full">
-            <a href="www.google.com" target="_blank">
-              <div data-wrapper-img="carousel" class="relative w-full h-full">
-                <img
-                  data-img
-                  src="{{ slide.imagem_principal.url }}"
-                  alt="{{ slide.titulo }}"
-                  class="object-cover"
-                />
-              </div>
-              
-            </a>
+            {% for item in infoEmpresa.all%}
+              <a href="https://wa.me/{{item.contato|cut:" "}}?text={{ slide.mensagem }}" target="_blank">
+                <div data-wrapper-img="carousel" class="relative w-full h-full">
+                  <img
+                    data-img
+                    src="{{ slide.imagem_principal.url }}"
+                    alt="{{ slide.titulo }}"
+                    class="object-cover"
+                  />
+                </div>
+              </a>
+            {% endfor %}
           </div>
         </div>
       {% endfor %}

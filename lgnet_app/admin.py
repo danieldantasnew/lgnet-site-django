@@ -32,6 +32,13 @@ class ValoresAdmin(admin.ModelAdmin):
 class InformacoesEmpresaAdmin(admin.ModelAdmin):
     list_display = ("nome_empresa", "endereco_completo", "email", "contato")
 
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["imagem_sobre"].required = True
+        form.base_fields["img_app_mobile"].required = True
+        form.base_fields["imagem_visao_missao"].required = True
+        return form
+
     def has_add_permission(self, request):
         return not InformacoesEmpresa.objects.exists()
 
