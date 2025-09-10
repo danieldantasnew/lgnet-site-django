@@ -12,12 +12,16 @@
             {% for item in infoEmpresa.all%}
               <a href="https://wa.me/{{item.contato|cut:" "}}?text={{ slide.mensagem }}" target="_blank">
                 <div data-wrapper-img="carousel" class="relative w-full h-full">
-                  <img
-                    data-img
-                    src="{{ slide.imagem_principal.url }}"
-                    alt="{{ slide.titulo }}"
-                    class="object-cover"
-                  />
+                  <picture>
+                    <source srcset="{{ slide.imagem_principal_mobile.url }}" media="(max-width: 768px)">
+                    <source srcset="{{ slide.imagem_principal.url }}" media="(min-width: 769px)">
+                    <img
+                      data-img
+                      src="{{ slide.imagem_principal.url }}"
+                      alt="{{ slide.titulo }}"
+                      class="object-cover"
+                    />
+                  </picture>
                 </div>
               </a>
             {% endfor %}
