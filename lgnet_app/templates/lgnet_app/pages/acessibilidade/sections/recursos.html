@@ -1,0 +1,29 @@
+<section class="bg-primary-variant dark:bg-dark-variant py-4">
+    <div class="container py-4 lg:!py-10 flex flex-col gap-6 sm:gap-8 text-light-background">
+        <div>
+            <h1 data-animation="slideTop" class="!text-light-background mb-8 md:mb-12">Alguns de nossos recursos<strong>.</strong></h1>
+            <div class="grid grid-cols-1 md:!grid-cols-[minmax(320px,480px)_minmax(320px,480px)] gap-y-10 gap-x-16">
+                {% for recurso in recursosAssistivos.0.recursos %}
+                    <div data-animation="slideToRightWithFade">
+                        {% if recurso.icone %}
+                            <span class="
+                                [&>svg>path]:fill-light-background 
+                                [&>svg]:h-9
+                                [&>svg]:w-9
+                                sm:[&>svg]:h-11
+                                sm:[&>svg]:w-11
+                                p-1">
+                                {% include recurso.icone %}
+                            </span>
+                        {% endif %}
+                        <div>
+                            <h3 class="text-[16px] sm:text-lg font-semibold relative">{{ recurso.titulo }}</h3>
+                            <span class="block w-8 h-1 bg-secondary rounded-full"></span>
+                        </div>
+                        <p class="mt-4 max-w-120 leading-7">{{ recurso.descricao }}</p></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

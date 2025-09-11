@@ -1,0 +1,14 @@
+{% load static %}
+
+<section class="bg-light-background dark:bg-dark-primary py-4">
+    <div class="container grid grid-cols-1 lg:!grid-cols-[2fr_1fr] gap-6 lg:!gap-8 py-4 lg:!py-10">
+        <div data-animation="slideTop" class="mt-4 lg:!mt-12">
+            <h1 class="mb-4">Acessibilidade em Língua de Sinais<strong>.</strong></h1>
+            <p class="text-sm sm:text-lg text-neutral-950 dark:text-light-background">O recurso VLibras traduz conteúdos do site para a Língua Brasileira de Sinais (Libras), tornando a navegação mais acessível e inclusiva para pessoas surdas ou com deficiência auditiva. Dessa forma, amplia as possibilidades de comunicação, garante mais autonomia na compreensão das informações e contribui para uma experiência digital verdadeiramente inclusiva.</p>
+        </div>
+        <div data-wrapper-img data-animation="fadeIn" class="relative overflow-hidden rounded-lg h-full lg:!max-h-90 max-h-120 bg-secondary shadow-[0_0_4px_1px_rgba(0,0,0,0.2))]">
+            <img data-img class="w-full h-full object-cover" src="{% static 'lgnet_app/images/acessibilidade/vlibras-avatar.png'%}" alt="Foto ilustrativa dos avatares do vlibras">
+            <img data-img class="absolute top-2 left-1" src="{% static 'lgnet_app/images/acessibilidade/vlibras-btn.png'%}" alt="Foto ilustrativa do botão do vlibras">
+        </div>
+    </div>
+</section>

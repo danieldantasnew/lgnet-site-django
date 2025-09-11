@@ -42,21 +42,25 @@ recursos_assistivos = [
                 'atributo': "leitor",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/leitor.html",
                 'titulo': "Leitor de Sites",
+                'descricao': "O recurso de leitor de sites oferece três opções — normal, rápido e lento — para tornar a navegação mais acessível a pessoas com baixa visão ou dificuldades de leitura.",
             },
             {
                 'atributo': "sem_som",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/sem_som.html",
                 'titulo': "Parar sons",
+                'descricao': "O recurso de parar sons permite pausar áudios automáticos do site, oferecendo mais conforto e acessibilidade para pessoas com TDAH, dislexia ou sensibilidade auditiva.",
             },
             {
                 'atributo': "link",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/link.html",
                 'titulo': "Destacar links",
+                'descricao': "O recurso de destacar links realça todos os links da página, facilitando a navegação de pessoas com baixa visão, não letradas ou com dificuldades de uso na web.",
             },
             {
                 'atributo': "sem_imagem",
                 'icone': "lgnet_app/partials/header_tools/acessibilidade/icons/sem_imagem.html",
                 'titulo': "Esconder imagens",
+                'descricao': "O recurso de esconder imagens permite ocultar elementos visuais da página, ajudando pessoas com TDAH a manter o foco durante a navegação.",
             },
         ]
     },
@@ -362,6 +366,9 @@ def perguntas_frequentes(request):
         'perguntas': perguntas,
     }
     return render(request, 'lgnet_app/pages/perguntas_frequentes/index.html', context)
+
+def acessibilidade(request):
+    return render(request, 'lgnet_app/pages/acessibilidade/index.html', GLOBAL_CONTEXT)
 
 def custom_not_found(request, exception):
     return render(request,'lgnet_app/404.html', GLOBAL_CONTEXT)
