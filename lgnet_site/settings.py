@@ -29,8 +29,6 @@ INSTALLED_APPS = [
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 TAILWIND_APP_NAME = "theme"
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -110,7 +108,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
