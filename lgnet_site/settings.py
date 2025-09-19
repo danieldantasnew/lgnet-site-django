@@ -29,6 +29,9 @@ INSTALLED_APPS = [
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 TAILWIND_APP_NAME = "theme"
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
