@@ -1,20 +1,13 @@
 from pathlib import Path
 import os
-from django.core.wsgi import get_wsgi_application
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'chave-padrão-segura')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-application = get_wsgi_application()
 
 
 ALLOWED_HOSTS = ['192.168.18.121', '177.126.219.80']
-CSRF_TRUSTED_ORIGINS = [
-    'http://192.168.18.121',
-    'http://177.126.219.80',
-]
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'lgnet@email.com'
