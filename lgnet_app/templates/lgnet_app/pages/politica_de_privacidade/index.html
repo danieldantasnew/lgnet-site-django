@@ -1,0 +1,50 @@
+{% extends 'lgnet_app/base.html' %}
+{% load static %}
+{% block title %}LGNET | Política de Privacidade{% endblock %}
+
+{% block content %}
+    <section class="bg-light-background dark:bg-dark-variant">
+        <div data-animation="slideTop" class="container py-10 text-primary-variant-2 dark:text-neutral-100">
+            <h1 class="mb-2">Política de Privacidade<strong>.</strong></h1>
+            <p class="text-sm sm:text-[16px]">A LGNET SERVIÇOS DE TELECOMUNICAÇÕES LTDA, inscrita no CNPJ 08.993.185/0001-94, com sede na R. Antônio Brasilino, 145 - Centro, Piancó - PB, 58765-000, é responsável pelo tratamento dos seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).</p>
+            <div class="
+                    mt-4 
+                    flex 
+                    flex-col 
+                    gap-3
+                    [&>div>h2]:text-primary 
+                    dark:[&>div>h2]:text-light-background
+                    [&>div>h2]:font-semibold 
+                    [&>div>h2]:mb-2
+                    [&>div>p]:text-[16px]
+                    [&>div>p]:mt-2
+                    [&>div>p]:mb-1
+                    [&>div>h2]:text-lg
+                    sm:[&>div>h2]:text-xl
+
+                    [&>div_h3]:text-primary 
+                    dark:[&>div_h3]:text-light-background 
+                    [&>div_h3]:text-lg
+                    [&>div_h3]:font-medium 
+
+                    [&_ul>li]:list-disc
+                    [&_ul]:mt-3
+                    [&_ul]:ml-5
+                ">
+                {% include "lgnet_app/pages/politica_de_privacidade/sections/dados_coletados.html" %}
+                {% include "lgnet_app/pages/politica_de_privacidade/sections/uso_informacoes.html" %}
+                {% include "lgnet_app/pages/politica_de_privacidade/sections/compartilhamento_dados.html" %}
+                {% include "lgnet_app/pages/politica_de_privacidade/sections/direitos_titular.html" %}
+
+                <div>
+                    <h2>5 - Remoção de Contatos</h2>
+                    <p>A LGNET respeita sua privacidade e é contra o spam. Caso não deseje mais receber comunicações nos envie um e-mail na <a class="text-primary-variant dark:text-secondary hover:underline underline-offset-2 transition-all font-medium" href="{% url 'lgnet:contato' %}">área de contato</a>.</p>
+                </div>
+                <div>
+                    <h2>6 - Alterações nesta Política</h2>
+                    <p>A LGNET poderá atualizar esta Política de Privacidade a qualquer momento para refletir mudanças em seus serviços ou na legislação aplicável. Recomendamos a leitura periódica deste documento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

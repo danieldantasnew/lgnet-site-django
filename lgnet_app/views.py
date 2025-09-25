@@ -373,4 +373,7 @@ def acessibilidade(request):
 def custom_not_found(request, exception):
     return render(request,'lgnet_app/404.html', GLOBAL_CONTEXT)
 
+def politica_de_privacidade(request):
+    return render(request, 'lgnet_app/pages/politica_de_privacidade/index.html', GLOBAL_CONTEXT)
+
 handler404 = custom_not_found
