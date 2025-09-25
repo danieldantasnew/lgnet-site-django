@@ -4,10 +4,12 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'chave-padrão-segura')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['192.168.18.121', '177.126.219.80']
+# ALLOWED_HOSTS = ['192.168.18.121', '177.126.219.80']
+ALLOWED_HOSTS = []
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'lgnet@email.com'
